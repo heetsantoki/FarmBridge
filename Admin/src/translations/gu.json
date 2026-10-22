@@ -1,0 +1,277 @@
+{
+    "welcome": "તમારી ખાલી એપ્લિકેશનમાં આપનું સ્વાગત છે",
+    "startBuilding": "અહીં તમારા અદ્ભુત પ્રોજેક્ટનું નિર્માણ શરૂ કરો!",
+    "Add Product": "ઉત્પાદન ઉમેરો",
+    "View Products": "ઉત્પાદનો જુઓ",
+    "addNewProduct": "નવું ઉત્પાદન ઉમેરો",
+    "farmerName": "ખેડૂતનું નામ",
+    "enterFarmerName": "ખેડૂતનું નામ દાખલ કરો",
+    "productImage": "ઉત્પાદન છબી URL",
+    "enterImageURL": "છબી URL દાખલ કરો",
+    "productName": "ઉત્પાદનનું નામ",
+    "enterProductName": "ઉત્પાદનનું નામ દાખલ કરો",
+    "price": "કિંમત (₹)",
+    "quantity": "જથ્થો (કિ.ગ્રા)",
+    "description": "વર્ણન",
+    "enterDescription": "ઉત્પાદનનું વર્ણન દાખલ કરો",
+    "address": "સરનામું",
+    "enterAddress": "સરનામું દાખલ કરો",
+    "addingProduct": "ઉત્પાદન ઉમેરી રહ્યા છીએ...",
+    "success": "સફળતા",
+    "productAddedSuccess": "ઉત્પાદન સફળતાપૂર્વક ઉમેરાયું",
+
+    "products":{
+        "loading": "પ્રોડક્ટ્સ લોડ કરી રહ્યું છે...",
+  "addProduct": "પ્રોડક્ટ ઉમેરો",
+  "viewProducts": "પ્રોડક્ટ્સ જુઓ",
+  "All Products": "બધા પ્રોડક્ટ્સ",
+  "noProducts": "હજુ સુધી કોઈ પ્રોડક્ટ ઉમેરાયેલ નથી",
+  "farmer": "ખેડૂત",
+  "quantity": "જથ્થો",
+  "description": "વર્ણન",
+  "address": "સરનામું",
+  "rating": "રેટિંગ",
+  "Negotiate": "ચર્ચા કરો",
+  "Read More": "વધુ વાંચો",
+  "View Less": "ઓછું જુઓ",
+  "Product Info": "ઉત્પાદન માહિતી",
+  "Quantity": "જથ્થો",
+  "Price Range": "ભાવ શ્રેણી",
+  "Category": "શ્રેણી",
+  "Farmer Details": "ખેડૂત વિગતો",
+  "Name": "નામ",
+  "Contact": "સંપર્ક",
+  "Location": "સ્થળ",
+  "Detailed Information": "વિગતવાર માહિતી",
+  "Product Certification": "ઉત્પાદન પ્રમાણપત્ર",
+  "Land Type": "જમીનનો પ્રકાર",
+  "Farming Practices": "ખેતી પદ્ધતિઓ",
+  "Quality Parameters": "ગુણવત્તા પરિમાણો",
+  "Farmer Experience": "ખેડૂતનો અનુભવ",
+  "farmingPractices": {
+    "No chemical pesticides used": "કોઈ રાસાયણિક જંતુનાશકનો ઉપયોગ નથી",
+    "Natural fertilizers only": "ફક્ત કુદરતી ખાતરો",
+    "Sustainable irrigation methods": "સતત સિંચાઈ પદ્ધતિઓ",
+    "Crop rotation practiced": "ફસલ પરિભ્રમણ અપનાવવામાં આવ્યું છે"
+  },
+  "qualityParameters": {
+    "Hand-picked at optimal ripeness": "શ્રેષ્ઠ પાકાવટે હસ્તે પસંદ કરાયેલ",
+    "Carefully sorted and graded": "સાવધાનીપૂર્વક ગોઠવેલ અને ગ્રેડ કરેલ",
+    "Stored in temperature-controlled environment": "તાપમાન-નિયંત્રિત વાતાવરણમાં સંગ્રહિત",
+    "Regular quality checks performed": "નિયમિત ગુણવત્તા ચકાસણીઓ કરવામાં આવે છે"
+  }
+    },
+    
+      "Profile": {
+    "title": "કૃષક પ્રોફાઇલ",
+    "farmerData": {
+      "fullName": "ફ્રાન્સ વિનાટા",
+      "email": "franswinata6@gmail.com",
+      "phone": "081-234-5678",
+      "location": "માલંગ, એસએમ 74810",
+      "farmName": "ગ્રીન વેલી ફાર્મ",
+      "experience": "5 વર્ષ",
+      "productsGrown": {
+        "Tomatoes": "ટમેટા",
+        "Potatoes": "આલૂ",
+        "Carrots": "ગાજર",
+        "Lettuce": "લેટિસ",
+        "Cucumbers": "કાકડી"
+      },
+      "socialMedia": {
+        "facebook": "https://facebook.com/fransahw",
+        "instagram": "https://instagram.com/fransahw",
+        "twitter": "https://twitter.com/fransahw"
+      },
+      "rating": 4.5
+    },
+    "additionalInformation": {
+      "title": "વધુ માહિતી",
+      "farmName": "ખેડૂતનું નામ",
+      "experienceLevel": "અનુભવ સ્તર",
+      "productsGrown": "ઉગાડેલા ઉત્પાદનો",
+      "socialMedia": "સોશિયલ મીડિયા"
+    },
+    "accountActions": {
+      "editProfile": "પ્રોફાઇલ સંપાદિત કરો",
+      "deleteAccount": "ખાતું કાઢી નાખો"
+    },
+    "deleteConfirmationModal": {
+      "title": "ક્રિયા પુષ્ટિ!",
+      "message": "શું તમે ખરેખર તમારી ખાતું કાઢી નાખવા માંગો છો?",
+      "confirm": "હા, મને ખાતું કાઢી નાખવું છે",
+      "cancel": "નહીં, મને નહીં"
+    }
+  },
+  
+    "Analytics": {
+      "title": "વિશ્લેષણ ડેશબોર્ડ",
+      "quotes": {
+        "text": "“ડેટા નવી તેલ છે.”"
+      },
+      "sales": {
+        "fruits": "ફળોની વેચાણ વિરુદ્ધ મહિનો",
+        "grains": "અનાજની વેચાણ વિરુદ્ધ મહિનો",
+        "Profit Fruits": "ફળોના ઉત્પાદન દ્વારા નફો",
+        "Profit Grains": "અનાજના ઉત્પાદન દ્વારા નફો",
+        "discountsFruits": "ફળોના ડિસ્કાઉન્ટ",
+        "ratingsFruits": "ફળોના રેટિંગ",
+        "discountsGrains": "અનાજના ડિસ્કાઉન્ટ",
+        "ratingsGrains": "અનાજના રેટિંગ",
+        "citySales": "શહેરની વેચાણ દ્વારા ઉત્પાદન"
+      },
+      "months": {
+        "Jan": "જાન્યુઆરી",
+        "Feb": "ફેબ્રુઆરી",
+        "Mar": "માર્ચ",
+        "Apr": "એપ્રિલ",
+        "May": "મે"
+      },
+      "products": {
+        "apples": "સફરજન",
+        "bananas": "કેળા",
+        "oranges": "સંતરા",
+        "grapes": "દ્રાક્ષ",
+        "rice": "ચોખા",
+        "wheat": "ગહૂં",
+        "oats": "જવ",
+        "corn": "મકાઈ"
+      }
+    },
+    
+      "title": "કૃષકનું બજાર",
+      "description1": "ભારતના ખેડૂતો પાસેથી તાજા, સ્થાનિક સ્તરે મેળવેલ ઉત્પાદનો શોધો",
+      "searchPlaceholder": "ઉત્પાદનો શોધો...",
+      "allCategories": "બધા શ્રેણીઓ",
+      "allLocations": "બધા સ્થળો",
+      "noProductsFound": "તમારા માપદંડો સાથે મેળ ખાતા કોઈ ઉત્પાદનો મળ્યા નથી.",
+      "knowMore": "વધુ જાણો",
+      "products2": [
+        {
+          "id": 1,
+          "name": "પ્રીમિયમ સફરજન",
+          "category": "ફળો",
+          "city": "મહારાષ્ટ્ર",
+          "price": "₹120/kg",
+          "description": "તાજા અને જ્યુસી સફરજન.",
+          "quality": "જૈવિક"
+        },
+        {
+          "id": 2,
+          "name": "જૈવિક કેરી",
+          "category": "ફળો",
+          "city": "ગુજરાત",
+          "price": "₹150/kg",
+          "description": "પક્વ કેરી, સ્મૂધી માટે પરફેક્ટ.",
+          "quality": "જૈવિક"
+        },
+        {
+          "id": 3,
+          "name": "તાજા ટમેટા",
+          "category": "શાકભાજી",
+          "city": "કર્ણાટક",
+          "price": "₹40/kg",
+          "description": "ખCooking માટે ઉચ્ચ ગુણવત્તાના ટમેટા.",
+          "quality": "તાજા"
+        },
+        {
+          "id": 4,
+          "name": "બાસમતી ચોખા",
+          "category": "અન્ન",
+          "city": "પંજાબ",
+          "price": "₹85/kg",
+          "description": "લાંબા દાણાના બાસમતી ચોખા, ભોજન માટે પરફેક્ટ.",
+          "quality": "જૂના"
+        },
+        {
+          "id": 5,
+          "name": "ગાજર",
+          "category": "શાકભાજી",
+          "city": "હરિયાણા",
+          "price": "₹30/kg",
+          "description": "ક્રંચી અને મીઠી ગાજર.",
+          "quality": "જૈવિક"
+        },
+        {
+          "id": 6,
+          "name": "આલૂ",
+          "category": "શાકભાજી",
+          "city": "મધ્ય પ્રદેશ",
+          "price": "₹25/kg",
+          "description": "વિવિધ અને સ્વાદિષ્ટ આલૂ.",
+          "quality": "તાજા"
+        },
+        {
+          "id": 7,
+          "name": "પ્યાઝ",
+          "category": "શાકભાજી",
+          "city": "આંધ્ર પ્રદેશ",
+          "price": "₹20/kg",
+          "description": "ખCooking માટે તાજા પ્યાઝ.",
+          "quality": "જૈવિક"
+        },
+        {
+          "id": 8,
+          "name": "લસણ",
+          "category": "શાકભાજી",
+          "city": "ગુજરાત",
+          "price": "₹60/kg",
+          "description": "મજબૂત અને સ્વાદિષ્ટ લસણ.",
+          "quality": "તાજા"
+        },
+        {
+          "id": 9,
+          "name": "ચણા",
+          "category": "દાળ",
+          "city": "રાજસ્થાન",
+          "price": "₹100/kg",
+          "description": "ઉચ્ચ પ્રોટીન ચણા.",
+          "quality": "જૈવિક"
+        },
+        {
+          "id": 10,
+          "name": "દાળ",
+          "category": "દાળ",
+          "city": "પંજાબ",
+          "price": "₹90/kg",
+          "description": "ખCooking માટે પોષણયુક્ત દાળ.",
+          "quality": "તાજા"
+        }
+      ],
+    "profile": {
+    "title": "પ્રોફાઇલ",
+    "personalInfo": {
+      "name": "ફ્રાન્સ વિનાટા",
+      "email": "ઇમેઇલ",
+      "phone": "ફોન",
+      "location": "સ્થાન",
+      "rating": "રેટિંગ"
+    },
+    "additionalInfo": {
+      "title": "વધારાની માહિતી",
+      "farmName": "ફ્રાન્સનું ફાર્મ",
+      "experience": "અનુભવ સ્તર",
+      "experienceYears": "૫ વર્ષ",
+      "productsGrown": "ઉગાડેલા ઉત્પાદનો",
+      "products": {
+        "tomatoes": "ટમેટા",
+        "potatoes": "બટાટા",
+        "carrots": "ગાજર",
+        "lettuce": "લેટ્યુસ",
+        "cucumbers": "કાકડી"
+      },
+      "socialMedia": "સોશિયલ મીડિયા"
+    },
+    "buttons": {
+      "edit": "પ્રોફાઇલ સંપાદિત કરો",
+      "delete": "એકાઉન્ટ કાઢી નાખો"
+    },
+    "deleteModal": {
+      "title": "કાઢી નાખવાની પુષ્ટિ",
+      "message": "શું તમે ખરેખર તમારું એકાઉન્ટ કાઢી નાખવા માંગો છો?",
+      "confirm": "પુષ્ટિ કરો",
+      "cancel": "રદ કરો"
+    }
+  }
+    
+  }

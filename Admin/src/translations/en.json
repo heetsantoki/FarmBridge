@@ -1,0 +1,373 @@
+{
+    "welcome": "Welcome to Your Blank App",
+    "startBuilding": "Start building your amazing project here!",
+    "Add Product": "Add Product",
+    "View Products": "View Products",
+    "addNewProduct": "Add New Product",
+    "farmerName": "Farmer Name",
+    "enterFarmerName": "Enter farmer name",
+    "productImage": "Product Image URL",
+    "enterImageURL": "Enter image URL",
+    "productName": "Product Name",
+    "enterProductName": "Enter product name",
+    "price": "Price (₹)",
+    "quantity": "Quantity (kg)",
+    "description": "Description", 
+    "enterDescription": "Enter product description",
+    "address": "Address",
+    "enterAddress": "Enter address",
+    "addingProduct": "Adding Product...",
+    "success": "Success",
+    "productAddedSuccess": "Product added successfully",
+
+"products":{
+    
+      
+      
+    "loading": "Loading products...",
+    "addProduct": "Add Product",
+    "viewProducts": "View Products",
+    "All Products": "All Products",
+    "noProducts": "No products added yet",
+    "farmer": "Farmer",
+    "quantity": "Quantity",
+    "description": "Description",
+    "address": "Address"
+},
+"products1": {
+      "featuredProducts": "Featured Products",
+      "discoverProducts": "Discover our selection of premium organic products",
+      "filterByCategory": "Filter by Category",
+      "filterByCity": "Filter by City",
+      "allCategories": "All Categories",
+      "allStates": "All States",
+      "fruits": "Fruits",
+      "grains": "Grains",
+      "Organic Apples": "Organic Apples",
+      "Fresh Mangoes": "Fresh Mangoes",
+      "Organic Wheat": "Organic Wheat",
+      "Kesar Mango": "Kesar Mango",
+      "Pearl Millet": "Pearl Millet",
+      "Kinno Orange": "Kinno Orange",
+      "Premium Wheat": "Premium Wheat",
+      "Pomegranate": "Pomegranate",
+      "Organic Barley": "Organic Barley",
+      "Red Banana": "Red Banana",
+      "Red Rice": "Red Rice",
+      "Alphonso Mango": "Alphonso Mango",
+      "Jowar": "Jowar",
+      "Sweet Lime": "Sweet Lime",
+      "Fine Rice": "Fine Rice",
+      "500 kg available": "500 kg available",
+      "300 kg available": "300 kg available",
+      "1000 kg available": "1000 kg available",
+      "2000 kg available": "2000 kg available",
+      "800 kg available": "800 kg available",
+      "5000 kg available": "5000 kg available",
+      "600 kg available": "600 kg available",
+      "1500 kg available": "1500 kg available",
+      "400 kg available": "400 kg available",
+      "2500 kg available": "2500 kg available",
+      "700 kg available": "700 kg available",
+      "3000 kg available": "3000 kg available",
+      "Fresh, crisp apples grown without pesticides": "Fresh, crisp apples grown without pesticides",
+      "Sweet and juicy mangoes from local orchards": "Sweet and juicy mangoes from local orchards",
+      "Premium quality wheat grains, perfect for bread and rotis": "Premium quality wheat grains, perfect for bread and rotis",
+      "Premium Gir Kesar mangoes, known for their sweet taste and aroma": "Premium Gir Kesar mangoes, known for their sweet taste and aroma",
+      "High-quality bajra grown in Gujarat's fertile soil": "High-quality bajra grown in Gujarat's fertile soil",
+      "Sweet and juicy Kinno oranges from Punjab orchards": "Sweet and juicy Kinno oranges from Punjab orchards",
+      "High-quality wheat from Punjab's golden fields": "High-quality wheat from Punjab's golden fields",
+      "Fresh pomegranates from Rajasthan's orchards": "Fresh pomegranates from Rajasthan's orchards",
+      "Naturally grown barley from Rajasthan's farms": "Naturally grown barley from Rajasthan's farms",
+      "Sweet and nutritious red bananas from Kerala": "Sweet and nutritious red bananas from Kerala",
+      "Traditional Kerala red rice, rich in nutrients": "Traditional Kerala red rice, rich in nutrients",
+      "Premium Ratnagiri Alphonso mangoes": "Premium Ratnagiri Alphonso mangoes",
+      "High-quality sorghum from Maharashtra farms": "High-quality sorghum from Maharashtra farms",
+      "Fresh and juicy mosambi from Telangana orchards": "Fresh and juicy mosambi from Telangana orchards",
+      "Premium quality rice from Telangana paddy fields": "Premium quality rice from Telangana paddy fields",
+      "knowMore": "Know More",
+      "showMore":"Show More Products",
+    
+      "cities": {
+        "New York": "New York",
+        "Mumbai": "Mumbai",
+        "Delhi": "Delhi",
+        "Junagadh": "Junagadh",
+        "Mehsana": "Mehsana",
+        "Amritsar": "Amritsar",
+        "Ludhiana": "Ludhiana",
+        "Jodhpur": "Jodhpur",
+        "Jaipur": "Jaipur",
+        "Kochi": "Kochi",
+        "Thrissur": "Thrissur",
+        "Ratnagiri": "Ratnagiri",
+        "Nashik": "Nashik",
+        "Hyderabad": "Hyderabad",
+        "Warangal": "Warangal"
+      },
+      
+        "farmerNames": {
+          "John Smith": "John Smith",
+          "Rajesh Kumar": "Rajesh Kumar",
+          "Amit Patel": "Amit Patel",
+          "Rajesh Patel": "Rajesh Patel",
+          "Bharat Modi": "Bharat Modi",
+          "Gurpreet Singh": "Gurpreet Singh",
+          "Harjinder Singh": "Harjinder Singh",
+          "Ramesh Sharma": "Ramesh Sharma",
+          "Vikram Singh": "Vikram Singh",
+          "Thomas Joseph": "Thomas Joseph",
+          "Mathew Philip": "Mathew Philip",
+          "Suresh Desai": "Suresh Desai",
+          "Prakash Patil": "Prakash Patil",
+          "Krishna Reddy": "Krishna Reddy",
+          "Ravi Kumar": "Ravi Kumar"
+        },
+        "rating": "Rating",
+        "Negotiate": "Negotiate",
+        "Read More": "Read More",
+        "View Less": "View Less",
+        "Product Info": "Product Info",
+        "Quantity": "Quantity",
+        "Price Range": "Price Range",
+        "Category": "Category",
+        "Farmer Details": "Farmer Details",
+        "Name": "Name",
+        "Contact": "Contact",
+        "Location": "Location",
+        "Detailed Information": "Detailed Information",
+        "Product Certification": "Product Certification",
+        "Land Type": "Land Type",
+        "Farming Practices": "Farming Practices",
+        "Quality Parameters": "Quality Parameters",
+        "Farmer Experience": "Farmer Experience",
+        "farmingPractices": {
+          "No chemical pesticides used": "No chemical pesticides used",
+          "Natural fertilizers only": "Natural fertilizers only",
+          "Sustainable irrigation methods": "Sustainable irrigation methods",
+          "Crop rotation practiced": "Crop rotation practiced"
+        },
+        "qualityParameters": {
+          "Hand-picked at optimal ripeness": "Hand-picked at optimal ripeness",
+          "Carefully sorted and graded": "Carefully sorted and graded",
+          "Stored in temperature-controlled environment": "Stored in temperature-controlled environment",
+          "Regular quality checks performed": "Regular quality checks performed"
+        }
+  },
+  
+  
+    "Profile": {
+      "title": "Farmer Profile",
+      "farmerData": {
+        "fullName": "Frans Winata",
+        "email": "franswinata6@gmail.com",
+        "phone": "081-234-5678",
+        "location": "Malang, SM 74810",
+        "farmName": "Green Valley Farm",
+        "experience": "5 years",
+        "productsGrown": {
+          "Tomatoes": "Tomatoes",
+          "Potatoes": "Potatoes",
+          "Carrots": "Carrots",
+          "Lettuce": "Lettuce",
+          "Cucumbers": "Cucumbers"
+        },
+        "socialMedia": {
+          "facebook": "https://facebook.com/fransahw",
+          "instagram": "https://instagram.com/fransahw",
+          "twitter": "https://twitter.com/fransahw"
+        },
+        "rating": 4.5
+      },
+      "additionalInformation": {
+        "title": "Additional Information",
+        "farmName": "Farm Name",
+        "experienceLevel": "Experience Level",
+        "productsGrown": "Products Grown",
+        "socialMedia": "Social Media"
+      },
+      "accountActions": {
+        "editProfile": "Edit My Profile",
+        "deleteAccount": "Delete My Account"
+      },
+      "deleteConfirmationModal": {
+        "title": "Action Confirmation!",
+        "message": "Do you want to delete your account?",
+        "confirm": "Yes, I want to delete my account",
+        "cancel": "No, I don't want to"
+      }
+    },
+    
+      "Analytics": {
+        "title": "Analytics Dashboard",
+        "quotes": {
+          "text": "“Data is the new oil.”"
+        },
+        "sales": {
+          "fruits": "Fruits Sales vs Month",
+          "grains": "Grains Sales vs Month",
+          "Profit Fruits": "Fruits Profit by Product",
+          "Profit Grains": "Grains Profit by Product",
+          "discountsFruits": "Fruits Discounts",
+          "ratingsFruits": "Fruits Ratings",
+          "discountsGrains": "Grains Discounts",
+          "ratingsGrains": "Grains Ratings",
+          "citySales": "City Sales by Product"
+        },
+        "months": {
+          "Jan": "Jan",
+          "Feb": "Feb",
+          "Mar": "Mar",
+          "Apr": "Apr",
+          "May": "May"
+        },
+        "products": {
+          "apples": "Apples",
+          "bananas": "Bananas",
+          "oranges": "Oranges",
+          "grapes": "Grapes",
+          "rice": "Rice",
+          "wheat": "Wheat",
+          "oats": "Oats",
+          "corn": "Corn"
+        }
+      },
+      
+        "title": "Farmer's Marketplace",
+        "description1": "Discover fresh, locally sourced produce directly from farmers across India",
+        "searchPlaceholder": "Search products...",
+        "allCategories": "All Categories",
+        "allLocations": "All Locations",
+        "noProductsFound": "No products found matching your criteria.",
+        "knowMore": "Know More",
+        "products2": [
+          {
+            "id": 1,
+            "name": "Premium Apples",
+            "category": "Fruits",
+            "city": "Maharashtra",
+            "price": "₹120/kg",
+            "description": "Fresh and juicy apples.",
+            "quality": "Organic"
+          },
+          {
+            "id": 2,
+            "name": "Organic Mangoes",
+            "category": "Fruits",
+            "city": "Gujarat",
+            "price": "₹150/kg",
+            "description": "Ripe mangoes, perfect for smoothies.",
+            "quality": "Organic"
+          },
+          {
+            "id": 3,
+            "name": "Fresh Tomatoes",
+            "category": "Vegetables",
+            "city": "Karnataka",
+            "price": "₹40/kg",
+            "description": "High-quality tomatoes for cooking.",
+            "quality": "Fresh"
+          },
+          {
+            "id": 4,
+            "name": "Basmati Rice",
+            "category": "Grains",
+            "city": "Punjab",
+            "price": "₹85/kg",
+            "description": "Long-grain basmati rice, perfect for meals.",
+            "quality": "Aged"
+          },
+          {
+            "id": 5,
+            "name": "Carrots",
+            "category": "Vegetables",
+            "city": "Haryana",
+            "price": "₹30/kg",
+            "description": "Crunchy and sweet carrots.",
+            "quality": "Organic"
+          },
+          {
+            "id": 6,
+            "name": "Potatoes",
+            "category": "Vegetables",
+            "city": "Madhya Pradesh",
+            "price": "₹25/kg",
+            "description": "Versatile and delicious potatoes.",
+            "quality": "Fresh"
+          },
+          {
+            "id": 7,
+            "name": "Onions",
+            "category": "Vegetables",
+            "city": "Andhra Pradesh",
+            "price": "₹20/kg",
+            "description": "Fresh onions for cooking.",
+            "quality": "Organic"
+          },
+          {
+            "id": 8,
+            "name": "Garlic",
+            "category": "Vegetables",
+            "city": "Gujarat",
+            "price": "₹60/kg",
+            "description": "Strong and flavorful garlic.",
+            "quality": "Fresh"
+          },
+          {
+            "id": 9,
+            "name": "Chickpeas",
+            "category": "Legumes",
+            "city": "Rajasthan",
+            "price": "₹100/kg",
+            "description": "High-protein chickpeas.",
+            "quality": "Organic"
+          },
+          {
+            "id": 10,
+            "name": "Lentils",
+            "category": "Legumes",
+            "city": "Punjab",
+            "price": "₹90/kg",
+            "description": "Nutritious lentils for cooking.",
+            "quality": "Fresh"
+          }
+        ],
+        "profile": {
+    "title": "Profile",
+    "personalInfo": {
+      "name": "Frans Winata",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location",
+      "rating": "Rating"
+    },
+    "additionalInfo": {
+      "title": "Additional Information",
+      "farmName": "Frans' Farm",
+      "experience": "Experience Level",
+      "experienceYears": "5 years",
+      "productsGrown": "Products Grown",
+      "products": {
+        "tomatoes": "Tomatoes",
+        "potatoes": "Potatoes",
+        "carrots": "Carrots",
+        "lettuce": "Lettuce",
+        "cucumbers": "Cucumbers"
+      },
+      "socialMedia": "Social Media"
+    },
+    "buttons": {
+      "edit": "Edit Profile",
+      "delete": "Delete Account"
+    },
+    "deleteModal": {
+      "title": "Delete Confirmation",
+      "message": "Are you sure you want to delete your account?",
+      "confirm": "Confirm",
+      "cancel": "Cancel"
+    }
+  }
+      }
+  
+  
+    

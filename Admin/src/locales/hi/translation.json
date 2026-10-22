@@ -1,0 +1,526 @@
+{
+  "profile": {
+    "title": "खरीदार प्रोफाइल",
+    "memberSince": "सदस्य बने",
+    "cancel": "रद्द करें",
+        "email": "ईमेल",
+        "phone": "फोन",
+        "address": "पता",
+    "personalInfo": {
+      "title": "व्यक्तिगत जानकारी",
+      "buyer": {
+        "name": "जॉन डो",
+        "email": "john.doe@example.com",
+        "phone": "+91 98765 43210",
+        "address": "123 फार्म स्ट्रीट, ग्रीन वैली, मुंबई, महाराष्ट्र - 400001"
+      }
+    },
+    "statistics": {
+      "title": "आंकड़े",
+      "totalOrders": "कुल आदेश",
+      "totalAmount": "कुल राशि",
+      "favoriteProducts": "पसंदीदा उत्पाद",
+      "products": {
+        "organicTomatoes": "जैविक टमाटर",
+        "freshPotatoes": "ताजा आलू",
+        "greenPeas": "हरी मटर",
+        "carrots": "गाजर",
+        "onions": "प्याज"
+      }
+    },
+    "purchaseHistory": {
+      "title": "खरीद इतिहास",
+      "description": "आपकी हाल की खरीदारी",
+      "orderId": "ऑर्डर आईडी",
+      "product": "उत्पाद",
+      "quantity": "मात्रा",
+      "date": "तारीख",
+      "amount": "राशि",
+      "status": "स्थिति",
+      "statusValues": {
+        "delivered": "पहुंचा दिया गया",
+        "inTransit": "परिवहन में"
+      },
+      "pagination": {
+        "previous": "पिछला",
+        "next": "अगला",
+        "page": "पृष्ठ",
+        "of": "का"
+      }
+    }
+  },
+  "title": "किसान का बाज़ार",
+  "description": "भारत भर के किसानों से सीधे ताजा, स्थानीय स्तर पर उत्पादित उत्पाद खोजें",
+  "searchPlaceholder": "उत्पाद खोजें...",
+  "allCategories": "सभी श्रेणियाँ",
+  "allLocations": "सभी स्थान",
+  "noProductsFound": "आपके मापदंडों से मेल खाने वाले कोई उत्पाद नहीं मिले।",
+  "knowMore": "अधिक जानें",
+  "category": "श्रेणी",
+  "location": "स्थान",
+  "seller": "विक्रेता",
+  "available": "उपलब्ध",
+  "quality": "गुणवत्ता",
+  "previous": "पिछला",
+  "next": "अगला",
+  "qualities": {
+    "Organic": "जैविक",
+    "Fresh": "ताजा",
+    "Aged": "पुराना"
+  },
+  "categories": {
+    "Fruits": "फल",
+    "Vegetables": "सब्जियां",
+    "Grains": "अनाज",
+    "Legumes": "फलियां"
+  },
+  "products": {
+    "Premium Apples": "प्रीमियम सेब",
+    "Organic Mangoes": "जैविक आम",
+    "Fresh Tomatoes": "ताजा टमाटर",
+    "Basmati Rice": "बासमती चावल",
+    "Carrots": "गाजर",
+    "Potatoes": "आलू",
+    "Onions": "प्याज",
+    "Garlic": "लहसुन",
+    "Chickpeas": "चने",
+    "Lentils": "दाल"
+  },
+  "locations": {
+    "Maharashtra": "महाराष्ट्र",
+    "Gujarat": "गुजरात",
+    "Karnataka": "कर्नाटक",
+    "Punjab": "पंजाब",
+    "Haryana": "हरियाणा",
+    "Madhya Pradesh": "मध्य प्रदेश",
+    "Andhra Pradesh": "आंध्र प्रदेश",
+    "Rajasthan": "राजस्थान"
+  },
+  "descriptions": {
+    "Premium Apples": "ताजे और रसदार सेब।",
+    "Organic Mangoes": "पके हुए आम, स्मूदी के लिए बिल्कुल सही।",
+    "Fresh Tomatoes": "खाना पकाने के लिए उच्च-गुणवत्ता वाले टमाटर।",
+    "Basmati Rice": "लंबे दाने वाले बासमती चावल, भोजन के लिए एकदम सही।",
+    "Carrots": "कुरकुरी और मीठी गाजर।",
+    "Potatoes": "बहुमुखी और स्वादिष्ट आलू।",
+    "Onions": "खाना पकाने के लिए ताजा प्याज।",
+    "Garlic": "मजबूत और स्वादिष्ट लहसुन।",
+    "Chickpeas": "उच्च-प्रोटीन वाले चने।",
+    "Lentils": "पौष्टिक दाल खाना पकाने के लिए।"
+  },
+  "buyers": {
+    "Krishna Farms": "कृष्णा फार्म्स",
+    "Sunshine Orchards": "सनशाइन ऑर्चर्ड्स",
+    "Green Valley": "ग्रीन वैली",
+    "Golden Fields": "गोल्डन फील्ड्स",
+    "Fresh Farms": "फ्रेश फार्म्स",
+    "Farm Fresh": "फार्म फ्रेश",
+    "Onion Growers": "प्याज उत्पादक",
+    "Garlic Farms": "लहसुन फार्म्स",
+    "Legume Growers": "फली उत्पादक",
+    "Lentil Farms": "दाल फार्म्स"
+  },
+  "negotiate": "बातचीत करें",
+  "readMore": "और पढ़ें",
+  "viewLess": "कम देखें",
+  "productInfo": "उत्पाद जानकारी",
+  "quantity": "मात्रा",
+  "priceRange": "कीमत दायरा",
+  "farmerDetails": "किसान विवरण",
+  "name": "नाम",
+  "contact": "संपर्क",
+  "location1": "स्थान",
+  "detailedInformation": "विस्तृत जानकारी",
+  "productCertification": "उत्पाद प्रमाणन",
+  "landType": "भूमि प्रकार",
+  "farmingPractices": "कृषि पद्धतियां",
+  "qualityParameters": "गुणवत्ता मापदंड",
+  "farmerExperience": "किसान का अनुभव",
+  "certificationText": "FSSAI द्वारा जैविक प्रमाणित",
+  "landTypeText": "उपजाऊ काली मिट्टी",
+  "farmingPracticesList": {
+    "practice1": "कोई रासायनिक कीटनाशक का उपयोग नहीं किया गया",
+    "practice2": "केवल प्राकृतिक उर्वरक",
+    "practice3": "टिकाऊ सिंचाई विधियां",
+    "practice4": "फसल रोटेशन प्रणाली"
+  },
+  "qualityParametersList": {
+    "param1": "इष्टतम परिपक्वता पर हाथ से चुने हुए",
+    "param2": "सावधानीपूर्वक छांटा और श्रेणीबद्ध किया गया",
+    "param3": "तापमान नियंत्रित वातावरण में संग्रहीत",
+    "param4": "नियमित गुणवत्ता जांच की जाती है"
+  },
+  "experienceText": "जैविक खेती में 15+ वर्षों का अनुभव",
+  "purchaseDetails": {
+    "title": "खरीद विवरण",
+    "backButton": "उत्पादों पर वापस जाएँ",
+    "tableHeaders": {
+      "orderId": "ऑर्डर आईडी",
+      "productName": "उत्पाद का नाम",
+      "buyerName": "खरीदार का नाम",
+      "quantity": "मात्रा",
+      "saleDate": "बिक्री की तारीख",
+      "farmerName": "किसान का नाम",
+      "price": "कीमत",
+      "status": "स्थिति",
+      "paymentMethod": "भुगतान का तरीका",
+      "deliveryAddress": "डिलीवरी का पता"
+    },
+    "status": {
+      "delivered": "पहुंचा दिया गया",
+      "intransit": "परिवहन में",
+      "processing": "प्रोसेसिंग"
+    }
+  },
+  "products1": {
+    "tomatoes": "टमाटर",
+    "potatoes": "आलू",
+    "carrots": "गाजर",
+    "onions": "प्याज",
+    "garlic": "लहसुन"
+  },
+  "buyers1": {
+    "john_doe": "जॉन डो",
+    "alice_smith": "एलिस स्मिथ",
+    "bob_johnson": "बॉब जॉनसन",
+    "charlie_brown": "चार्ली ब्राउन",
+    "daisy_white": "डेज़ी व्हाइट"
+  },
+  "farmers": {
+    "farmer_bob": "किसान बॉब",
+    "farmer_joe": "किसान जो",
+    "farmer_alice": "किसान एलिस",
+    "farmer_charlie": "किसान चार्ली",
+    "farmer_daisy": "किसान डेज़ी"
+  },
+  "paymentMethods": {
+    "cash_on_delivery": "डिलीवरी पर नकद",
+    "online_payment": "ऑनलाइन भुगतान"
+  },
+  "deliveryAddresses": {
+    "123 Main St, Mumbai, Maharashtra": "123 मेन स्ट्रीट, मुंबई, महाराष्ट्र",
+    "456 Elm St, Pune, Maharashtra": "456 एल्म स्ट्रीट, पुणे, महाराष्ट्र",
+    "789 Pine St, Bangalore, Karnataka": "789 पाइन स्ट्रीट, बैंगलोर, कर्नाटक",
+    "321 Oak St, Hyderabad, Telangana": "321 ओक स्ट्रीट, हैदराबाद, तेलंगाना",
+    "654 Maple St, Chennai, Tamil Nadu": "654 मेपल स्ट्रीट, चेन्नई, तमिलनाडु"
+  },
+  "buyerAnalytics": {
+    "title": "खरीदार विश्लेषिकी डैशबोर्ड",
+    "cityProducts": "शहर बनाम खरीदे गए उत्पाद",
+    "buyerQuantity": "खरीदार मात्रा विश्लेषण",
+    "productProfit": "उत्पाद लाभ विश्लेषण",
+    "productDiscount": "उत्पाद छूट वितरण",
+    "city": "शहर",
+    "quantity": "मात्रा",
+    "buyer": "खरीदार",
+    "profit": "लाभ",
+    "product": "उत्पाद",
+    "productsBought": "खरीदे गए उत्पाद",
+    "cities": {
+      "mumbai": "मुंबई",
+      "delhi": "दिल्ली",
+      "bangalore": "बैंगलोर",
+      "chennai": "चेन्नई",
+      "kolkata": "कोलकाता"
+    },
+    "products": {
+      "tomatoes": "टमाटर",
+      "potatoes": "आलू",
+      "onions": "प्याज",
+      "carrots": "गाजर",
+      "cucumbers": "खीरा"
+    },
+    "buyers": {
+      "johnDoe": "जॉन डो",
+      "janeSmith": "जेन स्मिथ",
+      "bobJohnson": "बॉब जॉनसन",
+      "aliceBrown": "एलिस ब्राउन",
+      "charlieWilson": "चार्ली विल्सन"
+    }
+  },
+  "welcome": "आपके ब्लैंक ऐप में आपका स्वागत है",
+  "startBuilding": "यहां अपना अद्भुत प्रोजेक्ट बनाना शुरू करें!",
+  "addProduct": "उत्पाद जोड़ें",
+  "viewProducts": "उत्पाद देखें",
+  "addNewProduct": "नया उत्पाद जोड़ें",
+  "farmerName": "किसान का नाम",
+  "enterFarmerName": "किसान का नाम दर्ज करें",
+  "productImage": "उत्पाद छवि URL",
+  "enterImageURL": "छवि URL दर्ज करें",
+  "productName": "उत्पाद का नाम",
+  "enterProductName": "उत्पाद का नाम दर्ज करें",
+  "price": "मूल्य (₹)",
+  "quantity1": "मात्रा (कि.ग्रा)",
+  "description1": "विवरण",
+  "enterDescription": "उत्पाद का विवरण दर्ज करें",
+  "address": "पता",
+  "enterAddress": "पता दर्ज करें",
+  "addingProduct": "उत्पाद जोड़ा जा रहा है...",
+  "success": "सफलता",
+  "productAddedSuccess": "उत्पाद सफलतापूर्वक जोड़ा गया",
+
+  "products2":{
+      "loading": "उत्पाद लोड हो रहे हैं...",
+"addProduct": "उत्पाद जोड़ें",
+"viewProducts": "उत्पाद देखें",
+"All Products": "सभी उत्पाद",
+"noProducts": "अभी तक कोई उत्पाद नहीं जोड़ा गया है",
+"farmer": "किसान",
+"quantity": "मात्रा",
+"description": "विवरण",
+"address": "पता"
+  },
+  "soldProducts": "बिके हुए प्रोडक्ट्स",
+  "productName1": "प्रोडक्ट का नाम",
+  "buyerName": "खरीदार का नाम",
+  "quantitySold": "बिकी मात्रा",
+  "saleDate": "बिक्री की तारीख",
+  "farmerName1": "किसान का नाम",
+  "price1": "कीमत (₹)",
+  "noSoldProducts": "कोई बिका हुआ प्रोडक्ट नहीं मिला",
+  "tomatoes": "टमाटर",
+  "potatoes": "आलू",
+  "carrots": "गाजर",
+  "lettuce": "सलाद पत्ता",
+  "cucumbers": "खीरा",
+  "johnDoe": "जॉन डो",
+  "janeSmith": "जेन स्मिथ",
+  "michaelJohnson": "माइकल जॉनसन",
+  "emilyDavis": "एमिली डेविस",
+  "sarahWilson": "सारा विल्सन",
+  "farmerBob": "किसान बॉब",
+  "farmerAlice": "किसान एलिस",
+  "farmerCharlie": "किसान चार्ली",
+  "farmerDavid": "किसान डेविड",
+  "farmerEve": "किसान ईव",
+  "months": {
+    "Jan": "जनवरी",
+    "Feb": "फरवरी",
+    "Mar": "मार्च",
+    "Apr": "अप्रैल",
+    "May": "मई"
+  },
+  "Analytics": {
+    "title": "बिक्री विश्लेषण डैशबोर्ड",
+    "quotes": {
+      "text": "आपके व्यवसाय की वृद्धि का विश्लेषण"
+    },
+    "products": {
+      "apples": "सेब",
+      "bananas": "केला",
+      "oranges": "संतरा",
+      "grapes": "अंगूर",
+      "rice": "चावल",
+      "wheat": "गेहूं",
+      "oats": "जई",
+      "corn": "मक्का"
+    },
+    "sales": {
+      "fruits": "फलों की बिक्री विश्लेषण",
+      "grains": "अनाज की बिक्री विश्लेषण",
+      "Profit Fruits": "फलों का लाभ विश्लेषण",
+      "Profit Grains": "अनाज का लाभ विश्लेषण",
+      "discountsFruits": "फलों की छूट विश्लेषण",
+      "discountsGrains": "अनाज की छूट विश्लेषण",
+      "ratingsFruits": "फलों की रेटिंग",
+      "ratingsGrains": "अनाज की रेटिंग",
+      "citySales": "शहर-वार बिक्री वितरण"
+    }
+  },
+  "profile1": {
+    "title": "प्रोफाइल",
+    "additionalInfo": "अतिरिक्त जानकारी",
+    "editProfile": "प्रोफाइल संपादित करें",
+    "saveProfile": "प्रोफाइल सहेजें",
+    "profileSaved": "प्रोफाइल सहेजा गया",
+    "profileUpdated": "आपका प्रोफाइल सफलतापूर्वक अपडेट किया गया है।",
+    "labels": {
+      "email": "ईमेल",
+      "phone": "फोन",
+      "location": "स्थान",
+      "farmName": "खेत का नाम",
+      "experience": "अनुभव स्तर",
+      "productsGrown": "उगाए गए उत्पाद",
+      "socialMedia": "सोशल मीडिया",
+      "facebook": "फेसबुक",
+      "instagram": "इंस्टाग्राम",
+      "twitter": "ट्विटर"
+    },
+    "data": {
+      "fullName": "जॉन डो",
+      "email": "johndoe6@gmail.com",
+      "phone": "081-234-5678",
+      "location": "सैन फ्रांसिस्को, कैलिफोर्निया",
+      "farmName": "डो फार्म्स",
+      "experience": "5 साल",
+      "productsGrown": [
+        "टमाटर",
+        "आलू",
+        "गाजर",
+        "सलाद",
+        "खीरे"
+      ],
+      "socialMedia": {
+        "facebook": "https://facebook.com/fransahw",
+        "instagram": "https://instagram.com/fransahw",
+        "twitter": "https://twitter.com/fransahw"
+      }
+    }
+  },
+  
+  "menu": {
+    "addProducts": "उत्पाद जोड़ें",
+    "manageProducts": "उत्पाद प्रबंधित करें",
+    "requests": "अनुरोध",
+    "soldProducts": "बेचे गए उत्पाद",
+    "analytics": "विश्लेषण",
+    "products": "उत्पाद",
+    "orders": "आदेश",
+    "Help": "मदद"
+
+  },
+  "Help": {
+    "title": "किसान मदद फॉर्म",
+    "farmerName": "किसान का नाम",
+    "contactNo": "संपर्क नंबर",
+    "email": "ईमेल पता",
+    "date": "तारीख",
+    "address": "किसान का पता",
+    "issueDescription": "उत्पाद समस्या विवरण",
+    "photo": "किसान फोटो",
+    "submit": "मदद अनुरोध सबमिट करें",
+    "required": "यह फ़ील्ड आवश्यक है",
+    "missingInformation": {
+      "title": "सूचना गायब है",
+      "description": "कृपया सभी आवश्यक फ़ील्ड भरें।"
+    },
+    "helpRequestSubmitted": {
+      "title": "मदद अनुरोध सबमिट किया गया",
+      "description": "आपकी समस्या सफलतापूर्वक सबमिट की गई है। हम जल्द ही आपसे संपर्क करेंगे।"
+    }
+  },
+  "BuyerHelp": {
+    "customerSupport": "ग्राहक सहायता",
+    "formTitle": "खरीदार सहायता फॉर्म",
+    "formDescription": "कृपया अपनी समस्या के बारे में विवरण प्रदान करें और हम जल्द से जल्द आपकी सहायता करेंगे।",
+    "buyerPhoto": "खरीदार फोटो",
+    "changePhoto": "फोटो बदलें",
+    "uploadPhoto": "फोटो अपलोड करें",
+    "photoInstructions": "JPG, PNG या GIF 10MB तक",
+    "buyerName": "खरीदार का नाम",
+    "contactNo": "संपर्क नंबर",
+    "email": "ईमेल पता",
+    "address": "पता",
+    "productIssue": "उत्पाद समस्या विवरण",
+    "submit": "मदद अनुरोध सबमिट करें",
+    "missingInformation": {
+      "title": "सूचना गायब है",
+      "description": "कृपया सभी आवश्यक फ़ील्ड भरें।"
+    },
+    "helpRequestSubmitted": {
+      "title": "मदद अनुरोध सबमिट किया गया",
+      "description": "आपकी समस्या सफलतापूर्वक सबमिट की गई है। हम जल्द ही आपसे संपर्क करेंगे।"
+    }
+  },
+  "title1": "उत्पाद अनुरोध",
+  "requests": [
+    {
+      "id": "1",
+      "buyerName": "राहुल शर्मा",
+      "productName": "जैविक टमाटर",
+      "farmer Name": "अंकित सिंह",
+      "quantity": "50 किलोग्राम",
+      "requestedPrice": 2000,
+      "status": "लंबित"
+    },
+    {
+      "id": "2",
+      "buyerName": "प्रिया पटेल",
+      "productName": "प्रीमियम चावल",
+      "farmerName": "अंकित सिंह",
+      "quantity": "100 किलोग्राम",
+      "requestedPrice": 5000,
+      "status": "लंबित"
+    },
+    {
+      "id": "3",
+      "buyerName": "अमित कुमार",
+      "productName": "ताजे सेब",
+      "farmerName": "अंकित सिंह",
+      "quantity": "30 किलोग्राम",
+      "requestedPrice": 3000,
+      "status": "लंबित"
+    },
+    {
+      "id": "4",
+      "buyerName": "भारत भाई",
+      "productName": "लहसुन",
+      "farmerName": "प्रभु भाई",
+      "quantity": "30 किलोग्राम",
+      "requestedPrice": 2000,
+      "status": "लंबित"
+    },
+    {
+      "id": "5",
+      "buyerName": "नितिन भाई",
+      "productName": "जैविक आम",
+      "farmerName": "मुकेश भाई",
+      "quantity": "20 किलोग्राम",
+      "requestedPrice": 1500,
+      "status": "लंबित"
+    }
+  ],
+  "accepted": "स्वीकृत",
+  "pending": "लंबित",
+  "acceptSuccess": "अनुरोध सफलतापूर्वक स्वीकृत किया गया!",
+  "rejectSuccess": "अनुरोध अस्वीकृत और हटा दिया गया!",
+  "noRequests": "कोई अनुरोध नहीं मिला",
+
+  "requests1": {
+    "title": "उत्पाद अनुरोध",
+    "noRequests": "कोई अनुरोध नहीं मिला",
+    "tableHeaders": {
+      "product": "उत्पाद",
+      "buyerName": "खरीदार का नाम",
+      "quantity": "मात्रा",
+      "requestedPrice": "अनुरोधित मूल्य",
+      "status": "स्थिति",
+      "actions": "कार्रवाई",
+      "farmer": "किसान"
+    },
+    "status": {
+      "accepted": "स्वीकृत",
+      "pending": "लंबित"
+    },
+    "actions": {
+      "accept": "स्वीकार करें",
+      "reject": "अस्वीकार करें"
+    },
+    "notifications": {
+      "accepted": "अनुरोध सफलतापूर्वक स्वीकार किया गया!",
+      "rejected": "अनुरोध अस्वीकार और हटा दिया गया!"
+    },
+    "farmers": {
+      "ankitSingh": "अंकित सिंह",
+      "prabhuBhai": "प्रभु भाई",
+      "mukeshBhai": "मुकेश भाई"
+    },
+    "buyers": {
+      "rahulSharma": "राहुल शर्मा",
+      "priyaPatel": "प्रिया पटेल",
+      "amitKumar": "अमित कुमार",
+      "bharatBhai": "भरत भाई",
+      "nitinBhai": "नितिन भाई"
+    },
+    "products": {
+      "organicTomatoes": "जैविक टमाटर",
+      "premiumRice": "प्रीमियम चावल",
+      "freshApples": "ताजे सेब",
+      "garlic": "लहसुन",
+      "organicMangoes": "जैविक आम"
+    },
+    "currency": "₹"
+  },
+   "My Profile": "मेरी प्रोफ़ाइल",
+  "Log Out": "लॉग आउट"
+}

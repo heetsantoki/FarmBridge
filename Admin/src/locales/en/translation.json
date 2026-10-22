@@ -1,0 +1,530 @@
+{
+  "profile": {
+    "title": "Buyer Profile",
+    "memberSince": "Member Since",
+    "cancel": "Cancel",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address",
+    "personalInfo": {
+      "title": "Personal Information",
+      "buyer": {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "phone": "+91 98765 43210",
+        "address": "123 Farm Street, Green Valley, Mumbai, Maharashtra - 400001"
+      }
+    },
+    "statistics": {
+      "title": "Statistics",
+      "totalOrders": "Total Orders",
+      "totalAmount": "Total Amount",
+      "favoriteProducts": "Favorite Products",
+      "products": {
+        "organicTomatoes": "Organic Tomatoes",
+        "freshPotatoes": "Fresh Potatoes",
+        "greenPeas": "Green Peas",
+        "carrots": "Carrots",
+        "onions": "Onions"
+      }
+    },
+    "purchaseHistory": {
+      "title": "Purchase History",
+      "description": "Your recent purchases",
+      "orderId": "Order ID",
+      "product": "Product",
+      "quantity": "Quantity",
+      "date": "Date",
+      "amount": "Amount",
+      "status": "Status",
+      "statusValues": {
+        "delivered": "Delivered",
+        "inTransit": "In Transit"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page",
+        "of": "of"
+      }
+    }
+  },
+  "title": "Farmer's Marketplace",
+  "description": "Discover fresh, locally sourced produce directly from farmers across India",
+  "searchPlaceholder": "Search products...",
+  "allCategories": "All Categories",
+  "allLocations": "All Locations",
+  "noProductsFound": "No products found matching your criteria.",
+  "knowMore": "Know More",
+  "category": "Category",
+  "location": "Location",
+  "seller": "Seller",
+  "previous": "Previous",
+  "next": "Next",
+  "available": "Available",
+  "quality": "Quality",
+  "qualities": {
+    "Organic": "Organic",
+    "Fresh": "Fresh",
+    "Aged": "Aged"
+  },
+  "categories": {
+    "Fruits": "Fruits",
+    "Vegetables": "Vegetables",
+    "Grains": "Grains",
+    "Legumes": "Legumes"
+  },
+  "products": {
+    "Premium Apples": "Premium Apples",
+    "Organic Mangoes": "Organic Mangoes",
+    "Fresh Tomatoes": "Fresh Tomatoes",
+    "Basmati Rice": "Basmati Rice",
+    "Carrots": "Carrots",
+    "Potatoes": "Potatoes",
+    "Onions": "Onions",
+    "Garlic": "Garlic",
+    "Chickpeas": "Chickpeas",
+    "Lentils": "Lentils"
+  },
+  "locations": {
+    "Maharashtra": "Maharashtra",
+    "Gujarat": "Gujarat",
+    "Karnataka": "Karnataka",
+    "Punjab": "Punjab",
+    "Haryana": "Haryana",
+    "Madhya Pradesh": "Madhya Pradesh",
+    "Andhra Pradesh": "Andhra Pradesh",
+    "Rajasthan": "Rajasthan"
+  },
+  "descriptions": {
+    "Premium Apples": "Fresh and juicy apples.",
+    "Organic Mangoes": "Ripe mangoes, perfect for smoothies.",
+    "Fresh Tomatoes": "High-quality tomatoes for cooking.",
+    "Basmati Rice": "Long-grain basmati rice, perfect for meals.",
+    "Carrots": "Crunchy and sweet carrots.",
+    "Potatoes": "Versatile and delicious potatoes.",
+    "Onions": "Fresh onions for cooking.",
+    "Garlic": "Strong and flavorful garlic.",
+    "Chickpeas": "High-protein chickpeas.",
+    "Lentils": "Nutritious lentils for cooking."
+  },
+  "buyers": {
+    "Krishna Farms": "Krishna Farms",
+    "Sunshine Orchards": "Sunshine Orchards",
+    "Green Valley": "Green Valley",
+    "Golden Fields": "Golden Fields",
+    "Fresh Farms": "Fresh Farms",
+    "Farm Fresh": "Farm Fresh",
+    "Onion Growers": "Onion Growers",
+    "Garlic Farms": "Garlic Farms",
+    "Legume Growers": "Legume Growers",
+    "Lentil Farms": "Lentil Farms"
+  },
+  "negotiate": "Negotiate",
+  "readMore": "Read More",
+  "viewLess": "View Less",
+  "productInfo": "Product Info",
+  "quantity": "Quantity",
+  "priceRange": "Price Range",
+  "farmerDetails": "Farmer Details",
+  "name": "Name",
+  "contact": "Contact",
+  "location1": "Location",
+  "detailedInformation": "Detailed Information",
+  "productCertification": "Product Certification",
+  "landType": "Land Type",
+  "farmingPractices": "Farming Practices",
+  "qualityParameters": "Quality Parameters",
+  "farmerExperience": "Farmer Experience",
+  "certificationText": "Organic Certified by FSSAI",
+  "landTypeText": "Fertile Black Soil",
+  "farmingPracticesList": {
+    "practice1": "No chemical pesticides used",
+    "practice2": "Natural fertilizers only",
+    "practice3": "Sustainable irrigation methods",
+    "practice4": "Crop rotation practiced"
+  },
+  "qualityParametersList": {
+    "param1": "Hand-picked at optimal ripeness",
+    "param2": "Carefully sorted and graded",
+    "param3": "Stored in temperature-controlled environment",
+    "param4": "Regular quality checks performed"
+  },
+  "experienceText": "15+ years in organic farming",
+  "purchaseDetails": {
+    "title": "Purchase Details",
+    "backButton": "Back to Sold Products",
+    "tableHeaders": {
+      "orderId": "Order ID",
+      "productName": "Product Name",
+      "buyerName": "Buyer Name",
+      "quantity": "Quantity",
+      "saleDate": "Sale Date",
+      "farmerName": "Farmer Name",
+      "price": "Price",
+      "status": "Status",
+      "paymentMethod": "Payment Method",
+      "deliveryAddress": "Delivery Address"
+    },
+    "status": {
+      "delivered": "Delivered",
+      "intransit": "In Transit",
+      "processing": "Processing"
+    }
+  },
+  "products1": {
+    "tomatoes": "Tomatoes",
+    "potatoes": "Potatoes",
+    "carrots": "Carrots",
+    "onions": "Onions",
+    "garlic": "Garlic"
+  },
+  "buyers1": {
+    "john_doe": "John Doe",
+    "alice_smith": "Alice Smith",
+    "bob_johnson": "Bob Johnson",
+    "charlie_brown": "Charlie Brown",
+    "daisy_white": "Daisy White"
+  },
+  "farmers": {
+    "farmer_bob": "Farmer Bob",
+    "farmer_joe": "Farmer Joe",
+    "farmer_alice": "Farmer Alice",
+    "farmer_charlie": "Farmer Charlie",
+    "farmer_daisy": "Farmer Daisy"
+  },
+  "paymentMethods": {
+    "cash_on_delivery": "Cash on Delivery",
+    "online_payment": "Online Payment"
+  },
+  "deliveryAddresses": {
+    "123 Main St, Mumbai, Maharashtra": "123 Main St, Mumbai, Maharashtra",
+    "456 Elm St, Pune, Maharashtra": "456 Elm St, Pune, Maharashtra",
+    "789 Pine St, Bangalore, Karnataka": "789 Pine St, Bangalore, Karnataka",
+    "321 Oak St, Hyderabad, Telangana": "321 Oak St, Hyderabad, Telangana",
+    "654 Maple St, Chennai, Tamil Nadu": "654 Maple St, Chennai, Tamil Nadu"
+  },
+  "buyerAnalytics": {
+    "title": "Buyer Analytics Dashboard",
+    "cityProducts": "City vs Products Bought",
+    "buyerQuantity": "Buyer Quantity Analysis",
+    "productProfit": "Product Profit Analysis",
+    "productDiscount": "Product Discount Distribution",
+    "city": "City",
+    "quantity": "Quantity",
+    "buyer": "Buyer",
+    "profit": "Profit",
+    "product": "Product",
+    "productsBought": "Products Bought",
+    "cities": {
+      "mumbai": "Mumbai",
+      "delhi": "Delhi",
+      "bangalore": "Bangalore",
+      "chennai": "Chennai",
+      "kolkata": "Kolkata"
+    },
+    "products": {
+      "tomatoes": "Tomatoes",
+      "potatoes": "Potatoes",
+      "onions": "Onions",
+      "carrots": "Carrots",
+      "cucumbers": "Cucumbers"
+    },
+    "buyers": {
+      "johnDoe": "John Doe",
+      "janeSmith": "Jane Smith",
+      "bobJohnson": "Bob Johnson",
+      "aliceBrown": "Alice Brown",
+      "charlieWilson": "Charlie Wilson"
+    }
+  },
+  "addProduct": "Add Product",
+  "viewProducts": "View Products",
+  "addNewProduct": "Add New Product",
+  "farmerName": "Farmer Name",
+  "enterFarmerName": "Enter farmer name",
+  "productImage": "Product Image URL",
+  "enterImageURL": "Enter image URL",
+  "productName": "Product Name",
+  "enterProductName": "Enter product name",
+  "price": "Price (₹)",
+  "quantity1": "Quantity (kg)",
+  "description1": "Description",
+  "enterDescription": "Enter product description",
+  "address": "Address",
+  "enterAddress": "Enter address",
+  "addingProduct": "Adding Product...",
+  "success": "Success",
+  "productAdded": "Product added successfully",
+  "featuredProducts": "Featured Products",
+  "discoverProducts": "Discover our selection of premium organic products",
+  "filterByCategory": "Filter by Category",
+  "learnMore": "Learn more",
+  "getStarted": "Get Started",
+  "products2": {
+    "loading": "Loading products...",
+    "addProduct": "Add Product",
+    "viewProducts": "View Products",
+    "All Products": "All Products",
+    "noProducts": "No products added yet",
+    "farmer": "Farmer",
+    "quantity": "Quantity",
+    "description": "Description",
+    "address": "Address"
+  },
+  "soldProducts": "Sold Products",
+  "productName1": "Product Name",
+  "buyerName": "Buyer Name",
+  "quantitySold": "Quantity Sold",
+  "saleDate": "Sale Date",
+  "farmerName1": "Farmer Name",
+  "price1": "Price (₹)",
+  "noSoldProducts": "No sold products found",
+  "tomatoes": "Tomatoes",
+  "potatoes": "Potatoes",
+  "carrots": "Carrots",
+  "lettuce": "Lettuce",
+  "cucumbers": "Cucumbers",
+  "johnDoe": "John Doe",
+  "janeSmith": "Jane Smith",
+  "michaelJohnson": "Michael Johnson",
+  "emilyDavis": "Emily Davis",
+  "sarahWilson": "Sarah Wilson",
+  "farmerBob": "Farmer Bob",
+  "farmerAlice": "Farmer Alice",
+  "farmerCharlie": "Farmer Charlie",
+  "farmerDavid": "Farmer David",
+  "farmerEve": "Farmer Eve",
+ "months": {
+    "Jan": "January",
+    "Feb": "February",
+    "Mar": "March",
+    "Apr": "April",
+    "May": "May"
+  },
+  "Analytics": {
+    "title": "Sales Analytics Dashboard",
+    "quotes": {
+      "text": "Analyzing Your Business Growth"
+    },
+    "products": {
+      "apples": "Apples",
+      "bananas": "Bananas",
+      "oranges": "Oranges",
+      "grapes": "Grapes",
+      "rice": "Rice",
+      "wheat": "Wheat",
+      "oats": "Oats",
+      "corn": "Corn"
+    },
+    "sales": {
+      "fruits": "Fruits Sales Analysis",
+      "grains": "Grains Sales Analysis",
+      "Profit Fruits": "Fruits Profit Analysis",
+      "Profit Grains": "Grains Profit Analysis",
+      "discountsFruits": "Fruits Discount Analysis",
+      "discountsGrains": "Grains Discount Analysis",
+      "ratingsFruits": "Fruits Ratings",
+      "ratingsGrains": "Grains Ratings",
+      "citySales": "City-wise Sales Distribution"
+    }
+  },
+  "profile1": {
+    "title": "Profile",
+    "additionalInfo": "Additional Information",
+    "editProfile": "Edit Profile",
+    "saveProfile": "Save Profile",
+    "profileSaved": "Profile Saved",
+    "profileUpdated": "Your profile has been updated successfully.",
+    "labels": {
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location",
+      "farmName": "Farm Name",
+      "experience": "Experience Level",
+      "productsGrown": "Products Grown",
+      "socialMedia": "Social Media",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "twitter": "Twitter"
+    },
+    "data": {
+      "fullName": "John Doe",
+      "email": "johndoe6@gmail.com",
+      "phone": "081-234-5678",
+      "location": "San Francisco, CA",
+      "farmName": "Doe Farms",
+      "experience": "5 years",
+      "productsGrown": [
+        "Tomatoes",
+        "Potatoes",
+        "Carrots",
+        "Lettuce",
+        "Cucumbers"
+      ],
+      "socialMedia": {
+        "facebook": "https://facebook.com/fransahw",
+        "instagram": "https://instagram.com/fransahw",
+        "twitter": "https://twitter.com/fransahw"
+      }
+    }
+  },
+
+    
+    "menu": {
+    "addProducts": "Add Products",
+    "manageProducts": "Manage Products",
+    "requests": "Requests",
+    "soldProducts": "Sold Products",
+    "analytics": "Analytics",
+    "products": "Products",
+    "orders": "Orders",
+    "Help": "Help"
+  },
+  "Help": {
+    "title": "Farmer Help Form",
+    "farmerName": "Farmer Name",
+    "contactNo": "Contact Number",
+    "email": "Email Address",
+    "date": "Date",
+    "address": "Farmer Address",
+    "issueDescription": "Product Issue Description",
+    "photo": "Farmer Photo",
+    "submit": "Submit Help Request",
+    "required": "This field is required",
+    "missingInformation": {
+      "title": "Missing Information",
+      "description": "Please fill in all required fields."
+    },
+    "helpRequestSubmitted": {
+      "title": "Help Request Submitted",
+      "description": "Your issue has been submitted successfully. We'll get back to you soon."
+    }
+  },
+
+
+  "BuyerHelp": {
+    "customerSupport": "CUSTOMER SUPPORT",
+    "formTitle": "Buyer Help Form",
+    "formDescription": "Please provide details about your issue and we'll assist you as soon as possible.",
+    "buyerPhoto": "Buyer Photo",
+    "changePhoto": "Change Photo",
+    "uploadPhoto": "Upload Photo",
+    "photoInstructions": "JPG, PNG or GIF up to 10MB",
+    "buyerName": "Buyer Name",
+    "contactNo": "Contact Number",
+    "email": "Email Address",
+    "address": "Address",
+    "productIssue": "Product Issue Description",
+    "submit": "Submit Help Request",
+    "missingInformation": {
+      "title": "Missing Information",
+      "description": "Please fill in all required fields."
+    },
+    "helpRequestSubmitted": {
+      "title": "Help Request Submitted",
+      "description": "Your issue has been submitted successfully. We'll get back to you soon."
+    }
+  },
+  "title1": "Product Requests",
+  "requests": [
+    {
+      "id": "1",
+      "buyerName": "Rahul Sharma",
+      "productName": "Organic Tomatoes",
+      "farmerName": "Ankit Singh",
+      "quantity": "50 kg",
+      "requestedPrice": 2000,
+      "status": "pending"
+    },
+    {
+      "id": "2",
+      "buyerName": "Priya Patel",
+      "productName": "Premium Rice",
+      "farmerName": "Ankit Singh",
+      "quantity": "100 kg",
+      "requestedPrice": 5000,
+      "status": "pending"
+    },
+    {
+      "id": "3",
+      "buyerName": "Amit Kumar",
+      "productName": "Fresh Apples",
+      "farmerName": "Ankit Singh",
+      "quantity": "30 kg",
+      "requestedPrice": 3000,
+      "status": "pending"
+    },
+    {
+      "id": "4",
+      "buyerName": "Bharat bhai",
+      "productName": "Garlic",
+      "farmerName": "Prabhu bhai",
+      "quantity": "30 kg",
+      "requestedPrice": 2000,
+      "status": "pending"
+    },
+    {
+      "id": "5",
+      "buyerName": "Nitin bhai",
+      "productName": "Organic Mangoes",
+      "farmerName": "Mukesh bhai",
+      "quantity": "20 kg",
+      "requestedPrice": 1500,
+      "status": "pending"
+    }
+  ],
+  "accepted": "Accepted",
+  "pending": "Pending",
+  "acceptSuccess": "Request accepted successfully!",
+  "rejectSuccess": "Request rejected and removed!",
+  "noRequests": "No requests found",
+
+  "requests1": {
+    "title": "Product Requests",
+    "noRequests": "No requests found",
+    "tableHeaders": {
+      "product": "Product",
+      "buyerName": "Buyer Name",
+      "quantity": "Quantity",
+      "requestedPrice": "Requested Price",
+      "status": "Status",
+      "actions": "Actions",
+      "farmer": "Farmer"
+    },
+    "status": {
+      "accepted": "Accepted",
+      "pending": "Pending"
+    },
+    "actions": {
+      "accept": "Accept",
+      "reject": "Reject"
+    },
+    "notifications": {
+      "accepted": "Request accepted successfully!",
+      "rejected": "Request rejected and removed!"
+    },
+    "farmers": {
+      "ankitSingh": "Ankit Singh",
+      "prabhuBhai": "Prabhu bhai",
+      "mukeshBhai": "Mukesh bhai"
+    },
+    "buyers": {
+      "rahulSharma": "Rahul Sharma",
+      "priyaPatel": "Priya Patel",
+      "amitKumar": "Amit Kumar",
+      "bharatBhai": "Bharat bhai",
+      "nitinBhai": "Nitin bhai"
+    },
+    "products": {
+      "organicTomatoes": "Organic Tomatoes",
+      "premiumRice": "Premium Rice",
+      "freshApples": "Fresh Apples",
+      "garlic": "Garlic",
+      "organicMangoes": "Organic Mangoes"
+    },
+    "currency": "₹"
+  },
+  "My Profile": "My Profile",
+  "Log Out": "Log Out"
+}

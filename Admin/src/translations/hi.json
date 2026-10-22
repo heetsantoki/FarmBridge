@@ -1,0 +1,213 @@
+{
+    "welcome": "आपके ब्लैंक ऐप में आपका स्वागत है",
+    "startBuilding": "यहां अपना अद्भुत प्रोजेक्ट बनाना शुरू करें!",
+    "Add Product": "उत्पाद जोड़ें",
+    "View Products": "उत्पाद देखें",
+    "addNewProduct": "नया उत्पाद जोड़ें",
+    "farmerName": "किसान का नाम",
+    "enterFarmerName": "किसान का नाम दर्ज करें",
+    "productImage": "उत्पाद छवि URL",
+    "enterImageURL": "छवि URL दर्ज करें",
+    "productName": "उत्पाद का नाम",
+    "enterProductName": "उत्पाद का नाम दर्ज करें",
+    "price": "मूल्य (₹)",
+    "quantity": "मात्रा (कि.ग्रा)",
+    "description": "विवरण",
+    "enterDescription": "उत्पाद का विवरण दर्ज करें",
+    "address": "पता",
+    "enterAddress": "पता दर्ज करें",
+    "addingProduct": "उत्पाद जोड़ा जा रहा है...",
+    "success": "सफलता",
+    "productAddedSuccess": "उत्पाद सफलतापूर्वक जोड़ा गया",
+
+    "products":{
+        "loading": "उत्पाद लोड हो रहे हैं...",
+  "addProduct": "उत्पाद जोड़ें",
+  "viewProducts": "उत्पाद देखें",
+  "All Products": "सभी उत्पाद",
+  "noProducts": "अभी तक कोई उत्पाद नहीं जोड़ा गया है",
+  "farmer": "किसान",
+  "quantity": "मात्रा",
+  "description": "विवरण",
+  "address": "पता"
+    },
+    
+    
+      "Profile": {
+        "title": "कृषक प्रोफाइल",
+        "farmerData": {
+          "fullName": "फ्रांस विनाटा",
+          "email": "franswinata6@gmail.com",
+          "phone": "081-234-5678",
+          "location": "मालंग, एसएम 74810",
+          "farmName": "ग्रीन व्हॅली फार्म",
+          "experience": "5 वर्ष",
+          "productsGrown": {
+            "Tomatoes":"टोमॅटो",
+             "Potatoes":"आलू",
+              "Carrots":"गाजर", 
+              "Lettuce":"लेट्यूस", 
+              "Cucumbers":"काकडी"},
+          "socialMedia": {
+            "facebook": "https://facebook.com/fransahw",
+            "instagram": "https://instagram.com/fransahw",
+            "twitter": "https://twitter.com/fransahw"
+          },
+          "rating": 4.5
+        },
+        "additionalInformation": {
+          "title": "अतिरिक्त माहिती",
+          "farmName": "फार्मचे नाव",
+          "experienceLevel": "अनुभव स्तर",
+          "productsGrown": "उगवलेले उत्पाद",
+          "socialMedia": "सोशल मीडिया"
+        },
+        "accountActions": {
+          "editProfile": "माझा प्रोफाइल संपादित करा",
+          "deleteAccount": "माझा खाता हटवा"
+        },
+        "deleteConfirmationModal": {
+          "title": "क्रिया पुष्टी!",
+          "message": "आपण आपला खाता हटवू इच्छिता का?",
+          "confirm": "होय, मला माझा खाता हटवायचा आहे",
+          "cancel": "नाही, मला तसे वाटत नाही"
+        }
+      },
+      
+        "Analytics": {
+          "title": "विश्लेषण डैशबोर्ड",
+          "quotes": {
+            "text": "“डेटा नया तेल है।”"
+          },
+          "sales": {
+            "fruits": "फलों की बिक्री बनाम महीना",
+            "grains": "अनाज की बिक्री बनाम महीना",
+            "Profit Fruits": "फलों का लाभ उत्पाद द्वारा",
+            "Profit Grains": "अनाज का लाभ उत्पाद द्वारा",
+            "discountsFruits": "फलों पर छूट",
+            "ratingsFruits": "फलों की रेटिंग",
+            "discountsGrains": "अनाज पर छूट",
+            "ratingsGrains": "अनाज की रेटिंग",
+            "citySales": "शहर की बिक्री उत्पाद द्वारा"
+          },
+          "months": {
+            "Jan": "जनवरी",
+            "Feb": "फरवरी",
+            "Mar": "मार्च",
+            "Apr": "अप्रैल",
+            "May": "मई"
+          },
+          "products": {
+            "apples": "सेब",
+            "bananas": "केले",
+            "oranges": "संतरे",
+            "grapes": "अंगूर",
+            "rice": "चावल",
+            "wheat": "गेहूं",
+            "oats": "जई",
+            "corn": "मक्का"
+          }
+        },
+        
+          "title": "किसान का बाजार",
+          "description1": "भारत के किसानों से ताजा, स्थानीय रूप से प्राप्त उत्पाद खोजें",
+          "searchPlaceholder": "उत्पाद खोजें...",
+          "allCategories": "सभी श्रेणियाँ",
+          "allLocations": "सभी स्थान",
+          "noProductsFound": "आपके मानदंडों से मेल खाने वाले कोई उत्पाद नहीं मिले।",
+          "knowMore": "और जानें",
+          "products1": [
+            {
+              "id": 1,
+              "name": "प्रीमियम सेब",
+              "category": "फलों",
+              "city": "महाराष्ट्र",
+              "price": "₹120/kg",
+              "description": "ताजे और रसदार सेब।",
+              "quality": "जैविक"
+            },
+            {
+              "id": 2,
+              "name": "जैविक आम",
+              "category": "फलों",
+              "city": "गुजरात",
+              "price": "₹150/kg",
+              "description": "पके आम, स्मूथी के लिए परफेक्ट।",
+              "quality": "जैविक"
+            },
+            {
+              "id": 3,
+              "name": "ताजा टमाटर",
+              "category": "सब्जियाँ",
+              "city": "कर्नाटका",
+              "price": "₹40/kg",
+              "description": "खाना पकाने के लिए उच्च गुणवत्ता वाले टमाटर।",
+              "quality": "ताजा"
+            },
+            {
+              "id": 4,
+              "name": "बासमती चावल",
+              "category": "अनाज",
+              "city": "पंजाब",
+              "price": "₹85/kg",
+              "description": "लंबे दाने का बासमती चावल, भोजन के लिए परफेक्ट।",
+              "quality": "पुराना"
+            },
+            {
+              "id": 5,
+              "name": "गाजर",
+              "category": "सब्जियाँ",
+              "city": "हरियाणा",
+              "price": "₹30/kg",
+              "description": "क्रंची और मीठी गाजर।",
+              "quality": "जैविक"
+            },
+            {
+              "id": 6,
+              "name": "आलू",
+              "category": "सब्जियाँ",
+              "city": "मध्य प्रदेश",
+              "price": "₹25/kg",
+              "description": "विविध और स्वादिष्ट आलू।",
+              "quality": "ताजा"
+            },
+            {
+              "id": 7,
+              "name": "प्याज",
+              "category": "सब्जियाँ",
+              "city": "आंध्र प्रदेश",
+              "price": "₹20/kg",
+              "description": "खाना पकाने के लिए ताजा प्याज।",
+              "quality": "जैविक"
+            },
+            {
+              "id": 8,
+              "name": "लहसुन",
+              "category": "सब्जियाँ",
+              "city": "गुजरात",
+              "price": "₹60/kg",
+              "description": "मजबूत और स्वादिष्ट लहसुन।",
+              "quality": "ताजा"
+            },
+            {
+              "id": 9,
+              "name": "चने",
+              "category": "दालें",
+              "city": "राजस्थान",
+              "price": "₹100/kg",
+              "description": "उच्च प्रोटीन चने।",
+              "quality": "जैविक"
+            },
+            {
+              "id": 10,
+              "name": "दाल",
+              "category": "दालें",
+              "city": "पंजाब",
+              "price": "₹90/kg",
+              "description": "पोषणयुक्त दालें।",
+              "quality": "ताजा"
+            }
+          ]
+        
+    
+  }

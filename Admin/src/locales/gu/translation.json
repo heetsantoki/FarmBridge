@@ -1,0 +1,531 @@
+{
+  "profile": {
+    "title": "ખરીદદાર પ્રોફાઇલ",
+    "memberSince": "સભ્યપદ શરૂ",
+    "cancel": "રદ કરો",
+    "email": "ઈમેલ",
+    "phone": "ફોન",
+    "address": "સરનામું",
+    "personalInfo": {
+      "title": "વ્યક્તિગત માહિતી",
+      "buyer": {
+        "name": "જોન ડો",
+        "email": "john.doe@example.com",
+        "phone": "+91 98765 43210",
+        "address": "123 ફાર્મ સ્ટ્રીટ, ગ્રીન વેલી, મુંબઈ, મહારાષ્ટ્ર - 400001"
+      }
+    },
+    "statistics": {
+      "title": "આંકડા",
+      "totalOrders": "કુલ ઓર્ડર",
+      "totalAmount": "કુલ રકમ",
+      "favoriteProducts": "મનપસંદ ઉત્પાદનો",
+      "products": {
+        "organicTomatoes": "જૈવિક ટમેટા",
+        "freshPotatoes": "તાજા બટાકા",
+        "greenPeas": "લીલા વટાણા",
+        "carrots": "ગાજર",
+        "onions": "ડુંગળી"
+      }
+    },
+    "purchaseHistory": {
+      "title": "ખરીદી ઇતિહાસ",
+      "description": "તમારી તાજેતરની ખરીદીઓ",
+      "orderId": "ઓર્ડર આઈડી",
+      "product": "ઉત્પાદન",
+      "quantity": "જથ્થો",
+      "date": "તારીખ",
+      "amount": "રકમ",
+      "status": "સ્થિતિ",
+      "statusValues": {
+        "delivered": "પહોંચાડવામાં આવેલ",
+        "inTransit": "પરિવહનમાં"
+      },
+      "pagination": {
+        "previous": "પાછળ",
+        "next": "આગળ",
+        "page": "પૃષ્ઠ",
+        "of": "ના"
+      }
+    }
+  },
+  "title": "કૃષકનું બજાર",
+  "description": "ભારતના ખેડૂતો પાસેથી તાજા, સ્થાનિક સ્તરે મેળવેલ ઉત્પાદનો શોધો",
+  "searchPlaceholder": "ઉત્પાદનો શોધો...",
+  "allCategories": "બધા શ્રેણીઓ",
+  "allLocations": "બધા સ્થળો",
+  "noProductsFound": "તમારા માપદંડો સાથે મેળ ખાતા કોઈ ઉત્પાદનો મળ્યા નથી.",
+  "knowMore": "વધુ જાણો",
+  "category": "શ્રેણી",
+  "location": "સ્થળ",
+  "seller": "વિક્રેતા",
+  "previous": "પહેલાં",
+    "next": "આગળ",
+  "available": "ઉપલબ્ધ",
+  "quality": "ગુણવત્તા",
+  "qualities": {
+    "Organic": "જૈવિક",
+    "Fresh": "તાજા",
+    "Aged": "જૂના"
+  },
+  "categories": {
+    "Fruits": "ફળો",
+    "Vegetables": "શાકભાજી",
+    "Grains": "અનાજ",
+    "Legumes": "કઠોળ"
+  },
+  "products": {
+    "Premium Apples": "પ્રીમિયમ સફરજન",
+    "Organic Mangoes": "જૈવિક કેરી",
+    "Fresh Tomatoes": "તાજા ટમેટા",
+    "Basmati Rice": "બાસમતી ચોખા",
+    "Carrots": "ગાજર",
+    "Potatoes": "બટાકા",
+    "Onions": "ડુંગળી",
+    "Garlic": "લસણ",
+    "Chickpeas": "ચણા",
+    "Lentils": "દાળ"
+  },
+  "locations": {
+    "Maharashtra": "મહારાષ્ટ્ર",
+    "Gujarat": "ગુજરાત",
+    "Karnataka": "કર્ણાટક",
+    "Punjab": "પંજાબ",
+    "Haryana": "હરિયાણા",
+    "Madhya Pradesh": "મધ્ય પ્રદેશ",
+    "Andhra Pradesh": "આંધ્ર પ્રદેશ",
+    "Rajasthan": "રાજસ્થાન"
+  },
+  "descriptions": {
+    "Premium Apples": "તાજા અને રસદાર સફરચંદ.",
+    "Organic Mangoes": "જૈવિક કેરી, સ્મૂધી માટે પરફેક્ટ.",
+    "Fresh Tomatoes": "રસોઈ માટે ઉચ્ચ ગુણવત્તાના ટમેટા.",
+    "Basmati Rice": "લાંબા દાણાના બાસમતી ચોખા, ભોજન માટે પરફેક્ટ.",
+    "Carrots": "કુરકुरी અને મીઠી ગાજર.",
+    "Potatoes": "બહુઉપયોગી અને સ્વાદિષ્ટ બટાકા.",
+    "Onions": "રસોઈ માટે તાજી ડુંગળી.",
+    "Garlic": "મજબૂત અને સ્વાદિષ્ટ લસણ.",
+    "Chickpeas": "પ્રોટીનથી ભરપૂર ચણા.",
+    "Lentils": "પૌષ્ટિક દાળ."
+  },
+  "buyers": {
+    "Krishna Farms": "કૃષ્ણ ફાર્મ્સ",
+    "Sunshine Orch ards": "સનશાઇન ઓર્ચર્ડ્સ",
+    "Green Valley": "ગ્રીન વેલી",
+    "Golden Fields": "ગોલ્ડન ફીલ્ડ્સ",
+    "Fresh Farms": "ફ્રેશ ફાર્મ્સ",
+    "Farm Fresh": "ફાર્મ ફ્રેશ",
+    "Onion Growers": "ડુંગળી ઉગાડનાર",
+    "Garlic Farms": "લસણ ફાર્મ્સ",
+    "Legume Growers": "કઠોળ ઉગાડનાર",
+    "Lentil Farms": "દાળ ફાર્મ્સ"
+  },
+  "negotiate": "વાટાઘાટ",
+    "readMore": "વધુ વાંચો",
+    "viewLess": "ઓછું જુઓ",
+    "productInfo": "ઉત્પાદન માહિતી",
+    "quantity": "જથ્થો",
+    "priceRange": "કિંમત શ્રેણી",
+    "farmerDetails": "ખેડૂત વિગતો",
+    "name": "નામ",
+    "contact": "સંપર્ક",
+    "location1": "સ્થળ",
+    "detailedInformation": "વિગતવાર માહિતી",
+    "productCertification": "ઉત્પાદન પ્રમાણપત્ર",
+    "landType": "જમીનનો પ્રકાર",
+    "farmingPractices": "ખેતી પદ્ધતિઓ",
+    "qualityParameters": "ગુણવત્તા માપદંડો",
+    "farmerExperience": "ખેડૂત અનુભવ",
+    "certificationText": "FSSAI દ્વારા જૈવિક પ્રમાણિત",
+    "landTypeText": "ફળદ્રુપ કાળી માટી",
+    "farmingPracticesList": {
+      "practice1": "રાસાયણિક જંતુનાશકોનો ઉપયોગ નથી",
+      "practice2": "માત્ર કુદરતી ખાતર",
+      "practice3": "ટકાઉ સિંચાઈ પદ્ધતિઓ",
+      "practice4": "પાક ફેરબદલીનું પાલન"
+    },
+    "qualityParametersList": {
+      "param1": "શ્રેષ્ઠ પરિપક્વતા પર હાથથી તોડેલ",
+      "param2": "કાળજીપૂર્વક વર્ગીકૃત",
+      "param3": "તાપમાન નિયંત્રિત વાતાવરણમાં સંગ્રહિત",
+      "param4": "નિયમિત ગુણવત્તા તપાસ"
+    },
+    "experienceText": "જૈવિક ખેતીમાં ૧૫+ વર્ષનો અનુભવ",
+    "purchaseDetails": {
+      "title": "ખરીદી વિગતો",
+      "backButton": "વેચાયેલા ઉત્પાદનો પર પાછા જાઓ",
+      "tableHeaders": {
+        "orderId": "ઓર્ડર આઈડી",
+        "productName": "ઉત્પાદન નામ",
+        "buyerName": "ખરીદનારનું નામ",
+        "quantity": "જથ્થો",
+        "saleDate": "વેચાણ તારીખ",
+        "farmerName": "ખેડૂતનું નામ",
+        "price": "કિંમત",
+        "status": "સ્થિતિ",
+        "paymentMethod": "ચુકવણી પદ્ધતિ",
+        "deliveryAddress": "ડિલિવરી સરનામું"
+      },
+      "status": {
+        "delivered": "પહોંચાડી દીધું છે",
+        "intransit": "પરિવહનમાં",
+        "processing": "પ્રક્રિયામાં"
+      }
+    },
+    "products1": {
+      "tomatoes": "ટમેટા",
+      "potatoes": "બટાટા",
+      "carrots": "ગાજર",
+      "onions": "ડુંગળી",
+      "garlic": "લસણ"
+    },
+    "buyers1": {
+      "john_doe": "જોન ડો",
+      "alice_smith": "જેન સ્મિથ",
+      "bob_johnson": "બોબ જૉનસન",
+      "charlie_brown": "ચાર્લી બ્રાઉન",
+      "daisy_white": "ડેઇઝી વ્હાઈટ"
+    },
+    "farmers": {
+      "farmer_bob": "ખેડૂત બોબ",
+      "farmer_joe": "ખેડૂત જો",
+      "farmer_alice": "ખેડૂત એલિસ",
+      "farmer_charlie": "ખેડૂત ચાર્લી",
+      "farmer_daisy": "ખેડૂત ડેઇઝી"
+    },
+    "paymentMethods": {
+      "cash_on_delivery": "ડિલિવરી પર રોકડ",
+      "online_payment": "ઑનલાઇન ચુકવણી"
+    },
+    "deliveryAddresses": {
+      "123 Main St, Mumbai, Maharashtra": "123 મેઈન સ્ટ ્રીટ, મુંબઈ, મહારાષ્ટ્ર",
+      "456 Elm St, Pune, Maharashtra": "456 એલ્મ સ્ટ્રીટ, પુણે, મહારાષ્ટ્ર",
+      "789 Pine St, Bangalore, Karnataka": "789 પાઈન સ્ટ્રીટ, બેંગલુરુ, કર્ણાટક",
+      "321 Oak St, Hyderabad, Telangana": "321 ઓક સ્ટ્રીટ, હૈદરાબાદ, તેલંગાણા",
+      "654 Maple St, Chennai, Tamil Nadu": "654 મેપલ સ્ટ્રીટ, ચેન્નાઈ, તમિલનાડુ"
+    },
+    "buyerAnalytics": {
+      "title": "ખરીદદાર વિશ્લેષણ ડેશબોર્ડ",
+      "cityProducts": "શહેર વિરુદ્ધ ખરીદેલા ઉત્પાદનો",
+      "buyerQuantity": "ખરીદદાર જથ્થો વિશ્લેષણ",
+      "productProfit": "ઉત્પાદન નફો વિશ્લેષણ",
+      "productDiscount": "ઉત્પાદન સવાલત વિતરણ",
+      "city": "શહેર",
+      "quantity": "જથ્થો",
+      "buyer": "ખરીદદાર",
+      "profit": "નફો",
+      "product": "ઉત્પાદન",
+      "productsBought": "ખરીદેલા ઉત્પાદનો",
+      "cities": {
+        "mumbai": "મુંબઈ",
+        "delhi": "દિલ્હી",
+        "bangalore": "બેંગલોર",
+        "chennai": "ચેન્નઈ",
+        "kolkata": "કોલકાતા"
+      },
+      "products": {
+        "tomatoes": "ટમેટાં",
+        "potatoes": "બટાટા",
+        "onions": "ડુંગળી",
+        "carrots": "ગાજર",
+        "cucumbers": "કાકડી"
+      },
+      "buyers": {
+        "johnDoe": "જોન ડો",
+        "janeSmith": "જેન સ્મિથ",
+        "bobJohnson": "બોબ જૉનસન",
+        "aliceBrown": "એલિસ બ્રાઉન",
+        "charlieWilson": "ચાર્લી વિલ્સન"
+      }
+    },
+    "welcome": "ફાર્મર કનેક્ટમાં આપનું સ્વાગત છે",
+  "subtitle": "ખેડૂતો અને ગ્રાહકોને જોડતું એક આધુનિક બજાર",
+  "startBuilding": "અહીં તમારા અદ્ભુત પ્રોજેક્ટનું નિર્માણ શરૂ કરો!",
+  "addProduct": "ઉત્પાદન ઉમેરો",
+  "viewProducts": "ઉત્પાદનો જુઓ",
+  "addNewProduct": "નવું ઉત્પાદન ઉમેરો",
+  "farmerName": "ખેડૂતનું નામ",
+  "enterFarmerName": "ખેડૂતનું નામ દાખલ કરો",
+  "productImage": "ઉત્પાદન છબી URL",
+  "enterImageURL": "છબી URL દાખલ કરો",
+  "productName": "ઉત્પાદનનું નામ",
+  "enterProductName": "ઉત્પાદનનું નામ દાખલ કરો",
+  "price": "કિંમત (₹)",
+  "quantity1": "જથ્થો (કિ.ગ્રા)",
+  "description1": "વર્ણન",
+  "enterDescription": "ઉત્પાદન વર્ણન દાખલ કરો",
+  "address": "સરનામું",
+  "enterAddress": "સરનામું દાખલ કરો",
+  "addingProduct": "ઉત્પાદન ઉમેરી રહ્યું છે...",
+  "success": "સફળતા",
+  "productAdded": "ઉત્પાદન સફળતાપૂર્વક ઉમેરાયું",
+  "featuredProducts": "ફીચર્ડ ઉત્પાદનો",
+  "discoverProducts": "પ્રીમિયમ ઓર્ગેનિક ઉત્પાદનોની અમારી પસંદગી શોધો",
+  "filterByCategory": "કેટેગરી દ્વારા ફિલ્ટર કરો",
+  "learnMore": "વધુ જાણો",
+  "getStarted": "શરૂ કરો",
+  "products2": {
+    "loading": "ઉત્પાદનો લોડ થઈ રહ્યા છે...",
+    "addProduct": "ઉત્પાદન ઉમેરો",
+    "viewProducts": "ઉત્પાદનો જુઓ",
+    "All Products": "બધા ઉત્પાદનો",
+    "noProducts": "હજુ સુધી કોઈ ઉત્પાદનો ઉમેરાયા નથી",
+    "farmer": "ખેડૂત",
+    "quantity": "જથ્થો",
+    "description": "વર્ણન",
+    "address": "સરનામું"
+  },
+ "soldProducts": "વેચાયેલા પ્રોડક્ટ્સ",
+  "productName1": "પ્રોડક્ટનું નામ",
+  "buyerName": "ખરીદનારનું નામ",
+  "quantitySold": "વેચાયેલો જથ્થો",
+  "saleDate": "વેચાણની તારીખ",
+  "farmerName1": "ખેડૂતનું નામ",
+  "price1": "કિંમત (₹)",
+  "noSoldProducts": "કોઈ વેચાયેલા પ્રોડક્ટ્સ મળ્યા નથી",
+  "tomatoes": "ટમેટા",
+  "potatoes": "બટાટા",
+  "carrots": "ગાજર",
+  "lettuce": "લેટ્યુસ",
+  "cucumbers": "કાકડી",
+  "johnDoe": "જોન ડો",
+  "janeSmith": "જેન સ્મિથ",
+  "michaelJohnson": "માઇકલ જોનસન",
+  "emilyDavis": "એમિલી ડેવિસ",
+  "sarahWilson": "સારા વિલસન",
+  "farmerBob": "ખેડૂત બોબ",
+  "farmerAlice": "ખેડૂત એલિસ",
+  "farmerCharlie": "ખેડૂત ચાર્લી",
+  "farmerDavid": "ખેડૂત ડેવિડ",
+  "farmerEve": "ખેડૂત ઈવ",
+  "months": {
+    "Jan": "જાન્યુઆરી",
+    "Feb": "ફેબ્રુઆરી",
+    "Mar": "માર્ચ",
+    "Apr": "એપ્રિલ",
+    "May": "મે"
+  },
+  "Analytics": {
+    "title": "વેચાણ વિશ્લેષણ ડેશબોર્ડ",
+    "quotes": {
+      "text": "તમારા વ્યવસાયની વૃદ્ધિનું વિશ્લેષણ"
+    },
+    "products": {
+      "apples": "સફરજન",
+      "bananas": "કેળા",
+      "oranges": "સંતરા",
+      "grapes": "દ્રાક્ષ",
+      "rice": "ચોખા",
+      "wheat": "ઘઉં",
+      "oats": "ઓટ્સ",
+      "corn": "મકાઈ"
+    },
+    "sales": {
+      "fruits": "ફળોનું વેચાણ વિશ્લેષણ",
+      "grains": "અનાજનું વેચાણ વિશ્લેષણ",
+      "Profit Fruits": "ફળોનો નફો વિશ્લેષણ",
+      "Profit Grains": "અનાજનો નફો વિશ્લેષણ",
+      "discountsFruits": "ફળોની છૂટ વિશ્લેષણ",
+      "discountsGrains": "અનાજની છૂટ વિશ્લેષણ",
+      "ratingsFruits": "ફળોની રેટિંગ",
+      "ratingsGrains": "અનાજની રેટિંગ",
+      "citySales": "શહેર-વાર વેચાણ વિતરણ"
+    }
+  },
+ "profile1": {
+    "title": "પ્રોફાઇલ",
+    "additionalInfo": "વધારાની માહિતી",
+    "editProfile": "પ્રોફાઇલમાં ફેરફાર કરો",
+    "saveProfile": "પ્રોફાઇલ સાચવો",
+    "profileSaved": "પ્રોફાઇલ સાચવવામાં આવી",
+    "profileUpdated": "તમારી પ્રોફાઇલ સફળતાપૂર્વક અપડેટ કરવામાં આવી છે.",
+    "labels": {
+      "email": "ઈમેલ",
+      "phone": "ફોન",
+      "location": "સ્થાન",
+      "farmName": "ખેતરનું નામ",
+      "experience": "અનુભવ સ્તર",
+      "productsGrown": "ઉગાડેલા ઉત્પાદનો",
+      "socialMedia": "સોશિયલ મીડિયા",
+      "facebook": "ફેસબુક",
+      "instagram": "ઇન્સ્ટાગ્રામ",
+      "twitter": "ટ્વિટર"
+    },
+    "data": {
+      "fullName": "જોન ડો",
+      "email": "johndoe6@gmail.com",
+      "phone": "081-234-5678",
+      "location": "સાન ફ્રાન્સિસ્કો, CA",
+      "farmName": "ડો ફાર્મ્સ",
+      "experience": "5 વર્ષ",
+      "productsGrown": [
+        "ટમેટા",
+        "બટાટા",
+        "ગાજર",
+        "લેટ્યુસ",
+        "કાકડી"
+      ],
+      "socialMedia": {
+        "facebook": "https://facebook.com/fransahw",
+        "instagram": "https://instagram.com/fransahw",
+        "twitter": "https://twitter.com/fransahw"
+      }
+    }
+  },
+  
+  "menu": {
+    "addProducts": "ઉત્પાદનો ઉમેરો",
+    "manageProducts": "ઉત્પાદનો સંચાલિત કરો",
+    "requests": "વિનંતીઓ",
+    "soldProducts": "વેચાયેલા ઉત્પાદનો",
+    "analytics": "વિશ્લેષણ",
+    "products": "ઉત્પાદનો",
+    "orders": "ઓર્ડર",
+    "Help": "મદદ"
+  },
+  "Help": {
+    "title": "કૃષક મદદ ફોર્મ",
+    "farmerName": "કૃષકનું નામ",
+    "contactNo": "સંપર્ક નંબર",
+    "email": "ઈમેલ સરનામું",
+    "date": "તારીખ",
+    "address": "કૃષકનો સરનામો",
+    "issueDescription": "ઉત્પાદન સમસ્યા વર્ણન",
+    "photo": "કૃષકનો ફોટો",
+    "submit": "મદદ વિનંતી સબમિટ કરો",
+    "required": "આ ક્ષેત્ર જરૂરી છે",
+    "missingInformation": {
+      "title": "ગેરહાજર માહિતી",
+      "description": "કૃપા કરીને તમામ જરૂરી ક્ષેત્રો ભરો."
+    },
+    "helpRequestSubmitted": {
+      "title": "મદદ વિનંતી સબમિટ થઈ ગઈ",
+      "description": "તમારી સમસ્યા સફળતાપૂર્વક સબમિટ થઈ ગઈ છે. અમે જલ્દી જ તમને પાછા મળશું."
+    }
+  },
+  "BuyerHelp": {
+    "customerSupport": "ગ્રાહક સહાયતા",
+    "formTitle": "ખરીદદાર સહાય ફોર્મ",
+    "formDescription": "કૃપા કરીને તમારી સમસ્યાના વિશે વિગતો આપો અને અમે શક્ય તેટલી જલદી તમારી મદદ કરીશું.",
+    "buyerPhoto": "ખરીદદાર ફોટો",
+    "changePhoto": "ફોટો બદલો",
+    "uploadPhoto": "ફોટો અપલોડ કરો",
+    "photoInstructions": "JPG, PNG અથવા GIF 10MB સુધી",
+    "buyerName": "ખરીદદારનું નામ",
+    "contactNo": "સંપર્ક નંબર",
+    "email": "ઇમેઇલ સરનામું",
+    "address": "સરનામું",
+    "productIssue": "ઉત્પાદન સમસ્યા વર્ણન",
+    "submit": "મદદની વિનંતી મોકલો",
+    "missingInformation": {
+      "title": "મિસિંગ માહિતી",
+      "description": "કૃપા કરીને તમામ જરૂરી ક્ષેત્રો ભરો."
+    },
+    "helpRequestSubmitted": {
+      "title": "મદદની વિનંતી મોકલાઈ",
+      "description": "તમારી સમસ્યા સફળતાપૂર્વક મોકલાઈ છે. અમે જલદી તમારી પાસે પાછા આવીશું."
+    }
+  },
+  "title1": "ઉત્પાદન વિનંતીઓ",
+  "requests": [
+    {
+      "id": "1",
+      "buyerName": "રાહુલ શર્મા",
+      "productName": "જૈવિક ટમેટા",
+      "farmerName": "અંકિત સિંહ",
+      "quantity": "50 કિગ્રા",
+      "requestedPrice": 2000,
+      "status": "લંબિત"
+    },
+    {
+      "id": "2",
+      "buyerName": "પ્રિયા પટેલ",
+      "productName": "પ્રીમિયમ ચોખા",
+      "farmerName": "અંકિત સિંહ",
+      "quantity": "100 કિગ્રા",
+      "requestedPrice": 5000,
+      "status": "લંબિત"
+    },
+    {
+      "id": "3",
+      "buyerName": "અમિત કુમાર",
+      "productName": "તાજા સફરજન",
+      "farmerName": "અંકિત સિંહ",
+      "quantity": "30 કિગ્રા",
+      "requestedPrice": 3000,
+      "status": "લંબિત"
+    },
+    {
+      "id": "4",
+      "buyerName": "ભારત ભાઈ",
+      "productName": "લસણ",
+      "farmerName": "પ્રભુ ભાઈ",
+      "quantity": "30 કિગ્રા",
+      "requestedPrice": 2000,
+      "status": "લંબિત"
+    },
+    {
+      "id": "5",
+      "buyerName": "નિતિન ભાઈ",
+      "productName": "જૈવિક કેરી",
+      "farmerName": "મુકેશ ભાઈ",
+      "quantity": "20 કિગ્રા",
+      "requestedPrice": 1500,
+      "status": "લંબિત"
+    }
+  ],
+  "accepted": "મંજૂર",
+  "pending": "લંબિત",
+  "acceptSuccess": "વિનંતી સફળતાપૂર્વક મંજૂર કરવામાં આવી!",
+  "rejectSuccess": "વિનંતી નકારી દેવામાં આવી અને દૂર કરવામાં આવી!",
+  "noRequests": "કોઈ વિનંતીઓ મળી નથી",
+
+  "requests1": {
+    "title": "ઉત્પાદન વિનંતીઓ",
+    "noRequests": "કોઈ વિનંતીઓ મળી નથી",
+    "tableHeaders": {
+      "product": "ઉત્પાદન",
+      "buyerName": "ખરીદનારનું નામ",
+      "quantity": "જથ્થો",
+      "requestedPrice": "વિનંતી કરેલ કિંમત",
+      "status": "સ્થિતિ",
+      "actions": "ક્રિયાઓ",
+      "farmer": "ખેડૂત"
+    },
+    "status": {
+      "accepted": "સ્વીકૃત",
+      "pending": "બાકી"
+    },
+    "actions": {
+      "accept": "સ્વીકારો",
+      "reject": "નકારો"
+    },
+    "notifications": {
+      "accepted": "વિનંતી સફળતાપૂર્વક સ્વીકારવામાં આવી!",
+      "rejected": "વિનંતી નકારવામાં આવી અને દૂર કરવામાં આવી!"
+    },
+    "farmers": {
+      "ankitSingh": "અંકિત સિંહ",
+      "prabhuBhai": "પ્રભુ ભાઈ",
+      "mukeshBhai": "મુકેશ ભાઈ"
+    },
+    "buyers": {
+      "rahulSharma": "રાહુલ શર્મા",
+      "priyaPatel": "પ્રિયા પટેલ",
+      "amitKumar": "અમિત કુમાર",
+      "bharatBhai": "ભરત ભાઈ",
+      "nitinBhai": "નિતિન ભાઈ"
+    },
+    "products": {
+      "organicTomatoes": "જૈવિક ટમેટા",
+      "premiumRice": "પ્રીમિયમ ચોખા",
+      "freshApples": "તાજા સફરજન",
+      "garlic": "લસણ",
+      "organicMangoes": "જૈવિક કેરી"
+    },
+    "currency": "₹"
+  },
+   "My Profile": "મારી પ્રોફાઇલ",
+  "Log Out": "લૉગ આઉટ"
+}
+
