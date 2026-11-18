@@ -1,13 +1,26 @@
 import { useState, useEffect, type ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Eye, EyeOff, Loader2, ChevronRight, ChevronLeft, Tractor, Store, Upload, CheckCircle } from "lucide-react";
+import { 
+  Eye, 
+  EyeOff, 
+  Loader2, 
+  ChevronRight, 
+  ChevronLeft, 
+  Tractor, 
+  Store, 
+  Upload, 
+  CheckCircle,
+  Mail,
+  ShieldCheck,
+  RefreshCw,
+} from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "react-i18next";
 import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Label } from "../components/ui/label";
+import { Input } from "../components/ui/Input";
+import { Label } from "../components/ui/Label";
 import { Card, CardContent } from "../components/ui/card";
 import { registerSchema, type RegisterFormData } from "../lib/validations/register";
 import axios from "axios";
@@ -19,16 +32,28 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../components/ui/Select";
+import { GoogleLogin } from "@react-oauth/google";
+import { toast } from "react-toastify";
+import { GoogleRoleModal } from "../components/GoogleRoleModal";
 
-// User Type Selection Component
-function UserTypeSelection({ selectedType, onSelect }: { selectedType: string; onSelect: (type: string) => void }) {
+// User Type Selection Component with Google Auth option
+function UserTypeSelection({ 
+  selectedType, 
+  onSelect,
+  onGoogleSuccess
+}: { 
+  selectedType: string; 
+  onSelect: (type: string) => void;
+  onGoogleSuccess: (credentialResponse: any) => void;
+}) {
   const { t } = useTranslation();
   return (
     <div className="space-y-6">
-      <div className="text-center mb-8">
+      <div className="text-center mb-6">
         <h2 className="text-2xl font-bold mb-2">{t("userType.title")}</h2>
         <p className="text-muted-foreground">{t("userType.subtitle")}</p>
       </div>
+
       <div className="grid md:grid-cols-2 gap-6">
         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
           <Card
@@ -66,6 +91,24 @@ function UserTypeSelection({ selectedType, onSelect }: { selectedType: string; o
             </CardContent>
           </Card>
         </motion.div>
+      </div>
+
+      {/* Google Registration Option */}
+      <div className="mt-8 pt-6 border-t border-[#E8E4DA] flex flex-col items-center">
+        <span className="text-xs uppercase tracking-wider font-semibold text-[#7F8B82] mb-3">
+          Or Register Instantly With Google
+        </span>
+        <GoogleLogin
+          onSuccess={onGoogleSuccess}
+          onError={() => toast.error("Google Registration was unsuccessful")}
+          theme="outline"
+          size="large"
+          text="signup_with"
+          shape="rectangular"
+        />
+        <span className="text-[11px] text-[#7F8B82] mt-2">
+          (No additional OTP required - Google verifies your email)
+        </span>
       </div>
     </div>
   );
@@ -290,8 +333,8 @@ function DocumentUpload({ form }: { form: ReturnType<typeof useForm<RegisterForm
             </div>
           </div>
           {errors.proofDocument && errors.proofDocument.message && (
-  <p className="text-sm text-red-500">{errors.proofDocument.message.toString()}</p>
-)}
+            <p className="text-sm text-red-500">{errors.proofDocument.message.toString()}</p>
+          )}
         </div>
         <div className="space-y-2">
           <Label htmlFor="profilePhoto">{t("documentUpload.profilePhoto")}</Label>
@@ -325,6 +368,68 @@ function DocumentUpload({ form }: { form: ReturnType<typeof useForm<RegisterForm
   );
 }
 
+// NEW: Email OTP Verification Component
+function OTPVerificationStep({
+  email,
+  otpValue,
+  onOtpChange,
+  onResendOtp,
+  isSendingOtp,
+  otpError,
+}: {
+  email: string;
+  otpValue: string;
+  onOtpChange: (val: string) => void;
+  onResendOtp: () => void;
+  isSendingOtp: boolean;
+  otpError: string;
+}) {
+  return (
+    <div className="space-y-6 text-center">
+      <div className="w-16 h-16 bg-[#EEF4EF] rounded-full flex items-center justify-center mx-auto text-[#1E3F2D] border border-[#D5E4D8]">
+        <Mail className="w-8 h-8" />
+      </div>
+
+      <div>
+        <h2 className="text-2xl font-bold text-[#1A261D] mb-1">Verify Your Email Address</h2>
+        <p className="text-xs sm:text-sm text-[#5C6B5F]">
+          We have dispatched a 6-digit verification code to <strong className="text-[#1A261D]">{email}</strong>.
+        </p>
+      </div>
+
+      <div className="max-w-xs mx-auto space-y-3">
+        <label className="block text-xs font-semibold uppercase tracking-wider text-[#5C6B5F]">
+          Enter 6-Digit OTP Code
+        </label>
+        <input
+          type="text"
+          maxLength={6}
+          value={otpValue}
+          onChange={(e) => onOtpChange(e.target.value.replace(/\D/g, ""))}
+          placeholder="e.g. 542109"
+          className="w-full text-center tracking-[8px] font-mono text-2xl font-bold py-3 bg-[#FAF8F3] border border-[#E8E4DA] rounded-xl focus:bg-white focus:border-[#1E3F2D] outline-none text-[#1A261D]"
+        />
+
+        {otpError && (
+          <p className="text-xs text-rose-600 font-semibold">{otpError}</p>
+        )}
+
+        <div className="pt-2">
+          <button
+            type="button"
+            onClick={onResendOtp}
+            disabled={isSendingOtp}
+            className="text-xs font-semibold text-[#1E3F2D] hover:underline flex items-center justify-center gap-1.5 mx-auto"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${isSendingOtp ? "animate-spin" : ""}`} />
+            {isSendingOtp ? "Sending New Code..." : "Resend Verification Code"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Registration Complete Component
 function RegistrationComplete({ userType }: { userType: string }) {
   const { t } = useTranslation();
@@ -349,7 +454,7 @@ function RegistrationComplete({ userType }: { userType: string }) {
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Button asChild className="bg-green-600 hover:bg-green-700">
-          <Link to="/dashboard">{t("complete.dashboard")}</Link>
+          <Link to="/login">{t("complete.dashboard")}</Link>
         </Button>
         <Button asChild variant="outline">
           <Link to="/marketplace">
@@ -368,20 +473,106 @@ export default function RegisterPage() {
   const { t } = useTranslation();
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+  const [otpValue, setOtpValue] = useState("");
+  const [isSendingOtp, setIsSendingOtp] = useState(false);
+  const [otpError, setOtpError] = useState("");
+  const [googleModalOpen, setGoogleModalOpen] = useState(false);
+  const [pendingGoogleToken, setPendingGoogleToken] = useState("");
+  const [pendingGoogleInfo, setPendingGoogleInfo] = useState<{ name: string; email: string }>({ name: "", email: "" });
+
   const form = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
     mode: "onChange",
     defaultValues: {
-      userType: "",
+      userType: "farmer",
     }
   });
 
-  const { handleSubmit, trigger, watch, setValue } = form;
+  const { handleSubmit, trigger, watch, setValue, getValues } = form;
   const userType = watch("userType");
+  const email = watch("email");
+
+  // Step 5 is OTP verification, Step 6 is Complete
+  const sendOtpRequest = async () => {
+    setIsSendingOtp(true);
+    setOtpError("");
+    try {
+      const res = await axios.post("http://localhost:5000/api/user/send-otp", {
+        email: getValues("email"),
+      });
+      toast.success(res.data?.message || "Verification code dispatched to your email!");
+      return true;
+    } catch (err: any) {
+      const msg = err.response?.data?.message || "Failed to dispatch verification code";
+      setOtpError(msg);
+      toast.error(msg);
+      return false;
+    } finally {
+      setIsSendingOtp(false);
+    }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse: any) => {
+    try {
+      setIsSubmitting(true);
+      const res = await axios.post("http://localhost:5000/api/user/google-auth", {
+        credential: credentialResponse.credential,
+        userType: userType,
+      });
+
+      if (res.data.requiresRoleSelection) {
+        setPendingGoogleToken(credentialResponse.credential);
+        setPendingGoogleInfo({
+          name: res.data.googleName || "",
+          email: res.data.googleEmail || "",
+        });
+        setGoogleModalOpen(true);
+        return;
+      }
+
+      toast.success(res.data?.message || "Google registration successful!");
+      if (res.data.token && res.data.role) {
+        localStorage.setItem("authToken", res.data.token);
+        localStorage.setItem("userRole", res.data.role);
+        window.location.href = `http://localhost:5174/${res.data.role}/${encodeURIComponent(res.data.token)}`;
+      }
+    } catch (err: any) {
+      toast.error(err.response?.data?.message || "Google authentication failed");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleRoleSelected = async (chosenRole: "farmer" | "buyer") => {
+    try {
+      setIsSubmitting(true);
+      const res = await axios.post("http://localhost:5000/api/user/google-auth", {
+        credential: pendingGoogleToken,
+        userType: chosenRole,
+      });
+
+      toast.success("Welcome to FarmBridge! Account registered successfully.");
+      setGoogleModalOpen(false);
+      if (res.data.token && res.data.role) {
+        localStorage.setItem("authToken", res.data.token);
+        localStorage.setItem("userRole", res.data.role);
+        window.location.href = `http://localhost:5174/${res.data.role}/${encodeURIComponent(res.data.token)}`;
+      }
+    } catch (err: any) {
+      toast.error(err.response?.data?.message || "Google registration failed");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const onSubmit = async (data: RegisterFormData) => {
+    if (!otpValue || otpValue.length < 6) {
+      setOtpError("Please enter the 6-digit OTP sent to your email");
+      return;
+    }
+
     setIsSubmitting(true);
+    setOtpError("");
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
       if (value) {
@@ -392,36 +583,29 @@ export default function RegisterPage() {
         }
       }
     });
-  
+    formData.append("otp", otpValue);
+
     try {
       const response = await axios.post("http://localhost:5000/api/user/register", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-    
-      console.log("Server Response:", response.data); // Debugging
-    
-      // Ensure the role is received correctly
+
+      toast.success("Account registered and activated successfully!");
       if (response.data.token && response.data.userType) {
-        localStorage.setItem("authToken", response.data.token); // Store token
-        localStorage.setItem("userRole", response.data.userType ); // Store role
-    
-        // Redirect to the appropriate dashboard based on user role
-        window.location.href = `http://localhost:5173/login`;
+        localStorage.setItem("authToken", response.data.token);
+        localStorage.setItem("userRole", response.data.userType);
+        setStep(6); // Show complete screen
       } else {
-        alert("Registration failed: Role information is missing.");
+        alert("Registration completed. Please sign in.");
       }
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        alert(`Registration failed: ${error.response?.data?.message || "Please try again later."}`);
-      } else {
-        alert("An unexpected error occurred.");
-      }
+    } catch (error: any) {
+      const msg = error.response?.data?.message || "Registration failed. Please check your details.";
+      setOtpError(msg);
+      toast.error(msg);
     } finally {
       setIsSubmitting(false);
     }
-    
   };
-  
 
   const getStepFields = (currentStep: number): Array<keyof RegisterFormData> => {
     switch (currentStep) {
@@ -439,10 +623,21 @@ export default function RegisterPage() {
   };
 
   const nextStep = async () => {
-    const fields = getStepFields(step);
-    const isValid = await trigger(fields);
-    if (isValid) {
-      setStep((s) => Math.min(s + 1, 5));
+    if (step < 4) {
+      const fields = getStepFields(step);
+      const isValid = await trigger(fields);
+      if (isValid) {
+        setStep((s) => s + 1);
+      }
+    } else if (step === 4) {
+      const fields = getStepFields(4);
+      const isValid = await trigger(fields);
+      if (isValid) {
+        const otpSent = await sendOtpRequest();
+        if (otpSent) {
+          setStep(5); // Move to OTP step
+        }
+      }
     }
   };
 
@@ -465,17 +660,28 @@ export default function RegisterPage() {
               {step === 1 && (
                 <UserTypeSelection
                   selectedType={userType}
-                  onSelect={(type) => setValue("userType", type)}
+                  onSelect={(type) => setValue("userType", type as "farmer" | "buyer")}
+                  onGoogleSuccess={handleGoogleSuccess}
                 />
               )}
               {step === 2 && <PersonalInfo form={form} />}
               {step === 3 && <ContactInfo form={form} />}
               {step === 4 && <DocumentUpload form={form} />}
-              {step === 5 && <RegistrationComplete userType={userType} />}
+              {step === 5 && (
+                <OTPVerificationStep
+                  email={email}
+                  otpValue={otpValue}
+                  onOtpChange={setOtpValue}
+                  onResendOtp={sendOtpRequest}
+                  isSendingOtp={isSendingOtp}
+                  otpError={otpError}
+                />
+              )}
+              {step === 6 && <RegistrationComplete userType={userType} />}
             </motion.div>
           </AnimatePresence>
 
-          {step < 5 && (
+          {step < 6 && (
             <div className="flex justify-between mt-8 pt-6 border-t border-[#E8E4DA]">
               {step > 1 ? (
                 <Button
@@ -489,29 +695,40 @@ export default function RegisterPage() {
               ) : (
                 <div />
               )}
-              {step < 4 ? (
+
+              {step < 5 ? (
                 <Button
                   type="button"
                   onClick={nextStep}
+                  disabled={isSendingOtp}
                   className="bg-[#1E3F2D] hover:bg-[#18392B] text-[#FAF8F3] gap-2 shadow-soft-xs"
-                  disabled={step === 1 && !userType}
                 >
-                  {t("navigation.next")} <ChevronRight className="h-4 w-4" />
+                  {isSendingOtp ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Dispatching OTP...
+                    </>
+                  ) : (
+                    <>
+                      {step === 4 ? "Verify Email with OTP" : t("navigation.next")}
+                      <ChevronRight className="h-4 w-4" />
+                    </>
+                  )}
                 </Button>
               ) : (
                 <Button
                   type="submit"
                   className="bg-[#1E3F2D] hover:bg-[#18392B] text-[#FAF8F3] gap-2 shadow-soft-xs"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || otpValue.length < 6}
                 >
                   {isSubmitting ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      {t("navigation.submitting")}
+                      Verifying & Activating Account...
                     </>
                   ) : (
                     <>
-                      {t("navigation.submit")}
+                      Verify OTP & Complete Registration
                       <ChevronRight className="h-4 w-4" />
                     </>
                   )}
@@ -521,6 +738,16 @@ export default function RegisterPage() {
           )}
         </CardContent>
       </Card>
+
+      {/* Role Selection Modal for 1st-time Google users */}
+      <GoogleRoleModal
+        isOpen={googleModalOpen}
+        googleName={pendingGoogleInfo.name}
+        googleEmail={pendingGoogleInfo.email}
+        onSelectRole={handleRoleSelected}
+        onCancel={() => setGoogleModalOpen(false)}
+        isLoading={isSubmitting}
+      />
     </form>
   );
 }

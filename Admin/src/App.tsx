@@ -27,11 +27,11 @@ import History from './pages/Buyer Dashboard/History';
 import BuyerAnalytics from './pages/Buyer Dashboard/BuyerAnalytics';
 // import { BuyerProfile } from './pages/Buyer Dashboard/BuyerProfile';
 import BuyerDashboard from './pages/Buyer Dashboard/BuyerDashboard';
-import { Farmers } from './pages/Admin/Farmers';
+import Farmers from './pages/Admin/Farmers';
 import Buyers from './pages/Admin/Buyers';
 import { Issues } from './pages/Admin/Issues';
 import { Helpdesk } from './pages/Helpdesk';
-import { AdminAnalytics } from './pages/Admin/AdminAnalytics';
+import AdminAnalytics from './pages/Admin/AdminAnalytics';
 import { AdminProfile } from './pages/Admin/AdminProfile';
 import Helper from './components/Helper';
 import ManageProducts from "./pages/ManageProdcut";
@@ -43,7 +43,7 @@ const queryClient = new QueryClient();
 
 function AppLayout() {
   const location = useLocation();
-  const isLoginPage = location.pathname === '/';
+  const isLoginPage = location.pathname === '/' || location.pathname.includes('/farmer/') || location.pathname.includes('/buyer/');
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -88,12 +88,12 @@ function AppLayout() {
 }
 
 const router = createBrowserRouter([
+  { path: ':role/:token', element: <Helper /> },
   {
     path: '/',
     element: <AppLayout />,
     children: [
       { path: '/', element: <Login /> },
-      { path: ':role/:token', element: <Helper /> },
 
       { path: '/home', element: <Home /> },
       { path: '/profile', element: <Profile /> },

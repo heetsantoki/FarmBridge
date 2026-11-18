@@ -16,6 +16,8 @@ import "../i18n/i18n";
 import { LanguageSelector } from "../components/LanguageSelector";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { GoogleLogin } from "@react-oauth/google";
+import { GoogleRoleModal } from "../components/GoogleRoleModal";
 
 export default function LoginPage() {
   const { t } = useTranslation();
@@ -24,7 +26,21 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [googleModalOpen, setGoogleModalOpen] = useState(false);
+  const [pendingGoogleToken, setPendingGoogleToken] = useState("");
+  const [pendingGoogleInfo, setPendingGoogleInfo] = useState<{ name: string; email: string }>({ name: "", email: "" });
   const navigate = useNavigate();
+
+  const handleLoginSuccessRedirect = (role: string, token: string, user?: any) => {
+    localStorage.setItem("authToken", token);
+    localStorage.setItem("role", role);
+    if (user) {
+      localStorage.setItem("profilePhoto", user.profilePhoto || "");
+      localStorage.setItem("firstName", user.firstName || "");
+      localStorage.setItem("lastName", user.lastName || "");
+    }
+    window.location.href = `http://localhost:5174/${role}/${encodeURIComponent(token)}`;
+  };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -38,21 +54,62 @@ export default function LoginPage() {
         throw new Error("Invalid login response");
       }
     
-      localStorage.setItem("authToken", response.data.token);
-      localStorage.setItem("role", response.data.role);
-    
-      if (response.data.user) {
-        localStorage.setItem("profilePhoto", response.data.user.profilePhoto || "");
-        localStorage.setItem("firstName", response.data.user.firstName || "");
-        localStorage.setItem("lastName", response.data.user.lastName || "");
-      }
-    
-      window.location.href = `http://localhost:5174/${response.data.role}/${encodeURIComponent(response.data.token)}`;
+      handleLoginSuccessRedirect(response.data.role, response.data.token, response.data.user);
     } catch (error: any) {
       console.error("Login error:", error.response?.data);
       const errMsg = error.response?.data?.message || "Login failed. Please check your credentials.";
       setError(errMsg);
       toast.error(errMsg);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse: any) => {
+    try {
+      setIsLoading(true);
+      setError("");
+      const response = await axios.post("http://localhost:5000/api/user/google-auth", {
+        credential: credentialResponse.credential,
+      });
+
+      // If brand new user, ask for their role!
+      if (response.data.requiresRoleSelection) {
+        setPendingGoogleToken(credentialResponse.credential);
+        setPendingGoogleInfo({
+          name: response.data.googleName || "",
+          email: response.data.googleEmail || "",
+        });
+        setGoogleModalOpen(true);
+        return;
+      }
+
+      toast.success(response.data.message || "Google Authentication successful!");
+      handleLoginSuccessRedirect(response.data.role, response.data.token, response.data.user);
+    } catch (err: any) {
+      console.error("Google Auth error:", err);
+      const msg = err.response?.data?.message || "Google Authentication failed. Please try again.";
+      setError(msg);
+      toast.error(msg);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleRoleSelected = async (chosenRole: "farmer" | "buyer") => {
+    try {
+      setIsLoading(true);
+      const response = await axios.post("http://localhost:5000/api/user/google-auth", {
+        credential: pendingGoogleToken,
+        userType: chosenRole,
+      });
+
+      toast.success("Welcome to FarmBridge! Account registered successfully.");
+      setGoogleModalOpen(false);
+      handleLoginSuccessRedirect(response.data.role, response.data.token, response.data.user);
+    } catch (err: any) {
+      const msg = err.response?.data?.message || "Failed to complete role selection. Please try again.";
+      toast.error(msg);
     } finally {
       setIsLoading(false);
     }
@@ -79,11 +136,34 @@ export default function LoginPage() {
         </div>
 
         <div className="bg-white rounded-2xl border border-[#E8E4DA] shadow-soft p-7 sm:p-8">
+          {/* Continue with Google Button */}
+          <div className="mb-6 flex flex-col items-center justify-center">
+            <GoogleLogin
+              onSuccess={handleGoogleSuccess}
+              onError={() => {
+                setError("Google Login was unsuccessful. Please try again.");
+                toast.error("Google login failed");
+              }}
+              theme="outline"
+              size="large"
+              width="100%"
+              text="continue_with"
+              shape="rectangular"
+            />
+          </div>
+
+          <div className="relative flex items-center justify-center mb-6">
+            <div className="border-t border-[#E8E4DA] w-full" />
+            <span className="bg-white px-3 text-xs font-semibold uppercase tracking-wider text-[#7F8B82] absolute">
+              or with credentials
+            </span>
+          </div>
+
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div className="space-y-4">
               <div className="space-y-1.5">
                 <label className="block text-xs font-semibold uppercase tracking-wider text-[#5C6B5F]">
-                  {t("login.username", "Username / Mobile")}
+                  {t("login.username", "Username / Mobile / Email")}
                 </label>
                 <div className="relative">
                   <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#7F8B82]" />
@@ -100,9 +180,17 @@ export default function LoginPage() {
               </div>
 
               <div className="space-y-1.5">
-                <label className="block text-xs font-semibold uppercase tracking-wider text-[#5C6B5F]">
-                  {t("login.password", "Password")}
-                </label>
+                <div className="flex items-center justify-between">
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-[#5C6B5F]">
+                    {t("login.password", "Password")}
+                  </label>
+                  <Link
+                    to="/forgot-password"
+                    className="text-xs text-[#1E3F2D] font-semibold hover:underline"
+                  >
+                    Forgot Password?
+                  </Link>
+                </div>
                 <div className="relative">
                   <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#7F8B82]" />
                   <input
@@ -165,6 +253,16 @@ export default function LoginPage() {
           </form>
         </div>
       </div>
+
+      {/* Role Selection Modal for 1st-time Google users */}
+      <GoogleRoleModal
+        isOpen={googleModalOpen}
+        googleName={pendingGoogleInfo.name}
+        googleEmail={pendingGoogleInfo.email}
+        onSelectRole={handleRoleSelected}
+        onCancel={() => setGoogleModalOpen(false)}
+        isLoading={isLoading}
+      />
     </div>
   );
 }

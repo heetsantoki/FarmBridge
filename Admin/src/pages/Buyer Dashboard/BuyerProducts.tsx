@@ -112,7 +112,7 @@ const BuyerProducts: React.FC = () => {
   const [paymentMethod, setPaymentMethod] = useState("Cash on Delivery");
   const [isOrdering, setIsOrdering] = useState(false);
 
-  const token = useRecoilValue(tokenAtom) || localStorage.getItem("token");
+  const token = useRecoilValue(tokenAtom) || localStorage.getItem("token") || localStorage.getItem("authToken");
 
   const handleOpenBuyModal = (prod: Product, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();

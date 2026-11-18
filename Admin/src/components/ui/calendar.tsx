@@ -28,9 +28,9 @@ const Calendar: React.FC<CalendarProps> = ({
   return (
     <div className="bg-white rounded-lg shadow-md p-4">
       <DayPicker
-        mode={mode}
-        selected={selectedDate}
-        onSelect={handleSelect}
+        mode={mode as any}
+        selected={selectedDate as any}
+        onSelect={handleSelect as any}
         initialFocus={initialFocus}
         className="border border-gray-200 rounded-md"
         classNames={{

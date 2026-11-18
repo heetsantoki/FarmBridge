@@ -74,7 +74,7 @@ const Requests = () => {
     setRequests(prevRequests => 
       prevRequests.map(request => 
         request.id === id 
-          ? { ...request, status: 'accepted' } 
+          ? { ...request, status: 'accepted' as const } 
           : request
       ).sort((a, b) => {
         // Sort accepted requests to the top

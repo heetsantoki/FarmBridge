@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { HiSearch, HiOutlineBell } from "react-icons/hi";
 import toast from "react-hot-toast";
 import { LanguageSelector } from "../components/LanguageSelector";
@@ -20,14 +20,20 @@ interface UserProfile {
 const Navbar = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
   const recoilRole = useRecoilValue(roleAtom);
   const role = recoilRole || localStorage.getItem("role") || "farmer";
   const [user, setUser] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token") || localStorage.getItem("authToken");
   const profilePicUrl = user?.profilePhoto || "/default-avatar.png";
 
   useEffect(() => {
+    // If on login or transition helper route, do not bounce to login
+    if (location.pathname === '/' || location.pathname.includes('/farmer/') || location.pathname.includes('/buyer/')) {
+      return;
+    }
+
     const fetchUserProfile = async () => {
       if (!token) {
         window.location.href = "http://localhost:5173/login";

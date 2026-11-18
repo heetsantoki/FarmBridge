@@ -1,11 +1,11 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 // Define the supported languages (English, Hindi, Gujarati)
 export type Language = 'en' | 'hi' | 'gu';
 
 // Define translation data structure
 export interface TranslationData {
-  [key: string]: string | TranslationData;
+  [key: string]: any;
 }
 
 // Import translations

@@ -1,232 +1,183 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useTranslation } from '../../hooks/useTranslation';
-import { MapPin, Phone, Mail, Calendar, ShoppingBag, CreditCard } from 'lucide-react';
-import {LanguageSelector} from '../../components/LanguageSelector';
+import { 
+  User, 
+  MapPin, 
+  Phone, 
+  Mail, 
+  ShoppingBag,
+  RefreshCw,
+  Search,
+  Store
+} from 'lucide-react';
+import { toast } from 'react-toastify';
 
-// Interface for buyer data
 interface Buyer {
-  id: string;
-  name: string;
-  photo: string;
-  address: string;
-  contact: string;
-  email: string;
-  productsBought: {
-    name: string;
-    quantity: string;
-    price: number;
-    date: string;
-  }[];
-  totalPurchase: number;
-  joiningDate: string;
+  _id: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  profilePhoto?: string;
+  proofDocument?: string;
+  state?: string;
+  country?: string;
+  phone?: string;
+  email?: string;
+  documentNo?: string;
+  createdAt?: string;
 }
 
 const Buyers = () => {
   const { t } = useTranslation();
-  
-  // Sample buyers data - in a real app this would come from an API
-  const [buyers] = useState<Buyer[]>([
-    {
-      id: '1',
-      name: 'Rahul Sharma',
-      photo: 'https://randomuser.me/api/portraits/men/1.jpg',
-      address: '123 Main Street, Mumbai, Maharashtra',
-      contact: '+91 98765 43210',
-      email: 'rahul.sharma@example.com',
-      productsBought: [
-        {
-          name: 'Organic Tomatoes',
-          quantity: '50 kg',
-          price: 2000,
-          date: '2023-11-15'
-        },
-        {
-          name: 'Fresh Apples',
-          quantity: '20 kg',
-          price: 1800,
-          date: '2023-12-05'
-        }
-      ],
-      totalPurchase: 3800,
-      joiningDate: '2023-10-01'
-    },
-    {
-      id: '2',
-      name: 'Priya Patel',
-      photo: 'https://randomuser.me/api/portraits/women/2.jpg',
-      address: '456 Park Avenue, Ahmedabad, Gujarat',
-      contact: '+91 87654 32109',
-      email: 'priya.patel@example.com',
-      productsBought: [
-        {
-          name: 'Premium Rice',
-          quantity: '100 kg',
-          price: 5000,
-          date: '2023-11-20'
-        }
-      ],
-      totalPurchase: 5000,
-      joiningDate: '2023-09-15'
-    },
-    {
-      id: '3',
-      name: 'Amit Kumar',
-      photo: 'https://randomuser.me/api/portraits/men/3.jpg',
-      address: '789 Garden Road, Delhi',
-      contact: '+91 76543 21098',
-      email: 'amit.kumar@example.com',
-      productsBought: [
-        {
-          name: 'Fresh Apples',
-          quantity: '30 kg',
-          price: 3000,
-          date: '2023-12-10'
-        },
-        {
-          name: 'Organic Vegetables',
-          quantity: '25 kg',
-          price: 2200,
-          date: '2023-12-18'
-        }
-      ],
-      totalPurchase: 5200,
-      joiningDate: '2023-08-20'
-    },
-    {
-      id: '4',
-      name: 'Bharat Patel',
-      photo: 'https://randomuser.me/api/portraits/men/4.jpg',
-      address: '234 Farm View, Surat, Gujarat',
-      contact: '+91 65432 10987',
-      email: 'bharat.patel@example.com',
-      productsBought: [
-        {
-          name: 'Garlic',
-          quantity: '30 kg',
-          price: 2000,
-          date: '2023-12-12'
-        }
-      ],
-      totalPurchase: 2000,
-      joiningDate: '2023-07-10'
-    },
-    {
-      id: '5',
-      name: 'Nitin Sharma',
-      photo: 'https://randomuser.me/api/portraits/men/5.jpg',
-      address: '567 Fruit Market, Pune, Maharashtra',
-      contact: '+91 54321 09876',
-      email: 'nitin.sharma@example.com',
-      productsBought: [
-        {
-          name: 'Organic Mangoes',
-          quantity: '20 kg',
-          price: 1500,
-          date: '2023-11-25'
-        },
-        {
-          name: 'Premium Rice',
-          quantity: '50 kg',
-          price: 2500,
-          date: '2023-12-15'
-        }
-      ],
-      totalPurchase: 4000,
-      joiningDate: '2023-06-01'
-    }
-  ]);
+  const [buyers, setBuyers] = useState<Buyer[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [searchTerm, setSearchTerm] = useState<string>('');
 
-  // Format date for display
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-IN', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    });
+  const token = localStorage.getItem('token');
+
+  const fetchBuyers = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get('http://localhost:5000/api/user/all?role=buyer', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setBuyers(res.data || []);
+    } catch (err: any) {
+      console.error('Fetch buyers error:', err);
+      toast.error('Failed to load registered buyers from database');
+    } finally {
+      setLoading(false);
+    }
   };
 
+  useEffect(() => {
+    fetchBuyers();
+  }, []);
+
+  const filteredBuyers = buyers.filter(b => {
+    const fullName = `${b.firstName || ''} ${b.lastName || ''} ${b.username || ''}`.toLowerCase();
+    const location = `${b.state || ''} ${b.country || ''}`.toLowerCase();
+    return fullName.includes(searchTerm.toLowerCase()) || location.includes(searchTerm.toLowerCase());
+  });
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-semibold mt-12 mx-auto">Buyers Dashboard</h1>
-        
+    <div className="w-full max-w-7xl mx-auto space-y-7 pb-16 font-sans">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[#E8E4DA] pb-5">
+        <div>
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#2C485E] bg-[#EEF2F6] px-3.5 py-1.5 rounded-full border border-[#DCE4EC]">
+            Admin Control Center
+          </span>
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#1A261D] mt-2">
+            Registered Wholesale Buyers
+          </h1>
+          <p className="text-xs sm:text-sm text-[#5C6B5F] mt-1">
+            Institutional buyers, retail processors, and agricultural traders ({buyers.length} registered buyers).
+          </p>
+        </div>
+
+        <button
+          onClick={fetchBuyers}
+          className="flex items-center gap-2 px-4 py-2 bg-[#FAF8F3] hover:bg-[#F2EDE2] border border-[#E8E4DA] rounded-xl text-xs font-semibold text-[#1A261D] transition-colors shadow-soft-xs"
+        >
+          <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-[#1E3F2D]' : ''}`} />
+          Refresh Database
+        </button>
       </div>
 
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white">
-            <thead>
-              <tr className="bg-gray-100 border-b">
-                <th className="py-4 px-6 text-left text-sm font-medium text-gray-700">Buyer Details</th>
-                <th className="py-4 px-6 text-left text-sm font-medium text-gray-700">Contact Information</th>
-                <th className="py-4 px-6 text-left text-sm font-medium text-gray-700">Products Purchased</th>
-                <th className="py-4 px-6 text-left text-sm font-medium text-gray-700">Total Purchase</th>
-                <th className="py-4 px-6 text-left text-sm font-medium text-gray-700">Joining Date</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200">
-              {buyers.map((buyer) => (
-                <tr key={buyer.id} className="hover:bg-gray-50 transition-all duration-300">
-                  <td className="py-4 px-6">
-                    <div className="flex items-center">
-                      <div className="h-12 w-12 flex-shrink-0 overflow-hidden rounded-full border border-gray-200">
-                        <img
-                          src={buyer.photo}
-                          alt={buyer.name}
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">{buyer.name}</div>
-                        <div className="text-xs text-gray-500 flex items-center mt-1">
-                          <MapPin size={12} className="mr-1" /> {buyer.address}
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-4 px-6">
-                    <div className="text-sm text-gray-700 flex items-center mb-1">
-                      <Phone size={14} className="mr-2 text-gray-500" />
-                      {buyer.contact}
-                    </div>
-                    <div className="text-sm text-gray-700 flex items-center">
-                      <Mail size={14} className="mr-2 text-gray-500" />
-                      {buyer.email}
-                    </div>
-                  </td>
-                  <td className="py-4 px-6">
-                    <div className="space-y-2">
-                      {buyer.productsBought.map((product, index) => (
-                        <div key={index} className="text-sm text-gray-700 border-l-2 border-blue-500 pl-2">
-                          <div className="font-medium">{product.name}</div>
-                          <div className="flex justify-between text-xs text-gray-500">
-                            <span>{product.quantity}</span>
-                            <span>₹{product.price}</span>
-                            <span>{formatDate(product.date)}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </td>
-                  <td className="py-4 px-6">
-                    <div className="text-sm font-medium text-gray-900 flex items-center">
-                      <CreditCard size={16} className="mr-2 text-green-600" />
-                      ₹{buyer.totalPurchase}
-                    </div>
-                  </td>
-                  <td className="py-4 px-6">
-                    <div className="text-sm text-gray-700 flex items-center">
-                      <Calendar size={16} className="mr-2 text-blue-600" />
-                      {formatDate(buyer.joiningDate)}
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      {/* Search Bar */}
+      <div className="bg-[#FAF8F3] rounded-2xl p-4 border border-[#E8E4DA] shadow-soft-xs flex items-center justify-between">
+        <div className="relative w-full max-w-md">
+          <Search className="w-4 h-4 absolute left-3.5 top-3 text-[#7F8B82]" />
+          <input
+            type="text"
+            placeholder="Search buyers by name, username, or state..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full pl-10 pr-4 py-2 bg-white border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-xs font-medium text-[#1A261D]"
+          />
         </div>
+        <span className="text-xs text-[#5C6B5F] font-semibold hidden sm:inline">
+          Showing <strong>{filteredBuyers.length}</strong> buyers
+        </span>
       </div>
+
+      {/* Buyers List */}
+      {loading ? (
+        <div className="flex justify-center items-center py-20">
+          <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-[#1E3F2D]"></div>
+        </div>
+      ) : filteredBuyers.length === 0 ? (
+        <div className="bg-white rounded-2xl p-12 text-center border border-[#E8E4DA] max-w-md mx-auto shadow-soft-xs">
+          <Store className="w-12 h-12 text-[#7F8B82] mx-auto mb-3" />
+          <h3 className="text-lg font-bold text-[#1A261D]">No Buyers Found</h3>
+          <p className="text-xs text-[#5C6B5F] mt-1">
+            {searchTerm ? 'No registered buyers match your search query.' : 'No buyers have registered in the database yet.'}
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredBuyers.map((b) => (
+            <div
+              key={b._id}
+              className="bg-white rounded-2xl border border-[#E8E4DA] shadow-soft-xs hover:shadow-soft transition-all duration-200 p-6 flex flex-col justify-between space-y-4"
+            >
+              <div className="flex items-center gap-4">
+                <img
+                  src={b.profilePhoto || '/default-avatar.png'}
+                  alt={b.firstName}
+                  className="w-16 h-16 rounded-2xl object-cover border border-[#E8E4DA] bg-[#FAF8F3]"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop';
+                  }}
+                />
+                <div>
+                  <h3 className="text-base font-bold text-[#1A261D]">
+                    {b.firstName} {b.lastName || ''}
+                  </h3>
+                  <span className="text-xs font-mono text-[#5C6B5F]">@{b.username}</span>
+                  <div className="mt-1 flex items-center gap-1.5 text-[11px] font-semibold text-[#2C485E] bg-[#EEF2F6] px-2 py-0.5 rounded-md border border-[#DCE4EC] w-fit">
+                    <ShoppingBag className="w-3 h-3 text-[#2C485E]" />
+                    <span>Commercial Buyer</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-2 text-xs text-[#5C6B5F] bg-[#FAF8F3] p-3.5 rounded-xl border border-[#E8E4DA]">
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-[#2C485E] flex-shrink-0" />
+                  <span>{b.state || 'State not provided'}, {b.country || 'India'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="w-3.5 h-3.5 text-[#2C485E] flex-shrink-0" />
+                  <a href={`tel:${b.phone}`} className="hover:underline text-[#1A261D] font-medium">{b.phone || 'N/A'}</a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Mail className="w-3.5 h-3.5 text-[#2C485E] flex-shrink-0" />
+                  <span className="truncate">{b.email || 'N/A'}</span>
+                </div>
+                {b.documentNo && (
+                  <div className="flex items-center gap-2 pt-1 border-t border-[#E8E4DA]">
+                    <span className="font-semibold text-[#1A261D]">Business Doc:</span>
+                    <span className="font-mono text-[#2C485E]">{b.documentNo}</span>
+                  </div>
+                )}
+              </div>
+
+              {b.proofDocument && (
+                <a
+                  href={b.proofDocument}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full py-2 bg-[#FAF8F3] hover:bg-[#F2EDE2] border border-[#E8E4DA] text-[#1A261D] rounded-xl text-xs font-semibold text-center transition-colors shadow-soft-xs"
+                >
+                  Inspect Registration Proof
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

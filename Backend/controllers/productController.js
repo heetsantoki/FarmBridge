@@ -116,4 +116,57 @@ const deleteProduct = async (req, res) => {
   }
 };
 
-module.exports = { createProduct, getProducts, getMyProducts, deleteProduct };
+const updateProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const farmerId = req.user.id;
+
+    const existingProduct = await Product.findOne({ _id: id, farmerId });
+    if (!existingProduct) {
+      return res.status(404).json({ message: 'Product not found or unauthorized' });
+    }
+
+    const {
+      name,
+      category,
+      minQuantity,
+      unit,
+      priceMin,
+      priceMax,
+      qualityCertificateNo,
+      qualityParameters,
+      extraDetails,
+    } = req.body;
+
+    if (name) existingProduct.name = name;
+    if (category) existingProduct.category = category;
+    if (minQuantity) existingProduct.minQuantity = Number(minQuantity);
+    if (unit) existingProduct.unit = unit;
+    if (priceMin !== undefined || priceMax !== undefined) {
+      existingProduct.priceRange = {
+        min: priceMin !== undefined ? parseFloat(priceMin) : existingProduct.priceRange.min,
+        max: priceMax !== undefined ? parseFloat(priceMax) : existingProduct.priceRange.max,
+      };
+    }
+    if (qualityCertificateNo !== undefined) existingProduct.qualityCertificateNo = qualityCertificateNo;
+    if (qualityParameters !== undefined) existingProduct.qualityParameters = qualityParameters;
+    if (extraDetails !== undefined) existingProduct.extraDetails = extraDetails;
+
+    if (req.files && req.files.length > 0) {
+      const newImages = req.files.map(file => `/uploads/productImages/${file.filename}`);
+      existingProduct.images = newImages;
+    }
+
+    await existingProduct.save();
+
+    res.status(200).json({
+      message: 'Product updated successfully',
+      product: existingProduct,
+    });
+  } catch (error) {
+    console.error('UPDATE PRODUCT ERROR:', error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { createProduct, getProducts, getMyProducts, deleteProduct, updateProduct };

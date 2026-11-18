@@ -1,4 +1,3 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, X, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react"; 
 import { useState } from "react";

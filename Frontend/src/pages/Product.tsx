@@ -12,6 +12,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import ProductDetailsModal from "@/components/ProductDetailsModal";
 import { ProductType } from "@/types/product";
+import { cn } from "@/lib/utils";
 
 // Updated products array with quantity only
 const products: ProductType[] = [
@@ -288,7 +289,7 @@ const Product = () => {
   };
 
   const categories = Array.from(new Set(products.map(product => product.category)));
-  const cities = Array.from(new Set(products.map(product => product.farmerCity).filter(Boolean)));
+  const cities = Array.from(new Set(products.map(product => product.farmerCity).filter((c): c is string => Boolean(c))));
 
   const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;

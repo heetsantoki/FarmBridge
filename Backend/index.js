@@ -15,10 +15,14 @@ const path = require('path');
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const orderRoutes = require('./routes/orderRoutes');
+const analyticsRoutes = require('./routes/analyticsRoutes');
+const mandiRoutes = require('./routes/mandiRoutes');
 
 app.use('/api/user', userRoutes);
 app.use('/api/product', productRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/analytics', analyticsRoutes);
+app.use('/api/mandi', mandiRoutes);
 
 // Global error handler
 app.use((err, req, res, next) => {

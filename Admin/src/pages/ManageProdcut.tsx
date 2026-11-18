@@ -2,7 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Package, PlusCircle, Trash2, ArrowLeft, RefreshCw, ShieldCheck, Calendar, Search } from "lucide-react";
+import {
+  Package,
+  PlusCircle,
+  Trash2,
+  ArrowLeft,
+  RefreshCw,
+  ShieldCheck,
+  Calendar,
+  Search,
+  Edit3,
+  X
+} from "lucide-react";
 
 interface Product {
   _id: string;
@@ -16,6 +27,7 @@ interface Product {
   minQuantity: number;
   unit: string;
   qualityCertificateNo?: string;
+  qualityParameters?: string;
   extraDetails?: string;
   createdAt?: string;
 }
@@ -26,6 +38,22 @@ const ManageProduct: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+
+  // Edit Modal State
+  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const [editFormData, setEditFormData] = useState({
+    name: "",
+    category: "",
+    minQuantity: "",
+    unit: "",
+    priceMin: "",
+    priceMax: "",
+    qualityCertificateNo: "",
+    qualityParameters: "",
+    extraDetails: "",
+  });
+  const [editImages, setEditImages] = useState<File[]>([]);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   const token = localStorage.getItem("token");
 
@@ -62,6 +90,62 @@ const ManageProduct: React.FC = () => {
       setProducts((prev) => prev.filter((p) => p._id !== id));
     } catch (err: any) {
       toast.error(err.response?.data?.message || "Failed to delete product");
+    }
+  };
+
+  const handleOpenEdit = (prod: Product) => {
+    setEditingProduct(prod);
+    setEditFormData({
+      name: prod.name,
+      category: prod.category,
+      minQuantity: String(prod.minQuantity || ""),
+      unit: prod.unit || "kg",
+      priceMin: String(prod.priceRange?.min || ""),
+      priceMax: String(prod.priceRange?.max || ""),
+      qualityCertificateNo: prod.qualityCertificateNo || "",
+      qualityParameters: prod.qualityParameters || "",
+      extraDetails: prod.extraDetails || "",
+    });
+    setEditImages([]);
+  };
+
+  const handleEditSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingProduct) return;
+
+    setIsUpdating(true);
+    const data = new FormData();
+    data.append("name", editFormData.name);
+    data.append("category", editFormData.category);
+    data.append("minQuantity", editFormData.minQuantity);
+    data.append("unit", editFormData.unit);
+    data.append("priceMin", editFormData.priceMin);
+    data.append("priceMax", editFormData.priceMax);
+    data.append("qualityCertificateNo", editFormData.qualityCertificateNo);
+    data.append("qualityParameters", editFormData.qualityParameters);
+    data.append("extraDetails", editFormData.extraDetails);
+
+    editImages.forEach((f) => {
+      data.append("images", f);
+    });
+
+    try {
+      const res = await axios.put(`http://localhost:5000/api/product/${editingProduct._id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      toast.success("Crop details updated successfully!");
+      setProducts((prev) =>
+        prev.map((p) => (p._id === editingProduct._id ? res.data.product : p))
+      );
+      setEditingProduct(null);
+    } catch (err: any) {
+      toast.error(err.response?.data?.error || err.message || "Failed to update product");
+    } finally {
+      setIsUpdating(false);
     }
   };
 
@@ -128,11 +212,10 @@ const ManageProduct: React.FC = () => {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold capitalize transition-all whitespace-nowrap ${
-                selectedCategory === cat
-                  ? "bg-[#1E3F2D] text-[#FAF8F3] shadow-soft-xs"
-                  : "bg-[#FFFFFF] text-[#5C6B5F] hover:text-[#1A261D] hover:bg-[#F2EDE2] border border-[#E8E4DA]"
-              }`}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold capitalize transition-all whitespace-nowrap ${selectedCategory === cat
+                ? "bg-[#1E3F2D] text-[#FAF8F3] shadow-soft-xs"
+                : "bg-[#FFFFFF] text-[#5C6B5F] hover:text-[#1A261D] hover:bg-[#F2EDE2] border border-[#E8E4DA]"
+                }`}
             >
               {cat === "all" ? "All Crops" : cat}
             </button>
@@ -192,13 +275,22 @@ const ManageProduct: React.FC = () => {
                     {prod.category}
                   </span>
 
-                  <button
-                    onClick={() => handleDelete(prod._id)}
-                    title="Remove Crop Listing"
-                    className="absolute top-3.5 right-3.5 w-8 h-8 bg-[#FAF8F3] text-[#7F8B82] hover:text-[#842A2A] border border-[#E8E4DA] rounded-full flex items-center justify-center shadow-soft-xs transition-all hover:scale-105"
-                  >
-                    <Trash2 className="w-3.5 h-3.5" />
-                  </button>
+                  <div className="absolute top-3.5 right-3.5 flex gap-1.5">
+                    <button
+                      onClick={() => handleOpenEdit(prod)}
+                      title="Edit Crop Listing"
+                      className="w-8 h-8 bg-[#FAF8F3] text-[#1E3F2D] hover:bg-white border border-[#E8E4DA] rounded-full flex items-center justify-center shadow-soft-xs transition-all hover:scale-105"
+                    >
+                      <Edit3 className="w-3.5 h-3.5" />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(prod._id)}
+                      title="Remove Crop Listing"
+                      className="w-8 h-8 bg-[#FAF8F3] text-[#7F8B82] hover:text-[#842A2A] border border-[#E8E4DA] rounded-full flex items-center justify-center shadow-soft-xs transition-all hover:scale-105"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
 
                   <div className="absolute bottom-3 left-3.5 right-3.5 flex justify-between items-end text-[#FAF8F3]">
                     <span className="text-xs font-normal">
@@ -245,10 +337,12 @@ const ManageProduct: React.FC = () => {
                       <Calendar className="w-3.5 h-3.5 text-[#7F8B82]" />
                       {prod.createdAt ? new Date(prod.createdAt).toLocaleDateString() : "Listed"}
                     </span>
-                    <span className="text-[#1E3F2D] font-semibold flex items-center gap-1">
-                      <span className="w-2 h-2 rounded-full bg-[#1E3F2D] inline-block" />
-                      Live in Market
-                    </span>
+                    <button
+                      onClick={() => handleOpenEdit(prod)}
+                      className="text-[#1E3F2D] font-semibold hover:underline flex items-center gap-1"
+                    >
+                      <Edit3 className="w-3 h-3" /> Edit
+                    </button>
                   </div>
                 </div>
               </div>
@@ -256,9 +350,167 @@ const ManageProduct: React.FC = () => {
           })}
         </div>
       )}
+
+      {/* Edit Product Modal */}
+      {editingProduct && (
+        <div className="fixed inset-0 z-50 bg-[#142C1F]/60 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 border border-[#E8E4DA] shadow-soft-lg relative max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setEditingProduct(null)}
+              className="absolute top-5 right-5 p-1.5 text-[#7F8B82] hover:text-[#1A261D] bg-[#FAF8F3] hover:bg-[#F2EDE2] rounded-full transition-colors border border-[#E8E4DA]"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <h2 className="text-xl font-bold text-[#1A261D] mb-1">
+              Edit Crop Listing: {editingProduct.name}
+            </h2>
+            <p className="text-xs text-[#5C6B5F] mb-6">
+              Update pricing, minimum quantity, or certification parameters in real-time.
+            </p>
+
+            <form onSubmit={handleEditSubmit} className="space-y-4 text-xs font-semibold">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block uppercase text-[#5C6B5F] mb-1">Crop Name</label>
+                  <input
+                    type="text"
+                    required
+                    value={editFormData.name}
+                    onChange={(e) => setEditFormData({ ...editFormData, name: e.target.value })}
+                    className="w-full px-3 py-2 bg-[#FAF8F3] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-sm text-[#1A261D]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block uppercase text-[#5C6B5F] mb-1">Category</label>
+                  <select
+                    value={editFormData.category}
+                    onChange={(e) => setEditFormData({ ...editFormData, category: e.target.value })}
+                    className="w-full px-3 py-2 bg-[#FAF8F3] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-sm text-[#1A261D]"
+                  >
+                    <option value="Grains">Grains & Cereals</option>
+                    <option value="Vegetables">Fresh Vegetables</option>
+                    <option value="Fruits">Seasonal Fruits</option>
+                    <option value="Pulses">Pulses & Lentils</option>
+                    <option value="Spices">Spices & Herbs</option>
+                    <option value="Oilseeds">Oilseeds & Mustard</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div>
+                  <label className="block uppercase text-[#5C6B5F] mb-1">Min Price (₹)</label>
+                  <input
+                    type="number"
+                    required
+                    value={editFormData.priceMin}
+                    onChange={(e) => setEditFormData({ ...editFormData, priceMin: e.target.value })}
+                    className="w-full px-3 py-2 bg-[#FAF8F3] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-sm text-[#1A261D]"
+                  />
+                </div>
+                <div>
+                  <label className="block uppercase text-[#5C6B5F] mb-1">Max Price (₹)</label>
+                  <input
+                    type="number"
+                    required
+                    value={editFormData.priceMax}
+                    onChange={(e) => setEditFormData({ ...editFormData, priceMax: e.target.value })}
+                    className="w-full px-3 py-2 bg-[#FAF8F3] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-sm text-[#1A261D]"
+                  />
+                </div>
+                <div>
+                  <label className="block uppercase text-[#5C6B5F] mb-1">Min Lot Qty</label>
+                  <input
+                    type="number"
+                    required
+                    value={editFormData.minQuantity}
+                    onChange={(e) => setEditFormData({ ...editFormData, minQuantity: e.target.value })}
+                    className="w-full px-3 py-2 bg-[#FAF8F3] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-sm text-[#1A261D]"
+                  />
+                </div>
+                <div>
+                  <label className="block uppercase text-[#5C6B5F] mb-1">Unit</label>
+                  <select
+                    value={editFormData.unit}
+                    onChange={(e) => setEditFormData({ ...editFormData, unit: e.target.value })}
+                    className="w-full px-3 py-2 bg-[#FAF8F3] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-sm text-[#1A261D]"
+                  >
+                    <option value="kg">kg</option>
+                    <option value="quintal">quintal</option>
+                    <option value="ton">ton</option>
+                    <option value="box">box</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block uppercase text-[#5C6B5F] mb-1">Quality Certificate No</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. AGMARK-GJ-1092"
+                    value={editFormData.qualityCertificateNo}
+                    onChange={(e) => setEditFormData({ ...editFormData, qualityCertificateNo: e.target.value })}
+                    className="w-full px-3 py-2 bg-[#FAF8F3] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-sm text-[#1A261D]"
+                  />
+                </div>
+                <div>
+                  <label className="block uppercase text-[#5C6B5F] mb-1">Quality Parameters</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Moisture < 11%, Grade A"
+                    value={editFormData.qualityParameters}
+                    onChange={(e) => setEditFormData({ ...editFormData, qualityParameters: e.target.value })}
+                    className="w-full px-3 py-2 bg-[#FAF8F3] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-sm text-[#1A261D]"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block uppercase text-[#5C6B5F] mb-1">Extra Details</label>
+                <textarea
+                  rows={2}
+                  value={editFormData.extraDetails}
+                  onChange={(e) => setEditFormData({ ...editFormData, extraDetails: e.target.value })}
+                  className="w-full px-3 py-2 bg-[#FAF8F3] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-sm text-[#1A261D]"
+                />
+              </div>
+
+              <div>
+                <label className="block uppercase text-[#5C6B5F] mb-1">Replace Harvest Photos (optional)</label>
+                <input
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  onChange={(e) => setEditImages(e.target.files ? Array.from(e.target.files) : [])}
+                  className="w-full text-xs text-[#5C6B5F]"
+                />
+              </div>
+
+              <div className="flex justify-end gap-3 pt-4 border-t border-[#E8E4DA]">
+                <button
+                  type="button"
+                  onClick={() => setEditingProduct(null)}
+                  className="px-5 py-2.5 rounded-xl border border-[#E8E4DA] text-[#5C6B5F] hover:bg-[#FAF8F3] transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isUpdating}
+                  className="px-6 py-2.5 rounded-xl bg-[#1E3F2D] hover:bg-[#152F21] text-[#FAF8F3] font-semibold transition-colors shadow-soft-xs"
+                >
+                  {isUpdating ? "Saving Updates..." : "Save Changes"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default ManageProduct;
-

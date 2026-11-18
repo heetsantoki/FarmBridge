@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import {
   BarChart,
   Bar,
@@ -10,219 +11,163 @@ import {
   PieChart,
   Pie,
   Cell,
+  CartesianGrid
 } from 'recharts';
 import { useTranslation } from '../hooks/useTranslation';
-import LanguageSwitcher from '../components/LanguageSwitcher';
+import { TrendingUp, Package, ShoppingCart, DollarSign, RefreshCw } from 'lucide-react';
+import { toast } from 'react-toastify';
+
+const COLORS = ['#1E3F2D', '#2C5E43', '#4E8A66', '#7FB894', '#BCE3C7', '#E5A93B'];
 
 const Analytics = () => {
   const { t } = useTranslation();
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-  // Sales Data
-  const fruitsSalesData = [
-    { month: t('months.Jan'), sales: 5000 },
-    { month: t('months.Feb'), sales: 4200 },
-    { month: t('months.Mar'), sales: 3800 },
-    { month: t('months.Apr'), sales: 4500 },
-    { month: t('months.May'), sales: 3900 },
-  ];
+  const token = localStorage.getItem('token');
 
-  const grainsSalesData = [
-    { month: t('months.Jan'), sales: 6200 },
-    { month: t('months.Feb'), sales: 5400 },
-    { month: t('months.Mar'), sales: 4900 },
-    { month: t('months.Apr'), sales: 5300 },
-    { month: t('months.May'), sales: 4700 },
-  ];
+  const fetchFarmerAnalytics = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get('http://localhost:5000/api/analytics/farmer', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setData(res.data);
+    } catch (err: any) {
+      console.error('Fetch farmer analytics error:', err);
+      toast.error('Failed to load live analytics data');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  // Profit Data
-  const fruitProfitData = [
-    { product: t('Analytics.products.apples'), profit: 3200 },
-    { product: t('Analytics.products.bananas'), profit: 2700 },
-    { product: t('Analytics.products.oranges'), profit: 2500 },
-    { product: t('Analytics.products.grapes'), profit: 3000 },
-  ];
-
-  const grainsProfitData = [
-    { product: t('Analytics.products.rice'), profit: 4000 },
-    { product: t('Analytics.products.wheat'), profit: 3500 },
-    { product: t('Analytics.products.oats'), profit: 2800 },
-    { product: t('Analytics.products.corn'), profit: 3100 },
-  ];
-
-  // Discount Data
-  const fruitDiscountData = [
-    { product: t('Analytics.products.apples'), discount: 8 },
-    { product: t('Analytics.products.bananas'), discount: 12 },
-    { product: t('Analytics.products.oranges'), discount: 6 },
-    { product: t('Analytics.products.grapes'), discount: 10 },
-  ];
-
-  const grainsDiscountData = [
-    { product: t('Analytics.products.rice'), discount: 15 },
-    { product: t('Analytics.products.wheat'), discount: 10 },
-    { product: t('Analytics.products.oats'), discount: 7 },
-    { product: t('Analytics.products.corn'), discount: 9 },
-  ];
-
-  // Rating Data
-  const fruitRatingData = [
-    { product: t('Analytics.products.apples'), rating: 4.5 },
-    { product: t('Analytics.products.bananas'), rating: 4.2 },
-    { product: t('Analytics.products.oranges'), rating: 4.0 },
-    { product: t('Analytics.products.grapes'), rating: 4.3 },
-  ];
-
-  const grainsRatingData = [
-    { product: t('Analytics.products.rice'), rating: 4.7 },
-    { product: t('Analytics.products.wheat'), rating: 4.4 },
-    { product: t('Analytics.products.oats'), rating: 4.1 },
-    { product: t('Analytics.products.corn'), rating: 4.5 },
-  ];
-
-  // City Sales Data
-  const citySalesData = [
-    { city: 'City A', product: t('Analytics.products.apples'), sales: 3000 },
-    { city: 'City A', product: t('Analytics.products.bananas'), sales: 2500 },
-    { city: 'City A', product: t('Analytics.products.oranges'), sales: 2000 },
-    { city: 'City A', product: t('Analytics.products.grapes'), sales: 2800 },
-    { city: 'City B', product: t('Analytics.products.rice'), sales: 4000 },
-    { city: 'City B', product: t('Analytics.products.wheat'), sales: 3500 },
-    { city: 'City B', product: t('Analytics.products.oats'), sales: 3000 },
-    { city: 'City B', product: t('Analytics.products.corn'), sales: 3200 },
-  ];
+  useEffect(() => {
+    fetchFarmerAnalytics();
+  }, []);
 
   return (
-    <div className="w-full max-w-7xl mx-auto space-y-6 pb-16 font-sans min-w-0">
-      <div className="w-full min-w-0">
-        <div className="flex justify-between items-center mb-8 border-b border-slate-200/80 pb-5">
-          <div>
-            <h1 className="text-3xl font-black text-slate-900 tracking-tight">{t('Analytics.title')}</h1>
-            <p className="text-sm text-slate-500 mt-1">Farm yield, revenue trends, and commodity sales performance</p>
-          </div>
+    <div className="w-full max-w-7xl mx-auto space-y-7 pb-16 font-sans min-w-0">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[#E8E4DA] pb-5">
+        <div>
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#1E3F2D] bg-[#EEF4EF] px-3.5 py-1.5 rounded-full border border-[#D5E4D8]">
+            Real-Time Farm Metrics
+          </span>
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#1A261D] mt-2">
+            Producer Sales & Harvest Analytics
+          </h1>
+          <p className="text-xs sm:text-sm text-[#5C6B5F] mt-1">
+            Aggregated metrics calculated dynamically from your listed produce inventory and real buyer purchase orders.
+          </p>
         </div>
 
-        {/* Sales vs Month */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-xs min-w-0 overflow-hidden">
-            <h2 className="text-lg font-semibold mb-4">{t('Analytics.sales.fruits')}</h2>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={fruitsSalesData}>
-                <XAxis dataKey="month" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="sales" fill="#ff6384" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
+        <button
+          onClick={fetchFarmerAnalytics}
+          className="flex items-center gap-2 px-4 py-2 bg-[#FAF8F3] hover:bg-[#F2EDE2] border border-[#E8E4DA] rounded-xl text-xs font-semibold text-[#1A261D] transition-colors shadow-soft-xs"
+        >
+          <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-[#1E3F2D]' : ''}`} />
+          Refresh Stats
+        </button>
+      </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <h2 className="text-lg font-semibold mb-4">{t('Analytics.sales.grains')}</h2>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={grainsSalesData}>
-                <XAxis dataKey="month" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="sales" fill="#36a2eb" />
-              </BarChart>
-            </ResponsiveContainer>
+      {/* KPI Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div className="bg-white rounded-2xl p-5 border border-[#E8E4DA] shadow-soft-xs">
+          <div className="flex justify-between items-center text-[#5C6B5F] text-xs font-semibold uppercase">
+            <span>Harvest Volume Listed</span>
+            <Package className="w-4 h-4 text-[#1E3F2D]" />
           </div>
+          <div className="text-2xl sm:text-3xl font-bold text-[#1A261D] mt-3">
+            {data?.totalProducts || 0} Crops
+          </div>
+          <span className="text-[11px] text-[#245437] mt-1 block font-medium">● Available in live marketplace</span>
         </div>
 
-        {/* Profit vs Product */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <h2 className="text-lg font-semibold mb-4">{t('Analytics.sales.Profit Fruits')}</h2>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={fruitProfitData}>
-                <XAxis dataKey="product" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="profit" fill="#ff9f40" />
-              </BarChart>
-            </ResponsiveContainer>
+        <div className="bg-white rounded-2xl p-5 border border-[#E8E4DA] shadow-soft-xs">
+          <div className="flex justify-between items-center text-[#5C6B5F] text-xs font-semibold uppercase">
+            <span>Orders Dispatched</span>
+            <ShoppingCart className="w-4 h-4 text-[#2C485E]" />
           </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <h2 className="text-lg font-semibold mb-4">{t('Analytics.sales.Profit Grains')}</h2>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={grainsProfitData}>
-                <XAxis dataKey="product" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="profit" fill="#4bc0c0" />
-              </BarChart>
-            </ResponsiveContainer>
+          <div className="text-2xl sm:text-3xl font-bold text-[#1A261D] mt-3">
+            {data?.totalOrders || 0} Orders
           </div>
+          <span className="text-[11px] text-[#2C485E] mt-1 block font-medium">● Directly connected with buyers</span>
         </div>
 
-        {/* Discounts Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <h2 className="text-lg font-semibold mb-4">{t('Analytics.sales.discountsFruits')}</h2>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={fruitDiscountData}>
-                <XAxis dataKey="product" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="discount" fill="#ff6384" />
-              </BarChart>
-            </ResponsiveContainer>
+        <div className="bg-white rounded-2xl p-5 border border-[#E8E4DA] shadow-soft-xs">
+          <div className="flex justify-between items-center text-[#5C6B5F] text-xs font-semibold uppercase">
+            <span>Total Realized Revenue</span>
+            <DollarSign className="w-4 h-4 text-[#7E5724]" />
           </div>
+          <div className="text-2xl sm:text-3xl font-bold text-[#1A261D] mt-3">
+            ₹{(data?.totalSales || 0).toLocaleString('en-IN')}
+          </div>
+          <span className="text-[11px] text-[#7E5724] mt-1 block font-medium">● 0% middleman deduction</span>
+        </div>
+      </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <h2 className="text-lg font-semibold mb-4">{t('Analytics.sales.discountsGrains')}</h2>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={grainsDiscountData}>
-                <XAxis dataKey="product" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="discount" fill="#36a2eb" />
+      {/* Charts Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* Monthly Sales Revenue */}
+        <div className="lg:col-span-8 bg-white rounded-2xl p-6 border border-[#E8E4DA] shadow-soft-xs">
+          <h2 className="text-base font-bold text-[#1A261D] mb-1">Monthly Harvest Sales Revenue (₹)</h2>
+          <p className="text-xs text-[#5C6B5F] mb-6">Real transactional turnover per calendar month</p>
+          <div className="h-72 w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={data?.monthlySales || []} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#EFECE3" />
+                <XAxis dataKey="month" stroke="#7F8B82" fontSize={11} />
+                <YAxis stroke="#7F8B82" fontSize={11} tickFormatter={(val) => `₹${val}`} />
+                <Tooltip
+                  formatter={(val: any) => [`₹${Number(val).toLocaleString('en-IN')}`, 'Sales Revenue']}
+                  contentStyle={{ backgroundColor: '#FAF8F3', borderRadius: '12px', border: '1px solid #E8E4DA', fontSize: '12px' }}
+                />
+                <Bar dataKey="sales" fill="#1E3F2D" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        {/* Ratings Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <h2 className="text-lg font-semibold mb-4">{t('Analytics.sales.ratingsFruits')}</h2>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={fruitRatingData}>
-                <XAxis dataKey="product" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="rating" fill="#ff9f40" />
-              </BarChart>
-            </ResponsiveContainer>
+        {/* Category Share */}
+        <div className="lg:col-span-4 bg-white rounded-2xl p-6 border border-[#E8E4DA] shadow-soft-xs">
+          <h2 className="text-base font-bold text-[#1A261D] mb-1">Crop Variety Mix</h2>
+          <p className="text-xs text-[#5C6B5F] mb-4">Distribution by listed crop categories</p>
+          <div className="h-56 w-full">
+            {data?.categoryDistribution && data.categoryDistribution.length > 0 ? (
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={data.categoryDistribution}
+                    dataKey="count"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={50}
+                    outerRadius={80}
+                    paddingAngle={3}
+                  >
+                    {data.categoryDistribution.map((entry: any, index: number) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip contentStyle={{ backgroundColor: '#FAF8F3', borderRadius: '12px', border: '1px solid #E8E4DA', fontSize: '12px' }} />
+                </PieChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="h-full flex items-center justify-center text-xs text-[#7F8B82]">
+                Upload crops to generate category chart
+              </div>
+            )}
           </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <h2 className="text-lg font-semibold mb-4">{t('Analytics.sales.ratingsGrains')}</h2>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={grainsRatingData}>
-                <XAxis dataKey="product" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="rating" fill="#4bc0c0" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        {/* City Sales Section */}
-        <div className="grid grid-cols-1 mt-8">
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <h2 className="text-lg font-semibold mb-4">{t('Analytics.sales.citySales')}</h2>
-            <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie data={citySalesData} dataKey="sales" nameKey="city" cx="50%" cy="50%" outerRadius={80} fill="#ff6384">
-                  {citySalesData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={index % 2 === 0 ? '#ff6384' : '#36a2eb'} />
-                  ))}
-                </Pie>
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
+          <div className="space-y-1.5 mt-2">
+            {data?.categoryDistribution?.map((cat: any, i: number) => (
+              <div key={cat.name} className="flex justify-between text-xs text-[#5C6B5F]">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
+                  {cat.name}
+                </span>
+                <span className="font-semibold text-[#1A261D]">{cat.count} listings</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

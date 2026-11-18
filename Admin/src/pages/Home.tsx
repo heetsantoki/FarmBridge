@@ -92,7 +92,7 @@ const Home: React.FC = () => {
   const [imagePreviews, setImagePreviews] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token") || localStorage.getItem("authToken");
 
 
 

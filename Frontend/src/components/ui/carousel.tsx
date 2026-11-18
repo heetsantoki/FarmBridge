@@ -3,7 +3,6 @@
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
-  type EmblaCarouselType
 } from "embla-carousel-react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
@@ -69,7 +68,7 @@ const Carousel = React.forwardRef<
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
 
-    const onSelect = React.useCallback((api: EmblaCarouselType) => {
+    const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
         return
       }

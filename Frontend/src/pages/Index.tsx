@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import "./i18n/config";
-import Product from "@/components/Product";
+import "../i18n/i18n";
+import Product from "./Product";
 
 const Index = () => {
   useEffect(() => {

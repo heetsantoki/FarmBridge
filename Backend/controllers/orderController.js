@@ -72,7 +72,15 @@ const getFarmerOrders = async (req, res) => {
       .populate('product', 'name category images priceRange unit')
       .sort({ createdAt: -1 });
 
-    res.status(200).json(orders);
+    const safeOrders = orders.map(ord => {
+      const o = ord.toObject();
+      if (!o.buyer) {
+        o.buyer = { firstName: 'Commercial', lastName: 'Buyer (Inactive)', email: 'N/A', phone: 'N/A' };
+      }
+      return o;
+    });
+
+    res.status(200).json(safeOrders);
   } catch (error) {
     console.error('FETCH FARMER ORDERS ERROR:', error);
     res.status(500).json({ message: error.message || 'Failed to fetch farmer orders' });
@@ -88,7 +96,15 @@ const getBuyerOrders = async (req, res) => {
       .populate('product', 'name category images priceRange unit')
       .sort({ createdAt: -1 });
 
-    res.status(200).json(orders);
+    const safeOrders = orders.map(ord => {
+      const o = ord.toObject();
+      if (!o.farmer) {
+        o.farmer = { firstName: 'FarmBridge', lastName: 'Farmer (Inactive)', email: 'N/A', phone: 'N/A' };
+      }
+      return o;
+    });
+
+    res.status(200).json(safeOrders);
   } catch (error) {
     console.error('FETCH BUYER ORDERS ERROR:', error);
     res.status(500).json({ message: error.message || 'Failed to fetch buyer orders' });

@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Help = () => {
   const { t } = useTranslation(); // Initialize custom translation hook
   const { toast } = useToast();
-  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
