@@ -55,7 +55,6 @@ const MandiTicker: React.FC<MandiTickerProps> = ({ className = "" }) => {
     };
   }, []);
 
-  // Show ONLY commodities from the detected / selected APMC market
   const displayRates = useMemo(() => {
     if (commodities && commodities.length > 0) {
       const activeMandiName = selectedMarket?.name || "Rajkot APMC";
@@ -66,8 +65,8 @@ const MandiTicker: React.FC<MandiTickerProps> = ({ className = "" }) => {
 
         return {
           crop: c.commodity,
-          price: c.priceDisplay, // e.g. ₹22,370/Qtl
-          pricePer20kg: c.pricePer20kg, // e.g. ₹4,474 / 20kg
+          price: c.priceDisplay,
+          pricePer20kg: c.pricePer20kg,
           change: `${isUp ? "+" : "-"}${changeVal}%`,
           up: isUp,
           mandi: activeMandiName,
@@ -92,51 +91,53 @@ const MandiTicker: React.FC<MandiTickerProps> = ({ className = "" }) => {
 
   return (
     <div
-      className={`bg-[#F5F1E8] rounded-2xl p-2.5 sm:p-3 border border-[#E4DFD3] shadow-soft-xs flex items-center gap-3 overflow-hidden w-full max-w-full min-w-0 ${className}`}
+      className={`bg-[#F5F1E8] rounded-2xl p-2 sm:p-2.5 border border-[#E4DFD3] shadow-soft-xs flex items-center gap-2 sm:gap-3 overflow-hidden w-full max-w-full min-w-0 ${className}`}
     >
       {/* Live APMC Badge */}
       <Link
         to="/apmc-prices"
-        className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FAF8F3] bg-[#1E3F2D] hover:bg-[#163324] border border-[#163324] px-3.5 py-1.5 rounded-xl whitespace-nowrap flex-shrink-0 z-10 shadow-soft-xs transition-colors"
+        className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#FAF8F3] bg-[#1E3F2D] hover:bg-[#163324] border border-[#163324] px-2.5 sm:px-3.5 py-1.5 rounded-xl whitespace-nowrap flex-shrink-0 z-10 shadow-soft-xs transition-colors"
         title="Click to view all APMC Mandi rates"
       >
-        <span className="w-2 h-2 rounded-full bg-[#75B98A] inline-block animate-pulse"></span>
-        <Sparkles className="w-3.5 h-3.5 text-[#BCE3C7] hidden sm:inline-block" />
-        <span>{activeMarketTitle} Live Bhav</span>
+        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#75B98A] inline-block animate-pulse"></span>
+        <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#BCE3C7] hidden sm:inline-block" />
+        <span className="max-w-[110px] sm:max-w-none truncate">
+          {activeMarketTitle} Bhav
+        </span>
       </Link>
 
       {/* Right to Left Running Marquee Ticker */}
       <div className="relative flex-1 overflow-hidden min-w-0">
-        <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#F5F1E8] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#F5F1E8] to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-4 sm:w-8 bg-gradient-to-r from-[#F5F1E8] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-4 sm:w-8 bg-gradient-to-l from-[#F5F1E8] to-transparent z-10 pointer-events-none" />
 
-        <div className="animate-marquee gap-3 text-xs py-0.5 items-center select-none cursor-default">
+        <div className="animate-marquee gap-2 sm:gap-3 text-xs py-0.5 items-center select-none cursor-default">
           {duplicatedRates.map((m, idx) => (
             <div
               key={`${m.crop}-${idx}`}
-              className="flex items-center gap-2 bg-[#FAF8F3] hover:bg-white border border-[#E4DFD3] px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors flex-shrink-0 shadow-soft-2xs"
+              className="flex items-center gap-1.5 sm:gap-2 bg-[#FAF8F3] hover:bg-white border border-[#E4DFD3] px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl whitespace-nowrap transition-colors flex-shrink-0 shadow-soft-2xs"
               title={`${m.crop} at ${m.mandi}: ${m.price}`}
             >
-              <span className="font-bold text-[#1E3F2D]">{m.crop}</span>
-              <span className="font-bold text-[#1A261D] bg-[#EFECE3] px-1.5 py-0.5 rounded-md border border-[#DFD9CC]">
+              <span className="font-bold text-[#1E3F2D] text-xs sm:text-sm">{m.crop}</span>
+              <span className="font-bold text-[#1A261D] bg-[#EFECE3] px-1.5 py-0.5 rounded-md border border-[#DFD9CC] text-[11px] sm:text-xs">
                 {m.price}
               </span>
 
               {m.pricePer20kg && (
-                <span className="text-[11px] font-semibold text-[#246A3E] bg-[#EEF4EF] px-1.5 py-0.5 rounded-md border border-[#D5E4D8]">
+                <span className="text-[10px] sm:text-[11px] font-semibold text-[#246A3E] bg-[#EEF4EF] px-1.5 py-0.5 rounded-md border border-[#D5E4D8]">
                   {m.pricePer20kg}
                 </span>
               )}
 
               <span
-                className={`font-bold inline-flex items-center gap-0.5 text-[11px] ${
+                className={`font-bold inline-flex items-center gap-0.5 text-[10px] sm:text-[11px] ${
                   m.up ? "text-[#246A3E]" : "text-[#B94438]"
                 }`}
               >
                 {m.up ? (
-                  <TrendingUp className="w-3 h-3 stroke-[2.5]" />
+                  <TrendingUp className="w-2.5 h-2.5 sm:w-3 sm:h-3 stroke-[2.5]" />
                 ) : (
-                  <TrendingDown className="w-3 h-3 stroke-[2.5]" />
+                  <TrendingDown className="w-2.5 h-2.5 sm:w-3 sm:h-3 stroke-[2.5]" />
                 )}
                 {m.change}
               </span>

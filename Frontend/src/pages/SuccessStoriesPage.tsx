@@ -193,24 +193,24 @@ export default function SuccessStoriesPage() {
                 className="bg-white rounded-2xl border border-[#E8E4DA] shadow-soft-sm hover:shadow-soft transition-all duration-300 p-6 flex flex-col justify-between space-y-5"
               >
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3.5">
                     <img
                       src={st.image}
                       alt={st.name}
-                      className="w-13 h-13 rounded-xl object-cover border border-[#E8E4DA] shadow-soft-xs"
+                      className="w-14 h-14 rounded-2xl object-cover border border-[#E8E4DA] shadow-soft-xs shrink-0"
                     />
-                    <div>
-                      <h3 className="font-semibold text-[#1A261D] text-sm">{st.name}</h3>
-                      <div className="text-xs text-[#5C6B5F] flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-[#1E3F2D]" />
-                        {st.location}
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-semibold text-[#1A261D] text-sm leading-snug break-words">{st.name}</h3>
+                      <div className="text-xs text-[#5C6B5F] flex items-center gap-1 mt-0.5">
+                        <MapPin className="w-3.5 h-3.5 text-[#1E3F2D] shrink-0" />
+                        <span className="truncate">{st.location}</span>
                       </div>
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between text-xs bg-[#FAF8F3] p-3 rounded-xl border border-[#E8E4DA]">
-                    <span className="font-medium text-[#1A261D]">{st.crop}</span>
-                    <span className="font-semibold text-[#1E3F2D] bg-[#EEF4EF] px-2 py-0.5 rounded-md border border-[#D5E4D8]">
+                    <span className="font-medium text-[#1A261D] truncate mr-2">{st.crop}</span>
+                    <span className="font-semibold text-[#1E3F2D] bg-[#EEF4EF] px-2 py-0.5 rounded-md border border-[#D5E4D8] shrink-0">
                       {st.incomeBoost}
                     </span>
                   </div>
@@ -220,9 +220,9 @@ export default function SuccessStoriesPage() {
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-[#E8E4DA] flex items-center justify-between text-xs text-[#7F8B82]">
-                  <span>Buyer: <strong className="text-[#1A261D] font-medium">{st.buyerType}</strong></span>
-                  <span className="text-[11px] font-semibold text-[#1E3F2D]">{st.verifiedYear}</span>
+                <div className="pt-3 border-t border-[#E8E4DA] flex items-center justify-between text-xs text-[#7F8B82] gap-2">
+                  <span className="truncate">Buyer: <strong className="text-[#1A261D] font-medium">{st.buyerType}</strong></span>
+                  <span className="text-[11px] font-semibold text-[#1E3F2D] shrink-0">{st.verifiedYear}</span>
                 </div>
               </div>
             ))}

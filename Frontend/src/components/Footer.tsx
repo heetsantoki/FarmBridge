@@ -81,8 +81,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/resources" className="hover:text-[#FAF8F3] transition-colors">
-                  Producer Resources
+                <Link to="/faq" className="hover:text-[#FAF8F3] transition-colors">
+                  FAQ & Guides
                 </Link>
               </li>
               <li>

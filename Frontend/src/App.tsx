@@ -7,7 +7,6 @@ import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import MarketplacePage from './pages/MarketplacePage'
-import ResourcesPage from './pages/ResourcesPage'
 import FAQPage from './pages/FAQPage'
 import SuccessStoriesPage from './pages/SuccessStoriesPage'
 import Product from './pages/Product'
@@ -43,7 +42,6 @@ function App() {
                 <Route path="/reset-password" element={<ResetPasswordPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/marketplace" element={<MarketplacePage />} />
-                <Route path="/resources" element={<ResourcesPage />} />
                 <Route path="/faq" element={<FAQPage />} />
                 <Route path="/success-stories" element={<SuccessStoriesPage />} />
               </Routes>

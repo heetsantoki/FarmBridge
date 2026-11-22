@@ -227,24 +227,24 @@ export default function HomePage() {
                   />
 
                   {/* Floating Metric 1 */}
-                  <div className="absolute top-6 left-6 bg-[#FAF8F3] p-3.5 rounded-xl shadow-soft border border-[#E8E4DA] flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-[#EEF4EF] text-[#1E3F2D] flex items-center justify-center font-bold border border-[#D5E4D8]">
-                      <TrendingUp className="w-4 h-4" />
+                  <div className="absolute top-3 left-3 sm:top-6 sm:left-6 bg-[#FAF8F3]/95 backdrop-blur-xs p-2.5 sm:p-3.5 rounded-xl shadow-soft border border-[#E8E4DA] flex items-center gap-2 sm:gap-3">
+                    <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg bg-[#EEF4EF] text-[#1E3F2D] flex items-center justify-center font-bold border border-[#D5E4D8]">
+                      <TrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </div>
                     <div>
-                      <div className="text-[10px] text-[#7F8B82] font-semibold uppercase tracking-wider">Direct Settlements</div>
-                      <div className="text-base font-bold text-[#18392B]">₹18.4 Cr+ Disbursed</div>
+                      <div className="text-[9px] sm:text-[10px] text-[#7F8B82] font-semibold uppercase tracking-wider">Direct Settlements</div>
+                      <div className="text-xs sm:text-base font-bold text-[#18392B]">₹18.4 Cr+ Disbursed</div>
                     </div>
                   </div>
 
                   {/* Floating Metric 2 */}
-                  <div className="absolute bottom-6 right-6 bg-[#FAF8F3] p-3.5 rounded-xl shadow-soft border border-[#E8E4DA] flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-[#F7F2E9] text-[#7A5B22] flex items-center justify-center font-bold border border-[#EBDDC7]">
-                      <Users className="w-4 h-4" />
+                  <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 bg-[#FAF8F3]/95 backdrop-blur-xs p-2.5 sm:p-3.5 rounded-xl shadow-soft border border-[#E8E4DA] flex items-center gap-2 sm:gap-3">
+                    <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg bg-[#F7F2E9] text-[#7A5B22] flex items-center justify-center font-bold border border-[#EBDDC7]">
+                      <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </div>
                     <div>
-                      <div className="text-[10px] text-[#7F8B82] font-semibold uppercase tracking-wider">Verified Network</div>
-                      <div className="text-base font-bold text-[#18392B]">15,000+ Stakeholders</div>
+                      <div className="text-[9px] sm:text-[10px] text-[#7F8B82] font-semibold uppercase tracking-wider">Verified Network</div>
+                      <div className="text-xs sm:text-base font-bold text-[#18392B]">15,000+ Stakeholders</div>
                     </div>
                   </div>
                 </div>
@@ -258,7 +258,7 @@ export default function HomePage() {
       <MandiTicker />
 
       {/* 2.5 LOCATION-BASED NEARBY APMC COMMODITY PRICES */}
-      <NearbyApmcPrices className="my-10" />
+      <NearbyApmcPrices className="my-6 sm:my-10" />
 
       {/* 3. HOW FARMBRIDGE WORKS (3-STEP PIPELINE) */}
       <section className="py-20 bg-[#FAF8F3] border-t border-[#E8E4DA]/60">

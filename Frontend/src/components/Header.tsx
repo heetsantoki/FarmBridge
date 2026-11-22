@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, ArrowRight, Sprout, ShoppingCart, User, MapPin } from "lucide-react"
-import { Button } from "./ui/button"
+import { Menu, X, MapPin } from "lucide-react"
 import img from "../assets/logo.png"
 import { LanguageSelector } from "./LanguageSelector"
 import { useLocationContext } from "../contexts/LocationContext"
@@ -31,10 +30,11 @@ export function Header() {
     { path: "/", label: "Home" },
     { path: "/marketplace", label: "Marketplace" },
     { path: "/about", label: "About" },
-    { path: "/resources", label: "Resources" },
     { path: "/success-stories", label: "Success Stories" },
     { path: "/contact", label: "Contact" },
   ]
+
+  const activeMarketName = selectedMarket?.name || locationConfig.district || "APMC";
 
   return (
     <motion.header
@@ -54,15 +54,15 @@ export function Header() {
             <img
               src={img}
               alt="FarmBridge logo"
-              className="h-11 w-11 object-contain mr-2 transition-transform group-hover:scale-105"
+              className="h-10 w-10 sm:h-11 sm:w-11 object-contain mr-1 sm:mr-2 transition-transform group-hover:scale-105"
             />
-            <span className="text-2xl font-bold text-[#1A261D] group-hover:text-[#18392B] transition-colors tracking-tight">
+            <span className="text-xl sm:text-2xl font-bold text-[#1A261D] group-hover:text-[#18392B] transition-colors tracking-tight">
               FarmBridge
             </span>
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation (Visible on lg screens >= 1024px) */}
         <nav className="hidden lg:flex items-center space-x-1">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path
@@ -88,8 +88,8 @@ export function Header() {
           })}
         </nav>
 
-        {/* Right CTA Actions */}
-        <div className="hidden md:flex items-center space-x-2.5">
+        {/* Right CTA Actions (Desktop >= 1024px) */}
+        <div className="hidden lg:flex items-center space-x-2.5">
           {/* APMC Location Pill */}
           <button
             onClick={() => setIsSelectorOpen(true)}
@@ -98,42 +98,49 @@ export function Header() {
           >
             <MapPin className="w-3.5 h-3.5 text-[#246A3E] flex-shrink-0" />
             <span className="max-w-[130px] truncate">
-              {selectedMarket?.name || locationConfig.district || "Select APMC"}
+              {activeMarketName}
             </span>
           </button>
 
           {/* Language Selector */}
-          <div className="w-24">
-            <LanguageSelector />
+          <div className="w-[120px]">
+            <LanguageSelector className="w-full" />
           </div>
 
           <Link
             to="/login"
-            className="px-4 py-2 text-xs font-semibold text-[#5C6B5F] hover:text-[#1A261D] hover:bg-[#F2EDE2] rounded-xl transition-all"
+            className="px-4 py-2 text-xs font-semibold bg-[#1E3F2D] hover:bg-[#152F21] text-[#FAF8F3] rounded-xl shadow-soft-xs transition-all"
           >
             Sign In
           </Link>
-
-          <Link
-            to="/register"
-            className="flex items-center gap-2 px-5 py-2.5 bg-[#1E3F2D] hover:bg-[#152F21] text-[#FAF8F3] text-xs font-semibold rounded-xl shadow-soft-xs transition-all"
-          >
-            Join Marketplace
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="p-2 text-[#1A261D] hover:bg-[#F2EDE2] rounded-xl md:hidden transition-colors"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle Navigation Menu"
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        {/* Mobile & Tablet Controls (< 1024px) */}
+        <div className="flex lg:hidden items-center gap-2">
+          {/* Quick Location Pill on Mobile */}
+          <button
+            onClick={() => setIsSelectorOpen(true)}
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-[#EEF4EF] hover:bg-[#E2ECE4] text-[#1E3F2D] border border-[#CDE0D2] shadow-soft-xs transition-colors shrink-0"
+            title="Current APMC Market"
+          >
+            <MapPin className="w-3 h-3 text-[#246A3E] flex-shrink-0" />
+            <span className="max-w-[85px] sm:max-w-[130px] truncate">
+              {activeMarketName}
+            </span>
+          </button>
+
+          {/* Hamburger Menu Button */}
+          <button
+            className="p-2 text-[#1A261D] hover:bg-[#F2EDE2] rounded-xl transition-colors shrink-0"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle Navigation Menu"
+          >
+            {isMenuOpen ? <X className="h-6 w-6 text-[#1A261D]" /> : <Menu className="h-6 w-6 text-[#1A261D]" />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Drawer Navigation */}
+      {/* Mobile Drawer Navigation (< 1024px) */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -141,7 +148,7 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="bg-[#FAF8F3] border-b border-[#E8E4DA] md:hidden overflow-hidden shadow-soft font-sans"
+            className="bg-[#FAF8F3] border-b border-[#E8E4DA] lg:hidden overflow-hidden shadow-soft font-sans"
           >
             <nav className="px-5 py-6 space-y-2">
               {navItems.map((item) => (
@@ -160,18 +167,18 @@ export function Header() {
               ))}
 
               <div className="pt-4 border-t border-[#E8E4DA] space-y-3">
-                <div className="flex items-center justify-between px-2 gap-2">
-                  <LanguageSelector />
+                <div className="grid grid-cols-2 gap-2.5">
+                  <LanguageSelector className="w-full" />
                   <button
                     onClick={() => {
                       setIsMenuOpen(false);
                       setIsSelectorOpen(true);
                     }}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#EEF4EF] text-[#1E3F2D] border border-[#CDE0D2]"
+                    className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-[#EEF4EF] hover:bg-[#E2ECE4] text-[#1E3F2D] border border-[#CDE0D2] shadow-soft-xs transition-colors"
                   >
-                    <MapPin className="w-3.5 h-3.5 text-[#246A3E]" />
-                    <span className="max-w-[120px] truncate">
-                      {selectedMarket?.name || locationConfig.district || "Select APMC"}
+                    <MapPin className="w-3.5 h-3.5 text-[#246A3E] flex-shrink-0" />
+                    <span className="truncate">
+                      {activeMarketName}
                     </span>
                   </button>
                 </div>
@@ -201,4 +208,3 @@ export function Header() {
     </motion.header>
   )
 }
-export default Header;
