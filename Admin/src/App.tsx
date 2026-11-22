@@ -35,6 +35,10 @@ import AdminAnalytics from './pages/Admin/AdminAnalytics';
 import { AdminProfile } from './pages/Admin/AdminProfile';
 import Helper from './components/Helper';
 import ManageProducts from "./pages/ManageProdcut";
+import ApmcPricesPage from './pages/ApmcPricesPage';
+import { LocationProvider } from './contexts/LocationContext';
+import { LocationPromptModal } from './components/LocationPromptModal';
+import { LocationSelectorModal } from './components/LocationSelectorModal';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -47,42 +51,46 @@ function AppLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <ToasterProvider />
-        <ScrollRestoration />
+      <LocationProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <ToasterProvider />
+          <ScrollRestoration />
 
-        {/* Toastify container for global toasts */}
-        <ToastContainer position="top-right" autoClose={3000} />
+          {/* Toastify container for global toasts */}
+          <ToastContainer position="top-right" autoClose={3000} />
+          <LocationPromptModal />
+          <LocationSelectorModal />
 
-        {/* Navbar */}
-        {!isLoginPage && (
-          <div className="fixed top-0 left-0 w-full z-50 bg-[#FBF9F5] border-b border-[#E8E4DA] shadow-soft-xs">
-            <Navbar />
-          </div>
-        )}
-
-        <div className="min-h-screen bg-[#FBF9F5] w-full max-w-full overflow-x-hidden">
-          {/* Sidebar */}
+          {/* Navbar */}
           {!isLoginPage && (
-            <aside className="hidden lg:block fixed left-0 top-16 w-[260px] bg-[#FAF8F3] border-r border-[#E8E4DA] px-3 py-4 h-[calc(100vh-4rem)] overflow-y-auto z-40">
-              <Menu />
-            </aside>
+            <div className="fixed top-0 left-0 w-full z-50 bg-[#FBF9F5] border-b border-[#E8E4DA] shadow-soft-xs">
+              <Navbar />
+            </div>
           )}
 
-          {/* Main Content */}
-          <main
-            className={`min-h-screen bg-[#FBF9F5] font-sans antialiased text-[#1A261D] transition-all ${
-              !isLoginPage ? 'lg:pl-[260px] pt-16' : ''
-            }`}
-          >
-            <div className="w-full max-w-full min-w-0 px-4 sm:px-6 lg:px-8 py-6">
-              <Outlet />
-            </div>
-          </main>
-        </div>
-      </TooltipProvider>
+          <div className="min-h-screen bg-[#FBF9F5] w-full max-w-full overflow-x-hidden">
+            {/* Sidebar */}
+            {!isLoginPage && (
+              <aside className="hidden lg:block fixed left-0 top-16 w-[260px] bg-[#FAF8F3] border-r border-[#E8E4DA] px-3 py-4 h-[calc(100vh-4rem)] overflow-y-auto z-40">
+                <Menu />
+              </aside>
+            )}
+
+            {/* Main Content */}
+            <main
+              className={`min-h-screen bg-[#FBF9F5] font-sans antialiased text-[#1A261D] transition-all ${
+                !isLoginPage ? 'lg:pl-[260px] pt-16' : ''
+              }`}
+            >
+              <div className="w-full max-w-full min-w-0 px-4 sm:px-6 lg:px-8 py-6">
+                <Outlet />
+              </div>
+            </main>
+          </div>
+        </TooltipProvider>
+      </LocationProvider>
     </QueryClientProvider>
   );
 }
@@ -96,6 +104,7 @@ const router = createBrowserRouter([
       { path: '/', element: <Login /> },
 
       { path: '/home', element: <Home /> },
+      { path: '/apmc-prices', element: <ApmcPricesPage /> },
       { path: '/profile', element: <Profile /> },
       { path: '/manageProduct', element: <ManageProducts /> },
       { path: '/sold-products', element: <SoldProducts /> },

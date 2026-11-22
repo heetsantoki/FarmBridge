@@ -110,11 +110,11 @@
     box-shadow: 0 12px 28px -4px rgba(26, 38, 29, 0.08), 0 4px 10px -2px rgba(26, 38, 29, 0.03);
   }
 
-  /* Smooth Marquee ticker running right-to-left */
+  /* Smooth Marquee ticker running right-to-left (slowed down for comfortable reading) */
   .animate-marquee {
     display: flex;
     width: max-content;
-    animation: marquee 38s linear infinite;
+    animation: marquee 70s linear infinite;
   }
 
   .animate-marquee:hover {

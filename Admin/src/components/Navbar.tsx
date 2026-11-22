@@ -7,8 +7,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRecoilValue } from "recoil";
 import roleAtom from "../hooks/roleAtom";
-import { User, LogOut, ChevronDown, Sparkles } from "lucide-react";
+import { User, LogOut, ChevronDown, Sparkles, MapPin } from "lucide-react";
 import logo from "../assets/logo.png";
+import { useLocationContext } from "../contexts/LocationContext";
 
 interface UserProfile {
   firstName?: string;
@@ -27,6 +28,7 @@ const Navbar = () => {
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token") || localStorage.getItem("authToken");
   const profilePicUrl = user?.profilePhoto || "/default-avatar.png";
+  const { selectedMarket, locationConfig } = useLocationContext();
 
   useEffect(() => {
     // If on login or transition helper route, do not bounce to login
@@ -90,6 +92,18 @@ const Navbar = () => {
           <span className="w-1.5 h-1.5 rounded-full bg-[#2E6845]"></span>
           {role === "farmer" ? "Farmer Producer" : role === "buyer" ? "Verified Buyer" : "Administrator"}
         </div>
+
+        {/* Live APMC Pill */}
+        <Link
+          to="/apmc-prices"
+          className="hidden md:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#EEF4EF] hover:bg-[#E2ECE4] text-[#1E3F2D] border border-[#CDE0D2] transition-colors"
+          title="Click to view live APMC Mandi rates"
+        >
+          <MapPin className="w-3.5 h-3.5 text-[#246A3E]" />
+          <span className="max-w-[130px] truncate">
+            {selectedMarket?.name || locationConfig.district || "APMC Mandi Bhav"}
+          </span>
+        </Link>
       </div>
 
       {/* Center / Search bar simulation */}

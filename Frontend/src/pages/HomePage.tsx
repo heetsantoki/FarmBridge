@@ -29,6 +29,7 @@ import {
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { MandiTicker } from "../components/MandiTicker";
+import { NearbyApmcPrices } from "../components/NearbyApmcPrices";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -255,6 +256,9 @@ export default function HomePage() {
 
       {/* 2. REAL-TIME MANDI TICKER (LIVE RUNNING RIGHT TO LEFT) */}
       <MandiTicker />
+
+      {/* 2.5 LOCATION-BASED NEARBY APMC COMMODITY PRICES */}
+      <NearbyApmcPrices className="my-10" />
 
       {/* 3. HOW FARMBRIDGE WORKS (3-STEP PIPELINE) */}
       <section className="py-20 bg-[#FAF8F3] border-t border-[#E8E4DA]/60">

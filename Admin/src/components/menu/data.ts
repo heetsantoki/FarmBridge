@@ -6,7 +6,8 @@ import {
   CogIcon,
   HelpCircleIcon,
   UsersIcon,
-  AlertTriangleIcon
+  AlertTriangleIcon,
+  Building2
 } from "lucide-react";
 import { useTranslation } from "../../hooks/useTranslation";
 
@@ -23,6 +24,13 @@ export const getMenu = () => {
           url: '/home',
           icon: ChartBarIcon,
           label: 'Dashboard Overview',
+          role: 'farmer',
+        },
+        {
+          isLink: true,
+          url: '/apmc-prices',
+          icon: Building2,
+          label: 'APMC Mandi Bhav',
           role: 'farmer',
         },
         {
@@ -73,6 +81,13 @@ export const getMenu = () => {
           icon: ClipboardIcon,
           label: t('menu.products'),
           role: 'buyer', // Only for buyers
+        },
+        {
+          isLink: true,
+          url: '/apmc-prices',
+          icon: Building2,
+          label: 'APMC Mandi Bhav',
+          role: 'buyer',
         },
         {
           isLink: true,
@@ -138,8 +153,15 @@ export const menu = [
         isLink: true,
         url: '/home',
         icon: ClipboardIcon,
-        label: 'Add Products',
+        label: 'Dashboard Overview',
         role: 'farmer', // Only for farmers
+      },
+      {
+        isLink: true,
+        url: '/apmc-prices',
+        icon: Building2,
+        label: 'APMC Mandi Bhav',
+        role: 'farmer',
       },
       {
         isLink: true,
@@ -182,6 +204,13 @@ export const menu = [
         icon: ClipboardIcon,
         label: 'Products',
         role: 'buyer', // Only for buyers
+      },
+      {
+        isLink: true,
+        url: '/apmc-prices',
+        icon: Building2,
+        label: 'APMC Mandi Bhav',
+        role: 'buyer',
       },
       {
         isLink: true,

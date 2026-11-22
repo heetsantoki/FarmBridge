@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, ArrowRight, Sprout, ShoppingCart, User } from "lucide-react"
+import { Menu, X, ArrowRight, Sprout, ShoppingCart, User, MapPin } from "lucide-react"
 import { Button } from "./ui/button"
 import img from "../assets/logo.png"
 import { LanguageSelector } from "./LanguageSelector"
+import { useLocationContext } from "../contexts/LocationContext"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
+  const { selectedMarket, locationConfig, setIsSelectorOpen } = useLocationContext()
 
   // Handle scroll effect
   useEffect(() => {
@@ -87,7 +89,19 @@ export function Header() {
         </nav>
 
         {/* Right CTA Actions */}
-        <div className="hidden md:flex items-center space-x-3">
+        <div className="hidden md:flex items-center space-x-2.5">
+          {/* APMC Location Pill */}
+          <button
+            onClick={() => setIsSelectorOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#EEF4EF] hover:bg-[#E2ECE4] text-[#1E3F2D] border border-[#CDE0D2] transition-all cursor-pointer shadow-soft-xs"
+            title="Click to view or change your nearest APMC market"
+          >
+            <MapPin className="w-3.5 h-3.5 text-[#246A3E] flex-shrink-0" />
+            <span className="max-w-[130px] truncate">
+              {selectedMarket?.name || locationConfig.district || "Select APMC"}
+            </span>
+          </button>
+
           {/* Language Selector */}
           <div className="w-24">
             <LanguageSelector />
@@ -146,8 +160,20 @@ export function Header() {
               ))}
 
               <div className="pt-4 border-t border-[#E8E4DA] space-y-3">
-                <div className="flex justify-start px-2">
+                <div className="flex items-center justify-between px-2 gap-2">
                   <LanguageSelector />
+                  <button
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setIsSelectorOpen(true);
+                    }}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#EEF4EF] text-[#1E3F2D] border border-[#CDE0D2]"
+                  >
+                    <MapPin className="w-3.5 h-3.5 text-[#246A3E]" />
+                    <span className="max-w-[120px] truncate">
+                      {selectedMarket?.name || locationConfig.district || "Select APMC"}
+                    </span>
+                  </button>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 pt-2">

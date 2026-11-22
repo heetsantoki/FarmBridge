@@ -75,11 +75,11 @@
     scrollbar-width: none !important;
   }
 
-  /* Smooth Marquee ticker running right-to-left */
+  /* Smooth Marquee ticker running right-to-left (slowed down for comfortable reading) */
   .animate-marquee {
     display: flex;
     width: max-content;
-    animation: marquee 38s linear infinite;
+    animation: marquee 70s linear infinite;
   }
 
   .animate-marquee:hover {
