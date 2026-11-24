@@ -2,11 +2,13 @@ import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, MapPin } from "lucide-react"
+import { useTranslation } from "react-i18next"
 import img from "../assets/logo.png"
 import { LanguageSelector } from "./LanguageSelector"
 import { useLocationContext } from "../contexts/LocationContext"
 
 export function Header() {
+  const { t } = useTranslation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
@@ -27,14 +29,14 @@ export function Header() {
   }, [location.pathname])
 
   const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/marketplace", label: "Marketplace" },
-    { path: "/about", label: "About" },
-    { path: "/success-stories", label: "Success Stories" },
-    { path: "/contact", label: "Contact" },
+    { path: "/", label: t("nav.home") || "Home" },
+    { path: "/marketplace", label: t("nav.marketplace") || "Marketplace" },
+    { path: "/about", label: t("nav.about") || "About" },
+    { path: "/success-stories", label: t("nav.successStories") || "Success Stories" },
+    { path: "/contact", label: t("nav.contact") || "Contact" },
   ]
 
-  const activeMarketName = selectedMarket?.name || locationConfig.district || "APMC";
+  const activeMarketName = selectedMarket?.name || locationConfig.district || t("nav.selectMarket") || "APMC";
 
   return (
     <motion.header
@@ -111,7 +113,7 @@ export function Header() {
             to="/login"
             className="px-4 py-2 text-xs font-semibold bg-[#1E3F2D] hover:bg-[#152F21] text-[#FAF8F3] rounded-xl shadow-soft-xs transition-all"
           >
-            Sign In
+            {t("nav.signIn") || "Sign In"}
           </Link>
         </div>
 
@@ -189,7 +191,7 @@ export function Header() {
                     onClick={() => setIsMenuOpen(false)}
                     className="w-full py-2.5 bg-[#FFFFFF] hover:bg-[#F2EDE2] border border-[#E8E4DA] text-[#1A261D] rounded-xl text-xs font-semibold text-center transition-colors shadow-soft-xs"
                   >
-                    Sign In
+                    {t("nav.signIn") || "Sign In"}
                   </Link>
 
                   <Link
@@ -197,7 +199,7 @@ export function Header() {
                     onClick={() => setIsMenuOpen(false)}
                     className="w-full py-2.5 bg-[#1E3F2D] hover:bg-[#152F21] text-[#FAF8F3] rounded-xl text-xs font-semibold text-center shadow-soft-xs transition-colors"
                   >
-                    Get Started
+                    {t("nav.getStarted") || "Get Started"}
                   </Link>
                 </div>
               </div>

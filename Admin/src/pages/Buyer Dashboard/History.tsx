@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useTranslation } from "../../hooks/useTranslation";
 
 interface Order {
   _id: string;
@@ -40,8 +41,93 @@ interface Order {
   };
 }
 
+const historyDict = {
+  en: {
+    backBtn: "Back to Harvest Marketplace",
+    title: "Purchase History & Real-Time Tracking",
+    subtitle: "Track farm-gate harvest fulfillment stages directly from verified producers.",
+    refreshBtn: "Refresh Pipeline",
+    statusAll: "All Orders",
+    statusPending: "Pending",
+    statusConfirmed: "Confirmed",
+    statusDispatched: "Dispatched",
+    statusDelivered: "Delivered",
+    noOrdersTitle: "No Orders Placed Yet",
+    noOrdersDesc: "You haven't placed any crop procurement orders yet. Browse verified producer listings to source fresh harvest with zero middleman deductions.",
+    exploreBtn: "Explore Available Crops",
+    procuredCrop: "Procured Crop",
+    total: "Total",
+    producerLabel: "Farmer / Producer",
+    directPortal: "Direct via portal",
+    destinationLabel: "Delivery Destination",
+    pipelineLabel: "Fulfillment Pipeline",
+    steps: [
+      { title: "Order Placed", desc: "Sent to Producer" },
+      { title: "Confirmed", desc: "Farmer accepted lot" },
+      { title: "Dispatched", desc: "In cold-chain transit" },
+      { title: "Delivered", desc: "Received & inspected" },
+    ],
+  },
+  gu: {
+    backBtn: "પાક માર્કેટપ્લેસ પર પાછા જાઓ",
+    title: "ખરીદી ઇતિહાસ અને રીયલ-ટાઇમ ટ્રેકિંગ",
+    subtitle: "પ્રમાણિત ખેડૂતો પાસેથી સીધા ખેતરમાંથી ઉપજની ડિલિવરી તબક્કા ટ્રેક કરો.",
+    refreshBtn: "ઓર્ડર તાજા કરો",
+    statusAll: "બધા ઓર્ડર",
+    statusPending: "પેન્ડિંગ",
+    statusConfirmed: "કન્ફર્મ થયેલ",
+    statusDispatched: "રવાના થયેલ",
+    statusDelivered: "પહોંચી ગયેલ",
+    noOrdersTitle: "હજુ સુધી કોઈ ઓર્ડર આપ્યો નથી",
+    noOrdersDesc: "તમે હજુ સુધી કોઈ પાક ખરીદી ઓર્ડર આપ્યો નથી. ઝીરો દલાલી સાથે તાજો પાક ખરીદવા માટે ઉપલબ્ધ લિસ્ટિંગ જુઓ.",
+    exploreBtn: "ઉપલબ્ધ પાક જુઓ",
+    procuredCrop: "ખરીદેલ પાક",
+    total: "કુલ રકમ",
+    producerLabel: "ખેડૂત / ઉત્પાદક",
+    directPortal: "પોર્ટલ દ્વારા સંપર્ક",
+    destinationLabel: "ડિલિવરી સ્થળ",
+    pipelineLabel: "ડિલિવરી પ્રક્રિયા",
+    steps: [
+      { title: "ઓર્ડર મુકાયો", desc: "ખેડૂતને મોકલાયો" },
+      { title: "કન્ફર્મ થયો", desc: "ખેડૂતે સ્વીકાર્યો" },
+      { title: "રવાના થયો", desc: "ટ્રાન્સપોર્ટમાં છે" },
+      { title: "પહોંચી ગયો", desc: "માલ મળ્યો અને ચકાસ્યો" },
+    ],
+  },
+  hi: {
+    backBtn: "फसल मार्केटप्लेस पर वापस जाएं",
+    title: "खरीद इतिहास और रियल-टाइम ट्रैकिंग",
+    subtitle: "प्रमाणित किसानों से सीधे खेत से फसल के डिलीवरी चरणों को ट्रैक करें।",
+    refreshBtn: "ऑर्डर ताज़ा करें",
+    statusAll: "सभी ऑर्डर",
+    statusPending: "लंबित",
+    statusConfirmed: "पुष्टि की गई",
+    statusDispatched: "भेज दिया गया",
+    statusDelivered: "वितरित",
+    noOrdersTitle: "अभी तक कोई ऑर्डर नहीं दिया गया",
+    noOrdersDesc: "आपने अभी तक कोई फसल खरीद ऑर्डर नहीं दिया है। बिना दलाली के ताज़ा फसल प्राप्त करने के लिए उपलब्ध लिस्टिंग देखें।",
+    exploreBtn: "उपलब्ध फसलें देखें",
+    procuredCrop: "खरीदी गई फसल",
+    total: "कुल राशि",
+    producerLabel: "किसान / उत्पादक",
+    directPortal: "पोर्टल द्वारा संपर्क",
+    destinationLabel: "डिलीवरी गंतव्य",
+    pipelineLabel: "आपूर्ति प्रक्रिया",
+    steps: [
+      { title: "ऑर्डर दिया गया", desc: "किसान को भेजा गया" },
+      { title: "स्वीकृत", desc: "किसान ने स्वीकार किया" },
+      { title: "भेज दिया गया", desc: "पारगमन में है" },
+      { title: "वितरित", desc: "प्राप्त और निरीक्षण किया" },
+    ],
+  },
+};
+
 const History: React.FC = () => {
   const navigate = useNavigate();
+  const { language } = useTranslation();
+  const langKey = language === "gu" || language === "hi" ? language : "en";
+  const tTxt = historyDict[langKey];
+
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState("all");
@@ -86,12 +172,15 @@ const History: React.FC = () => {
     }
   };
 
-  const steps = [
-    { title: "Order Placed", desc: "Sent to Producer" },
-    { title: "Confirmed", desc: "Farmer accepted lot" },
-    { title: "Dispatched", desc: "In cold-chain transit" },
-    { title: "Delivered", desc: "Received & inspected" },
-  ];
+  const steps = tTxt.steps;
+
+  const statusTabLabels: Record<string, string> = {
+    all: tTxt.statusAll,
+    Pending: tTxt.statusPending,
+    Confirmed: tTxt.statusConfirmed,
+    Dispatched: tTxt.statusDispatched,
+    Delivered: tTxt.statusDelivered,
+  };
 
   const filteredOrders = orders.filter((o) => {
     if (statusFilter === "all") return true;
@@ -107,13 +196,13 @@ const History: React.FC = () => {
             onClick={() => navigate("/buyer-products")}
             className="inline-flex items-center gap-2 text-xs font-semibold text-[#5C6B5F] hover:text-[#18392B] transition-colors mb-2 uppercase tracking-wider"
           >
-            <ArrowLeft className="w-3.5 h-3.5" /> Back to Harvest Marketplace
+            <ArrowLeft className="w-3.5 h-3.5" /> {tTxt.backBtn}
           </button>
           <h1 className="text-2xl sm:text-3xl font-bold text-[#1A261D] tracking-tight">
-            Purchase History & Real-Time Tracking
+            {tTxt.title}
           </h1>
           <p className="text-sm text-[#5C6B5F] mt-1 font-normal">
-            Track farm-gate harvest fulfillment stages directly from verified producers.
+            {tTxt.subtitle}
           </p>
         </div>
 
@@ -122,7 +211,7 @@ const History: React.FC = () => {
           className="flex items-center gap-2 px-4 py-2.5 bg-[#FAF8F3] hover:bg-[#F2EDE2] border border-[#E8E4DA] rounded-xl text-xs font-semibold text-[#1A261D] transition-all shadow-soft-xs"
         >
           <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin text-[#1E3F2D]" : "text-[#5C6B5F]"}`} />
-          Refresh Pipeline
+          {tTxt.refreshBtn}
         </button>
       </div>
 
@@ -138,7 +227,9 @@ const History: React.FC = () => {
                 : "bg-[#FAF8F3] text-[#5C6B5F] hover:text-[#1A261D] hover:bg-[#F2EDE2] border border-[#E8E4DA]"
             }`}
           >
-            {st === "all" ? `All Orders (${orders.length})` : `${st} (${orders.filter((o) => o.status === st).length})`}
+            {st === "all"
+              ? `${statusTabLabels[st]} (${orders.length})`
+              : `${statusTabLabels[st]} (${orders.filter((o) => o.status === st).length})`}
           </button>
         ))}
       </div>
@@ -153,16 +244,16 @@ const History: React.FC = () => {
           <div className="w-14 h-14 bg-[#EEF4EF] text-[#1E3F2D] rounded-2xl flex items-center justify-center mx-auto mb-4 border border-[#D5E4D8]">
             <ShoppingBag className="w-6 h-6" />
           </div>
-          <h3 className="text-xl font-bold text-[#1A261D]">No Orders Placed Yet</h3>
+          <h3 className="text-xl font-bold text-[#1A261D]">{tTxt.noOrdersTitle}</h3>
           <p className="text-[#5C6B5F] text-sm mt-2 leading-relaxed">
-            You haven't placed any crop procurement orders yet. Browse verified producer listings to source fresh harvest with zero middleman deductions.
+            {tTxt.noOrdersDesc}
           </p>
           <button
             onClick={() => navigate("/buyer-products")}
             className="mt-6 px-6 py-3 bg-[#1E3F2D] hover:bg-[#152F21] text-[#FAF8F3] rounded-xl font-semibold text-xs tracking-wide shadow-soft-sm transition-all inline-flex items-center gap-2"
           >
             <ShoppingBag className="w-4 h-4" />
-            Explore Available Crops
+            {tTxt.exploreBtn}
           </button>
         </div>
       ) : (
@@ -170,8 +261,8 @@ const History: React.FC = () => {
           {filteredOrders.map((ord) => {
             const stepIdx = getStepIndex(ord.status);
             const farmerName = ord.farmer
-              ? `${ord.farmer.firstName || ""} ${ord.farmer.lastName || ""}`.trim() || "Verified Producer"
-              : "Verified Producer";
+              ? `${ord.farmer.firstName || ""} ${ord.farmer.lastName || ""}`.trim() || tTxt.producerLabel
+              : tTxt.producerLabel;
 
             return (
               <motion.div
@@ -207,7 +298,7 @@ const History: React.FC = () => {
                           : "bg-[#F7F2E9] text-[#7A5B22] border-[#EBDDC7]"
                       }`}
                     >
-                      ● {ord.status}
+                      ● {statusTabLabels[ord.status] || ord.status}
                     </span>
                   </div>
                 </div>
@@ -218,7 +309,7 @@ const History: React.FC = () => {
                   <div className="bg-[#FAF8F3] p-4 rounded-xl border border-[#E8E4DA] flex items-center justify-between">
                     <div>
                       <span className="text-[10px] font-semibold uppercase tracking-wider text-[#1E3F2D]">
-                        Procured Crop
+                        {tTxt.procuredCrop}
                       </span>
                       <h4 className="text-base font-bold text-[#1A261D] leading-snug mt-0.5">{ord.productName}</h4>
                       <div className="text-xs font-medium text-[#5C6B5F] mt-1 font-mono">
@@ -226,7 +317,7 @@ const History: React.FC = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-[#7F8B82]">Total</span>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-[#7F8B82]">{tTxt.total}</span>
                       <div className="text-lg font-bold text-[#18392B]">
                         ₹{ord.totalAmount?.toLocaleString("en-IN")}
                       </div>
@@ -236,13 +327,13 @@ const History: React.FC = () => {
                   {/* Producer Info */}
                   <div className="bg-[#FAF8F3] p-4 rounded-xl border border-[#E8E4DA] space-y-1">
                     <span className="text-[10px] font-semibold uppercase tracking-wider text-[#7F8B82]">
-                      Farmer / Producer
+                      {tTxt.producerLabel}
                     </span>
                     <div className="font-bold text-[#1A261D] text-sm">{farmerName}</div>
                     <div className="text-xs text-[#5C6B5F] flex items-center gap-1.5 pt-1">
                       <Phone className="w-3.5 h-3.5 text-[#1E3F2D]" />
                       <a href={`tel:${ord.farmer?.phone}`} className="hover:text-[#18392B] font-medium">
-                        {ord.farmer?.phone || "Direct via portal"}
+                        {ord.farmer?.phone || tTxt.directPortal}
                       </a>
                     </div>
                   </div>
@@ -250,7 +341,7 @@ const History: React.FC = () => {
                   {/* Destination */}
                   <div className="bg-[#FAF8F3] p-4 rounded-xl border border-[#E8E4DA] space-y-1">
                     <span className="text-[10px] font-semibold uppercase tracking-wider text-[#7F8B82]">
-                      Delivery Destination
+                      {tTxt.destinationLabel}
                     </span>
                     <div className="text-xs text-[#1A261D] flex items-start gap-1.5 pt-0.5 leading-relaxed">
                       <MapPin className="w-3.5 h-3.5 text-[#5C6B5F] flex-shrink-0 mt-0.5" />
@@ -266,7 +357,7 @@ const History: React.FC = () => {
                 {/* 4-Step Progress Stepper */}
                 <div className="pt-2">
                   <div className="text-xs font-semibold uppercase tracking-wider text-[#7F8B82] mb-3">
-                    Fulfillment Pipeline
+                    {tTxt.pipelineLabel}
                   </div>
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 relative">

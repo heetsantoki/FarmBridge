@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import {
   Search,
   Tag,
@@ -157,11 +158,21 @@ const CATEGORIES = [
 ];
 
 export default function MarketplacePage() {
+  const { t } = useTranslation();
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  const categories = React.useMemo(() => [
+    { id: "all", label: t("marketplace.allCrops") || "All Harvests", icon: "🌱" },
+    { id: "Grains", label: t("footer.grainsCereals") || "Grains & Cereals", icon: "🌾" },
+    { id: "Vegetables", label: t("footer.freshVegetables") || "Fresh Vegetables", icon: "🥬" },
+    { id: "Fruits", label: t("footer.seasonalFruits") || "Seasonal Fruits", icon: "🍎" },
+    { id: "Pulses", label: t("footer.pulsesLentils") || "Pulses & Lentils", icon: "🫘" },
+    { id: "Oilseeds", label: t("mandi.oilseeds") || "Oilseeds", icon: "🌻" },
+  ], [t]);
 
   useEffect(() => {
     const fetchLiveProducts = async () => {
@@ -211,15 +222,15 @@ export default function MarketplacePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#234E3C] text-[#D8EADB] text-xs font-semibold border border-[#2E614B]">
             <Sparkles className="w-3.5 h-3.5 text-[#A5D6B1]" />
-            Live Wholesale Mandi Lots • Direct Producer Rates
+            {t("marketplace.badge") || "Live Wholesale Mandi Lots • Direct Producer Rates"}
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#FAF8F3]">
-            Agricultural Produce Marketplace
+            {t("marketplace.title") || "Agricultural Produce Marketplace"}
           </h1>
 
           <p className="text-[#CAD7CD] text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-normal">
-            Source high-grade farm produce directly from verified farmers across India. Zero middlemen margins, fair APMC index benchmarks, and verified harvest quality.
+            {t("marketplace.subtitle") || "Source high-grade farm produce directly from verified farmers across India. Zero middlemen margins, fair APMC index benchmarks, and verified harvest quality."}
           </p>
 
           {/* Search bar inside hero */}
@@ -228,7 +239,7 @@ export default function MarketplacePage() {
               <Search className="w-4 h-4 absolute left-4 top-3.5 text-[#7F8B82]" />
               <input
                 type="text"
-                placeholder="Search by crop, variety, or growing state..."
+                placeholder={t("marketplace.searchPlaceholder") || "Search by crop, variety, or growing state..."}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-11 pr-24 py-3 bg-[#FFFFFF] text-[#1A261D] placeholder:text-[#7F8B82] rounded-xl shadow-soft-sm outline-none text-sm font-medium border border-[#E8E4DA] focus:border-[#1E3F2D]"
@@ -253,7 +264,7 @@ export default function MarketplacePage() {
       <section className="bg-[#FAF8F3] border-b border-[#E8E4DA] sticky top-20 z-30 shadow-soft-xs py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto no-scrollbar py-1">
-            {CATEGORIES.map((cat) => (
+            {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
@@ -397,7 +408,7 @@ export default function MarketplacePage() {
                         className="flex-1 py-2.5 px-4 bg-[#1E3F2D] hover:bg-[#152F21] text-[#FAF8F3] font-semibold text-xs rounded-xl shadow-soft-xs transition-all flex items-center justify-center gap-1.5"
                       >
                         <ShoppingCart className="w-3.5 h-3.5" />
-                        Buy Wholesale Lot
+                        {t("marketplace.buyWholesale") || "Buy Wholesale Lot"}
                       </Link>
                     </div>
                   </div>

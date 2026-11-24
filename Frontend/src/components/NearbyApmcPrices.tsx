@@ -12,6 +12,7 @@ import {
   ChevronRight,
   ArrowRight,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { useLocationContext } from "../contexts/LocationContext";
 
 interface NearbyApmcPricesProps {
@@ -23,6 +24,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
   className = "",
   showTitle = true,
 }) => {
+  const { t } = useTranslation();
   const {
     locationConfig,
     selectedMarket,
@@ -79,12 +81,12 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                 <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-[#1E3F2D] text-[#FAF8F3] text-[11px] sm:text-xs font-bold shadow-soft-xs">
                   <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#75B98A] inline-block animate-pulse" />
                   <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#BCE3C7]" />
-                  <span>Real-Time APMC Mandi Bhav (Official AGMARKNET)</span>
+                  <span>{t("mandi.badge") || "Real-Time APMC Mandi Prices (Official AGMARKNET)"}</span>
                 </div>
 
                 {showTitle && (
                   <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#1A261D] tracking-tight">
-                    Live Commodity Prices from Nearest APMC
+                    {t("mandi.title") || "Live Commodity Prices from Nearest APMC"}
                   </h2>
                 )}
 
@@ -93,14 +95,14 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                   <div className="flex items-center gap-1.5 bg-white border border-[#DDD7C8] px-2.5 sm:px-3 py-1.5 rounded-xl shadow-soft-xs w-full sm:w-auto">
                     <MapPin className="w-3.5 h-3.5 text-[#246A3E] flex-shrink-0" />
                     <span className="truncate">
-                      Location:{" "}
+                      {t("mandi.yourLocation") || "Location"}:{" "}
                       <strong className="text-[#1A261D]">
                         {locationConfig.district || "Rajkot"}, {locationConfig.state || "Gujarat"}
                       </strong>
                     </span>
                     {locationConfig.isAuto && (
                       <span className="text-[10px] font-bold bg-[#E2ECE4] text-[#246A3E] px-1.5 py-0.5 rounded-md ml-auto sm:ml-0 flex-shrink-0">
-                        GPS Active
+                        {t("mandi.gpsActive") || "GPS Active"}
                       </span>
                     )}
                   </div>
@@ -109,7 +111,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                     <div className="flex items-center gap-1.5 bg-[#EEF4EF] border border-[#CDE0D2] px-2.5 sm:px-3 py-1.5 rounded-xl text-[#1E3F2D] shadow-soft-xs w-full sm:w-auto">
                       <Building2 className="w-3.5 h-3.5 text-[#246A3E] flex-shrink-0" />
                       <span className="truncate">
-                        Market: <strong className="font-bold">{selectedMarket.name}</strong>
+                        {t("mandi.nearestMarket") || "Market"}: <strong className="font-bold">{selectedMarket.name}</strong>
                       </span>
                       {selectedMarket.distanceKm !== undefined && selectedMarket.distanceKm !== null && (
                         <span className="font-bold text-[10px] sm:text-[11px] text-[#246A3E] bg-white px-2 py-0.5 rounded-md border border-[#CDE0D2] ml-auto sm:ml-0 flex-shrink-0">
@@ -130,7 +132,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                   title="Detect your current location using device GPS"
                 >
                   <Navigation className={`w-3.5 h-3.5 text-[#246A3E] ${isLocating ? "animate-spin" : ""}`} />
-                  <span className="truncate">{isLocating ? "Detecting..." : "Detect Location"}</span>
+                  <span className="truncate">{isLocating ? "Detecting..." : (t("mandi.detectLocation") || "Detect Location")}</span>
                 </button>
 
                 <button
@@ -139,7 +141,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                   title="Switch to another district or APMC market"
                 >
                   <Building2 className="w-3.5 h-3.5 text-[#BCE3C7]" />
-                  <span>Change Market</span>
+                  <span>{t("mandi.changeMarket") || "Change Market"}</span>
                   <ChevronRight className="w-3 h-3 text-[#BCE3C7] hidden xs:inline" />
                 </button>
 
@@ -159,7 +161,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
             {nearbyMarkets.length > 1 && (
               <div className="mt-4 sm:mt-5 pt-3 sm:pt-4 border-t border-[#E8E2D5]">
                 <div className="text-[10px] sm:text-[11px] font-bold text-[#7A887E] uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                  <span>Nearby APMCs in your radius:</span>
+                  <span>{t("mandi.radiusLabel") || "Nearby APMCs in your radius:"}</span>
                 </div>
                 <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 scrollbar-none -mx-2 px-2 sm:mx-0 sm:px-0">
                   {nearbyMarkets.map((m) => {
@@ -168,19 +170,17 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                       <button
                         key={m.id}
                         onClick={() => selectMarketById(m.id)}
-                        className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex-shrink-0 ${
-                          isCurrent
-                            ? "bg-[#1E3F2D] text-white shadow-soft-xs font-bold"
-                            : "bg-white hover:bg-[#EFECE3] text-[#46574B] border border-[#E0D9CB]"
-                        }`}
+                        className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex-shrink-0 ${isCurrent
+                          ? "bg-[#1E3F2D] text-white shadow-soft-xs font-bold"
+                          : "bg-white hover:bg-[#EFECE3] text-[#46574B] border border-[#E0D9CB]"
+                          }`}
                       >
                         <Building2 className={`w-3 h-3 ${isCurrent ? "text-[#BCE3C7]" : "text-[#7A887E]"}`} />
                         <span>{m.name}</span>
                         {m.distanceKm !== undefined && m.distanceKm !== null && (
                           <span
-                            className={`text-[10px] px-1.5 py-0.2 rounded-md ${
-                              isCurrent ? "bg-white/20 text-[#FAF8F3]" : "bg-[#F3EFE6] text-[#246A3E] font-bold"
-                            }`}
+                            className={`text-[10px] px-1.5 py-0.2 rounded-md ${isCurrent ? "bg-white/20 text-[#FAF8F3]" : "bg-[#F3EFE6] text-[#246A3E] font-bold"
+                              }`}
                           >
                             {m.distanceKm} km
                           </span>
@@ -202,24 +202,29 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                 type="text"
                 value={searchCrop}
                 onChange={(e) => setSearchCrop(e.target.value)}
-                placeholder="Search crop (e.g. Cotton, Groundnut, Wheat, Jeera)..."
+                placeholder={t("mandi.searchCrop") || "Search crop in this APMC..."}
                 className="w-full pl-9 pr-4 py-2 bg-white border border-[#DDD7C8] focus:border-[#246A3E] rounded-xl text-xs text-[#1A261D] placeholder-[#8F9D91] focus:outline-none transition-all shadow-soft-xs"
               />
             </div>
 
             {/* Category Filter Pills */}
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none -mx-2 px-2 sm:mx-0 sm:px-0">
-              {["All", "Cash Crops", "Oilseeds", "Spices", "Grains & Pulses"].map((cat) => (
+              {[
+                { id: "All", label: t("mandi.all") || "All" },
+                { id: "Cash Crops", label: t("mandi.cashCrops") || "Cash Crops" },
+                { id: "Oilseeds", label: t("mandi.oilseeds") || "Oilseeds" },
+                { id: "Spices", label: t("mandi.spices") || "Spices" },
+                { id: "Grains & Pulses", label: t("mandi.grainsPulses") || "Grains & Pulses" }
+              ].map((cat) => (
                 <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer flex-shrink-0 ${
-                    activeCategory === cat
-                      ? "bg-[#1E3F2D] text-white shadow-soft-xs"
-                      : "bg-white text-[#5C6B5F] hover:bg-[#EFECE3] border border-[#DDD7C8]"
-                  }`}
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer flex-shrink-0 ${activeCategory === cat.id
+                    ? "bg-[#1E3F2D] text-white shadow-soft-xs"
+                    : "bg-white text-[#5C6B5F] hover:bg-[#EFECE3] border border-[#DDD7C8]"
+                    }`}
                 >
-                  {cat}
+                  {cat.label}
                 </button>
               ))}
             </div>
@@ -292,7 +297,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                           </div>
 
                           <span className="text-[10px] font-bold text-[#246A3E] bg-[#EEF4EF] px-2 py-0.5 rounded-md border border-[#D5E4D8] flex-shrink-0">
-                            Live Bhav
+                            {t("mandi.liveBhav") || "Live Price"}
                           </span>
                         </div>
 
@@ -300,18 +305,18 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                         <div className="mt-3 sm:mt-4 pt-3 border-t border-[#F0EBE0] flex items-baseline justify-between gap-2">
                           <div>
                             <span className="text-[9px] sm:text-[10px] font-bold text-[#7A887E] uppercase tracking-wider block">
-                              Modal / Average Price
+                              {t("mandi.modalPrice") || "Modal / Average Price"}
                             </span>
                             <div className="text-xl sm:text-2xl font-black text-[#1A261D] tracking-tight mt-0.5">
                               ₹{modal.toLocaleString("en-IN")}{" "}
-                              <span className="text-xs font-semibold text-[#7A887E]">/ Quintal</span>
+                              <span className="text-xs font-semibold text-[#7A887E]">{t("mandi.perQuintal") || "/ Quintal"}</span>
                             </div>
                           </div>
 
                           {item.pricePer20kg && (
                             <div className="text-right flex-shrink-0">
                               <span className="text-[9px] font-bold text-[#7A887E] uppercase tracking-wider block">
-                                20kg (મણ)
+                                {t("mandi.localUnit") || "20kg (મણ)"}
                               </span>
                               <span className="text-xs font-bold text-[#246A3E] bg-[#EEF4EF] px-2 py-0.5 sm:py-1 rounded-lg border border-[#D5E4D8] inline-block mt-0.5">
                                 {item.pricePer20kg}
@@ -323,8 +328,8 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                         {/* Price Spread Range Bar */}
                         <div className="mt-3 sm:mt-4 bg-[#F8F5EE] p-2 sm:p-2.5 rounded-xl border border-[#ECE5D8]">
                           <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-[#5C6B5F] font-semibold mb-1.5">
-                            <span>Min: <strong className="text-[#1A261D]">₹{min.toLocaleString("en-IN")}</strong></span>
-                            <span>Max: <strong className="text-[#1A261D]">₹{max.toLocaleString("en-IN")}</strong></span>
+                            <span>{t("mandi.min") || "Min"}: <strong className="text-[#1A261D]">₹{min.toLocaleString("en-IN")}</strong></span>
+                            <span>{t("mandi.max") || "Max"}: <strong className="text-[#1A261D]">₹{max.toLocaleString("en-IN")}</strong></span>
                           </div>
 
                           {/* Visual slider bar */}
@@ -341,7 +346,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                       <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-[#F0EBE0] flex items-center justify-between text-[10px] text-[#7A887E]">
                         <span className="flex items-center gap-1 font-medium truncate">
                           <Calendar className="w-3 h-3 text-[#7A887E] flex-shrink-0" />
-                          <span>Arrival: {item.arrivalDate}</span>
+                          <span>{t("mandi.arrival") || "Arrival"}: {item.arrivalDate}</span>
                         </span>
 
                         <span className="flex items-center gap-1 text-[#246A3E] font-bold flex-shrink-0">

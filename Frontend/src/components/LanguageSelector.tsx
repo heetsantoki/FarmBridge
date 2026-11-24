@@ -26,14 +26,25 @@ export function LanguageSelector({ className = "" }: LanguageSelectorProps) {
     setSelectedLanguage(value);
     i18n.changeLanguage(value);
     localStorage.setItem("preferredLanguage", value);
+    localStorage.setItem("language", value);
+    localStorage.setItem("selectedLanguage", value);
+    window.dispatchEvent(new Event("languageChange"));
   };
 
   useEffect(() => {
-    const storedLang = localStorage.getItem("preferredLanguage") || localStorage.getItem("selectedLanguage");
-    if (storedLang && (storedLang === "en" || storedLang === "hi" || storedLang === "gu") && storedLang !== i18n.language) {
-      i18n.changeLanguage(storedLang);
-      setSelectedLanguage(storedLang);
-    }
+    const handleSync = () => {
+      const storedLang = localStorage.getItem("preferredLanguage") || localStorage.getItem("language");
+      if (storedLang && (storedLang === "en" || storedLang === "hi" || storedLang === "gu") && storedLang !== i18n.language) {
+        i18n.changeLanguage(storedLang);
+        setSelectedLanguage(storedLang);
+      }
+    };
+    window.addEventListener("languageChange", handleSync);
+    window.addEventListener("storage", handleSync);
+    return () => {
+      window.removeEventListener("languageChange", handleSync);
+      window.removeEventListener("storage", handleSync);
+    };
   }, [i18n]);
 
   return (

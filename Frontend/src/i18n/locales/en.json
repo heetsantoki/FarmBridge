@@ -1,251 +1,259 @@
-﻿{
-    "hero1": {
-      "tagline": "Connecting Farmers with Buyers",
-      "title": "Transform Agriculture with Direct Market Access",
-      "subtitle": "Eliminate middlemen and improve farmer profitability through direct market access. Join thousands of farmers and buyers on FarmBridge.",
-      "getStarted": "Get Started",
-      "learnMore": "Learn More"
-    },
-    "features": {
-      "title": "Why Choose FarmBridge?",
-      "subtitle": "We provide innovative solutions to connect farmers directly with buyers, ensuring better prices and sustainable agriculture.",
-      "directMarket": {
-        "title": "Direct Market Access",
-        "description": "Connect directly with buyers and get better prices for your produce without intermediaries."
-      },
-      "smartPrice": {
-        "title": "Smart Price Discovery",
-        "description": "Real-time market prices and trends to help you make informed decisions."
-      },
-      "securePayments": {
-        "title": "Secure Payments",
-        "description": "Safe and instant payment processing with multiple payment options."
-      },
-      "qualityAssurance": {
-        "title": "Quality Assurance",
-        "description": "Built-in quality verification system to maintain high standards."
-      },
-      "logistics": {
-        "title": "Logistics Support",
-        "description": "Integrated transportation and storage solutions for seamless delivery."
-      },
-      "support": {
-        "title": "24/7 Support",
-        "description": "Dedicated customer support team to assist you at every step."
-      }
-    },
-    "stats": {
-      "farmers": "Registered Farmers",
-      "buyers": "Active Buyers",
-      "volume": "Trade Volume (₹)",
-      "earnings": "Increase in Earnings"
-    },
-    "cta": {
-      "title": "Ready to Transform Agriculture?",
-      "subtitle": "Join thousands of farmers and buyers already benefiting from direct market access.",
-      "button": "Get Started Now"
-    },
-    "faq": {
-      "title": "Frequently Asked Questions",
-      "subtitle": "Find answers to common questions about FarmBridge",
-      "stillHaveQuestions": "Still have questions?",
-      "contactSupport": "If you cannot find an answer to your question in our FAQ, you can always contact us. We will answer shortly!",
-      "contactButton": "Contact Support",
-      "categories": {
-        "general": {
-          "title": "General Questions",
-          "description": "Basic information about FarmBridge",
-          "questions": {
-            "what-is-FarmBridge": {
-              "question": "What is FarmBridge?",
-              "answer": "FarmBridge is a digital platform connecting farmers directly with buyers, eliminating middlemen and ensuring better prices for agricultural produce."
-            },
-            "how-to-register": {
-              "question": "How do I register on FarmBridge?",
-              "answer": "Simply register as a farmer or buyer, complete your profile, and start connecting with potential trading partners."
-            }
-          }
-        },
-        "farmers": {
-          "title": "For Farmers",
-          "description": "Information for farmers using FarmBridge",
-          "questions": {
-            "how-to-list": {
-              "question": "How do I list my products?",
-              "answer": "After logging in, go to your dashboard and click on 'Add Product'. Fill in the details about your produce, including quantity, price, and quality parameters."
-            },
-            "payment-process": {
-              "question": "How do I receive payments?",
-              "answer": "Payments are processed securely through our platform. You can link your bank account in your profile settings to receive direct payments when your produce is sold."
-            }
-          }
-        },
-        "buyers": {
-          "title": "For Buyers",
-          "description": "Information for buyers using FarmBridge",
-          "questions": {
-            "quality-assurance": {
-              "question": "How is quality assured?",
-              "answer": "We have a robust quality verification system. All products are checked against quality parameters, and we provide detailed quality reports. You can also check farmer ratings and reviews."
-            },
-            "bulk-ordering": {
-              "question": "Can I place bulk orders?",
-              "answer": "Yes, you can place bulk orders directly through the platform. Many farmers offer special prices for bulk purchases. You can negotiate prices for large quantities."
-            }
-          }
-        }
-      }
-    },
-    
-      "about": {
-        "header": "About FarmBridge",
-        "title": "Revolutionizing Agriculture Through Technology",
-        "subtitle": "We're on a mission to empower farmers and create a sustainable agricultural ecosystem.",
-        "imageAlt": "Farmers using FarmBridge",
-        "yearsOfExcellence": "Years of Excellence",
-        "mission": {
-          "title": "Our Mission",
-          "description": "To create a transparent and efficient agricultural marketplace..."
-        },
-        "vision": {
-          "title": "Our Vision",
-          "description": "To be the leading agricultural technology platform..."
-        },
-        "values": {
-          "title": "Our Core Values",
-          "innovation": { "title": "Innovation", "description": "We constantly innovate to provide the best solutions..." },
-          "transparency": { "title": "Transparency", "description": "We believe in complete transparency..." },
-          "empowerment": { "title": "Empowerment", "description": "We work to empower farmers..." },
-          "excellence": { "title": "Excellence", "description": "We strive for excellence in everything we do." }
-        },
-        "joinUs": {
-          "title": "Join Us in Transforming Agriculture",
-          "description": "Be part of the agricultural revolution...",
-          "buttonText": "Join FarmBridge"
-        }
-      },
-     "products": {
-      "featuredProducts": "Featured Products",
-      "discoverProducts": "Discover our selection of premium organic products",
-      "filterByCategory": "Filter by Category",
-      "filterByCity": "Filter by City",
-      "allCategories": "All Categories",
-      "allStates": "All States",
-      "fruits": "Fruits",
-      "grains": "Grains",
-      "Organic Apples": "Organic Apples",
-      "Fresh Mangoes": "Fresh Mangoes",
-      "Organic Wheat": "Organic Wheat",
-      "Kesar Mango": "Kesar Mango",
-      "Pearl Millet": "Pearl Millet",
-      "Kinno Orange": "Kinno Orange",
-      "Premium Wheat": "Premium Wheat",
-      "Pomegranate": "Pomegranate",
-      "Organic Barley": "Organic Barley",
-      "Red Banana": "Red Banana",
-      "Red Rice": "Red Rice",
-      "Alphonso Mango": "Alphonso Mango",
-      "Jowar": "Jowar",
-      "Sweet Lime": "Sweet Lime",
-      "Fine Rice": "Fine Rice",
-      "500 kg available": "500 kg available",
-      "300 kg available": "300 kg available",
-      "1000 kg available": "1000 kg available",
-      "2000 kg available": "2000 kg available",
-      "800 kg available": "800 kg available",
-      "5000 kg available": "5000 kg available",
-      "600 kg available": "600 kg available",
-      "1500 kg available": "1500 kg available",
-      "400 kg available": "400 kg available",
-      "2500 kg available": "2500 kg available",
-      "700 kg available": "700 kg available",
-      "3000 kg available": "3000 kg available",
-      "Fresh, crisp apples grown without pesticides": "Fresh, crisp apples grown without pesticides",
-      "Sweet and juicy mangoes from local orchards": "Sweet and juicy mangoes from local orchards",
-      "Premium quality wheat grains, perfect for bread and rotis": "Premium quality wheat grains, perfect for bread and rotis",
-      "Premium Gir Kesar mangoes, known for their sweet taste and aroma": "Premium Gir Kesar mangoes, known for their sweet taste and aroma",
-      "High-quality bajra grown in Gujarat's fertile soil": "High-quality bajra grown in Gujarat's fertile soil",
-      "Sweet and juicy Kinno oranges from Punjab orchards": "Sweet and juicy Kinno oranges from Punjab orchards",
-      "High-quality wheat from Punjab's golden fields": "High-quality wheat from Punjab's golden fields",
-      "Fresh pomegranates from Rajasthan's orchards": "Fresh pomegranates from Rajasthan's orchards",
-      "Naturally grown barley from Rajasthan's farms": "Naturally grown barley from Rajasthan's farms",
-      "Sweet and nutritious red bananas from Kerala": "Sweet and nutritious red bananas from Kerala",
-      "Traditional Kerala red rice, rich in nutrients": "Traditional Kerala red rice, rich in nutrients",
-      "Premium Ratnagiri Alphonso mangoes": "Premium Ratnagiri Alphonso mangoes",
-      "High-quality sorghum from Maharashtra farms": "High-quality sorghum from Maharashtra farms",
-      "Fresh and juicy mosambi from Telangana orchards": "Fresh and juicy mosambi from Telangana orchards",
-      "Premium quality rice from Telangana paddy fields": "Premium quality rice from Telangana paddy fields",
-      "knowMore": "Know More",
-      "showMore":"Show More Products",
-    
-      "cities": {
-        "New York": "New York",
-        "Mumbai": "Mumbai",
-        "Delhi": "Delhi",
-        "Junagadh": "Junagadh",
-        "Mehsana": "Mehsana",
-        "Amritsar": "Amritsar",
-        "Ludhiana": "Ludhiana",
-        "Jodhpur": "Jodhpur",
-        "Jaipur": "Jaipur",
-        "Kochi": "Kochi",
-        "Thrissur": "Thrissur",
-        "Ratnagiri": "Ratnagiri",
-        "Nashik": "Nashik",
-        "Hyderabad": "Hyderabad",
-        "Warangal": "Warangal"
-      },
-      
-        "farmerNames": {
-          "John Smith": "John Smith",
-          "Rajesh Kumar": "Rajesh Kumar",
-          "Amit Patel": "Amit Patel",
-          "Rajesh Patel": "Rajesh Patel",
-          "Bharat Modi": "Bharat Modi",
-          "Gurpreet Singh": "Gurpreet Singh",
-          "Harjinder Singh": "Harjinder Singh",
-          "Ramesh Sharma": "Ramesh Sharma",
-          "Vikram Singh": "Vikram Singh",
-          "Thomas Joseph": "Thomas Joseph",
-          "Mathew Philip": "Mathew Philip",
-          "Suresh Desai": "Suresh Desai",
-          "Prakash Patil": "Prakash Patil",
-          "Krishna Reddy": "Krishna Reddy",
-          "Ravi Kumar": "Ravi Kumar"
-        },
-        "rating": "Rating",
-        "Negotiate": "Negotiate",
-        "Read More": "Read More",
-        "View Less": "View Less",
-        "Product Info": "Product Info",
-        "Quantity": "Quantity",
-        "Price Range": "Price Range",
-        "Category": "Category",
-        "Farmer Details": "Farmer Details",
-        "Name": "Name",
-        "Contact": "Contact",
-        "Location": "Location",
-        "Detailed Information": "Detailed Information",
-        "Product Certification": "Product Certification",
-        "Land Type": "Land Type",
-        "Farming Practices": "Farming Practices",
-        "Quality Parameters": "Quality Parameters",
-        "Farmer Experience": "Farmer Experience",
-        "farmingPractices": {
-          "No chemical pesticides used": "No chemical pesticides used",
-          "Natural fertilizers only": "Natural fertilizers only",
-          "Sustainable irrigation methods": "Sustainable irrigation methods",
-          "Crop rotation practiced": "Crop rotation practiced"
-        },
-        "qualityParameters": {
-          "Hand-picked at optimal ripeness": "Hand-picked at optimal ripeness",
-          "Carefully sorted and graded": "Carefully sorted and graded",
-          "Stored in temperature-controlled environment": "Stored in temperature-controlled environment",
-          "Regular quality checks performed": "Regular quality checks performed"
-        }
+{
+  "hero1": {
+    "tagline": "Connecting Farmers with Buyers",
+    "title": "Transform Agriculture with Direct Market Access",
+    "subtitle": "Eliminate middlemen and improve farmer profitability through direct market access. Join thousands of farmers and buyers on FarmBridge.",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More"
   },
-    
-        "contact": {
+  "features": {
+    "title": "Why Choose FarmBridge?",
+    "subtitle": "We provide innovative solutions to connect farmers directly with buyers, ensuring better prices and sustainable agriculture.",
+    "directMarket": {
+      "title": "Direct Market Access",
+      "description": "Connect directly with buyers and get better prices for your produce without intermediaries."
+    },
+    "smartPrice": {
+      "title": "Smart Price Discovery",
+      "description": "Real-time market prices and trends to help you make informed decisions."
+    },
+    "securePayments": {
+      "title": "Secure Payments",
+      "description": "Safe and instant payment processing with multiple payment options."
+    },
+    "qualityAssurance": {
+      "title": "Quality Assurance",
+      "description": "Built-in quality verification system to maintain high standards."
+    },
+    "logistics": {
+      "title": "Logistics Support",
+      "description": "Integrated transportation and storage solutions for seamless delivery."
+    },
+    "support": {
+      "title": "24/7 Support",
+      "description": "Dedicated customer support team to assist you at every step."
+    }
+  },
+  "stats": {
+    "farmers": "Registered Farmers",
+    "buyers": "Active Buyers",
+    "volume": "Trade Volume (₹)",
+    "earnings": "Increase in Earnings"
+  },
+  "cta": {
+    "title": "Ready to Transform Agriculture?",
+    "subtitle": "Join thousands of farmers and buyers already benefiting from direct market access.",
+    "button": "Get Started Now"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about FarmBridge",
+    "stillHaveQuestions": "Still have questions?",
+    "contactSupport": "If you cannot find an answer to your question in our FAQ, you can always contact us. We will answer shortly!",
+    "contactButton": "Contact Support",
+    "categories": {
+      "general": {
+        "title": "General Questions",
+        "description": "Basic information about FarmBridge",
+        "questions": {
+          "what-is-FarmBridge": {
+            "question": "What is FarmBridge?",
+            "answer": "FarmBridge is a digital platform connecting farmers directly with buyers, eliminating middlemen and ensuring better prices for agricultural produce."
+          },
+          "how-to-register": {
+            "question": "How do I register on FarmBridge?",
+            "answer": "Simply register as a farmer or buyer, complete your profile, and start connecting with potential trading partners."
+          }
+        }
+      },
+      "farmers": {
+        "title": "For Farmers",
+        "description": "Information for farmers using FarmBridge",
+        "questions": {
+          "how-to-list": {
+            "question": "How do I list my products?",
+            "answer": "After logging in, go to your dashboard and click on 'Add Product'. Fill in the details about your produce, including quantity, price, and quality parameters."
+          },
+          "payment-process": {
+            "question": "How do I receive payments?",
+            "answer": "Payments are processed securely through our platform. You can link your bank account in your profile settings to receive direct payments when your produce is sold."
+          }
+        }
+      },
+      "buyers": {
+        "title": "For Buyers",
+        "description": "Information for buyers using FarmBridge",
+        "questions": {
+          "quality-assurance": {
+            "question": "How is quality assured?",
+            "answer": "We have a robust quality verification system. All products are checked against quality parameters, and we provide detailed quality reports. You can also check farmer ratings and reviews."
+          },
+          "bulk-ordering": {
+            "question": "Can I place bulk orders?",
+            "answer": "Yes, you can place bulk orders directly through the platform. Many farmers offer special prices for bulk purchases. You can negotiate prices for large quantities."
+          }
+        }
+      }
+    }
+  },
+  "about": {
+    "header": "About FarmBridge",
+    "title": "Revolutionizing Agriculture Through Technology",
+    "subtitle": "We're on a mission to empower farmers and create a sustainable agricultural ecosystem.",
+    "imageAlt": "Farmers using FarmBridge",
+    "yearsOfExcellence": "Years of Excellence",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To create a transparent and efficient agricultural marketplace..."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the leading agricultural technology platform..."
+    },
+    "values": {
+      "title": "Our Core Values",
+      "innovation": {
+        "title": "Innovation",
+        "description": "We constantly innovate to provide the best solutions..."
+      },
+      "transparency": {
+        "title": "Transparency",
+        "description": "We believe in complete transparency..."
+      },
+      "empowerment": {
+        "title": "Empowerment",
+        "description": "We work to empower farmers..."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "We strive for excellence in everything we do."
+      }
+    },
+    "joinUs": {
+      "title": "Join Us in Transforming Agriculture",
+      "description": "Be part of the agricultural revolution...",
+      "buttonText": "Join FarmBridge"
+    }
+  },
+  "products": {
+    "featuredProducts": "Featured Products",
+    "discoverProducts": "Discover our selection of premium organic products",
+    "filterByCategory": "Filter by Category",
+    "filterByCity": "Filter by City",
+    "allCategories": "All Categories",
+    "allStates": "All States",
+    "fruits": "Fruits",
+    "grains": "Grains",
+    "Organic Apples": "Organic Apples",
+    "Fresh Mangoes": "Fresh Mangoes",
+    "Organic Wheat": "Organic Wheat",
+    "Kesar Mango": "Kesar Mango",
+    "Pearl Millet": "Pearl Millet",
+    "Kinno Orange": "Kinno Orange",
+    "Premium Wheat": "Premium Wheat",
+    "Pomegranate": "Pomegranate",
+    "Organic Barley": "Organic Barley",
+    "Red Banana": "Red Banana",
+    "Red Rice": "Red Rice",
+    "Alphonso Mango": "Alphonso Mango",
+    "Jowar": "Jowar",
+    "Sweet Lime": "Sweet Lime",
+    "Fine Rice": "Fine Rice",
+    "500 kg available": "500 kg available",
+    "300 kg available": "300 kg available",
+    "1000 kg available": "1000 kg available",
+    "2000 kg available": "2000 kg available",
+    "800 kg available": "800 kg available",
+    "5000 kg available": "5000 kg available",
+    "600 kg available": "600 kg available",
+    "1500 kg available": "1500 kg available",
+    "400 kg available": "400 kg available",
+    "2500 kg available": "2500 kg available",
+    "700 kg available": "700 kg available",
+    "3000 kg available": "3000 kg available",
+    "Fresh, crisp apples grown without pesticides": "Fresh, crisp apples grown without pesticides",
+    "Sweet and juicy mangoes from local orchards": "Sweet and juicy mangoes from local orchards",
+    "Premium quality wheat grains, perfect for bread and rotis": "Premium quality wheat grains, perfect for bread and rotis",
+    "Premium Gir Kesar mangoes, known for their sweet taste and aroma": "Premium Gir Kesar mangoes, known for their sweet taste and aroma",
+    "High-quality bajra grown in Gujarat's fertile soil": "High-quality bajra grown in Gujarat's fertile soil",
+    "Sweet and juicy Kinno oranges from Punjab orchards": "Sweet and juicy Kinno oranges from Punjab orchards",
+    "High-quality wheat from Punjab's golden fields": "High-quality wheat from Punjab's golden fields",
+    "Fresh pomegranates from Rajasthan's orchards": "Fresh pomegranates from Rajasthan's orchards",
+    "Naturally grown barley from Rajasthan's farms": "Naturally grown barley from Rajasthan's farms",
+    "Sweet and nutritious red bananas from Kerala": "Sweet and nutritious red bananas from Kerala",
+    "Traditional Kerala red rice, rich in nutrients": "Traditional Kerala red rice, rich in nutrients",
+    "Premium Ratnagiri Alphonso mangoes": "Premium Ratnagiri Alphonso mangoes",
+    "High-quality sorghum from Maharashtra farms": "High-quality sorghum from Maharashtra farms",
+    "Fresh and juicy mosambi from Telangana orchards": "Fresh and juicy mosambi from Telangana orchards",
+    "Premium quality rice from Telangana paddy fields": "Premium quality rice from Telangana paddy fields",
+    "knowMore": "Know More",
+    "showMore": "Show More Products",
+    "cities": {
+      "New York": "New York",
+      "Mumbai": "Mumbai",
+      "Delhi": "Delhi",
+      "Junagadh": "Junagadh",
+      "Mehsana": "Mehsana",
+      "Amritsar": "Amritsar",
+      "Ludhiana": "Ludhiana",
+      "Jodhpur": "Jodhpur",
+      "Jaipur": "Jaipur",
+      "Kochi": "Kochi",
+      "Thrissur": "Thrissur",
+      "Ratnagiri": "Ratnagiri",
+      "Nashik": "Nashik",
+      "Hyderabad": "Hyderabad",
+      "Warangal": "Warangal"
+    },
+    "farmerNames": {
+      "John Smith": "John Smith",
+      "Rajesh Kumar": "Rajesh Kumar",
+      "Amit Patel": "Amit Patel",
+      "Rajesh Patel": "Rajesh Patel",
+      "Bharat Modi": "Bharat Modi",
+      "Gurpreet Singh": "Gurpreet Singh",
+      "Harjinder Singh": "Harjinder Singh",
+      "Ramesh Sharma": "Ramesh Sharma",
+      "Vikram Singh": "Vikram Singh",
+      "Thomas Joseph": "Thomas Joseph",
+      "Mathew Philip": "Mathew Philip",
+      "Suresh Desai": "Suresh Desai",
+      "Prakash Patil": "Prakash Patil",
+      "Krishna Reddy": "Krishna Reddy",
+      "Ravi Kumar": "Ravi Kumar"
+    },
+    "rating": "Rating",
+    "Negotiate": "Negotiate",
+    "Read More": "Read More",
+    "View Less": "View Less",
+    "Product Info": "Product Info",
+    "Quantity": "Quantity",
+    "Price Range": "Price Range",
+    "Category": "Category",
+    "Farmer Details": "Farmer Details",
+    "Name": "Name",
+    "Contact": "Contact",
+    "Location": "Location",
+    "Detailed Information": "Detailed Information",
+    "Product Certification": "Product Certification",
+    "Land Type": "Land Type",
+    "Farming Practices": "Farming Practices",
+    "Quality Parameters": "Quality Parameters",
+    "Farmer Experience": "Farmer Experience",
+    "farmingPractices": {
+      "No chemical pesticides used": "No chemical pesticides used",
+      "Natural fertilizers only": "Natural fertilizers only",
+      "Sustainable irrigation methods": "Sustainable irrigation methods",
+      "Crop rotation practiced": "Crop rotation practiced"
+    },
+    "qualityParameters": {
+      "Hand-picked at optimal ripeness": "Hand-picked at optimal ripeness",
+      "Carefully sorted and graded": "Carefully sorted and graded",
+      "Stored in temperature-controlled environment": "Stored in temperature-controlled environment",
+      "Regular quality checks performed": "Regular quality checks performed"
+    }
+  },
+  "contact": {
     "title": "Contact Us",
     "subtitle": "Earn your Profit without 3rd parties extra moneys",
     "getInTouch": "Get in Touch",
@@ -324,25 +332,23 @@
       "image": "https://images.pexels.com/photos/1212102/pexels-photo-1212102.jpeg?auto=compress&cs=tinysrgb&w=600"
     }
   ],
-  "latest":{
-      "Latest Articles":"Latest Articles"
+  "latest": {
+    "Latest Articles": "Latest Articles"
   },
   "buttons": {
     "readMore": "Read More"
   },
-  
-    "hero2": {
-      "title": "Success Stories",
-      "subtitle": "Discover how FarmBridge is transforming the lives of farmers.",
-    
+  "hero2": {
+    "title": "Success Stories",
+    "subtitle": "Discover how FarmBridge is transforming the lives of farmers.",
     "readFullStory": "Read Full Story",
     "Revenue Increase": "Revenue Increase",
-    "name":"Rajesh Kumar",
+    "name": "Rajesh Kumar",
     "Years With FarmBridge": "Years With FarmBridge",
     "quote": "FarmBridge has completely transformed my farming business. I now get 40% better prices for my produce and have direct relationships with buyers across the country.",
     "location": "Wheat Farmer, Punjab",
     "Main Crops": "Main Crops",
-    "years":"Years",
+    "years": "Years",
     "successStories": [
       {
         "name": "Amit Patel",
@@ -391,7 +397,6 @@
     "startYourSuccessStory": "Start Your Success Story",
     "joinThousands": "Join thousands of farmers who have transformed their agricultural business with FarmBridge"
   },
-
   "userType": {
     "title": "Choose Your Role",
     "subtitle": "Select whether you want to register as a farmer or a buyer",
@@ -467,9 +472,102 @@
     "no_account": "Don't have an account?",
     "register": "Register now",
     "login_failed": "Login failed. Please check your credentials."
+  },
+  "nav": {
+    "home": "Home",
+    "marketplace": "Marketplace",
+    "about": "About",
+    "successStories": "Success Stories",
+    "contact": "Contact",
+    "signIn": "Sign In",
+    "getStarted": "Get Started",
+    "selectMarket": "Select APMC"
+  },
+  "mandi": {
+    "badge": "Real-Time APMC Mandi Prices (Official AGMARKNET)",
+    "title": "Live Commodity Prices from Nearest APMC",
+    "yourLocation": "Your Location",
+    "gpsActive": "GPS Active",
+    "nearestMarket": "Nearest Market",
+    "detectLocation": "Detect Location",
+    "changeMarket": "Change Market",
+    "radiusLabel": "NEARBY APMCS IN YOUR RADIUS:",
+    "searchCrop": "Search crop in this APMC (e.g. Cotton, Wheat, Jeera)...",
+    "all": "All",
+    "cashCrops": "Cash Crops",
+    "oilseeds": "Oilseeds",
+    "spices": "Spices",
+    "grainsPulses": "Grains & Pulses",
+    "liveBhav": "Live Price",
+    "modalPrice": "MODAL / AVERAGE PRICE",
+    "localUnit": "LOCAL UNIT (20KG / મણ)",
+    "perQuintal": "/Quintal",
+    "per20kg": "/20kg",
+    "min": "Min",
+    "max": "Max",
+    "arrival": "Arrival",
+    "runningMandiRates": "Live APMC Rates"
+  },
+  "marketplace": {
+    "badge": "Direct Agricultural Marketplace",
+    "title": "Procure Harvest Direct From Farm Gate",
+    "subtitle": "Browse verified crop lots directly from Indian farmers with guaranteed transparent pricing.",
+    "searchPlaceholder": "Search crops, grains, pulses...",
+    "allCategories": "All Categories",
+    "allCrops": "All Crops",
+    "buyWholesale": "Buy Wholesale",
+    "viewDetails": "View Details",
+    "perUnit": "per",
+    "available": "Available",
+    "verifiedFarmer": "Verified Producer",
+    "noProducts": "No agricultural lots found matching your filter."
+  },
+  "footer": {
+    "tagline": "Empowering farmers and buyers through transparent, direct agricultural trade.",
+    "marketplace": "Marketplace",
+    "allHarvestLots": "All Harvest Lots",
+    "grainsCereals": "Grains & Cereals",
+    "freshVegetables": "Fresh Vegetables",
+    "seasonalFruits": "Seasonal Fruits",
+    "pulsesLentils": "Pulses & Lentils",
+    "platform": "Platform",
+    "aboutUs": "About Us",
+    "farmerSuccessStories": "Farmer Success Stories",
+    "faqGuides": "FAQ & Guides",
+    "contactSupport": "Contact Support",
+    "connect": "Direct Trade Network",
+    "addressLine": "Marwadi University, Rajkot, Gujarat, India",
+    "phone": "+91 98765 43210",
+    "email": "support@farmbridge.in",
+    "copyright": "© 2026 FarmBridge Inc. Empowering Indian Agriculture.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "home": {
+    "badge": "Direct Agricultural Trade Portal",
+    "heroTitle1": "Direct Farm-to-Buyer",
+    "heroTitle2": "Trade Without Intermediaries.",
+    "heroSubtitle": "Eliminate commissions, access transparent real-time APMC Mandi pricing, and trade directly with verified bulk buyers and processing units across India.",
+    "exploreMarketplace": "Explore Marketplace",
+    "viewApmcBhav": "Live APMC Rates",
+    "verifiedProducers": "100% Verified Growers",
+    "secureEscrow": "Direct Bank Settlement",
+    "agmarkQuality": "AGMARK Grade Assurance",
+    "browseByCrop": "Browse by Crop Category",
+    "browseSubtitle": "Direct access to fresh harvests across major crop categories",
+    "howItWorks": "How FarmBridge Works",
+    "howItWorksSubtitle": "A transparent four-step process for direct, profitable agricultural trade",
+    "step1Title": "Harvest Listing",
+    "step1Desc": "Farmers list crops with quality certificates, photos, and minimum reserve price.",
+    "step2Title": "Fair Price Discovery",
+    "step2Desc": "Real-time APMC Mandi price indexing ensures bids reflect true market value.",
+    "step3Title": "Direct Procurement",
+    "step3Desc": "Verified bulk buyers and food processors purchase directly without intermediaries.",
+    "step4Title": "Guaranteed Payout",
+    "step4Desc": "Secure direct bank transfer upon delivery confirmation with 100% payment safety.",
+    "ctaTitle": "Ready to Transform Your Agricultural Commerce?",
+    "ctaSubtitle": "Join thousands of farmers getting higher returns and bulk buyers sourcing fresher harvests.",
+    "registerFarmer": "Register as Farmer",
+    "registerBuyer": "Register as Buyer"
   }
-  
-      
-    }
-    
-  
+}

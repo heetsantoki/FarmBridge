@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import { Sparkles, TrendingUp, TrendingDown, MapPin } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { useLocationContext } from "../contexts/LocationContext";
 
 export interface MandiItem {
@@ -32,6 +33,7 @@ interface MandiTickerProps {
 const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 export const MandiTicker: React.FC<MandiTickerProps> = ({ className = "" }) => {
+  const { t, i18n } = useTranslation();
   const [rates, setRates] = useState<MandiItem[]>(FALLBACK_MANDI_RATES);
   const { commodities, selectedMarket, setIsSelectorOpen } = useLocationContext();
 
@@ -104,7 +106,7 @@ export const MandiTicker: React.FC<MandiTickerProps> = ({ className = "" }) => {
           <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#75B98A] inline-block animate-pulse"></span>
           <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#BCE3C7] hidden sm:inline-block" />
           <span className="max-w-[110px] sm:max-w-none truncate">
-            {activeMarketTitle} Bhav
+            {activeMarketTitle} {(i18n.language === "gu" || i18n.language === "hi") ? "ભાવ" : "Prices"}
           </span>
         </button>
 

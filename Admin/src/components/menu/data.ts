@@ -30,7 +30,7 @@ export const getMenu = () => {
           isLink: true,
           url: '/apmc-prices',
           icon: Building2,
-          label: 'APMC Mandi Bhav',
+          label: t('menu.apmc') || 'APMC Mandi Prices',
           role: 'farmer',
         },
         {
@@ -86,7 +86,7 @@ export const getMenu = () => {
           isLink: true,
           url: '/apmc-prices',
           icon: Building2,
-          label: 'APMC Mandi Bhav',
+          label: t('menu.apmc') || 'APMC Mandi Prices',
           role: 'buyer',
         },
         {
@@ -160,7 +160,7 @@ export const menu = [
         isLink: true,
         url: '/apmc-prices',
         icon: Building2,
-        label: 'APMC Mandi Bhav',
+        label: 'APMC Mandi Prices',
         role: 'farmer',
       },
       {
@@ -209,7 +209,7 @@ export const menu = [
         isLink: true,
         url: '/apmc-prices',
         icon: Building2,
-        label: 'APMC Mandi Bhav',
+        label: 'APMC Mandi Prices',
         role: 'buyer',
       },
       {

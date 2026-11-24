@@ -121,7 +121,7 @@ const Navbar = () => {
           >
             <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#246A3E] flex-shrink-0" />
             <span className="max-w-[85px] sm:max-w-[130px] truncate">
-              {selectedMarket?.name || locationConfig.district || "APMC Bhav"}
+              {selectedMarket?.name || locationConfig.district || "APMC Prices"}
             </span>
           </Link>
         </div>
@@ -199,7 +199,7 @@ const Navbar = () => {
                 </Link>
                 <Link to="/apmc-prices" className="flex items-center gap-2 px-3 py-2 rounded-lg text-[#2A3B30] hover:bg-[#F2EEE4] transition-colors">
                   <MapPin className="w-4 h-4 text-[#2E6845]" />
-                  <span>APMC Mandi Bhav</span>
+                  <span>{t('menu.apmc') || "APMC Mandi Prices"}</span>
                 </Link>
               </div>
               <div className="pt-1">

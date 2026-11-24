@@ -58,7 +58,7 @@ export const LocationPromptModal: React.FC = () => {
 
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/15 text-[11px] font-bold text-[#E2F0E6] mb-2 tracking-wide uppercase">
               <Sparkles className="w-3 h-3 text-[#BCE3C7]" />
-              <span>Smart Mandi Bhav</span>
+              <span>Smart Mandi Prices</span>
             </div>
 
             <h3 className="text-xl font-bold text-white tracking-tight">

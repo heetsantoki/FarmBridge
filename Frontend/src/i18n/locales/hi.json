@@ -1,51 +1,51 @@
-﻿{
-    "hero1": {
-      "tagline": "किसानों को खरीदारों से जोड़ना",
-      "title": "प्रत्यक्ष बाजार पहुंच के साथ कृषि को बदलें",
-      "subtitle": "बिचौलियों को समाप्त करें और सीधी बाजार पहुंच के माध्यम से किसान की लाभप्रदता में सुधार करें। हजारों किसानों और खरीदारों के साथ फार्मब्रिज में शामिल हों।",
-      "getStarted": "शुरू करें",
-      "learnMore": "और जानें"
+{
+  "hero1": {
+    "tagline": "किसानों को खरीदारों से जोड़ना",
+    "title": "प्रत्यक्ष बाजार पहुंच के साथ कृषि को बदलें",
+    "subtitle": "बिचौलियों को समाप्त करें और सीधी बाजार पहुंच के माध्यम से किसान की लाभप्रदता में सुधार करें। हजारों किसानों और खरीदारों के साथ फार्मब्रिज में शामिल हों।",
+    "getStarted": "शुरू करें",
+    "learnMore": "और जानें"
+  },
+  "features": {
+    "title": "फार्मब्रिज क्यों चुनें?",
+    "subtitle": "हम किसानों को सीधे खरीदारों से जोड़ने के लिए नवीन समाधान प्रदान करते हैं, जो बेहतर कीमतें और स्थायी कृषि सुनिश्चित करते हैं।",
+    "directMarket": {
+      "title": "प्रत्यक्ष बाजार पहुंच",
+      "description": "बिना बिचौलियों के खरीदारों से सीधे जुड़ें और अपनी उपज के लिए बेहतर कीमतें प्राप्त करें।"
     },
-    "features": {
-      "title": "फार्मब्रिज क्यों चुनें?",
-      "subtitle": "हम किसानों को सीधे खरीदारों से जोड़ने के लिए नवीन समाधान प्रदान करते हैं, जो बेहतर कीमतें और स्थायी कृषि सुनिश्चित करते हैं।",
-      "directMarket": {
-        "title": "प्रत्यक्ष बाजार पहुंच",
-        "description": "बिना बिचौलियों के खरीदारों से सीधे जुड़ें और अपनी उपज के लिए बेहतर कीमतें प्राप्त करें।"
-      },
-      "smartPrice": {
-        "title": "स्मार्ट मूल्य खोज",
-        "description": "सूचित निर्णय लेने में मदद के लिए रीयल-टाइम बाजार कीमतें और रुझान।"
-      },
-      "securePayments": {
-        "title": "सुरक्षित भुगतान",
-        "description": "कई भुगतान विकल्पों के साथ सुरक्षित और तत्काल भुगतान प्रसंस्करण।"
-      },
-      "qualityAssurance": {
-        "title": "गुणवत्ता आश्वासन",
-        "description": "उच्च मानकों को बनाए रखने के लिए अंतर्निहित गुणवत्ता सत्यापन प्रणाली।"
-      },
-      "logistics": {
-        "title": "लॉजिस्टिक्स सहायता",
-        "description": "निर्बाध वितरण के लिए एकीकृत परिवहन और भंडारण समाधान।"
-      },
-      "support": {
-        "title": "24/7 सहायता",
-        "description": "हर कदम पर आपकी सहायता के लिए समर्पित ग्राहक सहायता टीम।"
-      }
+    "smartPrice": {
+      "title": "स्मार्ट मूल्य खोज",
+      "description": "सूचित निर्णय लेने में मदद के लिए रीयल-टाइम बाजार कीमतें और रुझान।"
     },
-    "stats": {
-      "farmers": "पंजीकृत किसान",
-      "buyers": "सक्रिय खरीदार",
-      "volume": "व्यापार मात्रा (₹)",
-      "earnings": "आय में वृद्धि"
+    "securePayments": {
+      "title": "सुरक्षित भुगतान",
+      "description": "कई भुगतान विकल्पों के साथ सुरक्षित और तत्काल भुगतान प्रसंस्करण।"
     },
-    "cta": {
-      "title": "कृषि को बदलने के लिए तैयार हैं?",
-      "subtitle": "प्रत्यक्ष बाजार पहुंच से पहले से ही लाभान्वित हजारों किसानों और खरीदारों में शामिल हों।",
-      "button": "अभी शुरू करें"
+    "qualityAssurance": {
+      "title": "गुणवत्ता आश्वासन",
+      "description": "उच्च मानकों को बनाए रखने के लिए अंतर्निहित गुणवत्ता सत्यापन प्रणाली।"
     },
-    "faq": {
+    "logistics": {
+      "title": "लॉजिस्टिक्स सहायता",
+      "description": "निर्बाध वितरण के लिए एकीकृत परिवहन और भंडारण समाधान।"
+    },
+    "support": {
+      "title": "24/7 सहायता",
+      "description": "हर कदम पर आपकी सहायता के लिए समर्पित ग्राहक सहायता टीम।"
+    }
+  },
+  "stats": {
+    "farmers": "पंजीकृत किसान",
+    "buyers": "सक्रिय खरीदार",
+    "volume": "व्यापार मात्रा (₹)",
+    "earnings": "आय में वृद्धि"
+  },
+  "cta": {
+    "title": "कृषि को बदलने के लिए तैयार हैं?",
+    "subtitle": "प्रत्यक्ष बाजार पहुंच से पहले से ही लाभान्वित हजारों किसानों और खरीदारों में शामिल हों।",
+    "button": "अभी शुरू करें"
+  },
+  "faq": {
     "title": "अक्सर पूछे जाने वाले प्रश्न",
     "subtitle": "फार्मब्रिज के बारे में सामान्य प्रश्नों के उत्तर पाएं",
     "categories": {
@@ -96,194 +96,199 @@
     "contactSupport": "यदि आपको हमारे FAQ में अपने प्रश्न का उत्तर नहीं मिलता है, तो आप हमेशा हमसे संपर्क कर सकते हैं। हम जल्द ही जवाब देंगे!",
     "contactButton": "सहायता से संपर्क करें"
   },
-  
-    "about": {
-      "header": "फार्मब्रिज के बारे में",
-      "title": "तकनीक के माध्यम से कृषि में क्रांति",
-      "subtitle": "हम किसानों को सशक्त बनाने और टिकाऊ कृषि प्रणाली बनाने के लिए प्रतिबद्ध हैं.",
-      "imageAlt": "फार्मब्रिज का उपयोग करते किसान",
-      "yearsOfExcellence": "उत्कृष्टता के वर्ष",
-      "mission": {
-        "title": "हमारा मिशन",
-        "description": "किसानों और खरीदारों के लिए एक पारदर्शी और कुशल कृषि बाजार बनाना..."
+  "about": {
+    "header": "फार्मब्रिज के बारे में",
+    "title": "तकनीक के माध्यम से कृषि में क्रांति",
+    "subtitle": "हम किसानों को सशक्त बनाने और टिकाऊ कृषि प्रणाली बनाने के लिए प्रतिबद्ध हैं.",
+    "imageAlt": "फार्मब्रिज का उपयोग करते किसान",
+    "yearsOfExcellence": "उत्कृष्टता के वर्ष",
+    "mission": {
+      "title": "हमारा मिशन",
+      "description": "किसानों और खरीदारों के लिए एक पारदर्शी और कुशल कृषि बाजार बनाना..."
+    },
+    "vision": {
+      "title": "हमारा दृष्टिकोण",
+      "description": "किसानों के लिए सर्वश्रेष्ठ कृषि प्रौद्योगिकी प्लेटफार्म बनना..."
+    },
+    "values": {
+      "title": "हमारे मुख्य मूल्य",
+      "innovation": {
+        "title": "नवाचार",
+        "description": "हम हमेशा सर्वोत्तम समाधान प्रदान करने के लिए नवाचार करते हैं..."
       },
-      "vision": {
-        "title": "हमारा दृष्टिकोण",
-        "description": "किसानों के लिए सर्वश्रेष्ठ कृषि प्रौद्योगिकी प्लेटफार्म बनना..."
+      "transparency": {
+        "title": "पारदर्शिता",
+        "description": "हम अपने सभी कार्यों में पूर्ण पारदर्शिता में विश्वास रखते हैं..."
       },
-      "values": {
-        "title": "हमारे मुख्य मूल्य",
-        "innovation": { "title": "नवाचार", "description": "हम हमेशा सर्वोत्तम समाधान प्रदान करने के लिए नवाचार करते हैं..." },
-        "transparency": { "title": "पारदर्शिता", "description": "हम अपने सभी कार्यों में पूर्ण पारदर्शिता में विश्वास रखते हैं..." },
-        "empowerment": { "title": "सशक्तिकरण", "description": "हम किसानों को तकनीक और बाजार तक पहुँच प्रदान करके सशक्त बनाते हैं..." },
-        "excellence": { "title": "उत्कृष्टता", "description": "हम हर कार्य में उत्कृष्टता प्राप्त करने का प्रयास करते हैं." }
+      "empowerment": {
+        "title": "सशक्तिकरण",
+        "description": "हम किसानों को तकनीक और बाजार तक पहुँच प्रदान करके सशक्त बनाते हैं..."
       },
-      "joinUs": {
-        "title": "हमारे साथ कृषि क्रांति में शामिल हों",
-        "description": "कृषि क्रांति का हिस्सा बनें...",
-        "buttonText": "फार्मब्रिज से जुड़ें"
+      "excellence": {
+        "title": "उत्कृष्टता",
+        "description": "हम हर कार्य में उत्कृष्टता प्राप्त करने का प्रयास करते हैं."
       }
     },
-   "products": {
-      "featuredProducts": "विशेष उत्पाद",
-      "discoverProducts": "हमारे प्रीमियम जैविक उत्पादों का चयन खोजें",
-      "filterByCategory": "श्रेणी द्वारा फ़िल्टर करें",
-      "filterByCity": "शहर द्वारा फ़िल्टर करें",
-      "allCategories": "सभी श्रेणियां",
-      "allStates": "सभी राज्य",
-      "fruits": "फल",
-      "grains": "अनाज",
-      "Organic Apples": "जैविक सेब",
-      "Fresh Mangoes": "ताजा आम",
-      "Organic Wheat": "जैविक गेहूं",
-      "Kesar Mango": "केसर आम",
-      "Pearl Millet": "बाजरा",
-      "Kinno Orange": "किन्नू संतरा",
-      "Premium Wheat": "प्रीमियम गेहूं",
-      "Pomegranate": "अनार",
-      "Organic Barley": "जैविक जौ",
-      "Red Banana": "लाल केला",
-      "Red Rice": "लाल चावल",
-      "Alphonso Mango": "हापुस आम",
-      "Jowar": "ज्वार",
-      "Sweet Lime": "मौसंबी",
-      "Fine Rice": "बारीक चावल",
-      "500 kg available": "500 किलो उपलब्ध",
-      "300 kg available": "300 किलो उपलब्ध",
-      "1000 kg available": "1000 किलो उपलब्ध",
-      "2000 kg available": "2000 किलो उपलब्ध",
-      "800 kg available": "800 किलो उपलब्ध",
-      "5000 kg available": "5000 किलो उपलब्ध",
-      "600 kg available": "600 किलो उपलब्ध",
-      "1500 kg available": "1500 किलो उपलब्ध",
-      "400 kg available": "400 किलो उपलब्ध",
-      "2500 kg available": "2500 किलो उपलब्ध",
-      "700 kg available": "700 किलो उपलब्ध",
-      "3000 kg available": "3000 किलो उपलब्ध",
-      "Fresh, crisp apples grown without pesticides": "कीटनाशकों के बिना उगाए गए ताजे, कुरकुरे सेब",
-      "Sweet and juicy mangoes from local orchards": "स्थानीय बागों से मीठे और रसीले आम",
-      "Premium quality wheat grains, perfect for bread and rotis": "प्रीमियम क्वालिटी का गेहूं, रोटी के लिए एकदम सही",
-      "Premium Gir Kesar mangoes, known for their sweet taste and aroma": "गिर केसर आम, अपने मीठे स्वाद और सुगंध के लिए जाने जाते हैं",
-      "High-quality bajra grown in Gujarat's fertile soil": "गुजरात की उपजाऊ मिट्टी में उगाया गया उच्च गुणवत्ता का बाजरा",
-      "Sweet and juicy Kinno oranges from Punjab orchards": "पंजाब के बागों से मीठे और रसीले किन्नू संतरे",
-      "High-quality wheat from Punjab's golden fields": "पंजाब के सुनहरे खेतों से उच्च गुणवत्ता का गेहूं",
-      "Fresh pomegranates from Rajasthan's orchards": "राजस्थान के बागों से ताजा अनार",
-      "Naturally grown barley from Rajasthan's farms": "राजस्थान के खेतों से प्राकृतिक रूप से उगाया गया जौ",
-      "Sweet and nutritious red bananas from Kerala": "केरल से मीठे और पौष्टिक लाल केले",
-      "Traditional Kerala red rice, rich in nutrients": "पारंपरिक केरल लाल चावल, पोषक तत्वों से भरपूर",
-      "Premium Ratnagiri Alphonso mangoes": "प्रीमियम रत्नागिरी हापुस आम",
-      "High-quality sorghum from Maharashtra farms": "महाराष्ट्र के खेतों से उच्च गुणवत्ता का ज्वार",
-      "Fresh and juicy mosambi from Telangana orchards": "तेलंगाना के बागों से ताजी और रसीली मौसंबी",
-      "Premium quality rice from Telangana paddy fields": "तेलंगाना के धान के खेतों से प्रीमियम क्वालिटी का चावल",
-       "knowMore": "और अधिक जानें",
-      "showMore":"अधिक उत्पाद दिखाएँ",
-    
-      "cities": {
-        "New York": "न्यूयॉर्क",
-        "Mumbai": "मुंबई",
-        "Delhi": "दिल्ली",
-        "Junagadh": "जूनागढ़",
-        "Mehsana": "मेहसाणा",
-        "Amritsar": "अमृतसर",
-        "Ludhiana": "लुधियाना",
-        "Jodhpur": "जोधपुर",
-        "Jaipur": "जयपुर",
-        "Kochi": "कोच्चि",
-        "Thrissur": "त्रिशूर",
-        "Ratnagiri": "रत्नागिरी",
-        "Nashik": "नासिक",
-        "Hyderabad": "हैदराबाद",
-        "Warangal": "वारंगल"
-      },
-      
-        "farmerNames": {
-          "John Smith": "जॉन स्मिथ",
-          "Rajesh Kumar": "राजेश कुमार",
-          "Amit Patel": "अमित पटेल",
-          "Rajesh Patel": "राजेश पटेल",
-          "Bharat Modi": "भारत मोदी",
-          "Gurpreet Singh": "गुरप्रीत सिंह",
-          "Harjinder Singh": "हरजिंदर सिंह",
-          "Ramesh Sharma": "रमेश शर्मा",
-          "Vikram Singh": "विक्रम सिंह",
-          "Thomas Joseph": "थॉमस जोसेफ",
-          "Mathew Philip": "मैथ्यू फिलिप",
-          "Suresh Desai": "सुरेश देसाई",
-          "Prakash Patil": "प्रकाश पाटिल",
-          "Krishna Reddy": "कृष्ण रेड्डी",
-          "Ravi Kumar": "रवि कुमार"
-        },
-        
-          "rating": "रेटिंग",
-          "Negotiate": "बातचीत करें",
-          "Read More": "अधिक पढ़ें",
-          "View Less": "कम देखें",
-          "Product Info": "उत्पाद जानकारी",
-          "Quantity": "मात्रा",
-          "Price Range": "मूल्य सीमा",
-          "Category": "श्रेणी",
-          "Farmer Details": "किसान विवरण",
-          "Name": "नाम",
-          "Contact": "संपर्क",
-          "Location": "स्थान",
-          "Detailed Information": "विस्तृत जानकारी",
-          "Product Certification": "उत्पाद प्रमाणन",
-          "Land Type": "भूमि प्रकार",
-          "Farming Practices": "खेती प्रथाएँ",
-          "Quality Parameters": "गुणवत्ता पैरामीटर",
-          "Farmer Experience": "किसान का अनुभव",
-          "farmingPractices": {
-            "No chemical pesticides used": "कोई रासायनिक कीटनाशक नहीं प्रयोग किया गया",
-            "Natural fertilizers only": "केवल प्राकृतिक उर्वरक",
-            "Sustainable irrigation methods": "सतत सिंचाई विधियाँ",
-            "Crop rotation practiced": "फसल चक्र अपनाया गया"
-          },
-          "qualityParameters": {
-            "Hand-picked at optimal ripeness": "सर्वोत्तम पकाव पर हाथ से चुना गया",
-            "Carefully sorted and graded": "सावधानीपूर्वक छांटा और ग्रेड किया गया",
-            "Stored in temperature-controlled environment": "तापमान नियंत्रित वातावरण में संग्रहीत",
-            "Regular quality checks performed": "नियमित गुणवत्ता जांच की जाती है"
-          }
-        
-        
+    "joinUs": {
+      "title": "हमारे साथ कृषि क्रांति में शामिल हों",
+      "description": "कृषि क्रांति का हिस्सा बनें...",
+      "buttonText": "फार्मब्रिज से जुड़ें"
+    }
+  },
+  "products": {
+    "featuredProducts": "विशेष उत्पाद",
+    "discoverProducts": "हमारे प्रीमियम जैविक उत्पादों का चयन खोजें",
+    "filterByCategory": "श्रेणी द्वारा फ़िल्टर करें",
+    "filterByCity": "शहर द्वारा फ़िल्टर करें",
+    "allCategories": "सभी श्रेणियां",
+    "allStates": "सभी राज्य",
+    "fruits": "फल",
+    "grains": "अनाज",
+    "Organic Apples": "जैविक सेब",
+    "Fresh Mangoes": "ताजा आम",
+    "Organic Wheat": "जैविक गेहूं",
+    "Kesar Mango": "केसर आम",
+    "Pearl Millet": "बाजरा",
+    "Kinno Orange": "किन्नू संतरा",
+    "Premium Wheat": "प्रीमियम गेहूं",
+    "Pomegranate": "अनार",
+    "Organic Barley": "जैविक जौ",
+    "Red Banana": "लाल केला",
+    "Red Rice": "लाल चावल",
+    "Alphonso Mango": "हापुस आम",
+    "Jowar": "ज्वार",
+    "Sweet Lime": "मौसंबी",
+    "Fine Rice": "बारीक चावल",
+    "500 kg available": "500 किलो उपलब्ध",
+    "300 kg available": "300 किलो उपलब्ध",
+    "1000 kg available": "1000 किलो उपलब्ध",
+    "2000 kg available": "2000 किलो उपलब्ध",
+    "800 kg available": "800 किलो उपलब्ध",
+    "5000 kg available": "5000 किलो उपलब्ध",
+    "600 kg available": "600 किलो उपलब्ध",
+    "1500 kg available": "1500 किलो उपलब्ध",
+    "400 kg available": "400 किलो उपलब्ध",
+    "2500 kg available": "2500 किलो उपलब्ध",
+    "700 kg available": "700 किलो उपलब्ध",
+    "3000 kg available": "3000 किलो उपलब्ध",
+    "Fresh, crisp apples grown without pesticides": "कीटनाशकों के बिना उगाए गए ताजे, कुरकुरे सेब",
+    "Sweet and juicy mangoes from local orchards": "स्थानीय बागों से मीठे और रसीले आम",
+    "Premium quality wheat grains, perfect for bread and rotis": "प्रीमियम क्वालिटी का गेहूं, रोटी के लिए एकदम सही",
+    "Premium Gir Kesar mangoes, known for their sweet taste and aroma": "गिर केसर आम, अपने मीठे स्वाद और सुगंध के लिए जाने जाते हैं",
+    "High-quality bajra grown in Gujarat's fertile soil": "गुजरात की उपजाऊ मिट्टी में उगाया गया उच्च गुणवत्ता का बाजरा",
+    "Sweet and juicy Kinno oranges from Punjab orchards": "पंजाब के बागों से मीठे और रसीले किन्नू संतरे",
+    "High-quality wheat from Punjab's golden fields": "पंजाब के सुनहरे खेतों से उच्च गुणवत्ता का गेहूं",
+    "Fresh pomegranates from Rajasthan's orchards": "राजस्थान के बागों से ताजा अनार",
+    "Naturally grown barley from Rajasthan's farms": "राजस्थान के खेतों से प्राकृतिक रूप से उगाया गया जौ",
+    "Sweet and nutritious red bananas from Kerala": "केरल से मीठे और पौष्टिक लाल केले",
+    "Traditional Kerala red rice, rich in nutrients": "पारंपरिक केरल लाल चावल, पोषक तत्वों से भरपूर",
+    "Premium Ratnagiri Alphonso mangoes": "प्रीमियम रत्नागिरी हापुस आम",
+    "High-quality sorghum from Maharashtra farms": "महाराष्ट्र के खेतों से उच्च गुणवत्ता का ज्वार",
+    "Fresh and juicy mosambi from Telangana orchards": "तेलंगाना के बागों से ताजी और रसीली मौसंबी",
+    "Premium quality rice from Telangana paddy fields": "तेलंगाना के धान के खेतों से प्रीमियम क्वालिटी का चावल",
+    "knowMore": "और अधिक जानें",
+    "showMore": "अधिक उत्पाद दिखाएँ",
+    "cities": {
+      "New York": "न्यूयॉर्क",
+      "Mumbai": "मुंबई",
+      "Delhi": "दिल्ली",
+      "Junagadh": "जूनागढ़",
+      "Mehsana": "मेहसाणा",
+      "Amritsar": "अमृतसर",
+      "Ludhiana": "लुधियाना",
+      "Jodhpur": "जोधपुर",
+      "Jaipur": "जयपुर",
+      "Kochi": "कोच्चि",
+      "Thrissur": "त्रिशूर",
+      "Ratnagiri": "रत्नागिरी",
+      "Nashik": "नासिक",
+      "Hyderabad": "हैदराबाद",
+      "Warangal": "वारंगल"
     },
-    
-      "contact": {
-        "title": "संपर्क करें",
-        "subtitle": "तीसरे पक्ष के अतिरिक्त पैसे के बिना अपना लाभ कमाएं",
-        "getInTouch": "संपर्क में रहें",
-        "description": "फार्मब्रिज के बारे में प्रश्न हैं? हम मदद करने के लिए यहां हैं। हमें संदेश भेजें और हम जल्द से जल्द आपसे संपर्क करेंगे।",
-        "address": {
-          "title": "पता",
-          "line1": "मारवाड़ी विश्वविद्यालय",
-          "line2": "राजकोट, गुजरात",
-          "line3": "भारत"
-        },
-        "email": {
-          "title": "ईमेल",
-          "value": "nit@FarmBridge.com"
-        },
-        "phone": {
-          "title": "फोन",
-          "value": "+91 123 456 7890"
-        },
-        "form": {
-          "title": "हमें संदेश भेजें",
-          "description": "नीचे दिया गया फॉर्म भरें और हम जल्द से जल्द आपसे संपर्क करेंगे।",
-          "firstName": "पहला नाम",
-          "lastName": "अंतिम नाम",
-          "email": "ईमेल",
-          "phone": "फोन नंबर",
-          "message": "संदेश",
-          "messagePlaceholder": "हम कैसे मदद कर सकते हैं?",
-          "submit": "संदेश भेजें"
-        }
-      },
-    "hero": {
+    "farmerNames": {
+      "John Smith": "जॉन स्मिथ",
+      "Rajesh Kumar": "राजेश कुमार",
+      "Amit Patel": "अमित पटेल",
+      "Rajesh Patel": "राजेश पटेल",
+      "Bharat Modi": "भारत मोदी",
+      "Gurpreet Singh": "गुरप्रीत सिंह",
+      "Harjinder Singh": "हरजिंदर सिंह",
+      "Ramesh Sharma": "रमेश शर्मा",
+      "Vikram Singh": "विक्रम सिंह",
+      "Thomas Joseph": "थॉमस जोसेफ",
+      "Mathew Philip": "मैथ्यू फिलिप",
+      "Suresh Desai": "सुरेश देसाई",
+      "Prakash Patil": "प्रकाश पाटिल",
+      "Krishna Reddy": "कृष्ण रेड्डी",
+      "Ravi Kumar": "रवि कुमार"
+    },
+    "rating": "रेटिंग",
+    "Negotiate": "बातचीत करें",
+    "Read More": "अधिक पढ़ें",
+    "View Less": "कम देखें",
+    "Product Info": "उत्पाद जानकारी",
+    "Quantity": "मात्रा",
+    "Price Range": "मूल्य सीमा",
+    "Category": "श्रेणी",
+    "Farmer Details": "किसान विवरण",
+    "Name": "नाम",
+    "Contact": "संपर्क",
+    "Location": "स्थान",
+    "Detailed Information": "विस्तृत जानकारी",
+    "Product Certification": "उत्पाद प्रमाणन",
+    "Land Type": "भूमि प्रकार",
+    "Farming Practices": "खेती प्रथाएँ",
+    "Quality Parameters": "गुणवत्ता पैरामीटर",
+    "Farmer Experience": "किसान का अनुभव",
+    "farmingPractices": {
+      "No chemical pesticides used": "कोई रासायनिक कीटनाशक नहीं प्रयोग किया गया",
+      "Natural fertilizers only": "केवल प्राकृतिक उर्वरक",
+      "Sustainable irrigation methods": "सतत सिंचाई विधियाँ",
+      "Crop rotation practiced": "फसल चक्र अपनाया गया"
+    },
+    "qualityParameters": {
+      "Hand-picked at optimal ripeness": "सर्वोत्तम पकाव पर हाथ से चुना गया",
+      "Carefully sorted and graded": "सावधानीपूर्वक छांटा और ग्रेड किया गया",
+      "Stored in temperature-controlled environment": "तापमान नियंत्रित वातावरण में संग्रहीत",
+      "Regular quality checks performed": "नियमित गुणवत्ता जांच की जाती है"
+    }
+  },
+  "contact": {
+    "title": "संपर्क करें",
+    "subtitle": "तीसरे पक्ष के अतिरिक्त पैसे के बिना अपना लाभ कमाएं",
+    "getInTouch": "संपर्क में रहें",
+    "description": "फार्मब्रिज के बारे में प्रश्न हैं? हम मदद करने के लिए यहां हैं। हमें संदेश भेजें और हम जल्द से जल्द आपसे संपर्क करेंगे।",
+    "address": {
+      "title": "पता",
+      "line1": "मारवाड़ी विश्वविद्यालय",
+      "line2": "राजकोट, गुजरात",
+      "line3": "भारत"
+    },
+    "email": {
+      "title": "ईमेल",
+      "value": "nit@FarmBridge.com"
+    },
+    "phone": {
+      "title": "फोन",
+      "value": "+91 123 456 7890"
+    },
+    "form": {
+      "title": "हमें संदेश भेजें",
+      "description": "नीचे दिया गया फॉर्म भरें और हम जल्द से जल्द आपसे संपर्क करेंगे।",
+      "firstName": "पहला नाम",
+      "lastName": "अंतिम नाम",
+      "email": "ईमेल",
+      "phone": "फोन नंबर",
+      "message": "संदेश",
+      "messagePlaceholder": "हम कैसे मदद कर सकते हैं?",
+      "submit": "संदेश भेजें"
+    }
+  },
+  "hero": {
     "title": "कृषि ज्ञान केंद्र",
     "subtitle": "नवीनतम कृषि तकनीकों, बाजार अंतर्दृष्टि और सफलता की कहानियों से अपडेट रहें"
   },
- "categories": [
+  "categories": [
     {
       "name": "कृषि तकनीक",
       "description": "आधुनिक और पारंपरिक कृषि पद्धतियाँ"
@@ -327,25 +332,23 @@
       "image": "https://images.pexels.com/photos/1212102/pexels-photo-1212102.jpeg?auto=compress&cs=tinysrgb&w=600"
     }
   ],
-  "latest":{
-    "Latest Articles":"नवीनतम लेख"
-},
+  "latest": {
+    "Latest Articles": "नवीनतम लेख"
+  },
   "buttons": {
     "readMore": "और पढ़ें"
   },
-  
-    "hero2": {
-      "title": "सफलता की कहानियाँ",
-      "subtitle": "जानें कि फार्मब्रिज किसानों के जीवन को कैसे बदल रहा है।",
-    
+  "hero2": {
+    "title": "सफलता की कहानियाँ",
+    "subtitle": "जानें कि फार्मब्रिज किसानों के जीवन को कैसे बदल रहा है।",
     "readFullStory": "पूर्ण कहानी पढ़ें",
-    "name":"राजेश कुमार",
+    "name": "राजेश कुमार",
     "Revenue Increase": "राजस्व वृद्धि",
     "Years With FarmBridge": "फार्मब्रिज के साथ वर्ष",
     "quote": "फार्मब्रिज ने मेरे कृषि व्यवसाय को पूरी तरह से बदल दिया है। अब मैं अपने उत्पादों के लिए 40% बेहतर कीमतें प्राप्त करता हूँ और देश भर में खरीदारों के साथ सीधे संबंध रखता हूँ।",
     "location": "गेहूं किसान, पंजाब",
     "Main Crops": "मुख्य फसलें",
-    "years":"वर्ष",
+    "years": "वर्ष",
     "successStories": [
       {
         "name": "अमित पटेल",
@@ -454,7 +457,7 @@
     "submit": "पंजीकरण पूर्ण करें",
     "submitting": "प्रस्तुत किया जा रहा है..."
   },
-  "hi":{
+  "hi": {
     "welcome": "वापसी पर स्वागत है!",
     "login_message": "अपने FarmBridge खाते तक पहुँचने के लिए लॉगिन करें",
     "username": "उपयोगकर्ता नाम",
@@ -469,7 +472,102 @@
     "no_account": "कोई खाता नहीं है?",
     "register": "अभी पंजीकरण करें",
     "login_failed": "लॉगिन विफल। कृपया अपनी जानकारी जांचें।"
+  },
+  "nav": {
+    "home": "मुख्य पृष्ठ",
+    "marketplace": "मार्केटप्लेस",
+    "about": "हमारे बारे में",
+    "successStories": "सफलता की कहानियां",
+    "contact": "संपर्क",
+    "signIn": "साइन इन",
+    "getStarted": "शुरू करें",
+    "selectMarket": "मंडी चुनें"
+  },
+  "mandi": {
+    "badge": "रीयल-टाइम एपीएमसी मंडी भाव (आधिकारिक AGMARKNET)",
+    "title": "निकटतम एपीएमसी से लाइव कमोडिटी भाव",
+    "yourLocation": "आपका स्थान",
+    "gpsActive": "जीपीएस सक्रिय",
+    "nearestMarket": "निकटतम मंडी",
+    "detectLocation": "स्थान खोजें",
+    "changeMarket": "मंडी बदलें",
+    "radiusLabel": "आपके दायरे में निकटतम मंडियां:",
+    "searchCrop": "इस मंडी में फसल खोजें (उदा. कपास, गेहूं, जीरा)...",
+    "all": "सभी फसलें",
+    "cashCrops": "नकदी फसलें",
+    "oilseeds": "तिलहन",
+    "spices": "मसाले",
+    "grainsPulses": "अनाज और दालें",
+    "liveBhav": "लाइव भाव",
+    "modalPrice": "औसत / मोडल भाव",
+    "localUnit": "स्थानीय इकाई (20 किग्रा / मन)",
+    "perQuintal": "/क्विंटल",
+    "per20kg": "/20 किग्रा",
+    "min": "न्यूनतम",
+    "max": "अधिकतम",
+    "arrival": "आवक",
+    "runningMandiRates": "लाइव मंडी भाव"
+  },
+  "marketplace": {
+    "badge": "प्रत्यक्ष कृषि बाज़ार",
+    "title": "खेत से सीधे ताज़ी फसल खरीदें",
+    "subtitle": "पारदर्शी कीमतों और गुणवत्ता आश्वासन के साथ भारतीय किसानों से सीधे प्रमाणित फसल खरीदें।",
+    "searchPlaceholder": "फसल, अनाज, दालें, सब्जियां खोजें...",
+    "allCategories": "सभी श्रेणियां",
+    "allCrops": "सभी फसलें",
+    "buyWholesale": "थोक में खरीदें",
+    "viewDetails": "विवरण देखें",
+    "perUnit": "प्रति",
+    "available": "उपलब्ध मात्रा",
+    "verifiedFarmer": "सत्यापित किसान",
+    "noProducts": "चयनित फिल्टर में कोई फसल नहीं मिली।"
+  },
+  "footer": {
+    "tagline": "पारदर्शी, प्रत्यक्ष कृषि व्यापार द्वारा किसानों और खरीदारों का सशक्तिकरण।",
+    "marketplace": "मार्केटप्लेस",
+    "allHarvestLots": "सभी फसलें",
+    "grainsCereals": "अनाज",
+    "freshVegetables": "ताजी सब्जियां",
+    "seasonalFruits": "मौसमी फल",
+    "pulsesLentils": "दालें और दलहन",
+    "platform": "प्लेटफ़ॉर्म",
+    "aboutUs": "हमारे बारे में",
+    "farmerSuccessStories": "किसान सफलता की कहानियां",
+    "faqGuides": "अक्सर पूछे जाने वाले सवाल (FAQ)",
+    "contactSupport": "संपर्क और सहायता",
+    "connect": "प्रत्यक्ष व्यापार नेटवर्क",
+    "addressLine": "मारवाड़ी यूनिवर्सिटी, राजकोट, गुजरात, भारत",
+    "phone": "+91 98765 43210",
+    "email": "support@farmbridge.in",
+    "copyright": "© 2026 FarmBridge. भारतीय कृषि का सशक्तिकरण।",
+    "privacy": "गोपनीयता नीति",
+    "terms": "सेवा की शर्तें"
+  },
+  "home": {
+    "badge": "प्रत्यक्ष कृषि व्यापार पोर्टल",
+    "heroTitle1": "किसान से सीधे खरीदार तक,",
+    "heroTitle2": "बिचौलियों के बिना सीधा व्यापार।",
+    "heroSubtitle": "दलाली समाप्त करें, वास्तविक समय में एपीएमसी मंडी भाव देखें, और पूरे भारत के सत्यापित थोक खरीदारों के साथ सीधे व्यापार करें।",
+    "exploreMarketplace": "मार्केटप्लेस देखें",
+    "viewApmcBhav": "लाइव मंडी भाव",
+    "verifiedProducers": "100% सत्यापित किसान",
+    "secureEscrow": "सीधा बैंक भुगतान",
+    "agmarkQuality": "AGMARK गुणवत्ता आश्वासन",
+    "browseByCrop": "फसल श्रेणी के अनुसार खोजें",
+    "browseSubtitle": "प्रमुख कृषि फसलों की सीधी खरीद और बिक्री",
+    "howItWorks": "FarmBridge कैसे काम करता है?",
+    "howItWorksSubtitle": "प्रत्यक्ष और लाभदायक कृषि व्यापार के लिए पारदर्शी 4-चरणीय प्रक्रिया",
+    "step1Title": "फसल की लिस्टिंग",
+    "step1Desc": "किसान गुणवत्ता प्रमाण पत्र, फोटो और कीमत के साथ फसल सूचीबद्ध करते हैं।",
+    "step2Title": "सही मूल्य निर्धारण",
+    "step2Desc": "रीयल-टाइम एपीएमसी मंडी भाव से सही बाज़ार मूल्य सुनिश्चित होता है।",
+    "step3Title": "प्रत्यक्ष खरीद",
+    "step3Desc": "सत्यापित थोक खरीदार बिना किसी बिचौलिए के सीधे फसल खरीदते हैं।",
+    "step4Title": "सुरक्षित भुगतान",
+    "step4Desc": "डिलीवरी की पुष्टि होने पर सीधा बैंक खाते में सुरक्षित भुगतान।",
+    "ctaTitle": "क्या आप अपने कृषि व्यापार को लाभदायक बनाने के लिए तैयार हैं?",
+    "ctaSubtitle": "बेहतर मुनाफा पाने वाले हजारों किसानों और गुणवत्तापूर्ण उत्पाद खरीदने वाले थोक खरीदारों से जुड़ें।",
+    "registerFarmer": "किसान के रूप में पंजीकरण करें",
+    "registerBuyer": "खरीदार के रूप में पंजीकरण करें"
   }
-  
-  
-  }
+}

@@ -165,18 +165,18 @@ export default function HomePage() {
               {/* Trust Badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EEF4EF] border border-[#D5E4D8] text-[#1E3F2D] text-xs font-semibold shadow-soft-xs">
                 <Sprout className="w-3.5 h-3.5 text-[#1E3F2D]" />
-                India's Verified Direct Farm-To-Buyer Marketplace
+                {t("home.badge") || "India's Verified Direct Farm-To-Buyer Marketplace"}
               </div>
 
               {/* Headline */}
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1A261D] leading-[1.14]">
-                Empowering Farmers. <br className="hidden sm:block" />
-                Supplying <span className="text-[#1E3F2D]">Verified Bulk Buyers.</span>
+                {t("home.heroTitle1") || "Direct Farm-to-Buyer"} <br className="hidden sm:block" />
+                <span className="text-[#1E3F2D]">{t("home.heroTitle2") || "Trade Without Intermediaries."}</span>
               </h1>
 
               {/* Subtitle */}
               <p className="text-base sm:text-lg text-[#5C6B5F] max-w-2xl leading-relaxed font-normal">
-                Direct trade between agricultural producers and commercial buyers. Eliminate middleman markups, monitor live APMC mandi rates, and procure bulk harvest with verified authenticity.
+                {t("home.heroSubtitle") || "Eliminate commissions, access transparent real-time APMC Mandi pricing, and trade directly with verified bulk buyers and processing units across India."}
               </p>
 
               {/* Call to Actions */}
@@ -185,7 +185,7 @@ export default function HomePage() {
                   to="/register"
                   className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#1E3F2D] hover:bg-[#152F21] text-[#FAF8F3] font-semibold text-xs tracking-wide rounded-xl shadow-soft-sm transition-all hover:scale-[1.01]"
                 >
-                  Join as Producer or Buyer
+                  {t("home.registerFarmer") || "Join as Producer or Buyer"}
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
 
@@ -194,7 +194,7 @@ export default function HomePage() {
                   className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#FAF8F3] hover:bg-[#F2EDE2] text-[#1A261D] border border-[#E8E4DA] font-semibold text-xs rounded-xl shadow-soft-xs transition-all"
                 >
                   <ShoppingCart className="w-3.5 h-3.5 text-[#1E3F2D]" />
-                  Explore Available Harvests
+                  {t("home.exploreMarketplace") || "Explore Available Harvests"}
                 </Link>
               </div>
 
@@ -202,15 +202,15 @@ export default function HomePage() {
               <div className="pt-3 flex flex-wrap items-center gap-6 text-xs text-[#5C6B5F] font-medium">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#1E3F2D]" />
-                  <span>0% Middleman Deduction</span>
+                  <span>{t("home.secureEscrow") || "0% Middleman Deduction"}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-[#1E3F2D]" />
-                  <span>AGMARK Verified Lots</span>
+                  <span>{t("home.agmarkQuality") || "AGMARK Verified Lots"}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Scale className="w-4 h-4 text-[#1E3F2D]" />
-                  <span>Fair APMC Daily Indexing</span>
+                  <span>{t("home.viewApmcBhav") || "Fair APMC Daily Indexing"}</span>
                 </div>
               </div>
             </div>
@@ -268,10 +268,10 @@ export default function HomePage() {
               Direct Trade Pipeline
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#1A261D] tracking-tight">
-              How Direct Agricultural Procurement Works
+              {t("home.howItWorks") || "How Direct Agricultural Procurement Works"}
             </h2>
             <p className="text-[#5C6B5F] text-sm md:text-base font-normal">
-              A transparent digital bridge connecting village producers with wholesale purchasers.
+              {t("home.howItWorksSubtitle") || "A transparent digital bridge connecting village producers with wholesale purchasers."}
             </p>
           </div>
 
@@ -281,9 +281,9 @@ export default function HomePage() {
               <div className="w-9 h-9 rounded-xl bg-[#1E3F2D] text-[#FAF8F3] font-bold text-sm flex items-center justify-center mb-5">
                 1
               </div>
-              <h3 className="text-lg font-bold text-[#1A261D] mb-2">Farmer Lists Harvest</h3>
+              <h3 className="text-lg font-bold text-[#1A261D] mb-2">{t("home.step1Title") || "Farmer Lists Harvest"}</h3>
               <p className="text-xs sm:text-sm text-[#5C6B5F] leading-relaxed">
-                Farmers upload lot size, variety specs, moisture metrics, and asking rates directly from mobile devices.
+                {t("home.step1Desc") || "Farmers upload lot size, variety specs, moisture metrics, and asking rates directly from mobile devices."}
               </p>
             </div>
 
@@ -292,9 +292,9 @@ export default function HomePage() {
               <div className="w-9 h-9 rounded-xl bg-[#2E614B] text-[#FAF8F3] font-bold text-sm flex items-center justify-center mb-5">
                 2
               </div>
-              <h3 className="text-lg font-bold text-[#1A261D] mb-2">Buyer Orders Wholesale</h3>
+              <h3 className="text-lg font-bold text-[#1A261D] mb-2">{t("home.step2Title") || "Buyer Orders Wholesale"}</h3>
               <p className="text-xs sm:text-sm text-[#5C6B5F] leading-relaxed">
-                Processors, institutional buyers, and retailers inspect quality certificates and book fresh crop lots.
+                {t("home.step2Desc") || "Processors, institutional buyers, and retailers inspect quality certificates and book fresh crop lots."}
               </p>
             </div>
 
@@ -303,9 +303,9 @@ export default function HomePage() {
               <div className="w-9 h-9 rounded-xl bg-[#18392B] text-[#FAF8F3] font-bold text-sm flex items-center justify-center mb-5">
                 3
               </div>
-              <h3 className="text-lg font-bold text-[#1A261D] mb-2">Dispatch & Direct Settlement</h3>
+              <h3 className="text-lg font-bold text-[#1A261D] mb-2">{t("home.step3Title") || "Dispatch & Direct Settlement"}</h3>
               <p className="text-xs sm:text-sm text-[#5C6B5F] leading-relaxed">
-                Produce is picked up from village farm gate with live tracking. Farmers receive 100% direct bank payout upon verification.
+                {t("home.step4Desc") || "Produce is picked up from village farm gate with live tracking. Farmers receive 100% direct bank payout upon verification."}
               </p>
             </div>
           </div>
@@ -318,13 +318,13 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-10">
             <div>
               <span className="text-xs font-semibold uppercase tracking-wider text-[#1E3F2D] bg-[#EEF4EF] px-3 py-1 rounded-lg border border-[#D5E4D8]">
-                Current Marketplace Lots
+                {t("marketplace.badge") || "Current Marketplace Lots"}
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold text-[#1A261D] tracking-tight mt-2">
-                Fresh Produce in Today's Market
+                {t("marketplace.title") || "Fresh Produce in Today's Market"}
               </h2>
               <p className="text-[#5C6B5F] text-sm mt-1">
-                Verified harvests available for immediate procurement directly from village farms.
+                {t("marketplace.subtitle") || "Verified harvests available for immediate procurement directly from village farms."}
               </p>
             </div>
 
@@ -332,7 +332,7 @@ export default function HomePage() {
               to="/marketplace"
               className="inline-flex items-center gap-2 px-4 py-2 bg-[#FAF8F3] border border-[#E8E4DA] hover:bg-[#F2EDE2] text-[#1A261D] rounded-xl text-xs font-semibold transition-all shadow-soft-xs"
             >
-              View Full Marketplace <ArrowRight className="w-3.5 h-3.5" />
+              {t("marketplace.allCrops") || "View Full Marketplace"} <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
@@ -458,10 +458,10 @@ export default function HomePage() {
                 🌱 Connecting Over 15,000 Agricultural Stakeholders
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#FAF8F3] leading-tight">
-                Ready to Trade Directly at Wholesale APMC Benchmarks?
+                {t("home.ctaTitle") || "Ready to Trade Directly at Wholesale APMC Benchmarks?"}
               </h2>
               <p className="text-[#CAD7CD] text-sm md:text-base leading-relaxed font-normal">
-                Whether you are a farming cooperative looking to sell your harvest or a commercial buyer seeking verified produce, start today for free.
+                {t("home.ctaSubtitle") || "Whether you are a farming cooperative looking to sell your harvest or a commercial buyer seeking verified produce, start today for free."}
               </p>
 
               <div className="pt-3 flex flex-col sm:flex-row justify-center gap-3">
@@ -469,13 +469,13 @@ export default function HomePage() {
                   to="/register"
                   className="px-7 py-3 bg-[#FAF8F3] hover:bg-[#F2EDE2] text-[#1A261D] font-semibold text-xs rounded-xl shadow-soft-xs transition-all"
                 >
-                  Create Free Account
+                  {t("home.registerFarmer") || "Create Free Account"}
                 </Link>
                 <Link
                   to="/contact"
                   className="px-7 py-3 bg-[#2B583E] hover:bg-[#356B4C] text-[#FAF8F3] font-semibold text-xs rounded-xl border border-[#3D7253] transition-all"
                 >
-                  Talk to Agriculture Specialist
+                  {t("nav.contact") || "Talk to Agriculture Specialist"}
                 </Link>
               </div>
             </div>

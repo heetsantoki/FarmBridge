@@ -17,6 +17,7 @@ import { useRecoilValue } from "recoil";
 import tokenAtom from "../../hooks/tokenAtom";
 import { toast } from "react-toastify";
 import MandiTicker from "../../components/MandiTicker";
+import { useTranslation } from "../../hooks/useTranslation";
 
 // Custom styles for slick slider
 const sliderStyles = `
@@ -80,17 +81,184 @@ interface Product {
   location?: string;
 }
 
-const CATEGORY_CHIPS = [
-  { id: "all", label: "All Harvests", icon: "🌱" },
-  { id: "Grains", label: "Grains & Cereals", icon: "🌾" },
-  { id: "Vegetables", label: "Fresh Vegetables", icon: "🥬" },
-  { id: "Fruits", label: "Fruits", icon: "🍎" },
-  { id: "Pulses", label: "Pulses & Lentils", icon: "🫘" },
-  { id: "Spices", label: "Spices & Herbs", icon: "🌶️" },
-  { id: "Oilseeds", label: "Oilseeds", icon: "🌻" },
-];
+const getCategoryChips = (lang: string) => {
+  const l = lang === "gu" || lang === "hi" ? lang : "en";
+  const labels: Record<string, Record<string, string>> = {
+    en: {
+      all: "All Harvests",
+      Grains: "Grains & Cereals",
+      Vegetables: "Fresh Vegetables",
+      Fruits: "Fruits",
+      Pulses: "Pulses & Lentils",
+      Spices: "Spices & Herbs",
+      Oilseeds: "Oilseeds",
+    },
+    gu: {
+      all: "બધો પાક",
+      Grains: "અનાજ અને ધાન્ય",
+      Vegetables: "તાજા શાકભાજી",
+      Fruits: "ફળો",
+      Pulses: "કઠોળ અને દાળ",
+      Spices: "મસાલા અને ઔષધિ",
+      Oilseeds: "તેલીબિયાં",
+    },
+    hi: {
+      all: "सभी फसलें",
+      Grains: "अनाज और धान्य",
+      Vegetables: "ताज़ी सब्जियां",
+      Fruits: "फल",
+      Pulses: "दालें और दलहन",
+      Spices: "मसाले और जड़ी-बूटियाँ",
+      Oilseeds: "तिलहन",
+    },
+  };
+
+  return [
+    { id: "all", label: labels[l].all, icon: "🌱" },
+    { id: "Grains", label: labels[l].Grains, icon: "🌾" },
+    { id: "Vegetables", label: labels[l].Vegetables, icon: "🥬" },
+    { id: "Fruits", label: labels[l].Fruits, icon: "🍎" },
+    { id: "Pulses", label: labels[l].Pulses, icon: "🫘" },
+    { id: "Spices", label: labels[l].Spices, icon: "🌶️" },
+    { id: "Oilseeds", label: labels[l].Oilseeds, icon: "🌻" },
+  ];
+};
+
+const pageDict = {
+  en: {
+    heroBadge: "Direct Producer-To-Buyer Agri Marketplace",
+    heroTitle: "Fresh Farm Harvest, Direct from Verified Producers",
+    heroDesc: "Source high-grade grains, fresh vegetables, fruits, and oilseeds directly from village farms at wholesale rates with zero middleman commissions.",
+    searchPlaceholder: "Search by crop, variety, or location...",
+    clear: "Clear",
+    showing: "Showing",
+    availableLots: "available lots",
+    minOrder: "Min order:",
+    by: "By",
+    directRate: "Direct Producer Rate",
+    freshLot: "Fresh Lot",
+    viewDetails: "View Details",
+    buyNow: "Buy Now",
+    directProducerPrice: "Direct Producer Price",
+    minPurchaseReq: "Minimum Purchase Requirement:",
+    verifiedProducerContact: "Verified Producer Contact",
+    farmer: "Farmer:",
+    phone: "Phone:",
+    qualityCert: "Quality Cert:",
+    proceedCheckout: "Proceed to Instant Checkout",
+    verifiedOrder: "Verified Purchase Order",
+    completeOrder: "Complete Harvest Order",
+    producedBy: "Produced by",
+    quantityToPurchase: "Quantity to Purchase",
+    totalValue: "Total Value:",
+    deliveryDest: "Delivery Destination",
+    streetPlaceholder: "Street Address / Warehouse Location *",
+    city: "City / District *",
+    state: "State *",
+    pincode: "Pincode / ZIP",
+    contactPhone: "Contact Phone *",
+    paymentMethod: "Payment Method",
+    cod: "Cash on Delivery",
+    upi: "UPI / Direct Transfer",
+    transmittingOrder: "Transmitting Order...",
+    confirmOrder: "Confirm & Place Purchase Order",
+    cancel: "Cancel",
+    noProduceFound: "No Produce Found",
+    noProduceDesc: "We couldn't find any listings matching your search or category filter. Try selecting another category or clearing filters.",
+    clearAllFilters: "Clear All Filters",
+  },
+  gu: {
+    heroBadge: "ડાયરેક્ટ ખેડૂત-થી-ખરીદદાર કૃષિ માર્કેટપ્લેસ",
+    heroTitle: "પ્રમાણિત ખેડૂતો પાસેથી સીધો તાજો પાક",
+    heroDesc: "ઉચ્ચ ગુણવત્તાવાળા અનાજ, તાજા શાકભાજી, ફળો અને તેલીબિયાં સીધા ગામના ખેતરોમાંથી જથ્થાબંધ ભાવે ઝીરો દલાલી સાથે ખરીદો.",
+    searchPlaceholder: "પાક, જાત અથવા સ્થળ દ્વારા શોધો...",
+    clear: "સાફ કરો",
+    showing: "દર્શાવી રહ્યા છીએ",
+    availableLots: "ઉપલબ્ધ લોટ",
+    minOrder: "ઓછામાં ઓછો ઓર્ડર:",
+    by: "ખેડૂત:",
+    directRate: "ખેડૂતનો સીધો ભાવ",
+    freshLot: "તાજો પાક",
+    viewDetails: "વિગતો જુઓ",
+    buyNow: "હમણાં ખરીદો",
+    directProducerPrice: "ખેડૂતનો સીધો ભાવ",
+    minPurchaseReq: "ઓછામાં ઓછી ખરીદી જરૂરિયાત:",
+    verifiedProducerContact: "પ્રમાણિત ખેડૂત સંપર્ક",
+    farmer: "ખેડૂત:",
+    phone: "ફોન:",
+    qualityCert: "ગુણવત્તા પ્રમાણપત્ર:",
+    proceedCheckout: "ચેકઆઉટ આગળ વધો",
+    verifiedOrder: "પ્રમાણિત ખરીદ ઓર્ડર",
+    completeOrder: "પાક ઓર્ડર પૂર્ણ કરો",
+    producedBy: "ઉત્પાદક:",
+    quantityToPurchase: "ખરીદવાનો જથ્થો",
+    totalValue: "કુલ કિંમત:",
+    deliveryDest: "ડિલિવરી સ્થળ",
+    streetPlaceholder: "શેરીનું સરનામું / ગોડાઉન સ્થળ *",
+    city: "શહેર / જિલ્લો *",
+    state: "રાજ્ય *",
+    pincode: "પીનકોડ / ZIP",
+    contactPhone: "સંપર્ક ફોન નંબર *",
+    paymentMethod: "ચૂકવણી પદ્ધતિ",
+    cod: "કેશ ઓન ડિલિવરી",
+    upi: "UPI / સીધું ટ્રાન્સફર",
+    transmittingOrder: "ઓર્ડર મોકલી રહ્યા છીએ...",
+    confirmOrder: "ઓર્ડર કન્ફર્મ કરો અને ખરીદો",
+    cancel: "રદ કરો",
+    noProduceFound: "કોઈ ઉપજ મળી નથી",
+    noProduceDesc: "તમારી શોધ અથવા કેટેગરી ફિલ્ટર સાથે મેળ ખાતી કોઈ જાહેરાત મળી નથી. બીજી કેટેગરી પસંદ કરો અથવા ફિલ્ટર સાફ કરો.",
+    clearAllFilters: "બધા ફિલ્ટર સાફ કરો",
+  },
+  hi: {
+    heroBadge: "डायरेक्ट किसान-से-खरीदार कृषि मार्केटप्लेस",
+    heroTitle: "प्रमाणित किसानों से सीधे ताज़ा फसल",
+    heroDesc: "उच्च गुणवत्ता वाले अनाज, ताजी सब्जियां, फल और तिलहन सीधे गांव के खेतों से थोक दरों पर शून्य दलाली के साथ प्राप्त करें।",
+    searchPlaceholder: "फसल, किस्म या स्थान द्वारा खोजें...",
+    clear: "साफ़ करें",
+    showing: "दिखा रहे हैं",
+    availableLots: "उपलब्ध लॉट",
+    minOrder: "न्यूनतम ऑर्डर:",
+    by: "किसान:",
+    directRate: "किसान का सीधा भाव",
+    freshLot: "ताज़ा लॉट",
+    viewDetails: "विवरण देखें",
+    buyNow: "अभी खरीदें",
+    directProducerPrice: "किसान का सीधा भाव",
+    minPurchaseReq: "न्यूनतम खरीद आवश्यकता:",
+    verifiedProducerContact: "प्रमाणित किसान संपर्क",
+    farmer: "किसान:",
+    phone: "फ़ोन:",
+    qualityCert: "गुणवत्ता प्रमाणपत्र:",
+    proceedCheckout: "चेकआउट जारी रखें",
+    verifiedOrder: "प्रमाणित खरीद आदेश",
+    completeOrder: "फसल आदेश पूरा करें",
+    producedBy: "उत्पादक:",
+    quantityToPurchase: "खरीद की मात्रा",
+    totalValue: "कुल मूल्य:",
+    deliveryDest: "डिलीवरी गंतव्य",
+    streetPlaceholder: "गली का पता / गोदाम स्थान *",
+    city: "शहर / जिला *",
+    state: "राज्य *",
+    pincode: "पिनकोड / ZIP",
+    contactPhone: "संपर्क फ़ोन नंबर *",
+    paymentMethod: "भुगतान विधि",
+    cod: "कैश ऑन डिलीवरी",
+    upi: "UPI / सीधा ट्रांसफर",
+    transmittingOrder: "ऑर्डर भेजा जा रहा है...",
+    confirmOrder: "थोक आदेश की पुष्टि करें",
+    cancel: "रद्द करें",
+    noProduceFound: "कोई उपज नहीं मिली",
+    noProduceDesc: "आपकी खोज या श्रेणी फ़िल्टर से मेल खाने वाली कोई लिस्टिंग नहीं मिली। दूसरी श्रेणी चुनें या फ़िल्टर साफ़ करें।",
+    clearAllFilters: "सभी फ़िल्टर साफ़ करें",
+  },
+};
 
 const BuyerProducts: React.FC = () => {
+  const { language } = useTranslation();
+  const langKey = language === "gu" || language === "hi" ? language : "en";
+  const tTxt = pageDict[langKey];
+  const categoryChips = getCategoryChips(langKey);
+
   const [products, setProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -234,13 +402,13 @@ const BuyerProducts: React.FC = () => {
         <div className="relative z-10 max-w-3xl space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#234E3C] rounded-full text-xs font-semibold text-[#D8EADB] border border-[#2E614B]">
             <Sparkles className="w-3.5 h-3.5 text-[#A5D6B1]" />
-            Direct Producer-To-Buyer Agri Marketplace
+            {tTxt.heroBadge}
           </div>
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#FAF8F3] leading-tight">
-            Fresh Farm Harvest, Direct from Verified Producers
+            {tTxt.heroTitle}
           </h1>
           <p className="text-[#CAD7CD] text-sm md:text-base leading-relaxed font-normal">
-            Source high-grade grains, fresh vegetables, fruits, and oilseeds directly from village farms at wholesale rates with zero middleman commissions.
+            {tTxt.heroDesc}
           </p>
         </div>
       </div>
@@ -255,7 +423,7 @@ const BuyerProducts: React.FC = () => {
             <Search className="w-4 h-4 absolute left-3.5 top-3.5 text-[#7F8B82]" />
             <input
               type="text"
-              placeholder="Search by crop, variety, or location..."
+              placeholder={tTxt.searchPlaceholder}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-sm font-medium text-[#1A261D] placeholder:text-[#7F8B82] transition-all"
@@ -265,19 +433,19 @@ const BuyerProducts: React.FC = () => {
                 onClick={() => setSearchTerm("")}
                 className="absolute right-3.5 top-3 text-[#7F8B82] hover:text-[#1A261D] text-xs font-semibold"
               >
-                Clear
+                {tTxt.clear}
               </button>
             )}
           </div>
 
           <div className="flex items-center gap-2 text-xs font-semibold text-[#5C6B5F]">
-            <span>Showing <strong className="text-[#1A261D]">{filteredProducts.length}</strong> available lots</span>
+            <span>{tTxt.showing} <strong className="text-[#1A261D]">{filteredProducts.length}</strong> {tTxt.availableLots}</span>
           </div>
         </div>
 
         {/* Category Pills */}
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
-          {CATEGORY_CHIPS.map((chip) => (
+          {categoryChips.map((chip) => (
             <button
               key={chip.id}
               onClick={() => setSelectedCategory(chip.id)}
@@ -314,9 +482,9 @@ const BuyerProducts: React.FC = () => {
           <div className="w-14 h-14 bg-[#EEF4EF] text-[#1E3F2D] rounded-2xl flex items-center justify-center mx-auto mb-4 border border-[#D5E4D8]">
             <Package2 className="w-6 h-6" />
           </div>
-          <h3 className="text-xl font-bold text-[#1A261D]">No Produce Found</h3>
+          <h3 className="text-xl font-bold text-[#1A261D]">{tTxt.noProduceFound}</h3>
           <p className="text-[#5C6B5F] text-sm mt-2 leading-relaxed">
-            We couldn't find any listings matching your search or category filter. Try selecting another category or clearing filters.
+            {tTxt.noProduceDesc}
           </p>
           <button
             onClick={() => {
@@ -325,7 +493,7 @@ const BuyerProducts: React.FC = () => {
             }}
             className="mt-5 px-5 py-2.5 bg-[#1E3F2D] hover:bg-[#152F21] text-[#FAF8F3] text-xs font-semibold rounded-xl shadow-soft-xs transition-all"
           >
-            Clear All Filters
+            {tTxt.clearAllFilters}
           </button>
         </div>
       ) : (
@@ -375,7 +543,7 @@ const BuyerProducts: React.FC = () => {
                   )}
 
                   <div className="absolute bottom-2.5 left-3 text-xs text-[#FAF8F3] font-medium">
-                    Min order: <strong>{product.minQuantity} {product.unit}</strong>
+                    {tTxt.minOrder} <strong>{product.minQuantity} {product.unit}</strong>
                   </div>
                 </div>
 
@@ -394,7 +562,7 @@ const BuyerProducts: React.FC = () => {
                         {product.farmerName?.charAt(0) || "F"}
                       </div>
                       <span className="font-medium text-[#1A261D] line-clamp-1">
-                        By {product.farmerName}
+                        {tTxt.by} {product.farmerName}
                       </span>
                     </div>
 
@@ -402,7 +570,7 @@ const BuyerProducts: React.FC = () => {
                     <div className="mt-3.5 bg-[#FAF8F3] rounded-xl p-3 border border-[#E8E4DA] flex items-center justify-between">
                       <div>
                         <span className="text-[10px] font-semibold uppercase tracking-wider text-[#1E3F2D]">
-                          Direct Producer Rate
+                          {tTxt.directRate}
                         </span>
                         <div className="text-base font-bold text-[#18392B]">
                           ₹{product.priceRange?.min}
@@ -411,7 +579,7 @@ const BuyerProducts: React.FC = () => {
                       </div>
 
                       <span className="text-[11px] px-2 py-0.5 bg-[#EEF4EF] text-[#1E3F2D] border border-[#D5E4D8] rounded-md font-semibold">
-                        Fresh Lot
+                        {tTxt.freshLot}
                       </span>
                     </div>
                   </div>
@@ -420,7 +588,7 @@ const BuyerProducts: React.FC = () => {
                   <div className="pt-2 flex gap-2">
                     <button
                       onClick={() => handleOpenDetailModal(product)}
-                      title="View Details"
+                      title={tTxt.viewDetails}
                       className="p-2.5 bg-[#FAF8F3] hover:bg-[#F2EDE2] text-[#1A261D] border border-[#E8E4DA] rounded-xl transition-colors flex items-center justify-center"
                     >
                       <Eye className="w-4 h-4" />
@@ -431,7 +599,7 @@ const BuyerProducts: React.FC = () => {
                       className="flex-1 py-2.5 px-4 bg-[#1E3F2D] hover:bg-[#152F21] text-[#FAF8F3] font-semibold text-xs rounded-xl shadow-soft-xs transition-all flex items-center justify-center gap-2"
                     >
                       <ShoppingCart className="w-3.5 h-3.5" />
-                      Buy Now
+                      {tTxt.buyNow}
                     </button>
                   </div>
                 </div>
@@ -500,14 +668,14 @@ const BuyerProducts: React.FC = () => {
                   {/* Price Box */}
                   <div className="mt-4 bg-[#FFFFFF] rounded-xl p-4 border border-[#E8E4DA]">
                     <div className="flex justify-between items-baseline">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-[#1E3F2D]">Direct Producer Price</span>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-[#1E3F2D]">{tTxt.directProducerPrice}</span>
                       <span className="text-xl font-bold text-[#18392B]">
                         ₹{selectedProduct.priceRange?.min} - ₹{selectedProduct.priceRange?.max}
                         <span className="text-xs font-normal text-[#5C6B5F]"> / {selectedProduct.unit}</span>
                       </span>
                     </div>
                     <div className="mt-2 text-xs text-[#5C6B5F] flex justify-between">
-                      <span>Minimum Purchase Requirement:</span>
+                      <span>{tTxt.minPurchaseReq}</span>
                       <strong className="text-[#1A261D]">{selectedProduct.minQuantity} {selectedProduct.unit}</strong>
                     </div>
                   </div>
@@ -515,21 +683,21 @@ const BuyerProducts: React.FC = () => {
                   {/* Farmer Info */}
                   <div className="mt-4 bg-[#FFFFFF] rounded-xl p-4 border border-[#E8E4DA] space-y-2">
                     <h4 className="text-[10px] font-semibold uppercase tracking-wider text-[#7F8B82] mb-1">
-                      Verified Producer Contact
+                      {tTxt.verifiedProducerContact}
                     </h4>
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-[#5C6B5F]">Farmer:</span>
+                      <span className="text-[#5C6B5F]">{tTxt.farmer}</span>
                       <span className="font-bold text-[#1A261D]">{selectedProduct.farmerName}</span>
                     </div>
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-[#5C6B5F]">Phone:</span>
+                      <span className="text-[#5C6B5F]">{tTxt.phone}</span>
                       <a href={`tel:${selectedProduct.contact}`} className="font-semibold text-[#1E3F2D] hover:underline">
                         {selectedProduct.contact}
                       </a>
                     </div>
                     {selectedProduct.qualityCertificateNo && (
                       <div className="flex items-center justify-between text-xs pt-1 border-t border-[#E8E4DA]">
-                        <span className="text-[#5C6B5F]">Quality Cert:</span>
+                        <span className="text-[#5C6B5F]">{tTxt.qualityCert}</span>
                         <span className="font-mono font-semibold text-[#1A261D]">{selectedProduct.qualityCertificateNo}</span>
                       </div>
                     )}
@@ -549,7 +717,7 @@ const BuyerProducts: React.FC = () => {
                     className="w-full py-3.5 bg-[#1E3F2D] hover:bg-[#152F21] text-[#FAF8F3] rounded-xl font-semibold text-xs shadow-soft-xs transition-all flex items-center justify-center gap-2"
                   >
                     <ShoppingCart className="w-4 h-4" />
-                    Proceed to Instant Checkout
+                    {tTxt.proceedCheckout}
                   </button>
                 </div>
               </div>
@@ -577,9 +745,9 @@ const BuyerProducts: React.FC = () => {
 
               <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#EEF4EF] text-[#1E3F2D] rounded-lg text-xs font-semibold mb-2 border border-[#D5E4D8]">
                 <ShoppingCart className="w-3.5 h-3.5" />
-                Verified Purchase Order
+                {tTxt.verifiedOrder}
               </div>
-              <h2 className="text-xl font-bold text-[#1A261D] mb-4">Complete Harvest Order</h2>
+              <h2 className="text-xl font-bold text-[#1A261D] mb-4">{tTxt.completeOrder}</h2>
 
               {/* Product Mini Summary */}
               <div className="bg-[#FFFFFF] border border-[#E8E4DA] rounded-xl p-3.5 flex gap-3.5 items-center mb-5">
@@ -594,7 +762,7 @@ const BuyerProducts: React.FC = () => {
                 />
                 <div>
                   <h3 className="font-bold text-[#1A261D] text-sm leading-snug">{selectedProduct.name}</h3>
-                  <div className="text-xs text-[#5C6B5F]">Produced by {selectedProduct.farmerName}</div>
+                  <div className="text-xs text-[#5C6B5F]">{tTxt.producedBy} {selectedProduct.farmerName}</div>
                   <div className="text-xs font-bold text-[#18392B] mt-1">
                     ₹{selectedProduct.priceRange?.min} / {selectedProduct.unit}
                   </div>
@@ -606,7 +774,7 @@ const BuyerProducts: React.FC = () => {
                 <div>
                   <div className="flex justify-between items-center mb-1">
                     <label className="text-xs font-semibold uppercase tracking-wider text-[#1A261D]">
-                      Quantity to Purchase ({selectedProduct.unit}) <span className="text-[#842A2A]">*</span>
+                      {tTxt.quantityToPurchase} ({selectedProduct.unit}) <span className="text-[#842A2A]">*</span>
                     </label>
                     <span className="text-xs text-[#7F8B82] font-normal">
                       Min: {selectedProduct.minQuantity} {selectedProduct.unit}
@@ -624,7 +792,7 @@ const BuyerProducts: React.FC = () => {
 
                 {/* Total Preview */}
                 <div className="bg-[#FFFFFF] p-3.5 rounded-xl border border-[#E8E4DA] flex justify-between items-center">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-[#5C6B5F]">Total Value:</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[#5C6B5F]">{tTxt.totalValue}</span>
                   <span className="text-xl font-bold text-[#18392B]">
                     ₹{((orderQuantity || 0) * (selectedProduct.priceRange?.min || 0)).toLocaleString("en-IN")}
                   </span>
@@ -634,13 +802,13 @@ const BuyerProducts: React.FC = () => {
                 <div className="space-y-2.5 pt-1">
                   <h4 className="text-xs font-semibold uppercase tracking-wider text-[#5C6B5F] flex items-center gap-1.5">
                     <MapPin className="w-3.5 h-3.5 text-[#1E3F2D]" />
-                    Delivery Destination
+                    {tTxt.deliveryDest}
                   </h4>
 
                   <input
                     type="text"
                     required
-                    placeholder="Street Address / Warehouse Location *"
+                    placeholder={tTxt.streetPlaceholder}
                     value={deliveryAddress.street}
                     onChange={(e) => setDeliveryAddress({ ...deliveryAddress, street: e.target.value })}
                     className="w-full px-3.5 py-2 bg-[#FFFFFF] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-xs text-[#1A261D]"
@@ -650,7 +818,7 @@ const BuyerProducts: React.FC = () => {
                     <input
                       type="text"
                       required
-                      placeholder="City / District *"
+                      placeholder={tTxt.city}
                       value={deliveryAddress.city}
                       onChange={(e) => setDeliveryAddress({ ...deliveryAddress, city: e.target.value })}
                       className="w-full px-3.5 py-2 bg-[#FFFFFF] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-xs text-[#1A261D]"
@@ -658,7 +826,7 @@ const BuyerProducts: React.FC = () => {
                     <input
                       type="text"
                       required
-                      placeholder="State *"
+                      placeholder={tTxt.state}
                       value={deliveryAddress.state}
                       onChange={(e) => setDeliveryAddress({ ...deliveryAddress, state: e.target.value })}
                       className="w-full px-3.5 py-2 bg-[#FFFFFF] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-xs text-[#1A261D]"
@@ -668,7 +836,7 @@ const BuyerProducts: React.FC = () => {
                   <div className="grid grid-cols-2 gap-2">
                     <input
                       type="text"
-                      placeholder="Pincode / ZIP"
+                      placeholder={tTxt.pincode}
                       value={deliveryAddress.pincode}
                       onChange={(e) => setDeliveryAddress({ ...deliveryAddress, pincode: e.target.value })}
                       className="w-full px-3.5 py-2 bg-[#FFFFFF] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-xs text-[#1A261D]"
@@ -676,7 +844,7 @@ const BuyerProducts: React.FC = () => {
                     <input
                       type="tel"
                       required
-                      placeholder="Contact Phone *"
+                      placeholder={tTxt.contactPhone}
                       value={deliveryAddress.phone}
                       onChange={(e) => setDeliveryAddress({ ...deliveryAddress, phone: e.target.value })}
                       className="w-full px-3.5 py-2 bg-[#FFFFFF] border border-[#E8E4DA] rounded-xl focus:border-[#1E3F2D] outline-none text-xs text-[#1A261D]"
@@ -687,7 +855,7 @@ const BuyerProducts: React.FC = () => {
                 {/* Payment Option */}
                 <div className="pt-1">
                   <label className="text-xs font-semibold uppercase tracking-wider text-[#5C6B5F] block mb-1.5">
-                    Payment Method
+                    {tTxt.paymentMethod}
                   </label>
                   <div className="grid grid-cols-2 gap-2">
                     <button
@@ -699,7 +867,7 @@ const BuyerProducts: React.FC = () => {
                           : "bg-[#FFFFFF] border-[#E8E4DA] text-[#5C6B5F]"
                       }`}
                     >
-                      Cash on Delivery
+                      {tTxt.cod}
                     </button>
                     <button
                       type="button"
@@ -710,7 +878,7 @@ const BuyerProducts: React.FC = () => {
                           : "bg-[#FFFFFF] border-[#E8E4DA] text-[#5C6B5F]"
                       }`}
                     >
-                      UPI / Direct Transfer
+                      {tTxt.upi}
                     </button>
                   </div>
                 </div>
@@ -722,7 +890,7 @@ const BuyerProducts: React.FC = () => {
                     disabled={isOrdering}
                     className="flex-1 py-3.5 bg-[#1E3F2D] hover:bg-[#152F21] text-[#FAF8F3] rounded-xl font-semibold text-xs shadow-soft-xs transition-all disabled:opacity-50"
                   >
-                    {isOrdering ? "Transmitting Order..." : "Confirm & Place Purchase Order"}
+                    {isOrdering ? tTxt.transmittingOrder : tTxt.confirmOrder}
                   </button>
 
                   <button
@@ -730,7 +898,7 @@ const BuyerProducts: React.FC = () => {
                     onClick={() => setShowOrderModal(false)}
                     className="px-5 py-3.5 bg-[#FFFFFF] hover:bg-[#F2EDE2] border border-[#E8E4DA] text-[#5C6B5F] hover:text-[#1A261D] rounded-xl text-xs font-semibold transition-colors"
                   >
-                    Cancel
+                    {tTxt.cancel}
                   </button>
                 </div>
               </form>

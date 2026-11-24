@@ -29,7 +29,7 @@ const getNestedValue = (obj: any, path: string): any => {
 export const useTranslation = () => {
   // Get language from localStorage or default to English
   const getSavedLanguage = (): Language => {
-    const savedLanguage = localStorage.getItem('language') as Language;
+    const savedLanguage = (localStorage.getItem('language') || localStorage.getItem('preferredLanguage')) as Language;
     if (savedLanguage === 'en' || savedLanguage === 'hi' || savedLanguage === 'gu') {
       return savedLanguage;
     }
@@ -41,6 +41,8 @@ export const useTranslation = () => {
   // Set language and save to localStorage
   const setLanguage = (newLanguage: Language) => {
     localStorage.setItem('language', newLanguage);
+    localStorage.setItem('preferredLanguage', newLanguage);
+    localStorage.setItem('selectedLanguage', newLanguage);
     setLanguageState(newLanguage);
     window.dispatchEvent(new Event('languageChange'));
   };

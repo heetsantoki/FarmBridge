@@ -1,257 +1,259 @@
-﻿{
-    "hero1": {
-      "tagline": "ખેડૂતોને ખરીદદારો સાથે જોડવા",
-      "title": "સીધી બજાર પહોંચ સાથે કૃષિનું પરિવર્તન કરો",
-      "subtitle": "સીધી બજાર પહોંચ દ્વારા મધ્યસ્થીઓને દૂર કરો અને ખેડૂતની નફાકારકતામાં સુધારો કરો. ફાર્મબ્રિજ પર હજારો ખેડૂતો અને ખરીદદારો સાથે જોડાઓ.",
-      "getStarted": "શરૂ કરો",
-      "learnMore": "વધુ જાણો"
+{
+  "hero1": {
+    "tagline": "ખેડૂતોને ખરીદદારો સાથે જોડવા",
+    "title": "સીધી બજાર પહોંચ સાથે કૃષિનું પરિવર્તન કરો",
+    "subtitle": "સીધી બજાર પહોંચ દ્વારા મધ્યસ્થીઓને દૂર કરો અને ખેડૂતની નફાકારકતામાં સુધારો કરો. ફાર્મબ્રિજ પર હજારો ખેડૂતો અને ખરીદદારો સાથે જોડાઓ.",
+    "getStarted": "શરૂ કરો",
+    "learnMore": "વધુ જાણો"
+  },
+  "features": {
+    "title": "ફાર્મબ્રિજ શા માટે પસંદ કરવું?",
+    "subtitle": "અમે ખેડૂતોને સીધા ખરીદદારો સાથે જોડવા માટે નવીન ઉકેલો પ્રદાન કરીએ છીએ, જે વધુ સારી કિંમતો અને ટકાઉ કૃષિની ખાતરી કરે છે.",
+    "directMarket": {
+      "title": "સીધી બજાર પહોંચ",
+      "description": "મધ્યસ્થીઓ વિના ખરીદદારો સાથે સીધા જોડાઓ અને તમારા ઉત્પાદન માટે વધુ સારી કિંમતો મેળવો."
     },
-    "features": {
-      "title": "ફાર્મબ્રિજ શા માટે પસંદ કરવું?",
-      "subtitle": "અમે ખેડૂતોને સીધા ખરીદદારો સાથે જોડવા માટે નવીન ઉકેલો પ્રદાન કરીએ છીએ, જે વધુ સારી કિંમતો અને ટકાઉ કૃષિની ખાતરી કરે છે.",
-      "directMarket": {
-        "title": "સીધી બજાર પહોંચ",
-        "description": "મધ્યસ્થીઓ વિના ખરીદદારો સાથે સીધા જોડાઓ અને તમારા ઉત્પાદન માટે વધુ સારી કિંમતો મેળવો."
+    "smartPrice": {
+      "title": "સ્માર્ટ કિંમત શોધ",
+      "description": "માહિતગાર નિર્ણયો લેવામાં મદદ માટે રીયલ-ટાઇમ બજાર કિંમતો અને વલણો."
+    },
+    "securePayments": {
+      "title": "સુરક્ષિત ચુકવણીઓ",
+      "description": "બહુવિધ ચુકવણી વિકલ્પો સાથે સુરક્ષિત અને તાત્કાલિક ચુકવણી પ્રક્રિયા."
+    },
+    "qualityAssurance": {
+      "title": "ગુણવત્તા ખાતરી",
+      "description": "ઉચ્ચ ધોરણો જાળવવા માટે બિલ્ટ-ઇન ગુણવત્તા ચકાસણી સિસ્ટમ."
+    },
+    "logistics": {
+      "title": "લોજિસ્ટિક્સ સપોર્ટ",
+      "description": "સરળ ડિલિવરી માટે એકીકૃત પરિવહન અને સંગ્રહ ઉકેલો."
+    },
+    "support": {
+      "title": "24/7 સપોર્ટ",
+      "description": "દરેક પગલે તમારી સહાય માટે સમર્પિત ગ્રાહક સહાય ટીમ."
+    }
+  },
+  "stats": {
+    "farmers": "નોંધાયેલા ખેડૂતો",
+    "buyers": "સક્રિય ખરીદદારો",
+    "volume": "વેપાર વોલ્યુમ (₹)",
+    "earnings": "આવકમાં વધારો"
+  },
+  "cta": {
+    "title": "કૃષિનું પરિવર્તન કરવા તૈયાર છો?",
+    "subtitle": "સીધી બજાર પહોંચથી પહેલેથી જ લાભ મેળવતા હજારો ખેડૂતો અને ખરીદદારો સાથે જોડાઓ.",
+    "button": "હવે શરૂ કરો"
+  },
+  "faq": {
+    "title": "વારંવાર પૂછાતા પ્રશ્નો",
+    "subtitle": "ફાર્મબ્રિજ વિશે સામાન્ય પ્રશ્નોના જવાબો મેળવો",
+    "categories": {
+      "general": {
+        "title": "સામાન્ય પ્રશ્નો",
+        "description": "ફાર્મબ્રિજ વિશે મૂળભૂત માહિતી",
+        "questions": {
+          "what-is-FarmBridge": {
+            "question": "ફાર્મબ્રિજ શું છે?",
+            "answer": "ફાર્મબ્રિજ એક ડિજિટલ પ્લેટફોર્મ છે જે ખેડૂતોને સીધા ખરીદદારો સાથે જોડે છે, મધ્યસ્થીઓને દૂર કરે છે અને કૃષિ ઉત્પાદનો માટે વધુ સારી કિંમતો સુનિશ્ચિત કરે છે."
+          },
+          "how-to-register": {
+            "question": "હું ફાર્મબ્રિજ પર કેવી રીતે નોંધણી કરાવી શકું?",
+            "answer": "માત્ર ખેડૂત અથવા ખરીદદાર તરીકે નોંધણી કરો, તમારી પ્રોફાઇલ પૂર્ણ કરો, અને સંભવિત વેપાર ભાગીદારો સાથે જોડાવાનું શરૂ કરો."
+          }
+        }
       },
-      "smartPrice": {
-        "title": "સ્માર્ટ કિંમત શોધ",
-        "description": "માહિતગાર નિર્ણયો લેવામાં મદદ માટે રીયલ-ટાઇમ બજાર કિંમતો અને વલણો."
+      "farmers": {
+        "title": "ખેડૂતો માટે",
+        "description": "ફાર્મબ્રિજનો ઉપયોગ કરતા ખેડૂતો માટે માહિતી",
+        "questions": {
+          "how-to-list": {
+            "question": "હું મારા ઉત્પાદનો કેવી રીતે સૂચિબદ્ધ કરી શકું?",
+            "answer": "લૉગિન કર્યા પછી, તમારા ડેશબોર્ડ પર જાઓ અને 'ઉત્પાદન ઉમેરો' પર ક્લિક કરો. જથ્થો, કિંમત અને ગુણવત્તા પરિમાણો સહિત તમારા ઉત્પાદન વિશેની વિગતો ભરો."
+          },
+          "payment-process": {
+            "question": "હું ચુકવણી કેવી રીતે મેળવું?",
+            "answer": "ચુકવણીઓ અમારા પ્લેટફોર્મ દ્વારા સુરક્ષિત રીતે પ્રક્રિયા કરવામાં આવે છે. તમારા ઉત્પાદનના વેચાણ પર સીધી ચુકવણી મેળવવા માટે તમે તમારી પ્રોફાઇલ સેટિંગ્સમાં તમારું બેંક એકાઉન્ટ લિંક કરી શકો છો."
+          }
+        }
       },
-      "securePayments": {
-        "title": "સુરક્ષિત ચુકવણીઓ",
-        "description": "બહુવિધ ચુકવણી વિકલ્પો સાથે સુરક્ષિત અને તાત્કાલિક ચુકવણી પ્રક્રિયા."
-      },
-      "qualityAssurance": {
-        "title": "ગુણવત્તા ખાતરી",
-        "description": "ઉચ્ચ ધોરણો જાળવવા માટે બિલ્ટ-ઇન ગુણવત્તા ચકાસણી સિસ્ટમ."
-      },
-      "logistics": {
-        "title": "લોજિસ્ટિક્સ સપોર્ટ",
-        "description": "સરળ ડિલિવરી માટે એકીકૃત પરિવહન અને સંગ્રહ ઉકેલો."
-      },
-      "support": {
-        "title": "24/7 સપોર્ટ",
-        "description": "દરેક પગલે તમારી સહાય માટે સમર્પિત ગ્રાહક સહાય ટીમ."
+      "buyers": {
+        "title": "ખરીદદારો માટે",
+        "description": "ફાર્મબ્રિજનો ઉપયોગ કરતા ખરીદદારો માટે માહિતી",
+        "questions": {
+          "quality-assurance": {
+            "question": "ગુણવત્તાની ખાતરી કેવી રીતે કરવામાં આવે છે?",
+            "answer": "અમારી પાસે મજબૂત ગુણવત્તા ચકાસણી સિસ્ટમ છે. બધા ઉત્પાદનો ગુણવત્તા માપદંડો સામે ચકાસવામાં આવે છે, અને અમે વિગતવાર ગુણવત્તા અહેવાલો પ્રદાન કરીએ છીએ. તમે ખેડૂતની રેટિંગ્સ અને સમીક્ષાઓ પણ તપાસી શકો છો."
+          },
+          "bulk-ordering": {
+            "question": "શું હું બલ્ક ઓર્ડર આપી શકું છું?",
+            "answer": "હા, તમે પ્લેટફોર્મ દ્વારા સીધા બલ્ક ઓર્ડર આપી શકો છો. ઘણા ખેડૂતો બલ્ક ખરીદી માટે ખાસ કિંમતો ઓફર કરે છે. તમે મોટા જથ્થા માટે કિંમતો પર વાટાઘાટ કરી શકો છો."
+          }
+        }
       }
     },
-    "stats": {
-      "farmers": "નોંધાયેલા ખેડૂતો",
-      "buyers": "સક્રિય ખરીદદારો",
-      "volume": "વેપાર વોલ્યુમ (₹)",
-      "earnings": "આવકમાં વધારો"
+    "stillHaveQuestions": "હજુ પણ પ્રશ્નો છે?",
+    "contactSupport": "જો તમને અમારા FAQમાં તમારા પ્રશ્નનો જવાબ ન મળે, તો તમે હંમેશા અમારો સંપર્ક કરી શકો છો. અમે ટૂંક સમયમાં જવાબ આપીશું!",
+    "contactButton": "સપોર્ટનો સંપર્ક કરો"
+  },
+  "about": {
+    "header": "ફાર્મબ્રિજ વિશે",
+    "title": "ટેક્નોલોજી દ્વારા કૃષિમાં ક્રાંતિ",
+    "subtitle": "અમે ખેડૂતોને સશક્ત બનાવવાના અને ટકાઉ કૃષિ પદ્ધતિઓ માટે કામ કરી રહ્યા છીએ.",
+    "imageAlt": "ફાર્મબ્રિજ વાપરતા ખેડૂત",
+    "yearsOfExcellence": "ઉત્તમતાના વર્ષો",
+    "mission": {
+      "title": "અમારું ધ્યેય",
+      "description": "ખેડૂત અને ખરીદદારો માટે પારદર્શક અને કાર્યક્ષમ કૃષિ બજાર બનાવવું..."
     },
-    "cta": {
-      "title": "કૃષિનું પરિવર્તન કરવા તૈયાર છો?",
-      "subtitle": "સીધી બજાર પહોંચથી પહેલેથી જ લાભ મેળવતા હજારો ખેડૂતો અને ખરીદદારો સાથે જોડાઓ.",
-      "button": "હવે શરૂ કરો"
+    "vision": {
+      "title": "અમારું દ્રષ્ટિકોણ",
+      "description": "ખેડૂતો માટે શ્રેષ્ઠ ટેકનોલોજી પ્લેટફોર્મ બનવું..."
     },
-    "faq": {
-      "title": "વારંવાર પૂછાતા પ્રશ્નો",
-      "subtitle": "ફાર્મબ્રિજ વિશે સામાન્ય પ્રશ્નોના જવાબો મેળવો",
-      "categories": {
-        "general": {
-          "title": "સામાન્ય પ્રશ્નો",
-          "description": "ફાર્મબ્રિજ વિશે મૂળભૂત માહિતી",
-          "questions": {
-            "what-is-FarmBridge": {
-              "question": "ફાર્મબ્રિજ શું છે?",
-              "answer": "ફાર્મબ્રિજ એક ડિજિટલ પ્લેટફોર્મ છે જે ખેડૂતોને સીધા ખરીદદારો સાથે જોડે છે, મધ્યસ્થીઓને દૂર કરે છે અને કૃષિ ઉત્પાદનો માટે વધુ સારી કિંમતો સુનિશ્ચિત કરે છે."
-            },
-            "how-to-register": {
-              "question": "હું ફાર્મબ્રિજ પર કેવી રીતે નોંધણી કરાવી શકું?",
-              "answer": "માત્ર ખેડૂત અથવા ખરીદદાર તરીકે નોંધણી કરો, તમારી પ્રોફાઇલ પૂર્ણ કરો, અને સંભવિત વેપાર ભાગીદારો સાથે જોડાવાનું શરૂ કરો."
-            }
-          }
-        },
-        "farmers": {
-          "title": "ખેડૂતો માટે",
-          "description": "ફાર્મબ્રિજનો ઉપયોગ કરતા ખેડૂતો માટે માહિતી",
-          "questions": {
-            "how-to-list": {
-              "question": "હું મારા ઉત્પાદનો કેવી રીતે સૂચિબદ્ધ કરી શકું?",
-              "answer": "લૉગિન કર્યા પછી, તમારા ડેશબોર્ડ પર જાઓ અને 'ઉત્પાદન ઉમેરો' પર ક્લિક કરો. જથ્થો, કિંમત અને ગુણવત્તા પરિમાણો સહિત તમારા ઉત્પાદન વિશેની વિગતો ભરો."
-            },
-            "payment-process": {
-              "question": "હું ચુકવણી કેવી રીતે મેળવું?",
-              "answer": "ચુકવણીઓ અમારા પ્લેટફોર્મ દ્વારા સુરક્ષિત રીતે પ્રક્રિયા કરવામાં આવે છે. તમારા ઉત્પાદનના વેચાણ પર સીધી ચુકવણી મેળવવા માટે તમે તમારી પ્રોફાઇલ સેટિંગ્સમાં તમારું બેંક એકાઉન્ટ લિંક કરી શકો છો."
-            }
-          }
-        },
-        "buyers": {
-          "title": "ખરીદદારો માટે",
-          "description": "ફાર્મબ્રિજનો ઉપયોગ કરતા ખરીદદારો માટે માહિતી",
-          "questions": {
-            "quality-assurance": {
-              "question": "ગુણવત્તાની ખાતરી કેવી રીતે કરવામાં આવે છે?",
-              "answer": "અમારી પાસે મજબૂત ગુણવત્તા ચકાસણી સિસ્ટમ છે. બધા ઉત્પાદનો ગુણવત્તા માપદંડો સામે ચકાસવામાં આવે છે, અને અમે વિગતવાર ગુણવત્તા અહેવાલો પ્રદાન કરીએ છીએ. તમે ખેડૂતની રેટિંગ્સ અને સમીક્ષાઓ પણ તપાસી શકો છો."
-            },
-            "bulk-ordering": {
-              "question": "શું હું બલ્ક ઓર્ડર આપી શકું છું?",
-              "answer": "હા, તમે પ્લેટફોર્મ દ્વારા સીધા બલ્ક ઓર્ડર આપી શકો છો. ઘણા ખેડૂતો બલ્ક ખરીદી માટે ખાસ કિંમતો ઓફર કરે છે. તમે મોટા જથ્થા માટે કિંમતો પર વાટાઘાટ કરી શકો છો."
-            }
-          }
-        }
+    "values": {
+      "title": "અમારી મૂળભૂત મૂલ્યો",
+      "innovation": {
+        "title": "નવપરિવર્તન",
+        "description": "અમે સતત નવીનતા લાવી શ્રેષ્ઠ ઉકેલ આપીએ છીએ..."
       },
-      "stillHaveQuestions": "હજુ પણ પ્રશ્નો છે?",
-      "contactSupport": "જો તમને અમારા FAQમાં તમારા પ્રશ્નનો જવાબ ન મળે, તો તમે હંમેશા અમારો સંપર્ક કરી શકો છો. અમે ટૂંક સમયમાં જવાબ આપીશું!",
-      "contactButton": "સપોર્ટનો સંપર્ક કરો"
-    },
-    
-      "about": {
-        "header": "ફાર્મબ્રિજ વિશે",
-        "title": "ટેક્નોલોજી દ્વારા કૃષિમાં ક્રાંતિ",
-        "subtitle": "અમે ખેડૂતોને સશક્ત બનાવવાના અને ટકાઉ કૃષિ પદ્ધતિઓ માટે કામ કરી રહ્યા છીએ.",
-        "imageAlt": "ફાર્મબ્રિજ વાપરતા ખેડૂત",
-        "yearsOfExcellence": "ઉત્તમતાના વર્ષો",
-        "mission": {
-          "title": "અમારું ધ્યેય",
-          "description": "ખેડૂત અને ખરીદદારો માટે પારદર્શક અને કાર્યક્ષમ કૃષિ બજાર બનાવવું..."
-        },
-        "vision": {
-          "title": "અમારું દ્રષ્ટિકોણ",
-          "description": "ખેડૂતો માટે શ્રેષ્ઠ ટેકનોલોજી પ્લેટફોર્મ બનવું..."
-        },
-        "values": {
-          "title": "અમારી મૂળભૂત મૂલ્યો",
-          "innovation": { "title": "નવપરિવર્તન", "description": "અમે સતત નવીનતા લાવી શ્રેષ્ઠ ઉકેલ આપીએ છીએ..." },
-          "transparency": { "title": "પારદર્શિતા", "description": "અમે અમારા તમામ કાર્યોમાં સંપૂર્ણ પારદર્શિતા રાખીએ છીએ..." },
-          "empowerment": { "title": "સશક્તિકરણ", "description": "અમે ટેકનોલોજી દ્વારા ખેડૂતોને સશક્ત બનાવવા માટે કામ કરીએ છીએ..." },
-          "excellence": { "title": "ઉત્તમતા", "description": "અમે અમારા દરેક કાર્યોમાં શ્રેષ્ઠતા માટે પ્રયત્નશીલ છીએ." }
-        },
-        "joinUs": {
-          "title": "અમારી સાથે કૃષિ પરિવર્તનમાં જોડાઓ",
-          "description": "કૃષિ ક્રાંતિનો હિસ્સો બનો...",
-          "buttonText": "ફાર્મબ્રિજમાં જોડાઓ"
-        }
+      "transparency": {
+        "title": "પારદર્શિતા",
+        "description": "અમે અમારા તમામ કાર્યોમાં સંપૂર્ણ પારદર્શિતા રાખીએ છીએ..."
       },
-      
-      "products":{
-        "featuredProducts": "ખાસ ઉત્પાદનો",
-        "discoverProducts": "અમારા પ્રીમિયમ ઓર્ગેનિક ઉત્પાદનોની પસંદગી શોધો",
-        "filterByCategory": "કેટેગરી દ્વારા ફિલ્ટર કરો",
-        "filterByCity": "શહેર દ્વારા ફિલ્ટર કરો",
-        "allCategories": "બધી કેટેગરીઓ",
-        "allStates": "બધા રાજ્યો",
-        "fruits": "ફળો",
-        "grains": "અનાજ",
-        "Organic Apples": "ઓર્ગેનિક સફરજન",
-        "Fresh Mangoes": "તાજા કેરી",
-        "Organic Wheat": "ઓર્ગેનિક ઘઉં",
-        "Kesar Mango": "કેસર કેરી",
-        "Pearl Millet": "બાજરી",
-        "Kinno Orange": "કિન્નુ સંતરા",
-        "Premium Wheat": "પ્રીમિયમ ઘઉં",
-        "Pomegranate": "દાડમ",
-        "Organic Barley": "ઓર્ગેનિક જવ",
-        "Red Banana": "લાલ કેળા",
-        "Red Rice": "લાલ ચોખા",
-        "Alphonso Mango": "હાફુસ કેરી",
-        "Jowar": "જુવાર",
-        "Sweet Lime": "મોસંબી",
-        "Fine Rice": "બારીક ચોખા",
-        "500 kg available": "500 કિલો ઉપલબ્ધ",
-        "300 kg available": "300 કિલો ઉપલબ્ધ",
-        "1000 kg available": "1000 કિલો ઉપલબ્ધ",
-        "2000 kg available": "2000 કિલો ઉપલબ્ધ",
-        "800 kg available": "800 કિલો ઉપલબ્ધ",
-        "5000 kg available": "5000 કિલો ઉપલબ્ધ",
-        "600 kg available": "600 કિલો ઉપલબ્ધ",
-        "1500 kg available": "1500 કિલો ઉપલબ્ધ",
-        "400 kg available": "400 કિલો ઉપલબ્ધ",
-        "2500 kg available": "2500 કિલો ઉપલબ્ધ",
-        "700 kg available": "700 કિલો ઉપલબ્ધ",
-        "3000 kg available": "3000 કિલો ઉપલબ્ધ",
-        "Fresh, crisp apples grown without pesticides": "જંતુનાશકો વગર ઉગાડેલા તાજા, કડક સફરજન",
-        "Sweet and juicy mangoes from local orchards": "સ્થાનિક બગીચાઓમાંથી મીઠી અને રસદાર કેરી",
-        "Premium quality wheat grains, perfect for bread and rotis": "પ્રીમિયમ ક્વોલિટી ઘઉંના દાણા, બ્રેડ અને રોટલી માટે સંપૂર્ણ",
-        "Premium Gir Kesar mangoes, known for their sweet taste and aroma": "ગીર કેસર કેરી, તેમના મીઠા સ્વાદ અને સુગંધ માટે જાણીતી",
-        "High-quality bajra grown in Gujarat's fertile soil": "ગુજરાતની ફળદ્રુપ જમીનમાં ઉગાડવામાં આવેલી ઉચ્ચ ગુણવત્તાની બાજરી",
-        "Sweet and juicy Kinno oranges from Punjab orchards": "પંજાબના બગીચાઓમાંથી મીઠા અને રસદાર કિન્નુ સંતરા",
-        "High-quality wheat from Punjab's golden fields": "પંજાબના સોનેરી ખેતરોમાંથી ઉચ્ચ ગુણવત્તાના ઘઉં",
-        "Fresh pomegranates from Rajasthan's orchards": "રાજસ્થાનના બગીચાઓમાંથી તાજા દાડમ",
-        "Naturally grown barley from Rajasthan's farms": "રાજસ્થાનના ખેતરોમાંથી કુદરતી રીતે ઉગાડેલા જવ",
-        "Sweet and nutritious red bananas from Kerala": "કેરળમાંથી મીઠા અને પૌષ્ટિક લાલ કેળા",
-        "Traditional Kerala red rice, rich in nutrients": "પરંપરાગત કેરળ લાલ ચોખા, પોષક તત્વોથી સમૃદ્ધ",
-        "Premium Ratnagiri Alphonso mangoes": "પ્રીમિયમ રત્નાગિરી હાફુસ કેરી",
-        "High-quality sorghum from Maharashtra farms": "મહારાષ્ટ્રના ખેતરોમાંથી ઉચ્ચ ગુણવત્તાની જુવાર",
-        "Fresh and juicy mosambi from Telangana orchards": "તેલંગાણાના બગીચાઓમાંથી તાજી અને રસદાર મોસંબી",
-        "Premium quality rice from Telangana paddy fields": "તેલંગાણાના ડાંગર ખેતરોમાંથી પ્રીમિયમ ક્વોલિટીના ચોખા",
-         "knowMore": "વધુ જાણો",
-        "showMore":" વધુ ઉત્પાદનો બતાવો",
-         
-          "cities": {
-            "New York": "ન્યુ યોર્ક",
-            "Mumbai": "મુંબઈ",
-            "Delhi": "દિલ્લી",
-            "Junagadh": "જૂનાગઢ",
-            "Mehsana": "મહેસાણા",
-            "Amritsar": "અમૃતસર",
-            "Ludhiana": "લુધિયાણા",
-            "Jodhpur": "જોધપુર",
-            "Jaipur": "જયપુર",
-            "Kochi": "કોચી",
-            "Thrissur": "થ્રિશૂર",
-            "Ratnagiri": "રત્નાગિરી",
-            "Nashik": "નાસિક",
-            "Hyderabad": "હૈદરાબાદ",
-            "Warangal": "વારંગલ"
-          },
-          
-            "farmerNames": {
-              "John Smith": "જોન સ્મિથ",
-              "Rajesh Kumar": "રાજેશ કુમાર",
-              "Amit Patel": "અમિત પટેલ",
-              "Rajesh Patel": "રાજેશ પટેલ",
-              "Bharat Modi": "ભારત મોદી",
-              "Gurpreet Singh": "ગુરપ્રીત સિંહ",
-              "Harjinder Singh": "હરજિંદર સિંહ",
-              "Ramesh Sharma": "રમેશ શર્મા",
-              "Vikram Singh": "વિક્રમ સિંહ",
-              "Thomas Joseph": "થોમસ જોસેફ",
-              "Mathew Philip": "માથ્યુ ફિલિપ",
-              "Suresh Desai": "સુરેશ દેસાઈ",
-              "Prakash Patil": "પ્રકાશ પાટીલ",
-              "Krishna Reddy": "કૃષ્ણ રેડ્ડી",
-              "Ravi Kumar": "રવિ કુમાર"
-            },
-            
-              "rating": "રેટિંગ",
-              "Negotiate": "ચર્ચા કરો",
-              "Read More": "વધુ વાંચો",
-              "View Less": "ઓછું જુઓ",
-              "Product Info": "ઉત્પાદન માહિતી",
-              "Quantity": "જથ્થો",
-              "Price Range": "ભાવ શ્રેણી",
-              "Category": "શ્રેણી",
-              "Farmer Details": "ખેડૂત વિગતો",
-              "Name": "નામ",
-              "Contact": "સંપર્ક",
-              "Location": "સ્થળ",
-              "Detailed Information": "વિગતવાર માહિતી",
-              "Product Certification": "ઉત્પાદન પ્રમાણપત્ર",
-              "Land Type": "જમીનનો પ્રકાર",
-              "Farming Practices": "ખેતી પદ્ધતિઓ",
-              "Quality Parameters": "ગુણવત્તા પરિમાણો",
-              "Farmer Experience": "ખેડૂતનો અનુભવ",
-              "farmingPractices": {
-                "No chemical pesticides used": "કોઈ રાસાયણિક જંતુનાશકનો ઉપયોગ નથી",
-                "Natural fertilizers only": "ફક્ત કુદરતી ખાતરો",
-                "Sustainable irrigation methods": "સતત સિંચાઈ પદ્ધતિઓ",
-                "Crop rotation practiced": "ફસલ પરિભ્રમણ અપનાવવામાં આવ્યું છે"
-              },
-              "qualityParameters": {
-                "Hand-picked at optimal ripeness": "શ્રેષ્ઠ પાકાવટે હસ્તે પસંદ કરાયેલ",
-                "Carefully sorted and graded": "સાવધાનીપૂર્વક ગોઠવેલ અને ગ્રેડ કરેલ",
-                "Stored in temperature-controlled environment": "તાપમાન-નિયંત્રિત વાતાવરણમાં સંગ્રહિત",
-                "Regular quality checks performed": "નિયમિત ગુણવત્તા ચકાસણીઓ કરવામાં આવે છે"
-              }
-            
-            
-          
-        },
-        
-    
-        "contact": {
+      "empowerment": {
+        "title": "સશક્તિકરણ",
+        "description": "અમે ટેકનોલોજી દ્વારા ખેડૂતોને સશક્ત બનાવવા માટે કામ કરીએ છીએ..."
+      },
+      "excellence": {
+        "title": "ઉત્તમતા",
+        "description": "અમે અમારા દરેક કાર્યોમાં શ્રેષ્ઠતા માટે પ્રયત્નશીલ છીએ."
+      }
+    },
+    "joinUs": {
+      "title": "અમારી સાથે કૃષિ પરિવર્તનમાં જોડાઓ",
+      "description": "કૃષિ ક્રાંતિનો હિસ્સો બનો...",
+      "buttonText": "ફાર્મબ્રિજમાં જોડાઓ"
+    }
+  },
+  "products": {
+    "featuredProducts": "ખાસ ઉત્પાદનો",
+    "discoverProducts": "અમારા પ્રીમિયમ ઓર્ગેનિક ઉત્પાદનોની પસંદગી શોધો",
+    "filterByCategory": "કેટેગરી દ્વારા ફિલ્ટર કરો",
+    "filterByCity": "શહેર દ્વારા ફિલ્ટર કરો",
+    "allCategories": "બધી કેટેગરીઓ",
+    "allStates": "બધા રાજ્યો",
+    "fruits": "ફળો",
+    "grains": "અનાજ",
+    "Organic Apples": "ઓર્ગેનિક સફરજન",
+    "Fresh Mangoes": "તાજા કેરી",
+    "Organic Wheat": "ઓર્ગેનિક ઘઉં",
+    "Kesar Mango": "કેસર કેરી",
+    "Pearl Millet": "બાજરી",
+    "Kinno Orange": "કિન્નુ સંતરા",
+    "Premium Wheat": "પ્રીમિયમ ઘઉં",
+    "Pomegranate": "દાડમ",
+    "Organic Barley": "ઓર્ગેનિક જવ",
+    "Red Banana": "લાલ કેળા",
+    "Red Rice": "લાલ ચોખા",
+    "Alphonso Mango": "હાફુસ કેરી",
+    "Jowar": "જુવાર",
+    "Sweet Lime": "મોસંબી",
+    "Fine Rice": "બારીક ચોખા",
+    "500 kg available": "500 કિલો ઉપલબ્ધ",
+    "300 kg available": "300 કિલો ઉપલબ્ધ",
+    "1000 kg available": "1000 કિલો ઉપલબ્ધ",
+    "2000 kg available": "2000 કિલો ઉપલબ્ધ",
+    "800 kg available": "800 કિલો ઉપલબ્ધ",
+    "5000 kg available": "5000 કિલો ઉપલબ્ધ",
+    "600 kg available": "600 કિલો ઉપલબ્ધ",
+    "1500 kg available": "1500 કિલો ઉપલબ્ધ",
+    "400 kg available": "400 કિલો ઉપલબ્ધ",
+    "2500 kg available": "2500 કિલો ઉપલબ્ધ",
+    "700 kg available": "700 કિલો ઉપલબ્ધ",
+    "3000 kg available": "3000 કિલો ઉપલબ્ધ",
+    "Fresh, crisp apples grown without pesticides": "જંતુનાશકો વગર ઉગાડેલા તાજા, કડક સફરજન",
+    "Sweet and juicy mangoes from local orchards": "સ્થાનિક બગીચાઓમાંથી મીઠી અને રસદાર કેરી",
+    "Premium quality wheat grains, perfect for bread and rotis": "પ્રીમિયમ ક્વોલિટી ઘઉંના દાણા, બ્રેડ અને રોટલી માટે સંપૂર્ણ",
+    "Premium Gir Kesar mangoes, known for their sweet taste and aroma": "ગીર કેસર કેરી, તેમના મીઠા સ્વાદ અને સુગંધ માટે જાણીતી",
+    "High-quality bajra grown in Gujarat's fertile soil": "ગુજરાતની ફળદ્રુપ જમીનમાં ઉગાડવામાં આવેલી ઉચ્ચ ગુણવત્તાની બાજરી",
+    "Sweet and juicy Kinno oranges from Punjab orchards": "પંજાબના બગીચાઓમાંથી મીઠા અને રસદાર કિન્નુ સંતરા",
+    "High-quality wheat from Punjab's golden fields": "પંજાબના સોનેરી ખેતરોમાંથી ઉચ્ચ ગુણવત્તાના ઘઉં",
+    "Fresh pomegranates from Rajasthan's orchards": "રાજસ્થાનના બગીચાઓમાંથી તાજા દાડમ",
+    "Naturally grown barley from Rajasthan's farms": "રાજસ્થાનના ખેતરોમાંથી કુદરતી રીતે ઉગાડેલા જવ",
+    "Sweet and nutritious red bananas from Kerala": "કેરળમાંથી મીઠા અને પૌષ્ટિક લાલ કેળા",
+    "Traditional Kerala red rice, rich in nutrients": "પરંપરાગત કેરળ લાલ ચોખા, પોષક તત્વોથી સમૃદ્ધ",
+    "Premium Ratnagiri Alphonso mangoes": "પ્રીમિયમ રત્નાગિરી હાફુસ કેરી",
+    "High-quality sorghum from Maharashtra farms": "મહારાષ્ટ્રના ખેતરોમાંથી ઉચ્ચ ગુણવત્તાની જુવાર",
+    "Fresh and juicy mosambi from Telangana orchards": "તેલંગાણાના બગીચાઓમાંથી તાજી અને રસદાર મોસંબી",
+    "Premium quality rice from Telangana paddy fields": "તેલંગાણાના ડાંગર ખેતરોમાંથી પ્રીમિયમ ક્વોલિટીના ચોખા",
+    "knowMore": "વધુ જાણો",
+    "showMore": " વધુ ઉત્પાદનો બતાવો",
+    "cities": {
+      "New York": "ન્યુ યોર્ક",
+      "Mumbai": "મુંબઈ",
+      "Delhi": "દિલ્લી",
+      "Junagadh": "જૂનાગઢ",
+      "Mehsana": "મહેસાણા",
+      "Amritsar": "અમૃતસર",
+      "Ludhiana": "લુધિયાણા",
+      "Jodhpur": "જોધપુર",
+      "Jaipur": "જયપુર",
+      "Kochi": "કોચી",
+      "Thrissur": "થ્રિશૂર",
+      "Ratnagiri": "રત્નાગિરી",
+      "Nashik": "નાસિક",
+      "Hyderabad": "હૈદરાબાદ",
+      "Warangal": "વારંગલ"
+    },
+    "farmerNames": {
+      "John Smith": "જોન સ્મિથ",
+      "Rajesh Kumar": "રાજેશ કુમાર",
+      "Amit Patel": "અમિત પટેલ",
+      "Rajesh Patel": "રાજેશ પટેલ",
+      "Bharat Modi": "ભારત મોદી",
+      "Gurpreet Singh": "ગુરપ્રીત સિંહ",
+      "Harjinder Singh": "હરજિંદર સિંહ",
+      "Ramesh Sharma": "રમેશ શર્મા",
+      "Vikram Singh": "વિક્રમ સિંહ",
+      "Thomas Joseph": "થોમસ જોસેફ",
+      "Mathew Philip": "માથ્યુ ફિલિપ",
+      "Suresh Desai": "સુરેશ દેસાઈ",
+      "Prakash Patil": "પ્રકાશ પાટીલ",
+      "Krishna Reddy": "કૃષ્ણ રેડ્ડી",
+      "Ravi Kumar": "રવિ કુમાર"
+    },
+    "rating": "રેટિંગ",
+    "Negotiate": "ચર્ચા કરો",
+    "Read More": "વધુ વાંચો",
+    "View Less": "ઓછું જુઓ",
+    "Product Info": "ઉત્પાદન માહિતી",
+    "Quantity": "જથ્થો",
+    "Price Range": "ભાવ શ્રેણી",
+    "Category": "શ્રેણી",
+    "Farmer Details": "ખેડૂત વિગતો",
+    "Name": "નામ",
+    "Contact": "સંપર્ક",
+    "Location": "સ્થળ",
+    "Detailed Information": "વિગતવાર માહિતી",
+    "Product Certification": "ઉત્પાદન પ્રમાણપત્ર",
+    "Land Type": "જમીનનો પ્રકાર",
+    "Farming Practices": "ખેતી પદ્ધતિઓ",
+    "Quality Parameters": "ગુણવત્તા પરિમાણો",
+    "Farmer Experience": "ખેડૂતનો અનુભવ",
+    "farmingPractices": {
+      "No chemical pesticides used": "કોઈ રાસાયણિક જંતુનાશકનો ઉપયોગ નથી",
+      "Natural fertilizers only": "ફક્ત કુદરતી ખાતરો",
+      "Sustainable irrigation methods": "સતત સિંચાઈ પદ્ધતિઓ",
+      "Crop rotation practiced": "ફસલ પરિભ્રમણ અપનાવવામાં આવ્યું છે"
+    },
+    "qualityParameters": {
+      "Hand-picked at optimal ripeness": "શ્રેષ્ઠ પાકાવટે હસ્તે પસંદ કરાયેલ",
+      "Carefully sorted and graded": "સાવધાનીપૂર્વક ગોઠવેલ અને ગ્રેડ કરેલ",
+      "Stored in temperature-controlled environment": "તાપમાન-નિયંત્રિત વાતાવરણમાં સંગ્રહિત",
+      "Regular quality checks performed": "નિયમિત ગુણવત્તા ચકાસણીઓ કરવામાં આવે છે"
+    }
+  },
+  "contact": {
     "title": "સંપર્ક કરો",
     "subtitle": "ત્રીજા પક્ષના વધારાના પૈસા વગર તમારો નફો કમાઓ",
     "getInTouch": "સંપર્કમાં રહો",
@@ -330,25 +332,23 @@
       "image": "https://images.pexels.com/photos/1212102/pexels-photo-1212102.jpeg?auto=compress&cs=tinysrgb&w=600"
     }
   ],
-  "latest":{
-    "Latest Articles":"તાજા લેખો"
-},
+  "latest": {
+    "Latest Articles": "તાજા લેખો"
+  },
   "buttons": {
     "readMore": "વધુ વાંચો"
-  } ,
-  
-    "hero2": {
-      "title": "સફળતા કથાઓ",
-      "subtitle": "જાણો કેવી રીતે ફાર્મબ્રિજ ખેડૂતોના જીવનને રૂપાંતરિત કરી રહ્યું છે.",
-    
+  },
+  "hero2": {
+    "title": "સફળતા કથાઓ",
+    "subtitle": "જાણો કેવી રીતે ફાર્મબ્રિજ ખેડૂતોના જીવનને રૂપાંતરિત કરી રહ્યું છે.",
     "readFullStory": "પૂર્ણ વાર્તા વાંચો",
-    "name":"રાજેશ કુમાર",
+    "name": "રાજેશ કુમાર",
     "Revenue Increase": "આવકમાં વધારો",
     "Years With FarmBridge": "ફાર્મબ્રિજ સાથેના વર્ષો",
     "quote": "ફાર્મબ્રિજમાં જોડાવા પછી, મારી ખેતીના વ્યવસાયમાં સંપૂર્ણ રૂપાંતર થયો છે. હવે હું મારા ઉત્પાદન માટે 40% વધુ સારી કિંમતો મેળવો છું અને દેશભરમાં ખરીદદારો સાથે સીધા સંબંધો ધરાવું છું.",
     "location": "ઘઉંના ખેડૂત, પંજાબ",
     "Main Crops": "મુખ્ય પાક",
-    "years":"વર્ષ",
+    "years": "વર્ષ",
     "successStories": [
       {
         "name": "અમિત પટેલ",
@@ -397,7 +397,7 @@
     "startYourSuccessStory": "તમારી સફળતા કથા શરૂ કરો",
     "joinThousands": "ફાર્મબ્રિજ સાથે તેમના કૃષિ વ્યવસાયને રૂપાંતરિત કરનારા હજારો ખેડૂતોમાં જોડાઓ"
   },
-    "userType": {
+  "userType": {
     "title": "તમારી ભૂમિકા પસંદ કરો",
     "subtitle": "પસંદ કરો કે તમે ખેડૂત કે ખરીદદાર તરીકે નોંધણી કરવા માંગો છો",
     "farmer": {
@@ -456,7 +456,7 @@
     "next": "આગળ",
     "submit": "નોંધણી પૂર્ણ કરો",
     "submitting": "સબમિટ થઈ રહ્યું છે..."
-  } ,
+  },
   "login": {
     "welcome": "ફરીથી આવકાર!",
     "login_message": "તમારું FarmBridge એકાઉન્ટ ઍક્સેસ કરવા માટે લૉગિન કરો",
@@ -472,7 +472,102 @@
     "no_account": "એકાઉન્ટ નથી?",
     "register": "હમણાં નોંધણી કરો",
     "login_failed": "લૉગિન નિષ્ફળ થયું. કૃપા કરીને તમારી ઓળખ ચકાસો."
+  },
+  "nav": {
+    "home": "મુખ્ય પૃષ્ઠ",
+    "marketplace": "માર્કેટપ્લેસ",
+    "about": "અમારા વિશે",
+    "successStories": "સફળતાની વાર્તાઓ",
+    "contact": "સંપર્ક",
+    "signIn": "સાઇન ઇન",
+    "getStarted": "શરૂ કરો",
+    "selectMarket": "APMC પસંદ કરો"
+  },
+  "mandi": {
+    "badge": "રીયલ-ટાઇમ APMC માર્કેટ ભાવ (સત્તાવાર AGMARKNET)",
+    "title": "નજીકની APMC ના લાઈવ બજાર ભાવ",
+    "yourLocation": "તમારું સ્થળ",
+    "gpsActive": "GPS સક્રિય",
+    "nearestMarket": "નજીકનું માર્કેટ",
+    "detectLocation": "લોકેશન શોધો",
+    "changeMarket": "માર્કેટ બદલો",
+    "radiusLabel": "તમારા વિસ્તાર નજીકના યાર્ડ:",
+    "searchCrop": "આ APMC માં પાક શોધો (જેમ કે કપાસ, ઘઉં, જીરું)...",
+    "all": "બધા પાકો",
+    "cashCrops": "રોકડિયા પાકો",
+    "oilseeds": "તેલીબિયાં",
+    "spices": "મસાલા",
+    "grainsPulses": "અનાજ અને કઠોળ",
+    "liveBhav": "લાઈવ ભાવ",
+    "modalPrice": "સરેરાશ / મોડલ ભાવ",
+    "localUnit": "સ્થાનિક એકમ (૨૦ કિલો / મણ)",
+    "perQuintal": "/ક્વિન્ટલ",
+    "per20kg": "/૨૦ કિલો",
+    "min": "ન્યૂનતમ",
+    "max": "મહત્તમ",
+    "arrival": "આવક તારીખ",
+    "runningMandiRates": "લાઈવ APMC બજાર ભાવ"
+  },
+  "marketplace": {
+    "badge": "ડાયરેક્ટ કૃષિ માર્કેટપ્લેસ",
+    "title": "ખેડૂતો પાસેથી સીધો પાક ખરીદો",
+    "subtitle": "પારદર્શક ભાવો અને ગુણવત્તા ખાતરી સાથે ભારતીય ખેડૂતો પાસેથી સીધા જ પ્રમાણિત પાકો ખરીદો.",
+    "searchPlaceholder": "પાક, અનાજ, કઠોળ, શાકભાજી શોધો...",
+    "allCategories": "બધી કેટેગરી",
+    "allCrops": "બધા પાકો",
+    "buyWholesale": "જથ્થાબંધ ખરીદો",
+    "viewDetails": "વિગત જુઓ",
+    "perUnit": "દીઠ",
+    "available": "ઉપલબ્ધ જથ્થો",
+    "verifiedFarmer": "પ્રમાણિત ખેડૂત",
+    "noProducts": "પસંદ કરેલા ફિલ્ટરમાં કોઈ પાક મળ્યો નથી."
+  },
+  "footer": {
+    "tagline": "પારદર્શક, સીધા કૃષિ વેપાર દ્વારા ખેડૂતો અને ખરીદદારોનું સશક્તિકરણ.",
+    "marketplace": "માર્કેટપ્લેસ",
+    "allHarvestLots": "બધા પાકો",
+    "grainsCereals": "અનાજ",
+    "freshVegetables": "તાજા શાકભાજી",
+    "seasonalFruits": "મોસમી ફળો",
+    "pulsesLentils": "કઠોળ અને દાળ",
+    "platform": "પ્લેટફોર્મ",
+    "aboutUs": "અમારા વિશે",
+    "farmerSuccessStories": "ખેડૂત સફળતાની વાર્તાઓ",
+    "faqGuides": "વારંવાર પૂછાતા પ્રશ્નો (FAQ)",
+    "contactSupport": "સહાયતા સંપર્ક",
+    "connect": "ડાયરેક્ટ ટ્રેડ નેટવર્ક",
+    "addressLine": "મારવાડી યુનિવર્સિટી, રાજકોટ, ગુજરાત, ભારત",
+    "phone": "+91 98765 43210",
+    "email": "support@farmbridge.in",
+    "copyright": "© ૨૦૨૬ FarmBridge. ભારતીય કૃષિનું સશક્તિકરણ.",
+    "privacy": "ગોપનીયતા નીતિ",
+    "terms": "સેવાની શરતો"
+  },
+  "home": {
+    "badge": "ડાયરેક્ટ કૃષિ વેપાર પોર્ટલ",
+    "heroTitle1": "ખેડૂતથી સીધા ખરીદદાર સુધી,",
+    "heroTitle2": "વચેટીયા વગરનો સીધો વેપાર.",
+    "heroSubtitle": "દલાલી વગર સીધું વેચાણ કરો, લાઈવ APMC માર્કેટ યાર્ડના ભાવ મેળવો અને સમગ્ર ભારતના પ્રમાણિત જથ્થાબંધ ખરીદદારો સાથે સીધા જોડાઈને તમારી ઉપજના શ્રેષ્ઠ ભાવ મેળવો.",
+    "exploreMarketplace": "માર્કેટપ્લેસ જુઓ",
+    "viewApmcBhav": "લાઈવ યાર્ડના ભાવ",
+    "verifiedProducers": "૧૦૦% પ્રમાણિત ખેડૂતો",
+    "secureEscrow": "સીધું બેંકમાં ચુકવણું",
+    "agmarkQuality": "AGMARK ગુણવત્તા ખાતરી",
+    "browseByCrop": "પાકની શ્રેણી મુજબ શોધો",
+    "browseSubtitle": "તમામ મુખ્ય કૃષિ પાકોનું સીધું ખરીદ-વેચાણ",
+    "howItWorks": "FarmBridge કેવી રીતે કાર્ય કરે છે?",
+    "howItWorksSubtitle": "સીધા અને નફાકારક કૃષિ વેપાર માટેની સરળ ૪-પગલાંની પ્રક્રિયા",
+    "step1Title": "પાકની નોંધણી",
+    "step1Desc": "ખેડૂતો પોતાના પાકની વિગતો, ફોટા અને અપેક્ષિત ભાવ સાથે લિસ્ટ કરે છે.",
+    "step2Title": "વાજબી ભાવ શોધ",
+    "step2Desc": "લાઈવ APMC યાર્ડના ભાવો સાથે સરખામણી કરીને સાચા બજાર ભાવ સુનિશ્ચિત થાય છે.",
+    "step3Title": "સીધી ખરીદી",
+    "step3Desc": "પ્રમાણિત જથ્થાબંધ વેપારીઓ અને પ્રોસેસરો કોઈપણ વચેટીયા વગર સીધા ખરીદે છે.",
+    "step4Title": "સુરક્ષિત ચુકવણી",
+    "step4Desc": "ડિલિવરી કન્ફર્મ થતાં જ પૈસા સીધા ખેડૂતના બેંક ખાતામાં જમા થાય છે.",
+    "ctaTitle": "શું તમે તમારા કૃષિ વેપારને નફાકારક બનાવવા તૈયાર છો?",
+    "ctaSubtitle": "આજે જ હજારો ખેડૂતો અને વેપારીઓ સાથે જોડાઈને યોગ્ય ભાવ અને નફો મેળવો.",
+    "registerFarmer": "ખેડૂત તરીકે જોડાવો",
+    "registerBuyer": "ખરીદદાર તરીકે જોડાવો"
   }
-  
-    
-  }
+}

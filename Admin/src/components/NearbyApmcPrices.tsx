@@ -13,16 +13,123 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { useLocationContext } from "../contexts/LocationContext";
+import { useTranslation } from "../hooks/useTranslation";
 
 interface NearbyApmcPricesProps {
   className?: string;
   showTitle?: boolean;
 }
 
+const apmcDict = {
+  en: {
+    liveBadge: "Real-Time APMC Mandi Prices (Official AGMARKNET)",
+    title: "Live Commodity Prices from Nearest APMC",
+    location: "Location:",
+    gpsActive: "GPS Active",
+    market: "Market:",
+    detecting: "Detecting...",
+    detectLocation: "Detect Location",
+    changeMarket: "Change Market",
+    refreshRates: "Refresh Rates",
+    nearbyRadius: "Nearby APMCs in your radius:",
+    searchPlaceholder: "Search crop in this APMC (e.g. Cotton, Groundnut, Wheat, Jeera)...",
+    catAll: "All",
+    catCash: "Cash Crops",
+    catOilseeds: "Oilseeds",
+    catSpices: "Spices",
+    catGrains: "Grains & Pulses",
+    noCommodities: "No commodities found",
+    noMatchDesc: "No commodities matched your search in this APMC. Try clearing your search or switching to another nearby APMC market.",
+    showAll: "Show All Commodities",
+    variety: "Variety:",
+    grade: "Grade:",
+    liveBhav: "Live Price",
+    modalPrice: "Modal / Average Price",
+    perQuintal: "/ Quintal",
+    man20kg: "20kg (મણ)",
+    min: "Min:",
+    max: "Max:",
+    arrival: "Arrival:",
+    agmarknet: "AGMARKNET",
+    footerNotice: "Data sourced directly from AGMARKNET / Ministry of Agriculture & Farmers Welfare, Government of India.",
+    browseOther: "Browse other mandis",
+  },
+  gu: {
+    liveBadge: "રીયલ-ટાઇમ APMC મંડી ભાવ (સત્તાવાર AGMARKNET)",
+    title: "નજીકના APMC માંથી જીવંત પાકના બજાર ભાવ",
+    location: "સ્થળ:",
+    gpsActive: "જીપીએસ સક્રિય",
+    market: "માર્કેટ યાર્ડ:",
+    detecting: "શોધી રહ્યા છીએ...",
+    detectLocation: "મારું લોકેશન શોધો",
+    changeMarket: "યાર્ડ બદલો",
+    refreshRates: "ભાવ તાજા કરો",
+    nearbyRadius: "તમારા વિસ્તારના નજીકના યાર્ડ:",
+    searchPlaceholder: "આ યાર્ડમાં પાક શોધો (દા.ત. કપાસ, મગફળી, ઘઉં, જીરું)...",
+    catAll: "બધા પાક",
+    catCash: "રોકડિયા પાક",
+    catOilseeds: "તેલીબિયાં",
+    catSpices: "મસાલા",
+    catGrains: "અનાજ અને કઠોળ",
+    noCommodities: "કોઈ પાક મળ્યો નથી",
+    noMatchDesc: "આ યાર્ડમાં તમારી શોધ સાથે મેળ ખાતો કોઈ પાક મળ્યો નથી. શોધ સાફ કરો અથવા નજીકના અન્ય યાર્ડની પસંદગી કરો.",
+    showAll: "બધા પાક દર્શાવો",
+    variety: "જાત:",
+    grade: "ગ્રેડ:",
+    liveBhav: "લાઇવ ભાવ",
+    modalPrice: "સરેરાશ / મોડલ ભાવ",
+    perQuintal: "/ ક્વિન્ટલ",
+    man20kg: "૨૦ કિલો (મણ)",
+    min: "ન્યૂનતમ:",
+    max: "મહત્તમ:",
+    arrival: "આવક તારીખ:",
+    agmarknet: "AGMARKNET પ્રમાણિત",
+    footerNotice: "આ માહિતી સીધી AGMARKNET / કૃષિ અને ખેડૂત કલ્યાણ મંત્રાલય, ભારત સરકાર પાસેથી પ્રાપ્ત થયેલ છે.",
+    browseOther: "અન્ય યાર્ડ જુઓ",
+  },
+  hi: {
+    liveBadge: "रियल-टाइम APMC मंडी भाव (आधिकारिक AGMARKNET)",
+    title: "निकटतम APMC से फसलों के लाइव मंडी भाव",
+    location: "स्थान:",
+    gpsActive: "जीपीएस सक्रिय",
+    market: "मंडी यार्ड:",
+    detecting: "खोज रहे हैं...",
+    detectLocation: "मेरा स्थान खोजें",
+    changeMarket: "मंडी बदलें",
+    refreshRates: "भाव ताज़ा करें",
+    nearbyRadius: "आपके क्षेत्र की नजदीकी मंडियां:",
+    searchPlaceholder: "इस मंडी में फसल खोजें (उदा. कपास, मूंगफली, गेहूं, जीरा)...",
+    catAll: "सभी फसलें",
+    catCash: "नकदी फसलें",
+    catOilseeds: "तिलहन",
+    catSpices: "मसाले",
+    catGrains: "अनाज और दलहन",
+    noCommodities: "कोई फसल नहीं मिली",
+    noMatchDesc: "इस मंडी में आपकी खोज से मेल खाती कोई फसल नहीं मिली। खोज साफ़ करें या किसी अन्य नजदीकी मंडी का चयन करें।",
+    showAll: "सभी फसलें दिखाएं",
+    variety: "किस्म:",
+    grade: "ग्रेड:",
+    liveBhav: "लाइव भाव",
+    modalPrice: "औसत / मॉडल भाव",
+    perQuintal: "/ क्विंटल",
+    man20kg: "२० किग्रा (मण)",
+    min: "न्यूनतम:",
+    max: "अधिकतम:",
+    arrival: "आवक तिथि:",
+    agmarknet: "AGMARKNET प्रमाणित",
+    footerNotice: "यह डेटा सीधे AGMARKNET / कृषि एवं किसान कल्याण मंत्रालय, भारत सरकार से लिया गया है।",
+    browseOther: "अन्य मंडियां देखें",
+  },
+};
+
 export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
   className = "",
   showTitle = true,
 }) => {
+  const { language } = useTranslation();
+  const langKey = language === "gu" || language === "hi" ? language : "en";
+  const tTxt = apmcDict[langKey];
+
   const {
     locationConfig,
     selectedMarket,
@@ -38,6 +145,14 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
 
   const [searchCrop, setSearchCrop] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("All");
+
+  const categories = [
+    { id: "All", label: tTxt.catAll },
+    { id: "Cash Crops", label: tTxt.catCash },
+    { id: "Oilseeds", label: tTxt.catOilseeds },
+    { id: "Spices", label: tTxt.catSpices },
+    { id: "Grains & Pulses", label: tTxt.catGrains },
+  ];
 
   const filteredCommodities = useMemo(() => {
     return commodities.filter((item) => {
@@ -77,12 +192,12 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
               <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-[#1E3F2D] text-[#FAF8F3] text-[11px] sm:text-xs font-bold shadow-soft-xs">
                 <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#75B98A] inline-block animate-pulse" />
                 <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#BCE3C7]" />
-                <span>Real-Time APMC Mandi Bhav (Official AGMARKNET)</span>
+                <span>{tTxt.liveBadge}</span>
               </div>
 
               {showTitle && (
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#1A261D] tracking-tight">
-                  Live Commodity Prices from Nearest APMC
+                  {tTxt.title}
                 </h2>
               )}
 
@@ -91,14 +206,14 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                 <div className="flex items-center gap-1.5 bg-white border border-[#DDD7C8] px-2.5 sm:px-3 py-1.5 rounded-xl shadow-soft-xs w-full sm:w-auto">
                   <MapPin className="w-3.5 h-3.5 text-[#246A3E] flex-shrink-0" />
                   <span className="truncate">
-                    Location:{" "}
+                    {tTxt.location}{" "}
                     <strong className="text-[#1A261D]">
                       {locationConfig.district || "Rajkot"}, {locationConfig.state || "Gujarat"}
                     </strong>
                   </span>
                   {locationConfig.isAuto && (
                     <span className="text-[10px] font-bold bg-[#E2ECE4] text-[#246A3E] px-1.5 py-0.5 rounded-md ml-auto sm:ml-0 flex-shrink-0">
-                      GPS Active
+                      {tTxt.gpsActive}
                     </span>
                   )}
                 </div>
@@ -107,7 +222,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                   <div className="flex items-center gap-1.5 bg-[#EEF4EF] border border-[#CDE0D2] px-2.5 sm:px-3 py-1.5 rounded-xl text-[#1E3F2D] shadow-soft-xs w-full sm:w-auto">
                     <Building2 className="w-3.5 h-3.5 text-[#246A3E] flex-shrink-0" />
                     <span className="truncate">
-                      Market: <strong className="font-bold">{selectedMarket.name}</strong>
+                      {tTxt.market} <strong className="font-bold">{selectedMarket.name}</strong>
                     </span>
                     {selectedMarket.distanceKm !== undefined && selectedMarket.distanceKm !== null && (
                       <span className="font-bold text-[10px] sm:text-[11px] text-[#246A3E] bg-white px-2 py-0.5 rounded-md border border-[#CDE0D2] ml-auto sm:ml-0 flex-shrink-0">
@@ -128,7 +243,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                 title="Detect your current location using device GPS"
               >
                 <Navigation className={`w-3.5 h-3.5 text-[#246A3E] ${isLocating ? "animate-spin" : ""}`} />
-                <span className="truncate">{isLocating ? "Detecting..." : "Detect Location"}</span>
+                <span className="truncate">{isLocating ? tTxt.detecting : tTxt.detectLocation}</span>
               </button>
 
               <button
@@ -137,7 +252,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                 title="Switch to another district or APMC market"
               >
                 <Building2 className="w-3.5 h-3.5 text-[#BCE3C7]" />
-                <span>Change Market</span>
+                <span>{tTxt.changeMarket}</span>
                 <ChevronRight className="w-3 h-3 text-[#BCE3C7] hidden xs:inline" />
               </button>
 
@@ -148,7 +263,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                 title="Refresh latest prices"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? "animate-spin text-[#246A3E]" : ""}`} />
-                <span className="sm:hidden text-xs font-semibold ml-1.5">Refresh Rates</span>
+                <span className="sm:hidden text-xs font-semibold ml-1.5">{tTxt.refreshRates}</span>
               </button>
             </div>
           </div>
@@ -157,7 +272,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
           {nearbyMarkets.length > 1 && (
             <div className="mt-4 sm:mt-5 pt-3 sm:pt-4 border-t border-[#E8E2D5]">
               <div className="text-[10px] sm:text-[11px] font-bold text-[#7A887E] uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                <span>Nearby APMCs in your radius:</span>
+                <span>{tTxt.nearbyRadius}</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 scrollbar-none -mx-2 px-2 sm:mx-0 sm:px-0">
                 {nearbyMarkets.map((m) => {
@@ -200,24 +315,24 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
               type="text"
               value={searchCrop}
               onChange={(e) => setSearchCrop(e.target.value)}
-              placeholder="Search crop in this APMC (e.g. Cotton, Groundnut, Wheat, Jeera)..."
+              placeholder={tTxt.searchPlaceholder}
               className="w-full pl-9 pr-4 py-2 bg-white border border-[#DDD7C8] focus:border-[#246A3E] rounded-xl text-xs text-[#1A261D] placeholder-[#8F9D91] focus:outline-none transition-all shadow-soft-xs"
             />
           </div>
 
           {/* Category Filter Pills */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none -mx-2 px-2 sm:mx-0 sm:px-0">
-            {["All", "Cash Crops", "Oilseeds", "Spices", "Grains & Pulses"].map((cat) => (
+            {categories.map((cat) => (
               <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer flex-shrink-0 ${
-                  activeCategory === cat
+                  activeCategory === cat.id
                     ? "bg-[#1E3F2D] text-white shadow-soft-xs"
                     : "bg-white text-[#5C6B5F] hover:bg-[#EFECE3] border border-[#DDD7C8]"
                 }`}
               >
-                {cat}
+                {cat.label}
               </button>
             ))}
           </div>
@@ -244,9 +359,9 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
               <div className="w-12 h-12 rounded-2xl bg-[#EEF4EF] text-[#246A3E] flex items-center justify-center mx-auto">
                 <Search className="w-6 h-6" />
               </div>
-              <h4 className="text-sm font-bold text-[#1A261D]">No commodities found</h4>
+              <h4 className="text-sm font-bold text-[#1A261D]">{tTxt.noCommodities}</h4>
               <p className="text-xs text-[#7A887E] max-w-sm mx-auto px-4">
-                No commodities matched "{searchCrop}" in {selectedMarket?.name}. Try clearing your search or switching to another nearby APMC market.
+                {tTxt.noMatchDesc}
               </p>
               <button
                 onClick={() => {
@@ -255,7 +370,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                 }}
                 className="px-4 py-2 bg-[#1E3F2D] text-white rounded-xl text-xs font-bold hover:bg-[#163324] transition-colors"
               >
-                Show All Commodities
+                {tTxt.showAll}
               </button>
             </div>
           ) : (
@@ -282,32 +397,32 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                             {item.commodity}
                           </h3>
                           <div className="flex flex-wrap items-center gap-1.5 mt-0.5 text-[11px] text-[#7A887E]">
-                            <span>Variety: <strong className="text-[#46574B]">{item.variety}</strong></span>
+                            <span>{tTxt.variety} <strong className="text-[#46574B]">{item.variety}</strong></span>
                             <span>•</span>
-                            <span>Grade: <strong className="text-[#46574B]">{item.grade}</strong></span>
+                            <span>{tTxt.grade} <strong className="text-[#46574B]">{item.grade}</strong></span>
                           </div>
                         </div>
 
                         <span className="text-[10px] font-bold text-[#246A3E] bg-[#EEF4EF] px-2 py-0.5 rounded-md border border-[#D5E4D8] flex-shrink-0">
-                          Live Bhav
+                          {tTxt.liveBhav}
                         </span>
                       </div>
 
                       <div className="mt-3 sm:mt-4 pt-3 border-t border-[#F0EBE0] flex items-baseline justify-between gap-2">
                         <div>
                           <span className="text-[9px] sm:text-[10px] font-bold text-[#7A887E] uppercase tracking-wider block">
-                            Modal / Average Price
+                            {tTxt.modalPrice}
                           </span>
                           <div className="text-xl sm:text-2xl font-black text-[#1A261D] tracking-tight mt-0.5">
                             ₹{modal.toLocaleString("en-IN")}{" "}
-                            <span className="text-xs font-semibold text-[#7A887E]">/ Quintal</span>
+                            <span className="text-xs font-semibold text-[#7A887E]">{tTxt.perQuintal}</span>
                           </div>
                         </div>
 
                         {item.pricePer20kg && (
                           <div className="text-right flex-shrink-0">
                             <span className="text-[9px] font-bold text-[#7A887E] uppercase tracking-wider block">
-                              20kg (મણ)
+                              {tTxt.man20kg}
                             </span>
                             <span className="text-xs font-bold text-[#246A3E] bg-[#EEF4EF] px-2 py-0.5 sm:py-1 rounded-lg border border-[#D5E4D8] inline-block mt-0.5">
                               {item.pricePer20kg}
@@ -318,8 +433,8 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
 
                       <div className="mt-3 sm:mt-4 bg-[#F8F5EE] p-2 sm:p-2.5 rounded-xl border border-[#ECE5D8]">
                         <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-[#5C6B5F] font-semibold mb-1.5">
-                          <span>Min: <strong className="text-[#1A261D]">₹{min.toLocaleString("en-IN")}</strong></span>
-                          <span>Max: <strong className="text-[#1A261D]">₹{max.toLocaleString("en-IN")}</strong></span>
+                          <span>{tTxt.min} <strong className="text-[#1A261D]">₹{min.toLocaleString("en-IN")}</strong></span>
+                          <span>{tTxt.max} <strong className="text-[#1A261D]">₹{max.toLocaleString("en-IN")}</strong></span>
                         </div>
 
                         <div className="relative w-full h-2 bg-[#E2DBD0] rounded-full overflow-hidden">
@@ -334,12 +449,12 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
                     <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-[#F0EBE0] flex items-center justify-between text-[10px] text-[#7A887E]">
                       <span className="flex items-center gap-1 font-medium truncate">
                         <Calendar className="w-3 h-3 text-[#7A887E] flex-shrink-0" />
-                        <span>Arrival: {item.arrivalDate}</span>
+                        <span>{tTxt.arrival} {item.arrivalDate}</span>
                       </span>
 
                       <span className="flex items-center gap-1 text-[#246A3E] font-bold flex-shrink-0">
                         <ShieldCheck className="w-3 h-3 text-[#246A3E]" />
-                        <span>AGMARKNET</span>
+                        <span>{tTxt.agmarknet}</span>
                       </span>
                     </div>
                   </motion.div>
@@ -354,7 +469,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
           <div className="flex items-center gap-2 text-center sm:text-left">
             <ShieldCheck className="w-4 h-4 text-[#246A3E] flex-shrink-0 hidden xs:inline" />
             <span>
-              Data sourced directly from <strong>AGMARKNET / Ministry of Agriculture & Farmers Welfare</strong>, Government of India.
+              {tTxt.footerNotice}
             </span>
           </div>
 
@@ -362,7 +477,7 @@ export const NearbyApmcPrices: React.FC<NearbyApmcPricesProps> = ({
             onClick={() => setIsSelectorOpen(true)}
             className="font-bold text-[#1E3F2D] hover:underline flex items-center gap-1 cursor-pointer whitespace-nowrap"
           >
-            <span>Browse other mandis</span>
+            <span>{tTxt.browseOther}</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>

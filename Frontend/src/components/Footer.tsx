@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Linkedin, Twitter, ShieldCheck, Mail, Phone, MapPin, Heart } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Twitter, ShieldCheck, Mail, Phone, MapPin } from 'lucide-react';
+import { useTranslation } from "react-i18next";
 import img from "../assets/logo.png";
 
 export function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-[#142C1F] text-[#CAD7CD] border-t border-[#1E3F2D] font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -21,7 +24,7 @@ export function Footer() {
             </Link>
 
             <p className="text-xs sm:text-sm text-[#CAD7CD] max-w-sm leading-relaxed font-normal">
-              India's direct agricultural marketplace connecting verified village harvest producers with institutional wholesale buyers. Zero middlemen markups. 100% transparent trade.
+              {t("footer.tagline") || "India's direct agricultural marketplace connecting verified village harvest producers with institutional wholesale buyers."}
             </p>
 
             <div className="flex items-center gap-2 pt-1 text-xs font-semibold text-[#A5D6B1]">
@@ -33,32 +36,32 @@ export function Footer() {
           {/* Col 1 */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-[#FAF8F3] mb-4">
-              Marketplace
+              {t("footer.marketplace") || "Marketplace"}
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
                 <Link to="/marketplace" className="hover:text-[#FAF8F3] transition-colors">
-                  All Harvest Lots
+                  {t("footer.allHarvestLots") || "All Harvest Lots"}
                 </Link>
               </li>
               <li>
                 <Link to="/marketplace" className="hover:text-[#FAF8F3] transition-colors">
-                  Grains & Cereals
+                  {t("footer.grainsCereals") || "Grains & Cereals"}
                 </Link>
               </li>
               <li>
                 <Link to="/marketplace" className="hover:text-[#FAF8F3] transition-colors">
-                  Fresh Vegetables
+                  {t("footer.freshVegetables") || "Fresh Vegetables"}
                 </Link>
               </li>
               <li>
                 <Link to="/marketplace" className="hover:text-[#FAF8F3] transition-colors">
-                  Seasonal Fruits
+                  {t("footer.seasonalFruits") || "Seasonal Fruits"}
                 </Link>
               </li>
               <li>
                 <Link to="/marketplace" className="hover:text-[#FAF8F3] transition-colors">
-                  Pulses & Lentils
+                  {t("footer.pulsesLentils") || "Pulses & Lentils"}
                 </Link>
               </li>
             </ul>
@@ -67,27 +70,27 @@ export function Footer() {
           {/* Col 2 */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-[#FAF8F3] mb-4">
-              Platform
+              {t("footer.platform") || "Platform"}
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
                 <Link to="/about" className="hover:text-[#FAF8F3] transition-colors">
-                  About Us
+                  {t("footer.aboutUs") || "About Us"}
                 </Link>
               </li>
               <li>
                 <Link to="/success-stories" className="hover:text-[#FAF8F3] transition-colors">
-                  Farmer Success Stories
+                  {t("footer.farmerSuccessStories") || "Farmer Success Stories"}
                 </Link>
               </li>
               <li>
                 <Link to="/faq" className="hover:text-[#FAF8F3] transition-colors">
-                  FAQ & Guides
+                  {t("footer.faqGuides") || "FAQ & Guides"}
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="hover:text-[#FAF8F3] transition-colors">
-                  Contact Support
+                  {t("footer.contactSupport") || "Contact Support"}
                 </Link>
               </li>
             </ul>
@@ -96,7 +99,7 @@ export function Footer() {
           {/* Col 3: Contact Info */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-[#FAF8F3] mb-4">
-              Helpdesk & Direct Line
+              {t("footer.connect") || "Helpdesk & Direct Line"}
             </h4>
             <ul className="space-y-3 text-xs text-[#CAD7CD]">
               <li className="flex items-center gap-2">
@@ -109,7 +112,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-[#A5D6B1] flex-shrink-0 mt-0.5" />
-                <span>Agricultural Trade Hub, Gujarat, India</span>
+                <span>{t("footer.addressLine") || "Agricultural Trade Hub, Gujarat, India"}</span>
               </li>
             </ul>
 
@@ -131,7 +134,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-[#1E3F2D] flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-[#7F9A87]">
-          <p>&copy; {new Date().getFullYear()} FarmBridge Digital Agricultural Commerce. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} FarmBridge Digital Agricultural Commerce. {t("footer.rights") || "All rights reserved."}</p>
           <div className="flex items-center gap-1.5 text-[#CAD7CD]">
             <span>Fair Agricultural Trade for Indian Farmers</span>
           </div>
