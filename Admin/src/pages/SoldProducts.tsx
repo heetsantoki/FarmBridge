@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { ShoppingCart, CheckCircle, Truck, Phone, MapPin, RefreshCw, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { ShoppingCart, CheckCircle, Truck, Phone, MapPin, RefreshCw, ArrowLeft, CheckCircle2, XCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface Order {
@@ -79,6 +79,25 @@ const SoldProducts: React.FC = () => {
     }
   };
 
+  const handleRejectOrder = async (orderId: string) => {
+    if (!window.confirm("Are you sure you want to reject this order?")) {
+      return;
+    }
+    try {
+      await axios.put(
+        `http://localhost:5000/api/orders/${orderId}/status`,
+        { status: "Cancelled" },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      toast.info("Order has been rejected");
+      setOrders((prev) =>
+        prev.map((o) => (o._id === orderId ? { ...o, status: "Cancelled" as any } : o))
+      );
+    } catch (err: any) {
+      toast.error(err.response?.data?.message || "Failed to reject order");
+    }
+  };
+
   const statusStyles: Record<string, string> = {
     Pending: "bg-[#F7F2E9] text-[#7A5B22] border-[#EBDDC7]",
     Confirmed: "bg-[#EBF2F6] text-[#224A67] border-[#D0DFE8]",
@@ -132,7 +151,7 @@ const SoldProducts: React.FC = () => {
 
       {/* Filter Chips */}
       <div className="flex flex-wrap items-center gap-2">
-        {["all", "Pending", "Confirmed", "Dispatched", "Delivered"].map((st) => (
+        {["all", "Pending", "Confirmed", "Dispatched", "Delivered", "Cancelled"].map((st) => (
           <button
             key={st}
             onClick={() => setFilterStatus(st)}
@@ -142,7 +161,11 @@ const SoldProducts: React.FC = () => {
                 : "bg-[#FAF8F3] text-[#5C6B5F] hover:text-[#1A261D] hover:bg-[#F2EDE2] border border-[#E8E4DA]"
             }`}
           >
-            {st === "all" ? `All Orders (${orders.length})` : `${st} (${orders.filter((o) => o.status === st).length})`}
+            {st === "all"
+              ? `All Orders (${orders.length})`
+              : st === "Cancelled"
+              ? `Rejected (${orders.filter((o) => o.status === "Cancelled").length})`
+              : `${st} (${orders.filter((o) => o.status === st).length})`}
           </button>
         ))}
       </div>
@@ -240,23 +263,43 @@ const SoldProducts: React.FC = () => {
                       </td>
 
                       <td className="py-4 px-6 text-right">
-                        <div className="flex justify-end gap-2">
+                        <div className="flex justify-end gap-2 items-center">
                           {ord.status === "Pending" && (
-                            <button
-                              onClick={() => handleUpdateStatus(ord._id, "Confirmed")}
-                              className="px-3.5 py-2 bg-[#1E3F2D] hover:bg-[#152F21] text-[#FAF8F3] rounded-xl text-xs font-semibold transition-all shadow-soft-xs"
-                            >
-                              Accept Order
-                            </button>
+                            <>
+                              <button
+                                onClick={() => handleUpdateStatus(ord._id, "Confirmed")}
+                                className="px-3.5 py-2 bg-[#1E3F2D] hover:bg-[#152F21] text-[#FAF8F3] rounded-xl text-xs font-semibold transition-all shadow-soft-xs"
+                              >
+                                Accept Order
+                              </button>
+                              <button
+                                onClick={() => handleRejectOrder(ord._id)}
+                                className="px-3 py-2 bg-[#FBF1F1] hover:bg-[#F7E1E1] text-[#842A2A] border border-[#EED7D7] rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5"
+                                title="Reject order"
+                              >
+                                <XCircle className="w-3.5 h-3.5" />
+                                Reject
+                              </button>
+                            </>
                           )}
                           {ord.status === "Confirmed" && (
-                            <button
-                              onClick={() => handleUpdateStatus(ord._id, "Dispatched")}
-                              className="px-3.5 py-2 bg-[#2E614B] hover:bg-[#1E3F2D] text-[#FAF8F3] rounded-xl text-xs font-semibold transition-all shadow-soft-xs flex items-center gap-1.5"
-                            >
-                              <Truck className="w-3.5 h-3.5" />
-                              Dispatch Lot
-                            </button>
+                            <>
+                              <button
+                                onClick={() => handleUpdateStatus(ord._id, "Dispatched")}
+                                className="px-3.5 py-2 bg-[#2E614B] hover:bg-[#1E3F2D] text-[#FAF8F3] rounded-xl text-xs font-semibold transition-all shadow-soft-xs flex items-center gap-1.5"
+                              >
+                                <Truck className="w-3.5 h-3.5" />
+                                Dispatch Lot
+                              </button>
+                              <button
+                                onClick={() => handleRejectOrder(ord._id)}
+                                className="px-3 py-2 bg-[#FBF1F1] hover:bg-[#F7E1E1] text-[#842A2A] border border-[#EED7D7] rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5"
+                                title="Cancel order"
+                              >
+                                <XCircle className="w-3.5 h-3.5" />
+                                Cancel
+                              </button>
+                            </>
                           )}
                           {ord.status === "Dispatched" && (
                             <button
@@ -270,6 +313,11 @@ const SoldProducts: React.FC = () => {
                           {ord.status === "Delivered" && (
                             <span className="text-xs text-[#1E3F2D] font-semibold flex items-center gap-1 bg-[#EEF4EF] px-3 py-1.5 rounded-xl border border-[#D5E4D8]">
                               <CheckCircle2 className="w-3.5 h-3.5 text-[#1E3F2D]" /> Completed
+                            </span>
+                          )}
+                          {ord.status === "Cancelled" && (
+                            <span className="text-xs text-[#842A2A] font-semibold flex items-center gap-1 bg-[#FBF1F1] px-3 py-1.5 rounded-xl border border-[#EED7D7]">
+                              <XCircle className="w-3.5 h-3.5 text-[#842A2A]" /> Rejected
                             </span>
                           )}
                         </div>

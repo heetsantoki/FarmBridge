@@ -6,6 +6,7 @@ import { Camera, MapPin, MessageSquare, Calendar as CalendarIcon, Phone, Mail, U
 import { v4 as uuidv4 } from 'uuid';
 import { useTranslation } from '../hooks/useTranslation';
 import { motion, AnimatePresence } from 'framer-motion';
+import axios from 'axios';
 
 const Help = () => {
   const { t } = useTranslation(); // Initialize custom translation hook
@@ -43,7 +44,7 @@ const Help = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Validate form
     if (!formData.farmerName || !formData.contactNo || !formData.issueDescription) {
@@ -58,6 +59,8 @@ const Help = () => {
     // Create a new help request object
     const newRequest = {
       id: uuidv4(),
+      userType: 'farmer',
+      name: formData.farmerName,
       farmerName: formData.farmerName,
       address: formData.address,
       contactNo: formData.contactNo,
@@ -67,6 +70,13 @@ const Help = () => {
       photo: imagePreview,
       status: 'pending' as const
     };
+
+    // Save to MongoDB backend database
+    try {
+      await axios.post('http://localhost:5000/api/issues', newRequest);
+    } catch (err) {
+      console.error('Failed to submit issue to backend:', err);
+    }
 
     // Get existing requests from localStorage or initialize empty array
     const existingRequests = JSON.parse(localStorage.getItem('farmerHelpRequests') || '[]');

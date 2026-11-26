@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useToast } from "../../hooks/use-toast";
 import { HelpRequestCard } from '../../components/HelpRequestCard';
 import { TabGroup } from '../../components/TabGroup';
+import axios from 'axios';
+import { RefreshCw, Loader2 } from 'lucide-react';
 
 // Define the farmer help request type
 interface FarmerHelpRequest {
@@ -27,179 +29,163 @@ interface BuyerHelpRequest {
   productIssue: string;
   photo: string | null;
   status: 'pending' | 'resolved';
+  date?: string;
 }
 
 export const Issues = () => {
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState<string>('farmers');
   const [filterStatus, setFilterStatus] = useState<'all' | 'pending' | 'resolved'>('all');
+  const [loading, setLoading] = useState<boolean>(true);
   
-  // States for both types of help requests
+  // Real database states (no hardcoded fake data)
   const [farmerHelpRequests, setFarmerHelpRequests] = useState<FarmerHelpRequest[]>([]);
   const [buyerHelpRequests, setBuyerHelpRequests] = useState<BuyerHelpRequest[]>([]);
 
-  // Load data from localStorage on component mount
-  useEffect(() => {
+  // Fetch real issues from MongoDB backend
+  const fetchIssues = async () => {
+    setLoading(true);
     try {
-      // Get farmer help requests from localStorage
-      const storedFarmerRequests = localStorage.getItem('farmerHelpRequests');
-      if (storedFarmerRequests) {
-        const parsedRequests = JSON.parse(storedFarmerRequests);
-        setFarmerHelpRequests(parsedRequests);
-      } else {
-        // Default data if no localStorage data exists
-        setFarmerHelpRequests([
-          {
-            id: '1',
-            farmerName: 'Ankit Singh',
-            address: 'Village Gharoli, Delhi',
-            contactNo: '+91 98765 43210',
-            email: 'ankit.singh@example.com',
-            issueDescription: 'Issues with irrigation system and need technical support.',
-            date: new Date('2023-05-15').toISOString(),
-            photo: null,
-            status: 'pending'
-          },
-          {
-            id: '2',
-            farmerName: 'Rajesh Kumar',
-            address: 'Sector 12, Noida',
-            contactNo: '+91 87654 32109',
-            email: 'rajesh.kumar@example.com',
-            issueDescription: 'Need guidance on organic certification process.',
-            date: new Date('2023-06-02').toISOString(),
-            photo: null,
-            status: 'pending'
-          },
-          {
-            id: '3',
-            farmerName: 'Suresh Patel',
-            address: 'Ahmedabad, Gujarat',
-            contactNo: '+91 76543 21098',
-            email: 'suresh.patel@example.com',
-            issueDescription: 'Pest infestation in wheat crop, requires immediate assistance.',
-            date: new Date('2023-06-10').toISOString(),
-            photo: null,
-            status: 'resolved'
-          }
-        ]);
-      }
-      
-      // Get buyer help requests from localStorage
-      const storedBuyerRequests = localStorage.getItem('buyerHelpRequests');
-      if (storedBuyerRequests) {
-        const parsedRequests = JSON.parse(storedBuyerRequests);
-        setBuyerHelpRequests(parsedRequests);
-      } else {
-        // Default data if no localStorage data exists
-        setBuyerHelpRequests([
-          {
-            id: '1',
-            buyerName: 'Priya Patel',
-            address: 'Viman Nagar, Pune',
-            contactNo: '+91 89012 34567',
-            email: 'priya.palet@example.com',
-            productIssue: 'Received damaged products in the recent order.',
-            photo: null,
-            status: 'pending'
-          },
-          {
-            id: '2',
-            buyerName: 'Rahul Sharma',
-            address: 'Malviya Nagar, Jaipur',
-            contactNo: '+91 78901 23456',
-            email: 'rahul.sharma@example.com',
-            productIssue: 'Quality of rice was not as described on the platform.',
-            photo: null,
-            status: 'resolved'
-          },
-          {
-            id: '3',
-            buyerName: 'Amit Kumar',
-            address: 'Indiranagar, Bangalore',
-            contactNo: '+91 67890 12345',
-            email: 'amit.kumar@example.com',
-            productIssue: 'Order delayed by more than a week.',
-            photo: null,
-            status: 'pending'
-          }
-        ]);
-      }
+      const res = await axios.get('http://localhost:5000/api/issues');
+      const issues = res.data || [];
+
+      const farmers: FarmerHelpRequest[] = issues
+        .filter((item: any) => item.userType === 'farmer')
+        .map((item: any) => ({
+          id: item.id || item._id,
+          farmerName: item.name || item.farmerName || 'Farmer',
+          address: item.address || '',
+          contactNo: item.contactNo || '',
+          email: item.email || '',
+          issueDescription: item.issueDescription || '',
+          date: item.date || item.createdAt || new Date().toISOString(),
+          photo: item.photo || null,
+          status: item.status || 'pending',
+        }));
+
+      const buyers: BuyerHelpRequest[] = issues
+        .filter((item: any) => item.userType === 'buyer')
+        .map((item: any) => ({
+          id: item.id || item._id,
+          buyerName: item.name || item.buyerName || 'Buyer',
+          address: item.address || '',
+          contactNo: item.contactNo || '',
+          email: item.email || '',
+          productIssue: item.issueDescription || item.productIssue || '',
+          photo: item.photo || null,
+          status: item.status || 'pending',
+          date: item.date || item.createdAt || new Date().toISOString(),
+        }));
+
+      setFarmerHelpRequests(farmers);
+      setBuyerHelpRequests(buyers);
     } catch (error) {
-      console.error('Error loading help requests from localStorage:', error);
+      console.error('Error fetching issues from backend:', error);
+      toast({
+        title: 'Error loading issues',
+        description: 'Could not fetch help requests from the server.',
+        variant: 'destructive',
+      });
+      setFarmerHelpRequests([]);
+      setBuyerHelpRequests([]);
+    } finally {
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
+    // Clear out any old fake data cached in localStorage
+    localStorage.removeItem('farmerHelpRequests');
+    localStorage.removeItem('buyerHelpRequests');
+    fetchIssues();
   }, []);
 
   // Function to mark farmer help request as resolved
-  const resolveFarmerIssue = (id: string) => {
-    setFarmerHelpRequests(prevRequests => {
-      const updatedRequests = prevRequests.map(request => {
-        if (request.id === id) {
-          return { ...request, status: 'resolved' as const };
-        }
-        return request;
+  const resolveFarmerIssue = async (id: string) => {
+    try {
+      await axios.patch(`http://localhost:5000/api/issues/${id}`, { status: 'resolved' });
+      setFarmerHelpRequests(prevRequests =>
+        prevRequests.map(request =>
+          request.id === id ? { ...request, status: 'resolved' as const } : request
+        )
+      );
+      toast({
+        title: 'Issue Resolved',
+        description: "The farmer's issue has been marked as resolved.",
+        variant: 'default',
       });
-      
-      localStorage.setItem('farmerHelpRequests', JSON.stringify(updatedRequests));
-      return updatedRequests;
-    });
-    
-    toast({
-      title: 'Issue Resolved',
-      description: 'The farmer\'s issue has been marked as resolved.',
-      variant: 'default',
-    });
+    } catch (error) {
+      console.error('Error resolving farmer issue:', error);
+      toast({
+        title: 'Update failed',
+        description: 'Failed to update issue status on server.',
+        variant: 'destructive',
+      });
+    }
   };
 
   // Function to mark buyer help request as resolved
-  const resolveBuyerIssue = (id: string) => {
-    setBuyerHelpRequests(prevRequests => {
-      const updatedRequests = prevRequests.map(request => {
-        if (request.id === id) {
-          return { ...request, status: 'resolved' as const };
-        }
-        return request;
+  const resolveBuyerIssue = async (id: string) => {
+    try {
+      await axios.patch(`http://localhost:5000/api/issues/${id}`, { status: 'resolved' });
+      setBuyerHelpRequests(prevRequests =>
+        prevRequests.map(request =>
+          request.id === id ? { ...request, status: 'resolved' as const } : request
+        )
+      );
+      toast({
+        title: 'Issue Resolved',
+        description: "The buyer's issue has been marked as resolved.",
+        variant: 'default',
       });
-      
-      localStorage.setItem('buyerHelpRequests', JSON.stringify(updatedRequests));
-      return updatedRequests;
-    });
-    
-    toast({
-      title: 'Issue Resolved',
-      description: 'The buyer\'s issue has been marked as resolved.',
-      variant: 'default',
-    });
+    } catch (error) {
+      console.error('Error resolving buyer issue:', error);
+      toast({
+        title: 'Update failed',
+        description: 'Failed to update issue status on server.',
+        variant: 'destructive',
+      });
+    }
   };
 
   // Function to delete a resolved farmer issue
-  const deleteFarmerIssue = (id: string) => {
-    setFarmerHelpRequests(prevRequests => {
-      const updatedRequests = prevRequests.filter(request => request.id !== id);
-      localStorage.setItem('farmerHelpRequests', JSON.stringify(updatedRequests));
-      return updatedRequests;
-    });
-    
-    toast({
-      title: 'Issue Deleted',
-      description: 'The farmer\'s issue has been deleted.',
-      variant: 'default',
-    });
+  const deleteFarmerIssue = async (id: string) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/issues/${id}`);
+      setFarmerHelpRequests(prevRequests => prevRequests.filter(request => request.id !== id));
+      toast({
+        title: 'Issue Deleted',
+        description: "The farmer's issue has been deleted.",
+        variant: 'default',
+      });
+    } catch (error) {
+      console.error('Error deleting farmer issue:', error);
+      toast({
+        title: 'Delete failed',
+        description: 'Failed to delete issue from server.',
+        variant: 'destructive',
+      });
+    }
   };
 
   // Function to delete a resolved buyer issue
-  const deleteBuyerIssue = (id: string) => {
-    setBuyerHelpRequests(prevRequests => {
-      const updatedRequests = prevRequests.filter(request => request.id !== id);
-      localStorage.setItem('buyerHelpRequests', JSON.stringify(updatedRequests));
-      return updatedRequests;
-    });
-    
-    toast({
-      title: 'Issue Deleted',
-      description: 'The buyer\'s issue has been deleted.',
-      variant: 'default',
-    });
+  const deleteBuyerIssue = async (id: string) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/issues/${id}`);
+      setBuyerHelpRequests(prevRequests => prevRequests.filter(request => request.id !== id));
+      toast({
+        title: 'Issue Deleted',
+        description: "The buyer's issue has been deleted.",
+        variant: 'default',
+      });
+    } catch (error) {
+      console.error('Error deleting buyer issue:', error);
+      toast({
+        title: 'Delete failed',
+        description: 'Failed to delete issue from server.',
+        variant: 'destructive',
+      });
+    }
   };
 
   // Filter requests based on status
@@ -231,29 +217,35 @@ export const Issues = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-16 relative"
         >
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center mt-1 justify-center px-4 py-1.5 mb-3 border border-border rounded-full text-xs font-medium text-muted-foreground"
-          >
-            Support Center
-          </motion.div>
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <div className="inline-flex items-center justify-center px-4 py-1.5 border border-border rounded-full text-xs font-medium text-muted-foreground">
+              Support Center
+            </div>
+            <button
+              onClick={fetchIssues}
+              disabled={loading}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border text-xs text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors disabled:opacity-50"
+              title="Refresh requests"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
+              <span>Refresh</span>
+            </button>
+          </div>
           <h1 className="text-4xl font-bold text-foreground mb-3 text-balance">
             Help Request Dashboard
           </h1>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            Efficiently manage and respond to farmer and buyer support inquiries
+            Real-time inquiries and dispute requests submitted by registered farmers and buyers
           </p>
         </motion.div>
         
         <div className="flex flex-col items-center mb-10 space-y-6">
           <TabGroup 
             tabs={[
-              { key: 'farmers', label: 'Farmers' },
-              { key: 'buyers', label: 'Buyers' }
+              { key: 'farmers', label: `Farmers (${farmerHelpRequests.length})` },
+              { key: 'buyers', label: `Buyers (${buyerHelpRequests.length})` }
             ]}
             activeTab={activeTab}
             onChange={setActiveTab}
@@ -293,80 +285,89 @@ export const Issues = () => {
           </div>
         </div>
         
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab + filterStatus}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3 }}
-            className="space-y-6"
-          >
-            {activeTab === 'farmers' ? (
-              <>
-                {filteredFarmerRequests.length > 0 ? (
-                  filteredFarmerRequests.map((request) => (
-                    <HelpRequestCard
-                      key={request.id}
-                      id={request.id}
-                      name={request.farmerName}
-                      address={request.address}
-                      contactNo={request.contactNo}
-                      email={request.email}
-                      description={request.issueDescription}
-                      date={request.date}
-                      photo={request.photo}
-                      status={request.status}
-                      onResolve={resolveFarmerIssue}
-                      onDelete={request.status === 'resolved' ? deleteFarmerIssue : undefined}
-                    />
-                  ))
-                ) : (
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="glass rounded-xl p-10 text-center"
-                  >
-                    <p className="text-muted-foreground">
-                      No farmer help requests found with {filterStatus === 'all' ? 'any' : filterStatus} status
-                    </p>
-                  </motion.div>
-                )}
-              </>
-            ) : (
-              <>
-                {filteredBuyerRequests.length > 0 ? (
-                  filteredBuyerRequests.map((request) => (
-                    <HelpRequestCard
-                      key={request.id}
-                      id={request.id}
-                      name={request.buyerName}
-                      address={request.address}
-                      contactNo={request.contactNo}
-                      email={request.email}
-                      description={request.productIssue}
-                      photo={request.photo}
-                      status={request.status}
-                      onResolve={resolveBuyerIssue}
-                      onDelete={request.status === 'resolved' ? deleteBuyerIssue : undefined}
-                    />
-                  ))
-                ) : (
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="glass rounded-xl p-10 text-center"
-                  >
-                    <p className="text-muted-foreground">
-                      No buyer help requests found with {filterStatus === 'all' ? 'any' : filterStatus} status
-                    </p>
-                  </motion.div>
-                )}
-              </>
-            )}
-          </motion.div>
-        </AnimatePresence>
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-20">
+            <Loader2 className="w-8 h-8 animate-spin text-primary mb-3" />
+            <p className="text-sm text-muted-foreground">Loading help requests...</p>
+          </div>
+        ) : (
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab + filterStatus}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-6"
+            >
+              {activeTab === 'farmers' ? (
+                <>
+                  {filteredFarmerRequests.length > 0 ? (
+                    filteredFarmerRequests.map((request) => (
+                      <HelpRequestCard
+                        key={request.id}
+                        id={request.id}
+                        name={request.farmerName}
+                        address={request.address}
+                        contactNo={request.contactNo}
+                        email={request.email}
+                        description={request.issueDescription}
+                        date={request.date}
+                        photo={request.photo}
+                        status={request.status}
+                        onResolve={resolveFarmerIssue}
+                        onDelete={request.status === 'resolved' ? deleteFarmerIssue : undefined}
+                      />
+                    ))
+                  ) : (
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="glass rounded-xl p-10 text-center"
+                    >
+                      <p className="text-muted-foreground">
+                        No farmer help requests found with {filterStatus === 'all' ? 'any' : filterStatus} status.
+                      </p>
+                    </motion.div>
+                  )}
+                </>
+              ) : (
+                <>
+                  {filteredBuyerRequests.length > 0 ? (
+                    filteredBuyerRequests.map((request) => (
+                      <HelpRequestCard
+                        key={request.id}
+                        id={request.id}
+                        name={request.buyerName}
+                        address={request.address}
+                        contactNo={request.contactNo}
+                        email={request.email}
+                        description={request.productIssue}
+                        photo={request.photo}
+                        status={request.status}
+                        onResolve={resolveBuyerIssue}
+                        onDelete={request.status === 'resolved' ? deleteBuyerIssue : undefined}
+                      />
+                    ))
+                  ) : (
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="glass rounded-xl p-10 text-center"
+                    >
+                      <p className="text-muted-foreground">
+                        No buyer help requests found with {filterStatus === 'all' ? 'any' : filterStatus} status.
+                      </p>
+                    </motion.div>
+                  )}
+                </>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        )}
       </div>
     </div>
   );
 };
+
+export default Issues;

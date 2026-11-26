@@ -128,6 +128,15 @@ const updateOrderStatus = async (req, res) => {
       return res.status(403).json({ message: 'Unauthorized to update this order' });
     }
 
+    // If buyer is attempting to cancel, verify order has NOT been dispatched or delivered
+    if (order.buyer.toString() === userId && (status === 'Cancelled' || status === 'Rejected')) {
+      if (order.status === 'Dispatched' || order.status === 'Delivered') {
+        return res.status(400).json({
+          message: 'Order has already been dispatched by the farmer and cannot be cancelled.'
+        });
+      }
+    }
+
     if (status) order.status = status;
     if (paymentStatus) order.paymentStatus = paymentStatus;
 

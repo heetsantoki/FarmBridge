@@ -194,7 +194,9 @@ const loginUser = async (req, res) => {
         if (!user) return res.status(400).json({ message: "User not found" });
 
         if (!user.password && user.authProvider === 'google') {
-            return res.status(400).json({ message: "This account was registered using Google. Please click 'Continue with Google'." });
+            return res.status(400).json({ 
+                message: "This account was registered using Google. Please click 'Continue with Google' or use 'Forgot Password' to set up a password for this account." 
+            });
         }
 
         const isMatch = await bcrypt.compare(password.trim(), user.password);
@@ -391,10 +393,21 @@ const requestPasswordReset = async (req, res) => {
         const clientBaseUrl = process.env.CLIENT_URL || 'http://localhost:5173';
         const resetLink = `${clientBaseUrl}/reset-password?token=${resetToken}`;
 
-        // Send Email with direct reset button (Snapchat style)
-        await sendEmail({
+        const isGoogleAccountWithoutPassword = !user.password && user.authProvider === 'google';
+        const emailSubject = isGoogleAccountWithoutPassword
+            ? 'Set a Password for Your FarmBridge Account 🌱'
+            : 'Reset Your FarmBridge Password 🌱';
+
+        const greetingText = isGoogleAccountWithoutPassword
+            ? `Hi <strong>${user.firstName || 'there'}</strong>, your FarmBridge account (<strong>${user.email}</strong>) was created using Google Sign-In. You can set up a personal password below so you can log in anytime using either your Google account or your email & password!`
+            : `Hi <strong>${user.firstName || 'there'}</strong>, we received a request to reset the password for your FarmBridge account (<strong>${user.email}</strong>).`;
+
+        const buttonText = isGoogleAccountWithoutPassword ? 'Set Up New Password' : 'Reset Password';
+
+        // Send Email with direct reset button
+        const mailResult = await sendEmail({
             to: user.email,
-            subject: 'Reset Your FarmBridge Password',
+            subject: emailSubject,
             html: `
                 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 540px; margin: 0 auto; padding: 30px; background-color: #FAF8F3; border: 1px solid #E8E4DA; border-radius: 16px;">
                     <div style="text-align: center; margin-bottom: 25px;">
@@ -402,26 +415,34 @@ const requestPasswordReset = async (req, res) => {
                         <p style="color: #6C7A70; font-size: 13px; margin-top: 5px;">Security & Password Assistance</p>
                     </div>
                     <div style="background-color: #ffffff; padding: 28px; border-radius: 12px; border: 1px solid #E8E4DA; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-                        <h3 style="color: #1A261D; margin-top: 0; font-size: 20px;">Forgot Your Password?</h3>
+                        <h3 style="color: #1A261D; margin-top: 0; font-size: 20px;">${isGoogleAccountWithoutPassword ? 'Set Up Your Password' : 'Forgot Your Password?'}</h3>
                         <p style="color: #4A584E; font-size: 14px; line-height: 1.6; margin: 15px 0;">
-                            Hi <strong>${user.firstName || 'there'}</strong>, we received a request to reset the password for your FarmBridge account (<strong>${user.email}</strong>).
+                            ${greetingText}
                         </p>
                         <p style="color: #4A584E; font-size: 14px; margin-bottom: 25px;">
-                            Click the button below to choose a new password:
+                            Click the button below to choose your password:
                         </p>
                         <div style="margin: 25px 0;">
                             <a href="${resetLink}" style="background-color: #1E3F2D; color: #FAF8F3; padding: 14px 32px; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 15px; display: inline-block;">
-                                Reset Password
+                                ${buttonText}
                             </a>
                         </div>
                         <p style="color: #8C9990; font-size: 12px; line-height: 1.5; margin-top: 25px; border-top: 1px solid #F0ECE1; padding-top: 15px;">
-                            This link is valid for 15 minutes. If you did not request a password reset, you can safely ignore this email.
+                            This link is valid for 30 minutes. If you did not make this request, you can safely ignore this email.
                         </p>
                     </div>
                 </div>
             `,
-            text: `Hi ${user.firstName || 'there'},\n\nClick the link below to reset your FarmBridge password:\n${resetLink}\n\nThis link is valid for 15 minutes.`,
+            text: `Hi ${user.firstName || 'there'},\n\nClick the link below to set/reset your FarmBridge password:\n${resetLink}\n\nThis link is valid for 30 minutes.`,
         });
+
+        if (!mailResult.success) {
+            console.error("Password reset email dispatch failed:", mailResult.error);
+            return res.status(500).json({
+                message: "Unable to send reset email at this moment. Please check server email connection.",
+                error: mailResult.error
+            });
+        }
 
         res.status(200).json({
             message: `A password reset link has been sent to ${user.email}. Please check your inbox.`,
@@ -492,7 +513,7 @@ const completePasswordReset = async (req, res) => {
         await PasswordResetRequest.deleteOne({ _id: resetRequest._id });
 
         res.status(200).json({
-            message: "Password has been successfully reset! You can now log in with your new password.",
+            message: "Password has been successfully set! You can now log in with your email/username and password, or continue using Google.",
         });
     } catch (error) {
         console.error("Complete Password Reset Error:", error);

@@ -9,6 +9,7 @@ import {
   Phone,
   Calendar,
   Check,
+  XCircle,
 } from "lucide-react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -52,6 +53,10 @@ const historyDict = {
     statusConfirmed: "Confirmed",
     statusDispatched: "Dispatched",
     statusDelivered: "Delivered",
+    statusCancelled: "Cancelled",
+    cancelOrder: "Cancel Order",
+    cannotCancelDispatched: "In Transit (Cannot Cancel)",
+    orderCancelledNote: "This procurement order has been cancelled.",
     noOrdersTitle: "No Orders Placed Yet",
     noOrdersDesc: "You haven't placed any crop procurement orders yet. Browse verified producer listings to source fresh harvest with zero middleman deductions.",
     exploreBtn: "Explore Available Crops",
@@ -78,6 +83,10 @@ const historyDict = {
     statusConfirmed: "કન્ફર્મ થયેલ",
     statusDispatched: "રવાના થયેલ",
     statusDelivered: "પહોંચી ગયેલ",
+    statusCancelled: "રદ થયેલ",
+    cancelOrder: "ઓર્ડર રદ કરો",
+    cannotCancelDispatched: "માલ રવાના થઈ ચૂક્યો છે (રદ નહીં થાય)",
+    orderCancelledNote: "આ ઓર્ડર રદ કરવામાં આવ્યો છે.",
     noOrdersTitle: "હજુ સુધી કોઈ ઓર્ડર આપ્યો નથી",
     noOrdersDesc: "તમે હજુ સુધી કોઈ પાક ખરીદી ઓર્ડર આપ્યો નથી. ઝીરો દલાલી સાથે તાજો પાક ખરીદવા માટે ઉપલબ્ધ લિસ્ટિંગ જુઓ.",
     exploreBtn: "ઉપલબ્ધ પાક જુઓ",
@@ -104,6 +113,10 @@ const historyDict = {
     statusConfirmed: "पुष्टि की गई",
     statusDispatched: "भेज दिया गया",
     statusDelivered: "वितरित",
+    statusCancelled: "रद्द",
+    cancelOrder: "ऑर्डर रद्द करें",
+    cannotCancelDispatched: "माल रवाना हो चुका है (रद्द नहीं होगा)",
+    orderCancelledNote: "यह ऑर्डर रद्द कर दिया गया है।",
     noOrdersTitle: "अभी तक कोई ऑर्डर नहीं दिया गया",
     noOrdersDesc: "आपने अभी तक कोई फसल खरीद ऑर्डर नहीं दिया है। बिना दलाली के ताज़ा फसल प्राप्त करने के लिए उपलब्ध लिस्टिंग देखें।",
     exploreBtn: "उपलब्ध फसलें देखें",
@@ -180,6 +193,33 @@ const History: React.FC = () => {
     Confirmed: tTxt.statusConfirmed,
     Dispatched: tTxt.statusDispatched,
     Delivered: tTxt.statusDelivered,
+    Cancelled: tTxt.statusCancelled,
+  };
+
+  const handleCancelOrder = async (orderId: string, currentStatus: string) => {
+    // Condition: Dispatched orders cannot be cancelled
+    if (currentStatus === "Dispatched" || currentStatus === "Delivered") {
+      toast.error(tTxt.cannotCancelDispatched || "Dispatched lot cannot be cancelled.");
+      return;
+    }
+
+    if (!window.confirm("Are you sure you want to cancel this order?")) {
+      return;
+    }
+
+    try {
+      await axios.put(
+        `http://localhost:5000/api/orders/${orderId}/status`,
+        { status: "Cancelled" },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      toast.info("Order has been cancelled.");
+      setOrders((prev) =>
+        prev.map((o) => (o._id === orderId ? { ...o, status: "Cancelled" } : o))
+      );
+    } catch (err: any) {
+      toast.error(err.response?.data?.message || "Failed to cancel order");
+    }
   };
 
   const filteredOrders = orders.filter((o) => {
@@ -217,7 +257,7 @@ const History: React.FC = () => {
 
       {/* Filter Tabs */}
       <div className="flex flex-wrap items-center gap-2">
-        {["all", "Pending", "Confirmed", "Dispatched", "Delivered"].map((st) => (
+        {["all", "Pending", "Confirmed", "Dispatched", "Delivered", "Cancelled"].map((st) => (
           <button
             key={st}
             onClick={() => setStatusFilter(st)}
@@ -229,7 +269,7 @@ const History: React.FC = () => {
           >
             {st === "all"
               ? `${statusTabLabels[st]} (${orders.length})`
-              : `${statusTabLabels[st]} (${orders.filter((o) => o.status === st).length})`}
+              : `${statusTabLabels[st] || st} (${orders.filter((o) => o.status === st).length})`}
           </button>
         ))}
       </div>
@@ -283,7 +323,7 @@ const History: React.FC = () => {
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
                     <span className="text-xs font-medium text-[#5C6B5F] bg-[#FAF8F3] px-3 py-1 rounded-lg border border-[#E8E4DA]">
                       {ord.paymentMethod}
                     </span>
@@ -295,11 +335,34 @@ const History: React.FC = () => {
                           ? "bg-[#F3EFE6] text-[#634827] border-[#E3D9C7]"
                           : ord.status === "Confirmed"
                           ? "bg-[#EBF2F6] text-[#224A67] border-[#D0DFE8]"
+                          : ord.status === "Cancelled"
+                          ? "bg-[#FBF1F1] text-[#842A2A] border-[#EED7D7]"
                           : "bg-[#F7F2E9] text-[#7A5B22] border-[#EBDDC7]"
                       }`}
                     >
                       ● {statusTabLabels[ord.status] || ord.status}
                     </span>
+
+                    {/* Condition: Buyer can cancel ONLY if order is NOT Dispatched, Delivered, or already Cancelled */}
+                    {(ord.status === "Pending" || ord.status === "Confirmed") && (
+                      <button
+                        onClick={() => handleCancelOrder(ord._id, ord.status)}
+                        className="px-3 py-1 bg-[#FBF1F1] hover:bg-[#F7E1E1] text-[#842A2A] border border-[#EED7D7] rounded-lg text-xs font-semibold transition-all flex items-center gap-1 shadow-soft-xs"
+                        title={tTxt.cancelOrder}
+                      >
+                        <XCircle className="w-3.5 h-3.5" />
+                        {tTxt.cancelOrder}
+                      </button>
+                    )}
+
+                    {ord.status === "Dispatched" && (
+                      <span
+                        className="text-[11px] font-medium text-[#8C7A58] bg-[#F7F3EA] px-2.5 py-1 rounded-lg border border-[#EADBBD] italic flex items-center gap-1"
+                        title={tTxt.cannotCancelDispatched}
+                      >
+                        {tTxt.cannotCancelDispatched}
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -354,45 +417,52 @@ const History: React.FC = () => {
                   </div>
                 </div>
 
-                {/* 4-Step Progress Stepper */}
+                {/* 4-Step Progress Stepper OR Cancelled Notice */}
                 <div className="pt-2">
                   <div className="text-xs font-semibold uppercase tracking-wider text-[#7F8B82] mb-3">
                     {tTxt.pipelineLabel}
                   </div>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 relative">
-                    {steps.map((st, idx) => {
-                      const isCompleted = idx <= stepIdx;
-                      const isCurrent = idx === stepIdx;
+                  {ord.status === "Cancelled" ? (
+                    <div className="p-4 rounded-xl bg-[#FBF1F1] border border-[#EED7D7] text-[#842A2A] flex items-center gap-2.5 text-xs font-semibold">
+                      <XCircle className="w-4 h-4 text-[#842A2A] flex-shrink-0" />
+                      <span>{tTxt.orderCancelledNote}</span>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 relative">
+                      {steps.map((st, idx) => {
+                        const isCompleted = idx <= stepIdx;
+                        const isCurrent = idx === stepIdx;
 
-                      return (
-                        <div
-                          key={idx}
-                          className={`p-3.5 rounded-xl border transition-all ${
-                            isCurrent
-                              ? "bg-[#EEF4EF] border-[#A8CCA7] shadow-soft-xs"
-                              : isCompleted
-                              ? "bg-[#FAF8F3] border-[#E8E4DA] text-[#1A261D]"
-                              : "bg-[#FFFFFF] border-[#E8E4DA]/60 text-[#7F8B82] opacity-60"
-                          }`}
-                        >
-                          <div className="flex items-center gap-2 mb-1">
-                            <div
-                              className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
-                                isCompleted
-                                  ? "bg-[#1E3F2D] text-[#FAF8F3]"
-                                  : "bg-[#E8E4DA] text-[#5C6B5F]"
-                              }`}
-                            >
-                              {isCompleted ? <Check className="w-3 h-3 stroke-[2.5]" /> : idx + 1}
+                        return (
+                          <div
+                            key={idx}
+                            className={`p-3.5 rounded-xl border transition-all ${
+                              isCurrent
+                                ? "bg-[#EEF4EF] border-[#A8CCA7] shadow-soft-xs"
+                                : isCompleted
+                                ? "bg-[#FAF8F3] border-[#E8E4DA] text-[#1A261D]"
+                                : "bg-[#FFFFFF] border-[#E8E4DA]/60 text-[#7F8B82] opacity-60"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 mb-1">
+                              <div
+                                className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
+                                  isCompleted
+                                    ? "bg-[#1E3F2D] text-[#FAF8F3]"
+                                    : "bg-[#E8E4DA] text-[#5C6B5F]"
+                                }`}
+                              >
+                                {isCompleted ? <Check className="w-3 h-3 stroke-[2.5]" /> : idx + 1}
+                              </div>
+                              <span className="font-bold text-xs text-[#1A261D]">{st.title}</span>
                             </div>
-                            <span className="font-bold text-xs text-[#1A261D]">{st.title}</span>
+                            <p className="text-[11px] text-[#5C6B5F] pl-7 font-normal">{st.desc}</p>
                           </div>
-                          <p className="text-[11px] text-[#5C6B5F] pl-7 font-normal">{st.desc}</p>
-                        </div>
-                      );
-                    })}
-                  </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             );

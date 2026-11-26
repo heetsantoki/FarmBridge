@@ -53,7 +53,7 @@ export default function ForgotPasswordPage() {
             Forgot Password?
           </h1>
           <p className="text-xs sm:text-sm text-[#5C6B5F]">
-            Enter your registered email address and we'll send you a password reset link.
+            Enter your registered email address or username. (Google users can also use this to set up a direct password).
           </p>
         </div>
 

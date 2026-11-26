@@ -2,24 +2,60 @@ import React, { useState } from 'react';
 import ChangeThemes from '../components/ChangesThemes';
 import { DiReact } from 'react-icons/di';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = () => {
-    if (email === 'farmer@gmail.com' && password === '123') {
-      localStorage.setItem('role', 'farmer'); // Store role in localStorage
-      navigate('/home'); // Redirect to farmer's home page
-    } else if (email === 'buyer@gmail.com' && password === '456') {
-      localStorage.setItem('role', 'buyer'); // Store role in localStorage
-      navigate('/buyer-products'); // Redirect to buyer's products page
-    }else if (email === 'admin@gmail.com' && password === '789') {
-        localStorage.setItem('role', 'admin'); // Store role in localStorage
+  const handleLogin = async () => {
+    if (!email.trim() || !password.trim()) {
+      alert('Please enter email and password');
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const res = await axios.post('http://localhost:5000/api/user/login', {
+        username: email.trim(),
+        password: password.trim(),
+      });
+
+      if (res.data?.token) {
+        const userRole = res.data.role || 'admin';
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('authToken', res.data.token);
+        localStorage.setItem('role', userRole);
+
+        if (userRole === 'admin') {
+          navigate('/farmers');
+        } else if (userRole === 'buyer') {
+          navigate('/buyer-products');
+        } else {
+          navigate('/home');
+        }
+        return;
+      }
+    } catch (apiErr: any) {
+      // Local fallback for quick demo accounts
+      if (email === 'admin@gmail.com' && password === '789') {
+        localStorage.setItem('role', 'admin');
         navigate('/farmers');
-    } else {
-      alert('Invalid email or password');
+        return;
+      } else if (email === 'farmer@gmail.com' && password === '123') {
+        localStorage.setItem('role', 'farmer');
+        navigate('/home');
+        return;
+      } else if (email === 'buyer@gmail.com' && password === '456') {
+        localStorage.setItem('role', 'buyer');
+        navigate('/buyer-products');
+        return;
+      }
+      alert(apiErr.response?.data?.message || 'Invalid email or password');
+    } finally {
+      setLoading(false);
     }
   };
 

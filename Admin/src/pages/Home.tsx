@@ -19,6 +19,7 @@ import {
   ShieldCheck,
   UploadCloud,
   CheckCircle2,
+  XCircle,
 } from "lucide-react";
 import { toast } from "react-toastify";
 import MandiTicker from "../components/MandiTicker";
@@ -161,6 +162,26 @@ const Home: React.FC = () => {
       );
     } catch (err: any) {
       toast.error(err.response?.data?.message || "Failed to update order status");
+    }
+  };
+
+  // Reject order (Cancel with confirmation)
+  const handleRejectOrder = async (orderId: string) => {
+    if (!window.confirm("Are you sure you want to reject this order?")) {
+      return;
+    }
+    try {
+      await axios.put(
+        `http://localhost:5000/api/orders/${orderId}/status`,
+        { status: "Cancelled" },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      toast.info("Order has been rejected");
+      setOrders((prev) =>
+        prev.map((o) => (o._id === orderId ? { ...o, status: "Cancelled" as any } : o))
+      );
+    } catch (err: any) {
+      toast.error(err.response?.data?.message || "Failed to reject order");
     }
   };
 
@@ -661,23 +682,43 @@ const Home: React.FC = () => {
                         </td>
 
                         <td className="py-4 px-6 text-right">
-                          <div className="flex justify-end gap-2">
+                          <div className="flex justify-end gap-2 items-center">
                             {ord.status === "Pending" && (
-                              <button
-                                onClick={() => handleUpdateOrderStatus(ord._id, "Confirmed")}
-                                className="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm hover:scale-105 active:scale-95"
-                              >
-                                Accept Order
-                              </button>
+                              <>
+                                <button
+                                  onClick={() => handleUpdateOrderStatus(ord._id, "Confirmed")}
+                                  className="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm hover:scale-105 active:scale-95"
+                                >
+                                  Accept Order
+                                </button>
+                                <button
+                                  onClick={() => handleRejectOrder(ord._id)}
+                                  className="px-3 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-1 hover:scale-105 active:scale-95"
+                                  title="Reject order"
+                                >
+                                  <XCircle className="w-3.5 h-3.5" />
+                                  Reject
+                                </button>
+                              </>
                             )}
                             {ord.status === "Confirmed" && (
-                              <button
-                                onClick={() => handleUpdateOrderStatus(ord._id, "Dispatched")}
-                                className="px-3.5 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-1.5 hover:scale-105 active:scale-95"
-                              >
-                                <Truck className="w-3.5 h-3.5" />
-                                Dispatch Harvest
-                              </button>
+                              <>
+                                <button
+                                  onClick={() => handleUpdateOrderStatus(ord._id, "Dispatched")}
+                                  className="px-3.5 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-1.5 hover:scale-105 active:scale-95"
+                                >
+                                  <Truck className="w-3.5 h-3.5" />
+                                  Dispatch Harvest
+                                </button>
+                                <button
+                                  onClick={() => handleRejectOrder(ord._id)}
+                                  className="px-3 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-1 hover:scale-105 active:scale-95"
+                                  title="Cancel order"
+                                >
+                                  <XCircle className="w-3.5 h-3.5" />
+                                  Cancel
+                                </button>
+                              </>
                             )}
                             {ord.status === "Dispatched" && (
                               <button
@@ -691,6 +732,11 @@ const Home: React.FC = () => {
                             {ord.status === "Delivered" && (
                               <span className="text-xs text-emerald-700 font-black flex items-center gap-1 bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200">
                                 <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Complete
+                              </span>
+                            )}
+                            {ord.status === "Cancelled" && (
+                              <span className="text-xs text-rose-700 font-bold flex items-center gap-1 bg-rose-50 px-3 py-1.5 rounded-xl border border-rose-200">
+                                <XCircle className="w-4 h-4 text-rose-600" /> Rejected
                               </span>
                             )}
                           </div>

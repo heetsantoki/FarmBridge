@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useTranslation } from "../../hooks/useTranslation";
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const BuyerHelp = () => {
   const { t } = useTranslation(); // Initialize translation hook
@@ -47,7 +48,7 @@ const BuyerHelp = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validate form
@@ -61,16 +62,26 @@ const BuyerHelp = () => {
     // Create a new help request
     const newRequest = {
       id: uuidv4(),
+      userType: 'buyer',
+      name: formData.buyerName,
       buyerName: formData.buyerName,
       address: formData.address,
       contactNo: formData.contactNo,
       email: formData.email,
+      issueDescription: formData.productIssue,
       productIssue: formData.productIssue,
       photo: photoPreview,
       status: 'pending' as const,
       date: new Date().toISOString(),
     };
     
+    // Save to MongoDB backend database
+    try {
+      await axios.post('http://localhost:5000/api/issues', newRequest);
+    } catch (err) {
+      console.error('Failed to submit buyer issue to backend:', err);
+    }
+
     // Get existing requests from localStorage or initialize with empty array
     const existingRequests = JSON.parse(localStorage.getItem('buyerHelpRequests') || '[]');
     
